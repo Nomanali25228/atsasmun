@@ -1477,7 +1477,7 @@ export default function Home() {
                             </div>
                             <div className="  relative z-10">
                               <label className="block lg:mt-[-70px] mt-[10px] text-sm font-medium text-gray-700" htmlFor="phone">
-                                Which country do you want to represent? x<span className="text-red-500">*</span>
+                                Which country do you want to represent?<span className="text-red-500">*</span>
                               </label>
 
                               <ReactFlagsSelect
