@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+/* Fade-in-down animation */
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in-down {
+    animation: fadeInDown 1s ease-out;
+  }
+  
+  /* Box shadows for card hover */
+  .shadow-2xl {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .shadow-3xl {
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Smooth transitions */
+  .transition-transform {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover\:shadow-3xl:hover {
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+
+
+  /* Target the phone input field */
+.PhoneInputInput {
+  border: none !important; /* Removes border */
+  box-shadow: none !important; /* Removes shadow */
+  outline: none !important; /* Removes focus outline */
+  color: #000; /* Optional: Set text color */
+  font-size: 16px; /* Optional: Adjust font size */
+  /* padding: 10px; Adjust padding if needed */
+}
+
+.ReactFlagsSelect {
+  border: none !important; /* Removes the default border */
+  box-shadow: none !important; /* Removes any shadow */
+  outline: none !important; /* Removes focus outline */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10%);
+  }
+}
+
+
+.perspective {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+}
+
+.group:hover .backface-hidden:first-child {
+  transform: rotateY(180deg);
+}
+
+.group:hover .backface-hidden:last-child {
+  transform: rotateY(0);
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+
+/* styles.css */
+.my-custom-style {
+    color: blue; /* Example CSS property */
+}
+.bold-text {
+  font-weight: bold;
+}
