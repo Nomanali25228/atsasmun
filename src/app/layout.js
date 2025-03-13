@@ -25,7 +25,7 @@ export const metadata = {
   description:
     "Atsas MUN is an international platform where participants experience the truest simulation of the United Nations. We aim to provide an immersive and adventurous experience for our delegates. Join us now for your futurem of diplomacy.",
     other: {
-      "facebook-domain-verification": "mml3ldefvlr0c2k565t53zaohs",
+      "facebook-domain-verification": "mml3zdfqldefvlr0c2k565t53zaohs",
   }
 };
 
