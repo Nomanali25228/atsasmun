@@ -27,7 +27,7 @@ const cards = [
     title: "ATSASMUN Dubai, UAE",
     subtitle: "Dubai, UAE",
     description:
-      "(April 17th-20th, 2025)",
+      "(April 24th-27th, 2025)",
     details:
       "Young leaders can take advantage of a futuristic platform provided by ATSASMUN in Dubai, which combines the city's cosmopolitan allure and forward-thinking perspective with the spirit of innovation.",
     image: bell2,

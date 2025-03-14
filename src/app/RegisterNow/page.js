@@ -333,8 +333,8 @@ export default function Home() {
     else if (destination == "Dubai, UAE") {
 
       setChange({
-        from: '17th ',
-        to: '20',
+        from: '24th ',
+        to: '27',
         th: 'April,2025'
 
       })

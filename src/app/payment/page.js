@@ -18,7 +18,7 @@ import ParticleCanvas from "../(component)/ParticleCanvas";
 
 export default function Flip() {
   const locations = [
-    { name: 'Dubai, UAE', image: istan5, date: '17th-20th, April, 2025', link: '/uaePrice' },
+    { name: 'Dubai, UAE', image: istan5, date: '24th-27th, April, 2025', link: '/uaePrice' },
     { name: 'Istanbul, Türkiye', image: istan, date: '05th-08th, June, 2025', link: '/IstanbulPrice' },
     { name: 'Kuala Lumpur, Malaysia', image: istan1, date: '1st-04th May, 2025', link: '/MalaysiaPrice' },
     { name: 'Paris, France', image: istan2, date: '07th-10th, August, 2025', link: '/FrancePrice' },
@@ -254,10 +254,10 @@ export default function Flip() {
 
               {dropdownOpen2 && (
                 <div className="absolute w-[200px]  mt-4 bg-white text-black rounded shadow-lg">
-                  <Link href="/istanbulLandingP" className="block px-4 py-2 hover:text-blue-400 ">
+                  <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400 ">
                     Istanbul, Turkey
                   </Link>
-                  <Link href="/dubaiLandingP" className="block px-4 py-2 hover:text-blue-400">
+                  <Link href="/dubai" className="block px-4 py-2 hover:text-blue-400">
                     Dubai, UAE
                   </Link>
                   <Link href="/malaysiaLandingP" className="block px-4 py-2 hover:text-blue-400">
@@ -435,7 +435,7 @@ export default function Flip() {
               {mobileDropdownOpen2 && (
                 <div className="ml-6 space-y-2">
                   <Link
-                    href="/istanbulLandingP"
+                    href="/Istanbul"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -445,7 +445,7 @@ export default function Flip() {
                     ></span>
                   </Link>
                   <Link
-                    href="/dubaiLandingP"
+                    href="/dubai"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
                   >

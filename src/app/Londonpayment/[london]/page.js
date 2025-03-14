@@ -402,10 +402,10 @@ export default function Home() {
 
                             {dropdownOpen2 && (
                                 <div className="absolute w-[200px]  mt-4 bg-white text-black rounded shadow-lg">
-                                    <Link href="/istanbulLandingP" className="block px-4 py-2 hover:text-blue-400 ">
+                                    <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400 ">
                                         Istanbul, Turkey
                                     </Link>
-                                    <Link href="/dubaiLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                    <Link href="/dubai" className="block px-4 py-2 hover:text-blue-400">
                                         Dubai, UAE
                                     </Link>
                                     <Link href="/malaysiaLandingP" className="block px-4 py-2 hover:text-blue-400">
@@ -585,7 +585,7 @@ export default function Home() {
                             {mobileDropdownOpen2 && (
                                 <div className="ml-6 space-y-2">
                                     <Link
-                                        href="/istanbulLandingP"
+                                        href="/Istanbul"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
@@ -595,7 +595,7 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
-                                        href="/dubaiLandingP"
+                                        href="/dubai"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >

@@ -89,7 +89,7 @@ const Footer = () => {
                         <ul className="space-y-3">
                             <li>
                                 <Link
-                                    href="/dubaiLandingP"
+                                    href="/dubai"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
                                     <span className="mr-2">&#10140;</span>
@@ -101,7 +101,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/istanbulLandingP"
+                                    href="/Istanbul"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
                                     <span className="mr-2">&#10140;</span>
