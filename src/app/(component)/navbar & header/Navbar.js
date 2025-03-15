@@ -737,7 +737,7 @@ export default function Home() {
                                 </div>
                                 <hr className="w-[70%] sm:w-[80%] mx-auto border-t border-gray-100" />
                                 <p className="py-2 px-6 sm:px-9 text-[11px] sm:text-[13px] text-gray-200">
-                                    Early Applicant Discounts (Limited Slots Left)
+                                    Early Applicant Discount (Limited Slots Left)
                                 </p>
                             </button>
                         </Link>
