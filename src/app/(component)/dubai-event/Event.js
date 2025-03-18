@@ -30,6 +30,7 @@ export default function Event(props) {
       title: "Scavenger Hunt",
       image: props.img5,
     },
+    
   ];
 
 

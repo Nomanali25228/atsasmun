@@ -11,9 +11,9 @@ import bell6 from "@/app/public/img/az6.jpeg";
 
 import istanbul from '@/app/public/img/turkey.jpeg';
 import dubai from "@/app/public/img/skyline.jpeg";
-import malaysia from '@/app/public/img/kulua.jpg';
-import london from '@/app/public/img/london.jpg';
-import Switzerland from '@/app/public/img/geneva.jpg';
+import India from '@/app/public/img/india.jpg';
+import USA from '@/app/public/img/bgUSA.jpg';
+import Saudi from '@/app/public/img/riyadhcity.jpg';
 import paris from '@/app/public/img/paris.jpeg';
 import ContextPage from "@/app/Context/ContextPage";
 import Link from "next/link";
@@ -27,7 +27,7 @@ const cards = [
     title: "ATSASMUN Dubai, UAE",
     subtitle: "Dubai, UAE",
     description:
-      "(April 24th-27th, 2025)",
+      "(24th-27th, April 2025)",
     details:
       "Young leaders can take advantage of a futuristic platform provided by ATSASMUN in Dubai, which combines the city's cosmopolitan allure and forward-thinking perspective with the spirit of innovation.",
     image: bell2,
@@ -39,7 +39,7 @@ const cards = [
     title: "ATSASMUN Istanbul, Turkey",
     subtitle: "Istanbul, Turkey",
     description:
-      "(June 05th-08th, 2025)",
+      "(05th-08th, June 2025)",
     details:
       "Aspiring diplomatic leaders are invited to attend the ATSASMUN in Istanbul, which is located at the crossroads of civilizations. The city's rich cultural past offers global discourse an inspiration that is unmatched by any other.",
     image: bell1,
@@ -48,51 +48,51 @@ const cards = [
   {
     id: 3,
     nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN Kuala Lumpur, Malaysia ",
-    subtitle: "Kuala Lumpur, Malaysia",
+    title: "ATSASMUN Goa, India ",
+    subtitle: "Goa, India",
     description:
-      "(May 1st-04th, 2025)",
+      "(26th-29th, june 2025)",
     details:
-      "A multicultural hub is present in Kuala Lumpur, where the participants of the ATSASMUN are immersed. This center embodies the harmony and variety that is important for future diplomacy.",
+    "A multicultural hub is present in Goa,  India where the participants of the ATSASMUN are immersed. This center embodies the harmony and variety that is important for future diplomacy.",
     image: bell3,
-    icon: malaysia,
+    icon: India,
   },
   {
     id: 4,
     nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN Paris, France",
-    subtitle: "Paris, France",
+    title: "ATSASMUN New York, USA",
+    subtitle: "New York, USA",
     description:
-      "(August 07th-10th, 2025)",
+      "(04th-07th, September 2025)",
     details:
-      "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in Paris connects delegates with the spirit of diplomacy.                                                                                        ",
-    image: bell6,
-    icon: paris,
+      "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in New York connects delegates with the spirit of diplomacy.",
+    image: bell4,
+    icon: USA,
   },
-  {
-    id: 5,
-    nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN Geneva, Switzerland ",
-    subtitle: "Geneva, Switzerland",
-    description:
-      "(July 3rd-06th, 2025)",
-    details:
-      "Young diplomats are placed at the center of international relations through the ATSASMUN in Geneva, which is inspired by the city of Geneva, which is well-known for its role in peacebuilding and worldwide cooperation.",
-    image: bell5,
-    icon: Switzerland,
-
-  },
+  // {
+  //   id: 5,
+  //   nowOpen: "Registrations opening soon!",
+  //   title: "ATSASMUN Paris, France",
+  //   subtitle: "Paris, France",
+  //   description:
+  //     "(07th-10th, August 2025)",
+  //   details:
+  //     "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in Paris connects delegates with the spirit of diplomacy.                                                                                        ",
+  //   image: bell6,
+  //   icon: paris,
+  // },
   {
     id: 6,
     nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN London, UK",
-    subtitle: "London, UK",
+    title: "ATSASMUN Riyadh, Saudi Arabia ",
+    subtitle: "Riyadh, Saudi Arabia",
     description:
-      "(June 12th-15th, 2025)",
+      "(16th-19th, october 2025)",
     details:
-      "An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",
-    image: bell4,
-    icon: london,
+      "In the land of ancient traditions and deep-rooted hospitality, ATSASMUN in Saudi Arabia immerses participants in a culture shaped by honor, respect, and unity. Here, delegates experience the spirit of majlis—open dialogue and mutual understanding—reflecting the values that guide true diplomacy in a rapidly evolving world.",
+    image: bell5,
+    icon: Saudi,
+
   },
 ];
 

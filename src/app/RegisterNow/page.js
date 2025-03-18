@@ -18,10 +18,10 @@ import 'aos/dist/aos.css'; // Import the AOS styles
 import Whatsapp from '../(component)/whatsapp/Whatsapp';
 import ContextPage from '../Context/ContextPage';
 import istan from '@/app/public/img/istun.jpg';
-import istan1 from '@/app/public/img/kulua.jpg';
+import istan1 from '@/app/public/img/india.jpg';
 import istan2 from '@/app/public/img/paris.jpeg';
-import istan3 from '@/app/public/img/london.jpg';
-import istan4 from '@/app/public/img/geneva.jpg';
+import istan3 from '@/app/public/img/bgUSA.jpg';
+import istan4 from '@/app/public/img/riyadhcity.jpg';
 import istan5 from '@/app/public/img/dubia.jpg';
 import Loader from '../component/loader/Loader';
 import next from 'next';
@@ -148,7 +148,7 @@ const countryNames = {
   MK: "Macedonia",
   MG: "Madagascar",
   MW: "Malawi",
-  MY: "Malaysia",
+  MY: "India",
   MV: "Maldives",
   ML: "Mali",
   MT: "Malta",
@@ -226,7 +226,7 @@ const countryNames = {
   SJ: "Svalbard and Jan Mayen",
   SZ: "Swaziland",
   SE: "Sweden",
-  CH: "Switzerland",
+  CH: " Saudi Arabia",
   SY: "Syrian Arab Republic",
   TW: "Taiwan",
   TJ: "Tajikistan",
@@ -309,7 +309,7 @@ export default function Home() {
   // istan from '@/app/public/img/istun.jpg';
   // import istan1 from '@/app/public/img/kulua.jpg';
   // import istan2 from '@/app/public/img/paris.jpeg';
-  // import istan3 from '@/app/public/img/london.jpg';
+  // import istan3 from '@/app/public/img/USA.jpg';
   // import istan4 from '@/app/public/img/geneva.jpg';
   // import istan5 from '@/app/public/img/dubia.jpg';
   const [change, setChange] = useState({})
@@ -323,7 +323,7 @@ export default function Home() {
       setChange({
         from: '05th ',
         to: '08',
-        th: 'June ,2025'
+        th: 'June, 2025'
 
       })
 
@@ -335,46 +335,47 @@ export default function Home() {
       setChange({
         from: '24th ',
         to: '27',
-        th: 'April,2025'
+        th: 'April, 2025'
 
       })
 
-    } else if (destination == "Kuala Lumpur, Malaysia") {
+    } else if (destination == "Goa, India") {
 
       setChange({
-        from: '1st ',
-        to: '4',
-        th: 'May,2025'
+        from: '26th ',
+        to: '29',
+        th: 'june, 2025'
 
       })
 
-    } else if (destination == "London, UK") {
+    } else if (destination == "New York, USA") {
 
       setChange({
-        from: '12th ',
-        to: '15',
-        th: 'June,2025'
+        from: '04th ',
+        to: '07',
+        th: 'September, 2025'
 
       })
 
-    } else if (destination == "Geneva, Switzerland") {
+    } else if (destination == "Riyadh, Saudi Arabia") {
 
       setChange({
-        from: '3rd ',
-        to: '6',
-        th: 'July,2025'
+        from: '16th ',
+        to: '19',
+        th: 'october, 2025'
 
       })
-    } else if (destination == "Paris, France") {
-      setImgchange(istan2)
-      setChange({
-        from: '7th ',
-        to: '10',
-        th: 'Aug,2025'
+    } 
+    // else if (destination == "Paris, France") {
+    //   setImgchange(istan2)
+    //   setChange({
+    //     from: '7th ',
+    //     to: '10',
+    //     th: 'Aug, 2025'
 
-      })
+    //   })
 
-    }
+    // }
   }, [destination])
 
 
@@ -400,7 +401,7 @@ export default function Home() {
       setImgchange(istan5)
 
 
-    } else if (check == "Kuala Lumpur, Malaysia") {
+    } else if (check == "Goa, India") {
       setNo1(false)
       setNo(false)
       setNo3(false)
@@ -409,7 +410,7 @@ export default function Home() {
       setImgchange(istan1)
 
 
-    } else if (check == "London, UK") {
+    } else if (check == "New York, USA") {
       setNo1(false)
       setNo2(false)
       setNo(false)
@@ -418,7 +419,7 @@ export default function Home() {
       setImgchange(istan3)
 
 
-    } else if (check == "Geneva, Switzerland") {
+    } else if (check == "Riyadh, Saudi Arabia") {
       setNo1(false)
       setNo2(false)
       setNo3(false)
@@ -426,16 +427,17 @@ export default function Home() {
       setNo5(false)
       setImgchange(istan4)
 
-    } else if (check == "Paris, France") {
-      setNo1(false)
-      setNo2(false)
-      setNo3(false)
-      setNo4(false)
-      setNo(false)
-      setImgchange(istan2)
+    } 
+    // else if (check == "Paris, France") {
+    //   setNo1(false)
+    //   setNo2(false)
+    //   setNo3(false)
+    //   setNo4(false)
+    //   setNo(false)
+    //   setImgchange(istan2)
 
 
-    }
+    // }
   }, [check, setCheck])
 
   useEffect(() => {
@@ -451,30 +453,31 @@ export default function Home() {
       setImgchange(istan5)
 
 
-    } else if (destination == "Kuala Lumpur, Malaysia") {
+    } else if (destination == "Goa, India") {
       setChangeApi("thirdnames")
 
       setImgchange(istan1)
 
 
-    } else if (destination == "London, UK") {
+    } else if (destination == "New York, USA") {
       setChangeApi("fournames")
 
       setImgchange(istan3)
 
 
-    } else if (destination == "Geneva, Switzerland") {
+    } else if (destination == "Riyadh, Saudi Arabia") {
       setChangeApi("fivenames")
 
       setImgchange(istan4)
 
-    } else if (destination == "Paris, France") {
-      setChangeApi("fivthnames")
+    } 
+    // else if (destination == "Paris, France") {
+    //   setChangeApi("fivthnames")
 
-      setImgchange(istan2)
+    //   setImgchange(istan2)
 
 
-    }
+    // }
   }, [destination, setDestination])
 
 
@@ -681,19 +684,20 @@ export default function Home() {
         } else if (destination == "Dubai, UAE") {
           var g = "DubaiContact"
           ha34(e, id, g)
-        } else if (destination == "Kuala Lumpur, Malaysia") {
-          var g = "MalaysiaContact"
+        } else if (destination == "Goa, India") {
+          var g = "IndiaContact"
           ha34(e, id, g)
-        } else if (destination == "London, UK") {
-          var g = "LondonContact"
+        } else if (destination == "New York, USA") {
+          var g = "USAContact"
           ha34(e, id, g)
-        } else if (destination == "Geneva, Switzerland") {
-          var g = "SwitzerlandContact"
+        } else if (destination == "Riyadh, Saudi Arabia") {
+          var g = "SaudiContact"
           ha34(e, id, g)
-        } else if (destination == "Paris, France") {
-          var g = "FranceContact"
-          ha34(e, id, g)
-        }
+        } 
+        // else if (destination == "Paris, France") {
+        //   var g = "FranceContact"
+        //   ha34(e, id, g)
+        // }
 
 
 
@@ -1052,10 +1056,10 @@ export default function Home() {
                                   </option>
                                   {no && <option value="Istanbul, Turkey">Istanbul, Turkey</option>}
                                   {no1 && <option value="Dubai, UAE">Dubai, UAE</option>}
-                                  {no2 && <option value="Kuala Lumpur, Malaysia">Kuala Lumpur, Malaysia</option>}
-                                  {no3 && <option value="London, UK">London, UK</option>}
-                                  {no4 && <option value="Geneva, Switzerland">Geneva, Switzerland</option>}
-                                  {no5 && <option value="Paris, France">Paris, France</option>}
+                                  {no2 && <option value="Goa, India">Goa, India</option>}
+                                  {no3 && <option value="New York, USA">New York, USA</option>}
+                                  {no4 && <option value="Riyadh, Saudi Arabia">Riyadh, Saudi Arabia</option>}
+                                  {/* {no5 && <option value="Paris, France">Paris, France</option>} */}
 
                                 </select>
                               </div>

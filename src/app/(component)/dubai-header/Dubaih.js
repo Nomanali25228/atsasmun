@@ -258,18 +258,18 @@ export default function Dubaih(props) {
                   <Link href="/Istanbul" className={`block px-4 py-2 ${mla == "Istanbul, Turkey" ? style : stlyle2} `}>
                     Istanbul, Turkey
                   </Link>
-                  <Link href="/malaysiaLandingP" className={`block px-4 py-2  ${mla == "Kuala Lumpur, Malaysia" ? style : stlyle2}`}>
-                    Kuala Lumpur, Malaysia
+                  <Link href="/India" className={`block px-4 py-2  ${mla == "Goa, India" ? style : stlyle2}`}>
+                    Goa, India
                   </Link>
-                  <Link href="/londonLandingP" className={`block px-4 py-2 ${mla == "London, UK" ? style : stlyle2} `}>
-                    London, UK
+                  <Link href="/USA" className={`block px-4 py-2 ${mla == "New York, USA" ? style : stlyle2} `}>
+                    New York, USA
                   </Link>
-                  <Link href="/switzerlandLandingP" className={`block px-4 py-2 ${mla == "Geneva, Switzerland" ? style : stlyle2} `}>
-                    Geneva, Switzerland
+                  <Link href="/Saudi" className={`block px-4 py-2 ${mla == "Riyadh, Saudi Arabia" ? style : stlyle2} `}>
+                    Riyadh, Saudi Arabia
                   </Link>
-                  <Link href="/franceLandingP" className={`block px-4 py-2 ${mla == "Paris, France" ? style : stlyle2} `}>
+                  {/* <Link href="/franceLandingP" className={`block px-4 py-2 ${mla == "Paris, France" ? style : stlyle2} `}>
                     Paris, France
-                  </Link>
+                  </Link> */}
 
                 </div>
               )}
@@ -454,37 +454,38 @@ export default function Dubaih(props) {
                     ></span>
                   </Link>
                   <Link
-                    href="/malaysiaLandingP"
+                    href="/India"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Kuala Lumpur, Malaysia
+                    Goa, India
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
                   </Link>
                   <Link
-                    href="/londonLandingP"
+                    href="/USA"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    London, UK
+                    New York, USA
 
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
                   </Link>
                   <Link
-                    href="/switzerlandLandingP"
+                    href="/Saudi"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Geneva, Switzerland
+                    Riyadh, Saudi Arabia
 
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
-                  </Link> <Link
+                  </Link> 
+                  {/* <Link
                     href="/franceLandingP"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -494,7 +495,7 @@ export default function Dubaih(props) {
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
-                  </Link>
+                  </Link> */}
 
                 </div>
               )}

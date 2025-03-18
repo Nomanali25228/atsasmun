@@ -280,18 +280,18 @@ export default function Page() {
                                     <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400 ">
                                         Istanbul, Turkey
                                     </Link>
-                                    <Link href="/malaysiaLandingP" className="block px-4 py-2 hover:text-blue-400">
-                                        Kuala Lumpur, Malaysia
+                                    <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
+                                        Goa, India
                                     </Link>
-                                    <Link href="/londonLandingP" className="block px-4 py-2 hover:text-blue-400">
-                                        London, UK
+                                    <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
+                                        New York, USA
                                     </Link>
-                                    <Link href="/switzerlandLandingP" className="block px-4 py-2 hover:text-blue-400">
-                                        Geneva, Switzerland
+                                    <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
+                                        Riyadh, Saudi Arabia
                                     </Link>
-                                    <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                   {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
                                         Paris, France
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             )}
                         </div>
@@ -477,31 +477,31 @@ export default function Page() {
                                         ></span>
                                     </Link>
                                     <Link
-                                        href="/malaysiaLandingP"
+                                        href="/India"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
-                                        Kuala Lumpur, Malaysia
+                                        Goa, India
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
                                     </Link>
                                     <Link
-                                        href="/londonLandingP"
+                                        href="/USA"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
-                                        London, UK
+                                        New York, USA
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
                                     </Link>
                                     <Link
-                                        href="/switzerlandLandingP"
+                                        href="/Saudi"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
-                                        Geneva, Switzerland
+                                        Riyadh, Saudi Arabia
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
@@ -666,10 +666,10 @@ export default function Page() {
                                 </div>
                             </div>
 
-                            {/* Shepandum Plan */}
+                            {/* Full Experience Plan */}
                             <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between h-full">
   <div className="space-y-4">
-    <h3 className="text-lg font-bold text-center">Shepandum</h3>
+    <h3 className="text-lg font-bold text-center">Full Experience</h3>
     <div className="text-center">
       <p className="text-3xl font-extrabold">$679</p>
       {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
@@ -683,6 +683,8 @@ export default function Page() {
     <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
       <li>✔️ Everything in Non-Accommodation Package</li>
       <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
+      <li>✔️ Visa invitation letter</li>
+      <li>✔️ Airport Assistance (Arrival)</li>
       <li>✔️ 3 Buffet Breakfast</li>
       <li>✔️ 2 Lunch and 3 Dinners</li>
       <li>✔️ Dubai City Tour</li>

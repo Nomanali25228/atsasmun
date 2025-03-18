@@ -17,12 +17,12 @@ export async function POST(request) {
         let link2o;
         if (destination == "Dubai, UAE") {
             link2o = "http://localhost:3000/UAEpayment/1";
-        } else if (destination == "Kuala Lumpur, Malaysia") {
-            link2o = "http://localhost:3000/Malaysiapayment/1";
-        } else if (destination == "London, UK") {
-            link2o = "http://localhost:3000/Londonpayment/1";
-        } else if (destination == "Geneva, Switzerland") {
-            link2o = "http://localhost:3000/Switzerlandpayment/1";
+        } else if (destination == "Goa, India") {
+            link2o = "http://localhost:3000/Indiapayment/1";
+        } else if (destination == "New York, USA") {
+            link2o = "http://localhost:3000/USApayment/1";
+        } else if (destination == "Riyadh, Saudi Arabia") {
+            link2o = "http://localhost:3000/ Saudi Arabiapayment/1";
         } else if (destination == "Paris, France") {
             link2o = "http://localhost:3000/Francepayment/1";
         } else if (destination == "Istanbul, Turkey") {
@@ -206,7 +206,7 @@ export async function POST(request) {
             United Nations Simulation Committee Sessions
         </td>
         <td style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-            4-5 Star Accommodation-Twin Shared/3 Nights
+            5 Star Accommodation-Twin Shared/3 Nights
         </td>
     </tr>
     <tr>
@@ -230,7 +230,7 @@ export async function POST(request) {
             Ice-breaking Session
         </td>
         <td style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-            Bosphorus Rooftop Lunch
+                      Visa invitation letter
         </td>
     </tr>
     <tr>
@@ -238,7 +238,7 @@ export async function POST(request) {
             Diplomatic Dinner Gala
         </td>
         <td style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-            Bosphorus Cruise Dinner
+            Airport Assistance (Arrival)  
         </td>
     </tr>
     <tr>
@@ -600,7 +600,7 @@ export async function POST(request) {
 //                             </td>
 //                             <td
 //                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 4-5 Star Accommodation-Twin Shared/3 Nights
+//                                 5 Star Accommodation-Twin Shared/3 Nights
 //                             </td>
 //                         </tr>
 //                         <tr>

@@ -113,41 +113,41 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/malaysiaLandingP"
+                                    href="/India"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
                                     <span className="mr-2">&#10140;</span>
                                     <p className='hover:scale-105 transition-transform duration-500'>
-                                        Atsas Mun Malaysia
+                                        Atsas Mun India
                                     </p>
 
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href="/londonLandingP"
+                                    href="/USA"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
                                     <span className="mr-2">&#10140;</span>
                                     <p className='hover:scale-105 transition-transform duration-500'>
-                                        Atsas Mun London
+                                        Atsas Mun USA
                                     </p>
 
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href="/switzerlandLandingP"
+                                    href="/Saudi"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
                                     <span className="mr-2">&#10140;</span>
                                     <p className='hover:scale-105 transition-transform duration-500'>
-                                        Atsas Mun Switzerland
+                                        Atsas Mun  Saudi Arabia
                                     </p>
 
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link
                                     href="/franceLandingP"
                                     className="flex items-center  text-gray-400 hover:text-blue-400 transition-all duration-300"
@@ -157,7 +157,7 @@ const Footer = () => {
                                         Atsas Mun France
                                     </p>
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
 
