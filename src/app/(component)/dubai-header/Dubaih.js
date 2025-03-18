@@ -634,14 +634,14 @@ export default function Dubaih(props) {
               href="/RegisterNow"
               className="hover:text-[#027CAC] font-medium flex items-center space-x-4 hover:underline"
             >
-              Register Now <span>➔</span>
+              Register Now <span className="ml-2">➔</span>
             </Link>
 
             <Link
               href={Pricelink}
               className=" hover:text-[#027CAC] font-medium flex items-center space-x-4 hover:underline"
             >
-              Pricing <span>➔</span>
+              Pricing <span className="ml-2">➔</span>
             </Link>
           </div>
         </div>

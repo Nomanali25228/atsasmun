@@ -365,7 +365,7 @@ export default function Home() {
         th: 'october, 2025'
 
       })
-    } 
+    }
     // else if (destination == "Paris, France") {
     //   setImgchange(istan2)
     //   setChange({
@@ -427,7 +427,7 @@ export default function Home() {
       setNo5(false)
       setImgchange(istan4)
 
-    } 
+    }
     // else if (check == "Paris, France") {
     //   setNo1(false)
     //   setNo2(false)
@@ -470,7 +470,7 @@ export default function Home() {
 
       setImgchange(istan4)
 
-    } 
+    }
     // else if (destination == "Paris, France") {
     //   setChangeApi("fivthnames")
 
@@ -693,7 +693,7 @@ export default function Home() {
         } else if (destination == "Riyadh, Saudi Arabia") {
           var g = "SaudiContact"
           ha34(e, id, g)
-        } 
+        }
         // else if (destination == "Paris, France") {
         //   var g = "FranceContact"
         //   ha34(e, id, g)
@@ -823,15 +823,15 @@ export default function Home() {
         <div className="relative lg:w-[80%] md:w-[85%] sm:w-[90%] w-[90%]  py-32 z-10">
 
           <div data-aos="fade-right" className="text-center mb-10">
-            <p className="sm:text-3xl font-semibold text-white tracking-wide">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
               Registrations for Atsas International MUN
-            </p>
+            </h2>
           </div>
           <div >
             <div data-aos="fade-up" className="w-full max-w-7xl bg-gradient-to-b from-blue-100 to-pink-100 shadow-xl rounded-xl overflow-hidden">
               <div className="flex flex-col lg:flex-row">
                 {/* Mobile Text Section */}
-                <div className="w-full h-48 relative block lg:hidden">
+                <div className="w-full h-52 relative block lg:hidden ">
                   <Image
                     src={imgchange}
                     alt="Istanbul International MUN"
@@ -839,19 +839,27 @@ export default function Home() {
                     objectFit="cover"
                     className="rounded-t-xl lg:rounded-none lg:rounded-l-xl"
                   />
-                  {/* Add a text container */}
-                  <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white bg-black/50 rounded-t-xl lg:rounded-none lg:rounded-l-xl">
-                    <h2 className="text-lg sm:text-xl font-bold">
+
+                  {/* Semi-Transparent Blurred Box */}
+                  
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] sm:w-[60%] md:w-[50%]  backdrop-blur-sm  bg-black bg-opacity-50 rounded-lg p-4 text-white text-center">
+                  <div className=' relative z-10'>
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
                       Atsas International MUN
                     </h2>
-                    <p className="text-sm sm:text-base mt-2">
+                    <p className="text-sm sm:text-base md:text-lg mt-2">
                       {destination === "" ? "" : "at"} {check === "" ? destination : check}
                     </p>
-                    <p className="text-sm sm:text-base mt-1">
-                      {destination === "" ? "" : "from "} {change.from}{destination === "" ? "" : " to "} {change.to}<sup>{destination === "" ? "" : "th "}</sup> {change.th}
+                    <p className="text-sm sm:text-base md:text-lg mt-1">
+                      {destination === "" ? "" : "from "} {change.from}{destination === "" ? "" : " to "} {change.to}
+                      <sup>{destination === "" ? "" : "th "}</sup> {change.th}
                     </p>
+                    </div>
                   </div>
                 </div>
+
+
+
 
 
                 {/* Desktop Image Section */}
@@ -1496,10 +1504,10 @@ export default function Home() {
                                   }));
                                 }}
                                 className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-1 px-1 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
-                                    searchable
-                                    searchPlaceholder="Search for a country..."
-                                    customLabels={countryNames}
-                                    countries={filteredCountries}
+                                searchable
+                                searchPlaceholder="Search for a country..."
+                                customLabels={countryNames}
+                                countries={filteredCountries}
                               />
 
                             </div>

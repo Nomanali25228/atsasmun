@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/globals.css */
+.slick-dots {
+  margin-top: 2rem !important; /* mt-8 equivalent */
+  padding-left: 2.25rem; /* px-9 equivalent */
+}
+
 
 
 @import "~slick-carousel/slick/slick.css";
