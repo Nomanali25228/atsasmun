@@ -9,12 +9,12 @@ async function sendEmail(to, subject, text) {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: process.env.NEXT_PUBLIC_SMTP_USERNAME,
+      pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD,
     },
   });
 
-  const mailOptions = { from: process.env.EMAIL_USER, to, subject, text };
+  const mailOptions = { from: process.env.NEXT_PUBLIC_SMTP_USERNAME, to, subject, text };
 
   try {
     await transporter.sendMail(mailOptions);
@@ -26,7 +26,7 @@ async function sendEmail(to, subject, text) {
 
 // Function to handle invoice expiration and email reminders
 async function handleInvoiceLifecycle(invoiceId, customerEmail) {
-  await setTimeout(4 * 24 * 60 * 60 * 1000); // Wait 4 days
+  await setTimeout(60 * 1000); // Wait 4 days
   const invoice = await stripe.invoices.retrieve(invoiceId);
 
   if (invoice.status !== "paid") {
@@ -37,7 +37,7 @@ async function handleInvoiceLifecycle(invoiceId, customerEmail) {
     );
   }
 
-  await setTimeout(2 * 24 * 60 * 60 * 1000); // Wait 2 more days (total 6 days)
+  await setTimeout(120 * 1000); // Wait 2 more days (total 6 days)
   const updatedInvoice = await stripe.invoices.retrieve(invoiceId);
 
   if (updatedInvoice.status !== "paid") {
