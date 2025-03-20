@@ -89,7 +89,7 @@ export async function POST(request) {
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 24th-27th April, 2025</h2>
+                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 2nd-05th May, 2025</h2>
                             <hr style="width:80%; border-top:1px solid #ddd; margin-top: 20px;">
                             <p style="font-size:16px; color: #000;">We are pleased to inform you that your registration at Atsas International Model United Nations has been received. The shortlisted applicants will be contacted shortly through email within 24 hours.</p>
                         </td>
@@ -263,7 +263,7 @@ export async function POST(request) {
                          <tr>
                              <td>
                                     
-                                      <a href="http://localhost:3000//UAEpayment/1?userid=${id}"
+                                      <a href="https://www.atsasmun.com/UAEpayment/1?userid=${id}"
                                      style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
                                      Now</a>
                              </td>

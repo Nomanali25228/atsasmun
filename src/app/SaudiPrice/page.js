@@ -596,9 +596,7 @@ export default function Home() {
   <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
     {/* Basic Plan */}
     <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-xs font-bold text-white rounded-full shadow-md">
-        Best Value
-      </div>
+      
       <div className="space-y-4">
         <h3 className="text-lg font-bold text-center">Basic</h3>
         <div className="text-center">

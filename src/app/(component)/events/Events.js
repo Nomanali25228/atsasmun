@@ -29,7 +29,7 @@ const cards = [
     title: "ATSASMUN Dubai, UAE",
     subtitle: "Dubai, UAE",
     description:
-      "(24th-27th, April 2025)",
+      "(2nd-05th, May 2025)",
     details:
       "Young leaders can take advantage of a futuristic platform provided by ATSASMUN in Dubai, which combines the city's cosmopolitan allure and forward-thinking perspective with the spirit of innovation.",
     image: bell2,
@@ -115,17 +115,18 @@ export default function Card() {
   return (
     <section id="events">
       {/* Header */}
-      <div data-aos="fade-up" className="text-center mb-10">
+     
+
+
+      {/* Cards */}
+      <div className="flex flex-col items-center py-8 bg-gray-100 ">
+      <div data-aos="fade-up" className="text-center  mb-10">
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-700 tracking-wide animate-fade-in">
           Series of Events
         </h2>
         <p className="text-gray-500 text-lg mt-2">Our key events</p>
         <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
       </div>
-
-
-      {/* Cards */}
-      <div className="flex flex-col items-center py-8 bg-gray-100 ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:px-6 lg:px-8">
           {visibleCards.map((card) => (
             <div

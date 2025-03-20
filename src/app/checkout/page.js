@@ -1,5 +1,4 @@
 "use client";
-
 import CheckoutPage from "@/app/(component)/CheckoutPage/CheckoutPage";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -52,7 +51,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
     <main className="max-w-5xl mx-auto relative z-10 py-14 px-2 text-gray-50 text-center ">
       <div className="mb-12">
-        <h1 className="text-5xl font-black mb-4 text-white drop-shadow-md">
+        <h1 className="text-4xl font-black mb-4 text-white drop-shadow-md">
           Payment Request
         </h1>
         <h2 className="text-xl md:text-2xl font-medium">
