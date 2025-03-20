@@ -7,7 +7,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 // Function to send email reminders
 async function sendEmail(to, subject, text) {
   const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.NEXT_PUBLIC_SMTP_USERNAME,
       pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD,

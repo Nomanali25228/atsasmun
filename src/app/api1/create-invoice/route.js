@@ -31,10 +31,10 @@ export async function POST(req) {
         business days. To pay via ACH, transfer funds using the
         following bank information.
 
-        Bank name: WELLS FARGO BANK, N.A.
-        Routing number: 121000248
-        Account number: 40630168845481172
-        SWIFT code: WFBIUS6S
+        Bank name:                     WELLS FARGO BANK, N.A.
+        Routing number:                     121000248
+        Account number:                     40630168845481172
+        SWIFT code:                     WFBIUS6S
       `,
     });
 

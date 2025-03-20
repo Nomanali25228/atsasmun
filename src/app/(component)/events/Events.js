@@ -110,7 +110,7 @@ export default function Card() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const visibleCards = showMore ? cards : cards.slice(0, isMobile ? 1 : 4);
+  const visibleCards = showMore ? cards : cards.slice(0, isMobile ? 3 : 4);
 
   return (
     <section id="events">
