@@ -1,12 +1,13 @@
 import Stripe from "stripe";
 import nodemailer from "nodemailer";
+import { toast } from "react-toastify";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Function to send email reminders
 async function sendEmail(to, subject, text) {
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: "smtp.gmail.com",
     port: 587,
     secure: false,
     auth: {
@@ -25,28 +26,30 @@ async function sendEmail(to, subject, text) {
   }
 }
 
-// Function to handle invoice lifecycle (simulate 5-minute expiration)
+// Function to handle invoice lifecycle
 async function handleInvoiceLifecycle(invoiceId, customerEmail) {
   setTimeout(async () => {
-    const invoice = await stripe.invoices.retrieve(invoiceId);
-    
-    if (invoice.status !== "paid") {
-      await sendEmail(
-        customerEmail,
-        "⚠️ Reminder: Invoice Payment Due",
-        `Your invoice #${invoiceId} is due. Please make the payment immediately to avoid service interruption.`
-      );
-    }
-    
-    setTimeout(async () => {
-      const updatedInvoice = await stripe.invoices.retrieve(invoiceId);
-
-      if (updatedInvoice.status !== "paid") {
-        await stripe.invoices.voidInvoice(invoiceId);
-        console.log(`❌ Invoice ${invoiceId} expired after 5 minutes`);
+    try {
+      const invoice = await stripe.invoices.retrieve(invoiceId);
+      if (invoice.status !== "paid") {
+        await sendEmail(
+          customerEmail,
+          "⚠️ Reminder: Invoice Payment Due",
+          `Your invoice #${invoiceId} is due. Please make the payment immediately to avoid service interruption.`
+        );
       }
-    }, 2 * 60 * 1000); // Wait 2 more minutes
-  }, 3 * 60 * 1000); // First reminder after 3 minutes
+
+      setTimeout(async () => {
+        const updatedInvoice = await stripe.invoices.retrieve(invoiceId);
+        if (updatedInvoice.status !== "paid") {
+          await stripe.invoices.voidInvoice(invoiceId);
+          console.log(`❌ Invoice ${invoiceId} expired after 5 minutes`);
+        }
+      }, 2 * 60 * 1000);
+    } catch (error) {
+      console.error("❌ Invoice Lifecycle Error:", error.message);
+    }
+  }, 3 * 60 * 1000);
 }
 
 // Stripe webhook handler
@@ -93,17 +96,15 @@ export default async function handler(req, res) {
 // API route to create an invoice
 export async function POST(req) {
   try {
-    // Ensure JSON parsing doesn't fail
     let body;
     try {
       body = await req.json();
     } catch (error) {
+      console.error("❌ Invalid JSON:", error.message);
       return new Response(JSON.stringify({ error: "Invalid JSON body." }), { status: 400 });
     }
 
     const { customerId, amount, description, disnew } = body;
-
-    console.log("📥 Input Data:", { customerId, amount, description });
 
     if (!customerId || !amount || !description) {
       return new Response(
@@ -114,11 +115,10 @@ export async function POST(req) {
 
     let discountAmount = 10000; // Amount in cents
 
-    // Create an Invoice
     const invoice = await stripe.invoices.create({
       customer: customerId,
       collection_method: "send_invoice",
-      days_until_due: 1, // Stripe minimum is 1 day
+      days_until_due: 1,
       auto_advance: true,
       footer: `
         PAY WITH ACH OR WIRE TRANSFER
@@ -129,9 +129,6 @@ export async function POST(req) {
       `,
     });
 
-    console.log("✅ Invoice Created:", invoice.id);
-
-    // Create Invoice Item for the original amount
     await stripe.invoiceItems.create({
       customer: customerId,
       amount: Math.round(amount * 100),
@@ -139,9 +136,6 @@ export async function POST(req) {
       invoice: invoice.id,
     });
 
-    console.log("✅ Original Invoice Item Created");
-
-    // Apply discount
     if (discountAmount > 0) {
       await stripe.invoiceItems.create({
         customer: customerId,
@@ -149,14 +143,9 @@ export async function POST(req) {
         amount: -discountAmount,
         invoice: invoice.id,
       });
-
-      console.log("✅ Discount Applied");
     }
 
-    // Finalize the Invoice (Triggers Stripe to send the email)
     const finalizedInvoice = await stripe.invoices.finalizeInvoice(invoice.id);
-
-    console.log("✅ Finalized Invoice:", finalizedInvoice.id);
 
     if (finalizedInvoice.total === 0) {
       return new Response(
@@ -170,10 +159,54 @@ export async function POST(req) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("❌ Error creating invoice:", error.message, error.stack);
+    console.error("❌ Error creating invoice:", error.message);
     return new Response(
       JSON.stringify({ error: error.message || "An unexpected error occurred." }),
       { status: 500 }
     );
+  }
+}
+
+// **Fix for Unexpected JSON Input Issue**
+async function createInvoice(customerId, su, non) {
+  try {
+    const response = await fetch("/api1/stripe-webhook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        customerId,
+        amount: su + 100,
+        description: "Tour Package Payment",
+        disnew: non,
+      }),
+    });
+
+    let responseData;
+    try {
+      responseData = await response.text();
+      responseData = responseData ? JSON.parse(responseData) : null;
+    } catch (error) {
+      throw new Error("Invalid JSON response from server.");
+    }
+
+    if (!response.ok) {
+      throw new Error(responseData?.error || "Failed to create invoice");
+    }
+
+    const { invoicePdf } = responseData;
+
+    const link = document.createElement("a");
+    link.href = invoicePdf;
+    link.download = "invoice.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    toast.success("Invoice downloaded successfully!");
+  } catch (error) {
+    console.error("❌ Error creating invoice:", error.message);
+    toast.error("Error creating invoice. Please try again.");
   }
 }
