@@ -235,7 +235,7 @@ export default function Home() {
              const customerId = `${custId}`
      
              try {
-                 const response = await fetch("/api1/create-invoice", {
+                 const response = await fetch("/api1/stripe-webhook", {
                      method: "POST",
                      headers: {
                          "Content-Type": "application/json",
