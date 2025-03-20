@@ -71,21 +71,23 @@ export async function POST(request) {
                     </tr>
 
                     <!-- HEADER -->
-                    <tr>
-                        <td align="center" style=" text-align: center;
-                        background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/6tz/dj7/j5a/%23010c47.png');
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        height:30vh;
-                        background-position: center; color:#fff; padding:70px;">
+                 
+ <tr>
+                        <td align="center" style="text-align: center;
+                            background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/6tz/dj7/j5a/%23010c47.png');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            min-height: 30vh;
+                            max-width: 100%;
+                            background-position: center; 
+                            color:#fff; 
+                            padding:70px;">
                             <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
-                            <p style="margin:20px 0 0; font-size:18px;  color: white;">Your Registration is Now Complete
-                            </p>
-                            <p style="margin:6px 0 0;   font-size:18px;  color: white; ">for New York, USA</p>
-                            <p style="margin:20px 0 0; font-size:22px;  color: white;">(${name})</p>
+                            <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
+                            <p style="margin:6px 0 0; font-size:18px; color: white;">for New York, USA</p>
+                            <p style="margin:20px 0 0; font-size:22px; color: white;">(${name})</p>
                         </td>
                     </tr>
-
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">

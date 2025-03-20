@@ -49,21 +49,21 @@ const GallerySlider = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 2000, // Smooth speed
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 3000, // Change images every 3 sec
+    cssEase: "ease-in-out",
+    pauseOnHover: false,
+    pauseOnFocus: false,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 450, settings: { slidesToShow: 1, slidesToScroll: 1 } }
-    ],
-    appendDots: dots => (
-      <div className="mt-8 ">
-        <ul className="flex flex-wrap justify-center "> {dots} </ul>
-      </div>
-    )
+      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } }
+    ]
   };
+
 
   // Open modal and set image index
   const openModal = (index) => {

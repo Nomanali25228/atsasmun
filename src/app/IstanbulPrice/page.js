@@ -621,7 +621,7 @@ export default function Home() {
         <div className="text-center mt-6">
         <Link href="/RegisterNow">
           <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">                 
-Registrations Now →                                            
+Register Now →                                            
 </button>                          
 </Link>
         </div>

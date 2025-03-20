@@ -10,7 +10,6 @@ import OurMission from "./(component)/our mission/OurMission";
 import Footer from "./(component)/footer/Footer";
 import ScrollToTop from "./(component)/Scrolltotop/ScrollToTop";
 import Whatsapp from '@/app/(component)/whatsapp/Whatsapp'
-
 export default function Home() {
 
   return (
@@ -24,7 +23,6 @@ export default function Home() {
   <Faq/>
   <Contact/>
   <Footer/>
-  
   <ScrollToTop/>
   <Whatsapp/>
   </>  

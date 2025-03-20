@@ -70,16 +70,19 @@ export async function POST(request) {
 
                     <!-- HEADER -->
                     <tr>
-                        <td align="center" style=" text-align: center;
-                        background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/6tz/dj7/j5a/%23010c47.png');
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        height:30vh;
-                        background-position: center; color:#fff; padding:70px;">
+                        <td align="center" style="text-align: center;
+                            background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/6tz/dj7/j5a/%23010c47.png');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            min-height: 30vh;
+                            max-width: 100%;
+                            background-position: center; 
+                            color:#fff; 
+                            padding:70px;">
                             <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
-                            <p style="margin:20px 0 0; font-size:18px;  color: white;">Your Registration is Now Complete  </p>
-                            <p style="margin:6px 0 0;   font-size:18px;  color: white; ">for Dubai, UAE</p>
-                            <p style="margin:20px 0 0; font-size:22px;  color: white;">(${name})</p>
+                            <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
+                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Dubai, UAE</p>
+                            <p style="margin:20px 0 0; font-size:22px; color: white;">(${name})</p>
                         </td>
                     </tr>
 
@@ -260,7 +263,7 @@ export async function POST(request) {
                          <tr>
                              <td>
                                     
-                                      <a href="https://www.atsasmun.com/UAEpayment/1?userid=${id}"
+                                      <a href="http://localhost:3000//UAEpayment/1?userid=${id}"
                                      style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
                                      Now</a>
                              </td>

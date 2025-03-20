@@ -241,7 +241,8 @@ export default function Home() {
                      customerId,
                      amount: su + 100, // Amount in dollars (e.g., $50.00 becomes 5000 in cents)
                      description: "Tour Package Payment",
-                     disnew: non
+                     disnew: non,
+                     userEmail:"nomi4698dg@gmail.com"
                  }),
              });
  

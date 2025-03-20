@@ -1,7 +1,10 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
-// import bell from "@/app/public/img/ax1.webp";
+import ContextPage from "@/app/Context/ContextPage";
+import Link from "next/link";
+
+// Import Images
 import bell1 from "@/app/public/img/ax11.jpeg";
 import bell2 from "@/app/public/img/az1.jpeg";
 import bell3 from "@/app/public/img/ax13.jpeg";
@@ -15,11 +18,10 @@ import India from '@/app/public/img/india.jpg';
 import USA from '@/app/public/img/bgUSA.jpg';
 import Saudi from '@/app/public/img/riyadhcity.jpg';
 import paris from '@/app/public/img/paris.jpeg';
-import ContextPage from "@/app/Context/ContextPage";
-import Link from "next/link";
+// import ContextPage from "@/app/Context/ContextPage";
+// import Link from "next/link";
 
-
-
+// Card Data
 const cards = [
   {
     id: 1,
@@ -41,8 +43,7 @@ const cards = [
     description:
       "(05th-08th, June 2025)",
     details:
-      "Aspiring diplomatic leaders are invited to attend the ATSASMUN in Istanbul, which is located at the crossroads of civilizations. The city's rich cultural past offers global discourse an inspiration that is unmatched by any other.",
-    image: bell1,
+"Aspiring diplomatic leaders are invited to attend ATSASMUN in Istanbul, located at the crossroads of civilizations. The city's rich cultural past offers global discourse inspiration unmatched by any other.",    image: bell1,
     icon: istanbul,
   },
   {
@@ -60,6 +61,19 @@ const cards = [
   {
     id: 4,
     nowOpen: "Registrations opening soon!",
+    title: "ATSASMUN Riyadh, Saudi Arabia ",
+    subtitle: "Riyadh, Saudi Arabia",
+    description:
+      "(16th-19th, october 2025)",
+    details:
+      "ATSASMUN in Saudi Arabia embraces a culture of honor, respect, and unity. Through the spirit of majlis, it fosters dialogue, mutual understanding, and true diplomacy in a changing world.",
+      image: bell5,
+      icon: Saudi,
+      
+    },
+  {
+    id: 5,
+    nowOpen: "Registrations opening soon!",
     title: "ATSASMUN New York, USA",
     subtitle: "New York, USA",
     description:
@@ -69,127 +83,127 @@ const cards = [
     image: bell4,
     icon: USA,
   },
-  // {
-  //   id: 5,
-  //   nowOpen: "Registrations opening soon!",
-  //   title: "ATSASMUN Paris, France",
-  //   subtitle: "Paris, France",
-  //   description:
-  //     "(07th-10th, August 2025)",
-  //   details:
-  //     "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in Paris connects delegates with the spirit of diplomacy.                                                                                        ",
-  //   image: bell6,
-  //   icon: paris,
-  // },
-  {
-    id: 6,
-    nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN Riyadh, Saudi Arabia ",
-    subtitle: "Riyadh, Saudi Arabia",
-    description:
-      "(16th-19th, october 2025)",
-    details:
-      "In the land of ancient traditions and deep-rooted hospitality, ATSASMUN in Saudi Arabia immerses participants in a culture shaped by honor, respect, and unity. Here, delegates experience the spirit of majlis—open dialogue and mutual understanding—reflecting the values that guide true diplomacy in a rapidly evolving world.",
-    image: bell5,
-    icon: Saudi,
-
-  },
+ 
+    // {
+    //   id: 6,
+    //   nowOpen: "Registrations opening soon!",
+    //   title: "ATSASMUN Paris, France",
+    //   subtitle: "Paris, France",
+    //   description:
+    //     "(07th-10th, August 2025)",
+    //   details:
+    //     "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in Paris connects delegates with the spirit of diplomacy.                                                                                        ",
+    //   image: bell6,
+    //   icon: paris,
+    // },
 ];
 
 export default function Card() {
   const [isMobile, setIsMobile] = useState(false);
   const [showMore, setShowMore] = useState(false);
-  const { check, setCheck } = useContext(ContextPage)
-
-  const checkMobile = () => {
-    setIsMobile(window.innerWidth <= 768);
-  };
+  const { check, setCheck } = useContext(ContextPage);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-  const visibleCards = showMore ? cards : cards.slice(0, isMobile ? 3 : 4);
+
+  const visibleCards = showMore ? cards : cards.slice(0, isMobile ? 1 : 4);
+
   return (
-    <>
-      <section id="events">
-        <div data-aos="fade-up" className="text-center bg-gray-100 py-14 mb-">
-          <h2 className="text-5xl font-semibold text-gray-700 tracking-wide animate-fade-in">
-            Series of Events
-          </h2>
-          <p className="text-gray-500 text-lg mt-2">Our key events</p>
-          <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
-        </div>
+    <section id="events">
+      {/* Header */}
+      <div data-aos="fade-up" className="text-center mb-10">
+        <h2 className="text-4xl sm:text-5xl font-bold text-gray-700 tracking-wide animate-fade-in">
+          Series of Events
+        </h2>
+        <p className="text-gray-500 text-lg mt-2">Our key events</p>
+        <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
+      </div>
 
-        <div
-          data-aos="fade-up"
-          className="flex flex-col justify-center items-center py-8 bg-gray-100"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:px-6 lg:px-8">
-            {visibleCards.map((card) => (
+
+      {/* Cards */}
+      <div className="flex flex-col items-center py-8 bg-gray-100 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:px-6 lg:px-8">
+          {visibleCards.map((card) => (
+            <div
+              key={card.id}
+              className="relative bg-white shadow-lg rounded-lg overflow-hidden w-[90vw] sm:w-[80vw] md:w-[40vw] group transition-all duration-700 ease-in-out h-[500px] "
+            >
+              {/* Image section */}
               <div
-                key={card.id}
-                className="relative bg-white shadow-lg rounded-lg overflow-hidden h-[80vh] sm:h-[80vh] md:h-[80vh] w-[90vw] sm:w-[80vw] md:w-[40vw] group transition-all duration-500 ease-in-out"
+                className="absolute inset-0 z- transition-all duration-700 ease-in-out group-hover:h-full "
               >
-                <div className="relative h-[50vh] sm:h-[45vh] transition-all duration-500 ease-in-out transform group-hover:scale-110 group-hover:h-[100%]">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-t-lg  "
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 transition-all duration-500 ease-in-out flex flex-col justify-end group-hover:justify-start p-4 group-hover:px-10 group-hover:pt-[10%]">
-                    <div className="  flex items-center space-x-2">
-                      <Image
-                        src={card.icon}
-                        alt={card.subtitle}
-                        className=" h-12 w-12 sm:h-16 sm:w-16 md:h-8 md:w-8 lg:h-16 lg:w-16 rounded-full"
-                      />
-                      <div>
-                        <span className=" text-gray-300 font-bold group-hover:text-white text-sm sm:text-lg">
-                          {card.subtitle}
-                        </span>
-                        <p className="text-md sm:text-md font-medium text-gray-300 group-hover:text-white ">
-                          {card.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute top-[0%] left-0 right-0 bottom-0 flex flex-col justify-end p-4 md:p-1 lg:p-4 bg-white bg-opacity-10 group-hover:bg-opacity-60 group-hover:bg-black group-hover:border-b-8 group-hover:border-red-500 transition-all duration-500 ease-in-out">
-                  <div className="mb-4 sm:mb-6">
-                  
-                    {/* **Title Fix (Left Aligned and Same Height)** */}
-                    <p className="text-gray-700 leading-relaxed text-[12px] sm:text-[0.9rem] md:text-[0.9rem] -mb-4  sm:-mb-4  lg:-mb-4 xl:-mb-4   lg:text-[1rem] group-hover:text-[#c7c5c5] group-hover:-mb-2">{card.nowOpen}</p>
-
-                    <h3 className="text-[0.9rem] sm:text-[1.20rem] md:text-[1.30rem] -mb-[14px]  sm:-mb-4   lg:-mb-4 font-bold text-[#4b4e61] group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2 text-left h-[60px] flex items-center">
-                      {card.title}
-                    </h3>
-
-                    {/* **Description Fix (Fixed Height)** */}
-                    <p className="text-gray-700 leading-relaxed text-[12px] sm:text-[0.9rem] md:text-[0.8rem] -mb-10 sm:mb-0 lg:mb-0 lg:text-[1rem] group-hover:text-[#c7c5c5]  transition-all duration-500 transform group-hover:-translate-y-2 text-left h-[100px] overflow-hidden">
-                      {card.details}
-                    </p>
-
-                  </div>
-
-                  <p className="text-white  group-hover:underline group-hover:pt-4  group-hover:text-base group-hover:underline-offset-2 group-hover:decoration-red-500 transition duration-300 ease-in-out  " onClick={() => (setCheck(card.subtitle))}>
-                    <Link href="/RegisterNow" className="cursor-pointer">Register Now</Link>
-                  </p>
-                </div>
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="transition-transform duration-700 ease-in-out group-hover:scale-105  "
+                />
               </div>
-            ))}
-          </div>
-          <button
-            onClick={() => setShowMore(!showMore)}
-            className="mt-8 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300"
-          >
-            {showMore ? "Show Less" : "Show More"}
-          </button>
+
+              {/* Overlay Text on Hover */}
+             {/* Overlay Text on Hover */}
+{/* Always Visible Section */}
+
+<div className="absolute top-[290px] sm:top-72 md:top-60  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
+  <Image
+    src={card.icon}
+    alt={card.subtitle}
+    
+    className="h-12 w-12 sm:h-12 sm:w-12 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
+  />
+  <div>
+    <span className="font-bold text-sm ">{card.subtitle}</span>
+    <p className="text-md font-medium">{card.description}</p>
+  </div>
+</div>
+
+{/* Overlay Text on Hover */}
+<div
+  className="absolute inset-0 z-10 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-between p-4 text-white group-hover:border-b-8 group-hover:border-[red]"
+>
+  <div className="mt-[245px] sm:mt-[260px] md:mt-[270px] lg:mt-[280px] "> {/* Pushed down to avoid overlap */}
+    <p className="text-blue-400 text-sm">{card.nowOpen}</p>
+    <h3 className="text-xl font-bold">{card.title}</h3>
+    <p className="text-sm mt-1">{card.details}</p>
+    <div className="mt-2">
+      <Link href="/RegisterNow">
+        <p
+          className="text-white group-hover:text-red-500 cursor-pointer group-hover:underline"
+          onClick={() => setCheck(card.subtitle)}
+        >
+          Register Now
+        </p>
+      </Link>
+    </div>
+  </div>
+</div>
+
+
+              {/* Non-hover Text Below Image */}
+         {/* Non-hover Text Below Image */}
+<div className="absolute bottom-0 z-10 p-3 md:p-4 group-hover:opacity-0 transition-opacity duration-700 text-gray-900 bg-white w-full h-auto min-h-[120px] md:min-h-[160px] lg:min-h-[190px] flex flex-col justify-center">
+  <p className="text-xs md:text-sm lg:text-base">{card.nowOpen}</p>
+  <h3 className="text-sm md:text-lg font-bold mt-1 md:mt-2">{card.title}</h3>
+  <p className="text-xs md:text-sm lg:text-base mt-1 text-gray-700">{card.details}</p>
+</div>
+
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+
+        {/* Show More Button */}
+        <button
+          onClick={() => setShowMore(!showMore)}
+          className="mt-8 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+        >
+          {showMore ? "Show Less" : "Show More"}
+        </button>
+      </div>
+    </section>
   );
 }

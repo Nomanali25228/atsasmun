@@ -69,20 +69,23 @@ export async function POST(request) {
                     </tr>
 
                     <!-- HEADER -->
+                 
                     <tr>
-                        <td align="center" style=" text-align: center;
-                        background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/6tz/dj7/j5a/%23010c47.png');
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        height:30vh;
-                        background-position: center; color:#fff; padding:70px;">
+                        <td align="center" style="text-align: center;
+                            background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/6tz/dj7/j5a/%23010c47.png');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            min-height: 30vh;
+                            max-width: 100%;
+                            background-position: center; 
+                            color:#fff; 
+                            padding:70px;">
                             <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
-                            <p style="margin:20px 0 0; font-size:18px;  color: white;">Your Registration is Now Complete  </p>
-                            <p style="margin:6px 0 0;   font-size:18px;  color: white; ">for Istanbul, Türkiye</p>
-                            <p style="margin:20px 0 0; font-size:22px;  color: white;">(${name})</p>
+                            <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
+                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Istanbul, Türkiye</p>
+                            <p style="margin:20px 0 0; font-size:22px; color: white;">(${name})</p>
                         </td>
                     </tr>
-
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">
@@ -372,383 +375,383 @@ export async function POST(request) {
         await transporter.sendMail({ ...mailOptions, });
 
         // Schedule the second email to be sent after 24 hours
-//         setTimeout(async () => {
-//             try {
-//                 // Generate PDF using Puppeteer
-//                 const browser = await puppeteer.launch();
-//                 const page = await browser.newPage();
-//                 //  pdf genrate template 
-//                 const htmlContent = `
-//                     <html>
-//                     <body>
-//                         <h1>Registration Confirmation</h1>
-//                         <p>Hi ${name},</p>
-//                         <p>Your registration for ${destination} has been received. Check this link:</p>
-//                         <a href="${link2o}">noman</a>
-//                     </body>
-//                     </html>
-//                 `;
+        //         setTimeout(async () => {
+        //             try {
+        //                 // Generate PDF using Puppeteer
+        //                 const browser = await puppeteer.launch();
+        //                 const page = await browser.newPage();
+        //                 //  pdf genrate template 
+        //                 const htmlContent = `
+        //                     <html>
+        //                     <body>
+        //                         <h1>Registration Confirmation</h1>
+        //                         <p>Hi ${name},</p>
+        //                         <p>Your registration for ${destination} has been received. Check this link:</p>
+        //                         <a href="${link2o}">noman</a>
+        //                     </body>
+        //                     </html>
+        //                 `;
 
-//                 await page.setContent(htmlContent);
-//                 const pdfBuffer = await page.pdf({ format: 'A4' });
-//                 await browser.close();
+        //                 await page.setContent(htmlContent);
+        //                 const pdfBuffer = await page.pdf({ format: 'A4' });
+        //                 await browser.close();
 
-//                 const transporter = nodemailer.createTransport({
-//                     host: 'smtp.gmail.com',
-//                     port: 587,
-//                     secure: false,
-//                     auth: {
-//                         user: username,
-//                         pass: password,
-//                     },
-//                 });
+        //                 const transporter = nodemailer.createTransport({
+        //                     host: 'smtp.gmail.com',
+        //                     port: 587,
+        //                     secure: false,
+        //                     auth: {
+        //                         user: username,
+        //                         pass: password,
+        //                     },
+        //                 });
 
-//                 //  sec email template 
-//                 const mailOptions = {
-//                     from: username,
-//                     to: email,
-//                     subject: 'Your Registration has been Received',
-//                     html: `<!DOCTYPE html>
-// <html lang="en">
+        //                 //  sec email template 
+        //                 const mailOptions = {
+        //                     from: username,
+        //                     to: email,
+        //                     subject: 'Your Registration has been Received',
+        //                     html: `<!DOCTYPE html>
+        // <html lang="en">
 
-// <head>
-//     <meta charset="UTF-8">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <title>Document</title>
-// </head>
+        // <head>
+        //     <meta charset="UTF-8">
+        //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        //     <title>Document</title>
+        // </head>
 
-// <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#ffffff; color:#333;">
-//      <table
-//         style="width: 100%; max-width: 800px; margin: 20px auto; text-align: center; background: #ffffff; border-collapse: collapse;">
-//         <!-- Logo Row -->
-//         <tr>
-//             <td align="center" style=" background-color:#fff;">
-//                 <img src="https://e75ca47a0b.imgdist.com/pub/bfra/ve0zzru6/dnd/vya/qic/Without-01-removebg-preview.png"
-//                     alt="ATSAS MUN Logo" width="170">
-//             </td>
-//         </tr>
-//         <!-- Background Image Section -->
-//         <tr>
-//                <td align="center" style=" text-align: center;
-//                         background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/2p9/g6d/6qx/bg.png');
-//                         background-size: cover;
-//                         background-repeat: no-repeat;
-//                         height:30vh;
-//                         background-position: center; color:#fff; padding:70px;">
-//                             <h1 style="margin:0; font-size:50px; color: white;">CONGRATULATIONS!</h1>
-//                 <!-- Name -->
-//                 <p
-//                     style="font-size: 1.4rem; font-weight: bold; margin: 10px 0; color: white; text-decoration: underline;">
-//                   ${name}</p>
-//                 <!-- Subtext -->
-//                 <p style="font-size: 0.9rem; margin: 30px 30px 10px 20px; color: white;">
-//                     You have been selected as one of the delegates at AtsasMUN Istanbul, Turkey
-//                     Please find attached the official acceptance letter in this email.
-//                 </p>
-//                 <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
-//                     You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN Turkey.
-//                 </p>
-//             </td>
-//         </tr>
+        // <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#ffffff; color:#333;">
+        //      <table
+        //         style="width: 100%; max-width: 800px; margin: 20px auto; text-align: center; background: #ffffff; border-collapse: collapse;">
+        //         <!-- Logo Row -->
+        //         <tr>
+        //             <td align="center" style=" background-color:#fff;">
+        //                 <img src="https://e75ca47a0b.imgdist.com/pub/bfra/ve0zzru6/dnd/vya/qic/Without-01-removebg-preview.png"
+        //                     alt="ATSAS MUN Logo" width="170">
+        //             </td>
+        //         </tr>
+        //         <!-- Background Image Section -->
+        //         <tr>
+        //                <td align="center" style=" text-align: center;
+        //                         background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/2p9/g6d/6qx/bg.png');
+        //                         background-size: cover;
+        //                         background-repeat: no-repeat;
+        //                         height:30vh;
+        //                         background-position: center; color:#fff; padding:70px;">
+        //                             <h1 style="margin:0; font-size:50px; color: white;">CONGRATULATIONS!</h1>
+        //                 <!-- Name -->
+        //                 <p
+        //                     style="font-size: 1.4rem; font-weight: bold; margin: 10px 0; color: white; text-decoration: underline;">
+        //                   ${name}</p>
+        //                 <!-- Subtext -->
+        //                 <p style="font-size: 0.9rem; margin: 30px 30px 10px 20px; color: white;">
+        //                     You have been selected as one of the delegates at AtsasMUN Istanbul, Turkey
+        //                     Please find attached the official acceptance letter in this email.
+        //                 </p>
+        //                 <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
+        //                     You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN Turkey.
+        //                 </p>
+        //             </td>
+        //         </tr>
 
-//     </table>
+        //     </table>
 
-//     <table style="width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; background: #ffffff;">
+        //     <table style="width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; background: #ffffff;">
 
-//         <!-- Image Section -->
-//         <td style="margin-bottom: 30px;">
-//             <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gpl/90q/wob/Capture.PNG" alt="Eligibility Image"
-//                 style="width: 100%; max-height: 450px; object-fit: cover; ">
-//         </td>
+        //         <!-- Image Section -->
+        //         <td style="margin-bottom: 30px;">
+        //             <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gpl/90q/wob/Capture.PNG" alt="Eligibility Image"
+        //                 style="width: 100%; max-height: 450px; object-fit: cover; ">
+        //         </td>
 
-//     </table>
-
-
-//     <table style="width: 100%; max-width: 800px; margin: 40px auto; border-collapse: collapse; background: #ffffff;">
-
-//         <!-- Image Section -->
-//         <td>
-//             <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/jwv/ano/u8g/Capture2.PNG" alt="Eligibility Image"
-//                 style="width: 100%; max-height: 450px; object-fit: cover; ">
-//         </td>
-
-//     </table>
-
-//     <table style="width: 100%; margin: 0px auto; margin-top: -50px; background-color: #fff; padding: 25px 2px 2px 2px;">
-//         <tr>
-//             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Committee
-//                 Allocation Policy</td>
-//         </tr>
-//         <tr>
-//             <td style="padding: 10px;">
-//                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
-//                     <li>AtsasMUN does not guarantee the availability of preferred countries and encourages participants
-//                         to select alternatives if necessary.</li>
-//                 </ul>
-//             </td>
-//         </tr>
-//         <tr>
-//             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Payments</td>
-//         </tr>
-//         <tr>
-//             <td style="padding: 10px;">
-//                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
-//                     <li>Payments must be made through the official AtsasMUN website.</li>
-//                     <li>AtsasMUN will not acknowledge payments made to unauthorized individuals claiming to represent
-//                         the organization.</li>
-//                     <li>Accepted payment methods include credit/debit cards and international wire transfers.</li>
-//                 </ul>
-//             </td>
-//         </tr>
-//         <tr>
-//             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Refund Policy</td>
-//         </tr>
-//         <tr>
-//             <td style="padding: 10px;">
-//                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
-//                     <li>Subject to the following restrictions, delegates who have made their full payment may ask for a
-//                         credit voucher or transfer their participation to another AtsasMUN location.</li>
-//                     <li>Requests have to be submitted sixty days prior to the start of the event. Credit coupons or
-//                         transfers are only good for AtsasMUN activities.</li>
-//                     <li>Delegates who only paid an installment will not be eligible for credit vouchers or transfers;
-//                         the installment will be kept as a cancellation charge.</li>
-//                 </ul>
-//             </td>
-//         </tr>
-//         <tr>
-//             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Code of Conduct
-//             </td>
-//         </tr>
-//         <tr>
-//             <td style="padding: 10px;">
-//                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
-//                     <li>Participants must ensure all information provided during registration is accurate. False
-//                         information will result in disqualification and potential legal action.</li>
-//                     <li>All submitted materials must be original; plagiarism will result in disqualification.</li>
-//                     <li>Participants must obey the host country’s laws and are personally responsible for any damages or
-//                         violations.</li>
-//                     <li>AtsasMUN is not liable for participant misconduct; individuals will bear sole responsibility for
-//                         their actions.</li>
-//                     <li>Participants must adhere to the Code of Conduct outlined in the Conference Handbook.</li>
-//                 </ul>
-//             </td>
-//         </tr>
-//     </table>
+        //     </table>
 
 
-//     <table
-//         style="width: 100%; max-width: 800px; margin: 10px auto; margin-bottom: 0px; margin-top: 0px; border-collapse: collapse; background: #ffffff;">
+        //     <table style="width: 100%; max-width: 800px; margin: 40px auto; border-collapse: collapse; background: #ffffff;">
 
-//         <!-- Image Section -->
-//         <td>
-//             <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gdl/53b/vsi/Capture3.PNG" alt="Eligibility Image"
-//                 style="width: 100%; max-height: 350px; object-fit: cover; ">
-//         </td>
+        //         <!-- Image Section -->
+        //         <td>
+        //             <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/jwv/ano/u8g/Capture2.PNG" alt="Eligibility Image"
+        //                 style="width: 100%; max-height: 450px; object-fit: cover; ">
+        //         </td>
 
-//     </table>
+        //     </table>
 
-//     <table role="presentation" width="100%"  cellspacing="0" cellpadding="0" border="0"
-//         style="background-color:#ffffff;  margin-top: -5px;">
-//         <tr>
-//             <td align="center">
-//                 <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0"
-//                     style="background-color:#fff;  box-shadow:0 4px 8px rgba(0,0,0,0.1);">
-
-//                     <!-- payment//////////////////////// -->
-//                     <table role="presentation" width="100%" cellpadding="10" cellspacing="0" border="0"
-//                         style="max-width: 600px; margin: auto; border-collapse: collapse; font-family: Arial, sans-serif;">
-//                         <!-- Title Section -->
-//                         <tr>
-//                             <td colspan="2" align="center"
-//                                 style="padding: 40px 20px 20px 10px ; font-size: 20px; font-weight: bold; color: #000; ">
-//                                 Conference Fee Packages
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td colspan="2" align="center" style="padding-bottom: 20px; font-size: 16px; color: #555;">
-//                                 New Year Early Bird Packages
-//                             </td>
-//                         </tr>
-//                         <!-- Packages Section -->
-//                         <tr>
-//                             <!-- Non-Accommodation Column -->
-//                             <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
-//   color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 8px 0 0 0; text-align: center;">
-//                                 Non-Accommodation $299
-//                             </td>
-//                             <!-- Accommodation Column -->
-//                             <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
-// ; color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 0 8px 0 0; text-align: center;">
-//                                 Accommodation $599
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <!-- Non-Accommodation Details -->
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align:left;">
-//                                 ATSASMUN Merch and Kit
-//                             </td>
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 Everything in Non-Accommodation Package
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td
-//                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 United Nations Simulation Committee Sessions
-//                             </td>
-//                             <td
-//                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 5 Star Accommodation-Twin Shared/3 Nights
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 ATSASMUN UNHCR Endorsed Certificates
-//                             </td>
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 3 Buffet Breakfasts
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td
-//                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 Cultural Global Village and Performances
-//                             </td>
-//                             <td
-//                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 2 Lunch and 3 Dinners
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 Ice-breaking Session
-//                             </td>
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 Istanbul City Tour
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td
-//                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 Diplomatic Dinner Gala
-//                             </td>
-//                             <td
-//                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                                 1 Lunch and 2 Dinners
-//                             </td>
-//                             <td
-//                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-//                             </td>
-//                         </tr>
-//                     </table>
-
-//                     <table
-//                         style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
-//                         <tr>
-//                             <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td style="font-size: 15px; color: #333; padding-bottom: 20px;">You can pay at the link
-//                                 below</td>
-//                         </tr>
-//                         <tr>
-//                             <td>
-                                    
-//                                      <a href="http://localhost:3000/Istanbulpayment/1?userid=${id}"
-//                                     style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
-//                                     Now</a>
-//                             </td>
-//                         </tr>
-//                     </table>
+        //     <table style="width: 100%; margin: 0px auto; margin-top: -50px; background-color: #fff; padding: 25px 2px 2px 2px;">
+        //         <tr>
+        //             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Committee
+        //                 Allocation Policy</td>
+        //         </tr>
+        //         <tr>
+        //             <td style="padding: 10px;">
+        //                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+        //                     <li>AtsasMUN does not guarantee the availability of preferred countries and encourages participants
+        //                         to select alternatives if necessary.</li>
+        //                 </ul>
+        //             </td>
+        //         </tr>
+        //         <tr>
+        //             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Payments</td>
+        //         </tr>
+        //         <tr>
+        //             <td style="padding: 10px;">
+        //                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+        //                     <li>Payments must be made through the official AtsasMUN website.</li>
+        //                     <li>AtsasMUN will not acknowledge payments made to unauthorized individuals claiming to represent
+        //                         the organization.</li>
+        //                     <li>Accepted payment methods include credit/debit cards and international wire transfers.</li>
+        //                 </ul>
+        //             </td>
+        //         </tr>
+        //         <tr>
+        //             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Refund Policy</td>
+        //         </tr>
+        //         <tr>
+        //             <td style="padding: 10px;">
+        //                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+        //                     <li>Subject to the following restrictions, delegates who have made their full payment may ask for a
+        //                         credit voucher or transfer their participation to another AtsasMUN location.</li>
+        //                     <li>Requests have to be submitted sixty days prior to the start of the event. Credit coupons or
+        //                         transfers are only good for AtsasMUN activities.</li>
+        //                     <li>Delegates who only paid an installment will not be eligible for credit vouchers or transfers;
+        //                         the installment will be kept as a cancellation charge.</li>
+        //                 </ul>
+        //             </td>
+        //         </tr>
+        //         <tr>
+        //             <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Code of Conduct
+        //             </td>
+        //         </tr>
+        //         <tr>
+        //             <td style="padding: 10px;">
+        //                 <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+        //                     <li>Participants must ensure all information provided during registration is accurate. False
+        //                         information will result in disqualification and potential legal action.</li>
+        //                     <li>All submitted materials must be original; plagiarism will result in disqualification.</li>
+        //                     <li>Participants must obey the host country’s laws and are personally responsible for any damages or
+        //                         violations.</li>
+        //                     <li>AtsasMUN is not liable for participant misconduct; individuals will bear sole responsibility for
+        //                         their actions.</li>
+        //                     <li>Participants must adhere to the Code of Conduct outlined in the Conference Handbook.</li>
+        //                 </ul>
+        //             </td>
+        //         </tr>
+        //     </table>
 
 
-//                     <table
-//                         style="width: 100%; max-width: 800px; margin: 40px auto; text-align: center; padding: 20px; background: #f9f9f9; border-radius: 10px; border-collapse: collapse;">
-//                         <!-- First Line -->
+        //     <table
+        //         style="width: 100%; max-width: 800px; margin: 10px auto; margin-bottom: 0px; margin-top: 0px; border-collapse: collapse; background: #ffffff;">
+
+        //         <!-- Image Section -->
+        //         <td>
+        //             <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gdl/53b/vsi/Capture3.PNG" alt="Eligibility Image"
+        //                 style="width: 100%; max-height: 350px; object-fit: cover; ">
+        //         </td>
+
+        //     </table>
+
+        //     <table role="presentation" width="100%"  cellspacing="0" cellpadding="0" border="0"
+        //         style="background-color:#ffffff;  margin-top: -5px;">
+        //         <tr>
+        //             <td align="center">
+        //                 <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0"
+        //                     style="background-color:#fff;  box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+
+        //                     <!-- payment//////////////////////// -->
+        //                     <table role="presentation" width="100%" cellpadding="10" cellspacing="0" border="0"
+        //                         style="max-width: 600px; margin: auto; border-collapse: collapse; font-family: Arial, sans-serif;">
+        //                         <!-- Title Section -->
+        //                         <tr>
+        //                             <td colspan="2" align="center"
+        //                                 style="padding: 40px 20px 20px 10px ; font-size: 20px; font-weight: bold; color: #000; ">
+        //                                 Conference Fee Packages
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td colspan="2" align="center" style="padding-bottom: 20px; font-size: 16px; color: #555;">
+        //                                 New Year Early Bird Packages
+        //                             </td>
+        //                         </tr>
+        //                         <!-- Packages Section -->
+        //                         <tr>
+        //                             <!-- Non-Accommodation Column -->
+        //                             <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
+        //   color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 8px 0 0 0; text-align: center;">
+        //                                 Non-Accommodation $299
+        //                             </td>
+        //                             <!-- Accommodation Column -->
+        //                             <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
+        // ; color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 0 8px 0 0; text-align: center;">
+        //                                 Accommodation $599
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <!-- Non-Accommodation Details -->
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align:left;">
+        //                                 ATSASMUN Merch and Kit
+        //                             </td>
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 Everything in Non-Accommodation Package
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td
+        //                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 United Nations Simulation Committee Sessions
+        //                             </td>
+        //                             <td
+        //                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 5 Star Accommodation-Twin Shared/3 Nights
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 ATSASMUN UNHCR Endorsed Certificates
+        //                             </td>
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 3 Buffet Breakfasts
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td
+        //                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 Cultural Global Village and Performances
+        //                             </td>
+        //                             <td
+        //                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 2 Lunch and 3 Dinners
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 Ice-breaking Session
+        //                             </td>
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 Istanbul City Tour
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td
+        //                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 Diplomatic Dinner Gala
+        //                             </td>
+        //                             <td
+        //                                 style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                                 1 Lunch and 2 Dinners
+        //                             </td>
+        //                             <td
+        //                                 style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+        //                             </td>
+        //                         </tr>
+        //                     </table>
+
+        //                     <table
+        //                         style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
+        //                         <tr>
+        //                             <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td style="font-size: 15px; color: #333; padding-bottom: 20px;">You can pay at the link
+        //                                 below</td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td>
+
+        //                                      <a href="http://localhost:3000/Istanbulpayment/1?userid=${id}"
+        //                                     style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
+        //                                     Now</a>
+        //                             </td>
+        //                         </tr>
+        //                     </table>
 
 
-//                         <tr>
-//                             <td style="padding: 20px; font-size:19px; color:#333; line-height: 1.5;">
-//                                 A formal Visa Invitation Letter can be obtained from us upon request after the payment
-//                             </td>
-//                         </tr>
-//                         <tr>
-//                             <td style="padding: 10px; font-size: 17px; color: #333;">
-//                                 Should you have any questions, feel free to reach us at
-//                                 <a href="mailto:atsasmun@gmail.com" target="_blank"
-//                                     style="text-decoration: underline;  font-weight: bold; color: #000000;">turkiye@atsasmun.com</a>
-//                                 We will be happy to assist you.
-//                             </td>
-//                         </tr>
-//                         <!-- Assistance Line -->
-//                         <tr>
-//                             <td style="padding: 10px; font-size: 1rem; color: #333;">
-//                                 <hr>
-//                             </td>
-//                         </tr>
-//                         <!-- Highlighted Line -->
-//                         <tr>
-//                             <td style="padding: 20px; font-size: 1rem; color: black; font-weight: bold;">
-//                                 We look forward to meeting you in Istanbul, Turkiye!
-//                             </td>
-//                         </tr>
-//                         <!-- Final Thank You Line -->
-//                         <tr>
-//                             <td style="padding: 0px 10px 10px 0px; font-size: 0.9rem; color: #333; line-height: 1.5; ">
-//                                 Once again, thank you for registering yourself as a part of this powerful Diplomatic
-//                                 Conference!
-//                             </td>
-//                         </tr>
-//                     </table>
+        //                     <table
+        //                         style="width: 100%; max-width: 800px; margin: 40px auto; text-align: center; padding: 20px; background: #f9f9f9; border-radius: 10px; border-collapse: collapse;">
+        //                         <!-- First Line -->
 
-//                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
 
-//                         <tr>
-//                             <td align="center"
-//                                 style="background-color:#003366; color:#fff; padding:20px; margin:0; font-size:14px;">
-//                                 <p style="margin:0; font-size:14px;">Atsas MUN Turkiye © 2024 Atsas Creation
-//                                     International Ltd</p>
-//                                 <p style="margin:5px 0 0; font-size:12px; color: #fff;"><em>"Forging a Diplomatic World
-//                                         of Unity and Peace"</em></p>
-//                             </td>
-//                         </tr>
-//                     </table>
+        //                         <tr>
+        //                             <td style="padding: 20px; font-size:19px; color:#333; line-height: 1.5;">
+        //                                 A formal Visa Invitation Letter can be obtained from us upon request after the payment
+        //                             </td>
+        //                         </tr>
+        //                         <tr>
+        //                             <td style="padding: 10px; font-size: 17px; color: #333;">
+        //                                 Should you have any questions, feel free to reach us at
+        //                                 <a href="mailto:atsasmun@gmail.com" target="_blank"
+        //                                     style="text-decoration: underline;  font-weight: bold; color: #000000;">turkiye@atsasmun.com</a>
+        //                                 We will be happy to assist you.
+        //                             </td>
+        //                         </tr>
+        //                         <!-- Assistance Line -->
+        //                         <tr>
+        //                             <td style="padding: 10px; font-size: 1rem; color: #333;">
+        //                                 <hr>
+        //                             </td>
+        //                         </tr>
+        //                         <!-- Highlighted Line -->
+        //                         <tr>
+        //                             <td style="padding: 20px; font-size: 1rem; color: black; font-weight: bold;">
+        //                                 We look forward to meeting you in Istanbul, Turkiye!
+        //                             </td>
+        //                         </tr>
+        //                         <!-- Final Thank You Line -->
+        //                         <tr>
+        //                             <td style="padding: 0px 10px 10px 0px; font-size: 0.9rem; color: #333; line-height: 1.5; ">
+        //                                 Once again, thank you for registering yourself as a part of this powerful Diplomatic
+        //                                 Conference!
+        //                             </td>
+        //                         </tr>
+        //                     </table>
 
-//             </td>
-//         </tr>
-//     </table>
+        //                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
 
-// </body>
+        //                         <tr>
+        //                             <td align="center"
+        //                                 style="background-color:#003366; color:#fff; padding:20px; margin:0; font-size:14px;">
+        //                                 <p style="margin:0; font-size:14px;">Atsas MUN Turkiye © 2024 Atsas Creation
+        //                                     International Ltd</p>
+        //                                 <p style="margin:5px 0 0; font-size:12px; color: #fff;"><em>"Forging a Diplomatic World
+        //                                         of Unity and Peace"</em></p>
+        //                             </td>
+        //                         </tr>
+        //                     </table>
 
-// </html>`,
-//                     attachments: [
-//                         {
-//                             filename: 'Registration_Details.pdf',
-//                             content: pdfBuffer, // Directly use the PDF buffer
-//                             contentType: 'application/pdf',
-//                         },
-//                     ],
-//                 };
+        //             </td>
+        //         </tr>
+        //     </table>
 
-//                 // Send the email
-//                 await transporter.sendMail(mailOptions);
-//                 console.log('Email sent successfully.');
-//             } catch (error) {
-//                 console.error('Error sending email:', error);
-//             }
-//         }, 20000); // 20 seconds in milliseconds
+        // </body>
+
+        // </html>`,
+        //                     attachments: [
+        //                         {
+        //                             filename: 'Registration_Details.pdf',
+        //                             content: pdfBuffer, // Directly use the PDF buffer
+        //                             contentType: 'application/pdf',
+        //                         },
+        //                     ],
+        //                 };
+
+        //                 // Send the email
+        //                 await transporter.sendMail(mailOptions);
+        //                 console.log('Email sent successfully.');
+        //             } catch (error) {
+        //                 console.error('Error sending email:', error);
+        //             }
+        //         }, 20000); // 20 seconds in milliseconds
         // 24 hours in milliseconds
 
         return NextResponse.json({ message: 'Success: Emails sent and scheduled' });
