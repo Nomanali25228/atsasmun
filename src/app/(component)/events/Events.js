@@ -150,7 +150,7 @@ export default function Card() {
              {/* Overlay Text on Hover */}
 {/* Always Visible Section */}
 
-<div className="absolute top-[290px] sm:top-72 md:top-56  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
+<div className="absolute top-[260px] sm:top-72 md:top-56  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
   <Image
     src={card.icon}
     alt={card.subtitle}
@@ -158,8 +158,9 @@ export default function Card() {
     className="h-12 w-12 sm:h-12 sm:w-12 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
   />
   <div>
-    <span className="font-bold text-sm ">{card.subtitle}</span>
-    <p className="text-md font-medium">{card.description}</p>
+   <span className="font-bold text-xs sm:text-sm md:text-base">{card.subtitle}</span>
+<p className="font-medium text-sm sm:text-md md:text-md">{card.description}</p>
+
   </div>
 </div>
 
