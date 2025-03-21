@@ -150,7 +150,7 @@ export default function Card() {
              {/* Overlay Text on Hover */}
 {/* Always Visible Section */}
 
-<div className="absolute top-[290px] sm:top-72 md:top-60  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
+<div className="absolute top-[290px] sm:top-72 md:top-56  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
   <Image
     src={card.icon}
     alt={card.subtitle}
@@ -167,11 +167,20 @@ export default function Card() {
 <div
   className="absolute inset-0 z-10 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-between p-4 text-white group-hover:border-b-8 group-hover:border-[red]"
 >
-  <div className="mt-[245px] sm:mt-[260px] md:mt-[270px] lg:mt-[280px] "> {/* Pushed down to avoid overlap */}
-    <p className="text-blue-400 text-sm">{card.nowOpen}</p>
-    <h3 className="text-xl font-bold">{card.title}</h3>
-    <p className="text-sm mt-1">{card.details}</p>
-    <div className="mt-2">
+
+</div>
+
+
+              {/* Non-hover Text Below Image */}
+         {/* Non-hover Text Below Image */}
+            {/* Non-hover Text Below Image */}
+   <div className="absolute bottom-0 z-10 p-3 md:p-4 transition-colors duration-300 pb-4 ease-in-out w-full h-auto min-h-[120px] md:min-h-[160px] lg:min-h-[190px] flex flex-col justify-center bg-white text-gray-900 group-hover:bg-transparent group-hover:text-white">
+  <p className="text-xs md:text-sm lg:text-base text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out">{card.nowOpen}</p>
+  <h3 className="text-sm md:text-lg font-bold mt-1 md:mt-2 text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out">{card.title}</h3>
+  <p className="text-xs md:text-sm lg:text-base mt-1 text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out">
+    {card.details}
+  </p>
+   <div className="">
       <Link href="/RegisterNow">
         <p
           className="text-white group-hover:text-red-500 cursor-pointer group-hover:underline"
@@ -181,17 +190,8 @@ export default function Card() {
         </p>
       </Link>
     </div>
-  </div>
 </div>
 
-
-              {/* Non-hover Text Below Image */}
-         {/* Non-hover Text Below Image */}
-<div className="absolute bottom-0 z-10 p-3 md:p-4 group-hover:opacity-0 transition-opacity duration-700 text-gray-900 bg-white w-full h-auto min-h-[120px] md:min-h-[160px] lg:min-h-[190px] flex flex-col justify-center">
-  <p className="text-xs md:text-sm lg:text-base">{card.nowOpen}</p>
-  <h3 className="text-sm md:text-lg font-bold mt-1 md:mt-2">{card.title}</h3>
-  <p className="text-xs md:text-sm lg:text-base mt-1 text-gray-700">{card.details}</p>
-</div>
 
             </div>
           ))}

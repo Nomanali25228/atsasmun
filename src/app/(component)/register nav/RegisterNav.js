@@ -513,7 +513,7 @@ const RegisterNav = () => {
               {mobileDropdownOpen && (
                 <div className="ml-6 space-y-2">
                   <Link
-                    href="/Price"
+                    href="/payment"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
                   >
