@@ -16,14 +16,21 @@ export async function POST(req) {
       );
     }
 
+    if (amount <= 0) {
+      return new Response(
+        JSON.stringify({ error: "Amount must be greater than zero." }),
+        { status: 400 }
+      );
+    }
+
     let discountAmount = 10000; // Amount in cents
 
     // Create an Invoice
     const invoice = await stripe.invoices.create({
       customer: customerId,
-      collection_method: "send_invoice", // Ensures invoice is emailed
-      days_until_due: 6,
-      auto_advance: true, // Automatically finalizes and emails the invoice
+      collection_method: "send_invoice",
+      days_until_due: 1,
+      auto_advance: true,
       footer: `
         PAY WITH ACH OR WIRE TRANSFER
 
@@ -43,8 +50,8 @@ export async function POST(req) {
     // Create Invoice Item for the original amount
     await stripe.invoiceItems.create({
       customer: customerId,
-      amount: Math.round(amount * 100), // Convert amount to cents
-      description: `${disnew} ${description}`,
+      amount: Math.round(amount * 100),
+      description: disnew ? `${disnew} ${description}` : description,
       invoice: invoice.id,
     });
 
@@ -62,7 +69,7 @@ export async function POST(req) {
       console.log("Discount Invoice Item Created");
     }
 
-    // Finalize the Invoice (This triggers Stripe to send the email)
+    // Finalize the Invoice
     const finalizedInvoice = await stripe.invoices.finalizeInvoice(invoice.id);
 
     console.log("Finalized Invoice:", finalizedInvoice);
@@ -79,7 +86,7 @@ export async function POST(req) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error creating invoice:", error.message, error.stack);
+    console.error("Error creating invoice:", error);
 
     return new Response(
       JSON.stringify({ error: error.message || "An unexpected error occurred." }),

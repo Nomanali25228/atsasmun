@@ -81,16 +81,15 @@ console.log("nodemailer id",id);
                             padding:70px;">
                             <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
                             <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
-                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Goa, India</p>
+                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Dubai, UAE</p>
                             <p style="margin:20px 0 0; font-size:22px; color: white;">(${name})</p>
                         </td>
                     </tr>
-                    
 
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 26th-29th june, 2025</h2>
+                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 2nd-05th May, 2025</h2>
                             <hr style="width:80%; border-top:1px solid #ddd; margin-top: 20px;">
                             <p style="font-size:16px; color: #000;">We are pleased to inform you that your registration at Atsas International Model United Nations has been received. The shortlisted applicants will be contacted shortly through email within 24 hours.</p>
                         </td>
@@ -150,7 +149,7 @@ console.log("nodemailer id",id);
         <td colspan="3" style="max-width: 800px; margin: 40px auto; text-align: center; padding:0px 10px;">
             <h3 style="font-size: 18px; margin-bottom: 10px; color: #2c3e50;">Please take a look at the information about the event below:</h3>
             <p style="font-size:16px; color: #555; margin-bottom: 20px;">
-                AtsasMUN has integrated 3 committees into its conferences. The esteemed members of our secretariat are highly talented and dedicated to ensuring a seamless experience for all participants.
+                AtsasMUN has integrated 2 committees into its conferences. The esteemed members of our secretariat are highly talented and dedicated to ensuring a seamless experience for all participants.
             </p>
 
         </td>
@@ -163,10 +162,6 @@ console.log("nodemailer id",id);
         <td style="text-align: center; padding: 10px;">
             <img src="https://e75ca47a0b.imgdist.com/pub/bfra/ve0zzru6/fkx/597/d2w/Logo2-removebg-preview.png" alt="UNHRC" style="width: 100px; height: 100px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <h4 style="font-size: 16px; margin-top: 10px; color: #2c3e50;">UNHRC</h4>
-        </td>
-        <td style="text-align: center; padding: 10px;">
-            <img src="https://e75ca47a0b.imgdist.com/pub/bfra/ve0zzru6/s95/e76/st0/Logo3-removebg-preview.png" alt="UNDP" style="width: 100px; height: 100px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-            <h4 style="font-size: 16px; margin-top: 10px; color: #2c3e50;">UNDP</h4>
         </td>
     </tr>
 </table> 
@@ -188,12 +183,12 @@ console.log("nodemailer id",id);
         <!-- Non-Accommodation Column -->
         <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
   color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 8px 0 0 0; text-align: center;">
-            Non-Accommodation $249
+            Non-Accommodation $399
         </td>
         <!-- Accommodation Column -->
         <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
 ; color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 0 8px 0 0; text-align: center;">
-            Accommodation $579
+            Accommodation $679
         </td>
     </tr>
     <tr>
@@ -234,7 +229,7 @@ console.log("nodemailer id",id);
             Ice-breaking Session
         </td>
         <td style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-            Goa City Tour 
+       Desert safari
         </td>
     </tr>
     <tr>
@@ -242,6 +237,7 @@ console.log("nodemailer id",id);
             Diplomatic Dinner Gala
         </td>
         <td style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+       Visa invitation letter
         </td>
     </tr>
     <tr>
@@ -249,30 +245,30 @@ console.log("nodemailer id",id);
             1 Lunch and 2 Dinners
         </td>
         <td style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
+       Airport Assistance (Arrival)
         </td>
     </tr>
 </table>
 
-                    <table
-                        style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
-                        <tr>
-                            <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-size: 15px; color: #333; padding-bottom: 20px;">You can pay at the link
-                                below</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            
-                                <a href="https://www.atsasmun.com/Indiapayment/1?userid=${id}"
-                                    style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
-                                    Now</a>
-                            </td>
-                        </tr>
+ <table
+                         style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
+                         <tr>
+                             <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment
+                             </td>
+                         </tr>
+                         <tr>
+                             <td style="font-size: 15px; color: #333; padding-bottom: 20px;">You can pay at the link
+                                 below</td>
+                         </tr>
+                         <tr>
+                             <td>
+                                    
+                                      <a href="https://www.atsasmun.com/UAEpayment/1?userid=${id}"
+                                     style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
+                                     Now</a>
+                             </td>
+                         </tr>
                     </table>
-
 
                    <!-- CONTACT INFO -->
                    <table style="width: 100%; max-width: 800px; margin: 40px auto; text-align: center; padding: 40px; background: #f2f4f7;  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-collapse: collapse;">
@@ -291,7 +287,7 @@ console.log("nodemailer id",id);
                             <table style="margin: 0 auto; text-align: center; border-collapse: collapse;">
                                 <tr>
                                     <td style="padding: 10px;">
-                                        <a href="Facebook" target="_blank" style="text-decoration: none; color: #333; display: flex; align-items: center; gap: 10px;">
+                                        <a href="https://www.facebook.com/share/189wEJeHZ5/?mibextid=wwXIfr" target="_blank" style="text-decoration: none; color: #333; display: flex; align-items: center; gap: 10px;">
                                             <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 30px; height: 30px;">
                                             <span style="font-size: 1rem; padding-left: 20px; " >atsasmun</span>
                                         </a>
@@ -334,7 +330,7 @@ console.log("nodemailer id",id);
                     <!-- Highlighted Line -->
                     <tr>
                         <td style="padding: 20px; font-size: 1rem; color: black; font-weight: bold;">
-                            We look forward to meeting you in Goa, India!
+                            We look forward to meeting you in Dubai, UAE!
                         </td>
                     </tr>
                     <!-- Final Thank You Line -->
@@ -359,8 +355,8 @@ console.log("nodemailer id",id);
                     <!-- FOOTER -->
                     <tr>
                         <td align="center" style="background-color:#003366; color:#fff; padding:20px;">
-                            <p style="margin:0; font-size:14px;">Atsas MUN India © 2024 Atsas Creation International Ltd</p>
-                            <p style="margin:5px 0 0; font-size:12px; color: #fff;"><em>Forging a Diplomatic World of Unity and Peace</em></p>
+                            <p style="margin:0; font-size:14px;">Atsas MUN UAE © 2024 Atsas Creation International Ltd</p>
+                            <p style="margin:5px 0 0; font-size:12px; color:#fff;"><em>Forging a Diplomatic World of Unity and Peace</em></p>
                         </td>
                     </tr>
                 </table>

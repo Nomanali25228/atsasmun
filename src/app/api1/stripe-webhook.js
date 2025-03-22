@@ -1,15 +1,16 @@
 import Stripe from "stripe";
 import nodemailer from "nodemailer";
 import { setTimeout } from "timers/promises";
+import { NextResponse } from "next/server";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// Function to send email reminders
+// Email Sending Function
 async function sendEmail(to, subject, text) {
   const transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-            port: 587,
-            secure: false,
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.NEXT_PUBLIC_SMTP_USERNAME,
       pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD,
@@ -26,7 +27,7 @@ async function sendEmail(to, subject, text) {
   }
 }
 
-// Function to handle invoice expiration and email reminders
+// Invoice Reminder & Expiration Function
 async function handleInvoiceLifecycle(invoiceId, customerEmail) {
   await setTimeout(60 * 1000); // Wait 4 days
   const invoice = await stripe.invoices.retrieve(invoiceId);
@@ -48,20 +49,17 @@ async function handleInvoiceLifecycle(invoiceId, customerEmail) {
   }
 }
 
-// Stripe webhook handler
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  const sig = req.headers["stripe-signature"];
+// Stripe Webhook Handler
+export async function POST(req) {
+  const sig = req.headers.get("stripe-signature");
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+    const body = await req.text();
+    event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET);
   } catch (err) {
     console.error("Webhook Error:", err.message);
-    return res.status(400).send(`Webhook Error: ${err.message}`);
+    return NextResponse.json({ error: `Webhook Error: ${err.message}` }, { status: 400 });
   }
 
   switch (event.type) {
@@ -86,52 +84,5 @@ export default async function handler(req, res) {
       console.log(`Unhandled event type: ${event.type}`);
   }
 
-  res.status(200).json({ received: true });
-}
-
-// API route to create an invoice
-export async function POST(req) {
-  try {
-    const body = await req.json();
-    const { customerId, amount, description, disnew } = body;
-
-    if (!customerId || !amount || !description) {
-      return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
-    }
-
-    let discountAmount = 10000; // Amount in cents
-
-    const invoice = await stripe.invoices.create({
-      customer: customerId,
-      collection_method: "send_invoice",
-      days_until_due: 6,
-      auto_advance: true,
-    });
-
-    await stripe.invoiceItems.create({
-      customer: customerId,
-      amount: Math.round(amount * 100),
-      description: `${disnew} ${description}`,
-      invoice: invoice.id,
-    });
-
-    if (discountAmount > 0) {
-      await stripe.invoiceItems.create({
-        customer: customerId,
-        description: `New Year Discount (-£${(discountAmount / 100).toFixed(2)})`,
-        amount: -discountAmount,
-        invoice: invoice.id,
-      });
-    }
-
-    const finalizedInvoice = await stripe.invoices.finalizeInvoice(invoice.id);
-
-    return new Response(
-      JSON.stringify({ message: "Invoice created and sent!", invoicePdf: finalizedInvoice.invoice_pdf }),
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Error creating invoice:", error);
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
-  }
+  return NextResponse.json({ received: true });
 }
