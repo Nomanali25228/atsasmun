@@ -29,7 +29,7 @@ export async function POST(req) {
     const invoice = await stripe.invoices.create({
       customer: customerId,
       collection_method: "send_invoice",
-      days_until_due: 1,
+      days_until_due: 6,
       auto_advance: true,
       footer: `
         PAY WITH ACH OR WIRE TRANSFER
