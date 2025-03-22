@@ -81,7 +81,7 @@ console.log("nodemailer id",id);
                             padding:70px;">
                             <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
                             <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
-                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Dubai, UAE</p>
+                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Goa, India</p>
                             <p style="margin:20px 0 0; font-size:22px; color: white;">(${name})</p>
                         </td>
                     </tr>
@@ -89,7 +89,7 @@ console.log("nodemailer id",id);
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 2nd-05th May, 2025</h2>
+                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 26th-29th june, 2025</h2>
                             <hr style="width:80%; border-top:1px solid #ddd; margin-top: 20px;">
                             <p style="font-size:16px; color: #000;">We are pleased to inform you that your registration at Atsas International Model United Nations has been received. The shortlisted applicants will be contacted shortly through email within 24 hours.</p>
                         </td>
@@ -183,12 +183,12 @@ console.log("nodemailer id",id);
         <!-- Non-Accommodation Column -->
         <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
   color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 8px 0 0 0; text-align: center;">
-            Non-Accommodation $399
+            Non-Accommodation $249 
         </td>
         <!-- Accommodation Column -->
         <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
 ; color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 0 8px 0 0; text-align: center;">
-            Accommodation $679
+            Accommodation $579
         </td>
     </tr>
     <tr>
@@ -229,7 +229,7 @@ console.log("nodemailer id",id);
             Ice-breaking Session
         </td>
         <td style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-       Desert safari
+       Goa City Tour
         </td>
     </tr>
     <tr>
@@ -237,7 +237,7 @@ console.log("nodemailer id",id);
             Diplomatic Dinner Gala
         </td>
         <td style="background: #fff; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-       Visa invitation letter
+  
         </td>
     </tr>
     <tr>
@@ -245,7 +245,7 @@ console.log("nodemailer id",id);
             1 Lunch and 2 Dinners
         </td>
         <td style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-       Airport Assistance (Arrival)
+      
         </td>
     </tr>
 </table>
@@ -263,7 +263,7 @@ console.log("nodemailer id",id);
                          <tr>
                              <td>
                                     
-                                      <a href="https://www.atsasmun.com/UAEpayment/1?userid=${id}"
+                                      <a href="https://www.atsasmun.com/Indiapayment/1?userid=${id}"
                                      style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
                                      Now</a>
                              </td>
@@ -330,7 +330,7 @@ console.log("nodemailer id",id);
                     <!-- Highlighted Line -->
                     <tr>
                         <td style="padding: 20px; font-size: 1rem; color: black; font-weight: bold;">
-                            We look forward to meeting you in Dubai, UAE!
+                            We look forward to meeting you in Goa, India!
                         </td>
                     </tr>
                     <!-- Final Thank You Line -->
@@ -355,7 +355,7 @@ console.log("nodemailer id",id);
                     <!-- FOOTER -->
                     <tr>
                         <td align="center" style="background-color:#003366; color:#fff; padding:20px;">
-                            <p style="margin:0; font-size:14px;">Atsas MUN UAE © 2024 Atsas Creation International Ltd</p>
+                            <p style="margin:0; font-size:14px;">Atsas MUN India © 2024 Atsas Creation International Ltd</p>
                             <p style="margin:5px 0 0; font-size:12px; color:#fff;"><em>Forging a Diplomatic World of Unity and Peace</em></p>
                         </td>
                     </tr>
