@@ -8,6 +8,29 @@
   padding-left: 2.25rem; /* px-9 equivalent */
 }
 
+/* Instagram Browser Fix */
+html, body {
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text Wrapping Issue Fix */
+* {
+  word-wrap: break-word;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+}
+
+/* Instagram Browser ka Default Zoom Disable Karein */
+@viewport {
+  width: device-width;
+  initial-scale: 1.0;
+  maximum-scale: 1.0;
+  user-scalable: 0;
+}
 
 
 @import "~slick-carousel/slick/slick.css";
@@ -117,17 +140,3 @@ html {
 
 
 
-/* Instagram Browser Fix */
-html, body {
-  -webkit-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
-  word-break: normal;
-  overflow-x: hidden;
-}
-
-/* Font Fix */
-@font-face {
-  font-family: 'CustomFont';
-  src: url('/fonts/CustomFont.woff2') format('woff2');
-  font-display: swap;
-}

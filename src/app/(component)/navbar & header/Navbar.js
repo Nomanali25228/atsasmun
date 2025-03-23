@@ -18,7 +18,6 @@ const cities = [
     'Istanbul, Turkey',
     'Dubai, UAE',
     'Goa, India',
-    'New York, USA',
     'Riyadh, Saudi Arabia',
     // 'Paris, France',
     'New York, USA',

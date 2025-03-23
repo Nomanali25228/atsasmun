@@ -26,7 +26,7 @@ const AtsasMun = () => {
           </div>
 
           {/* Text Content */}
-          <div data-aos="fade-up" className="max-w-3xl md:ml-[-25px] text-left text-gray-700 leading-relaxed">
+          <div data-aos="fade-up" className="max-w-3xl  md:ml-[-25px] text-left text-gray-700 leading-relaxed">
             <p className='text-[14px]'>
               As the flagship project of Atsas International Creations LTD, a company based
               in the United Kingdom that is committed to cultivating the next generation of
