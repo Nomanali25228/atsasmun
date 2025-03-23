@@ -20,7 +20,7 @@ const cities = [
     'Goa, India',
     'New York, USA',
     'Riyadh, Saudi Arabia',
-    'Paris, France',
+    // 'Paris, France',
     'New York, USA',
 ];
 

@@ -114,3 +114,20 @@ html {
 .bold-text {
   font-weight: bold;
 }
+
+
+
+/* Instagram Browser Fix */
+html, body {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  word-break: normal;
+  overflow-x: hidden;
+}
+
+/* Font Fix */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/CustomFont.woff2') format('woff2');
+  font-display: swap;
+}
