@@ -36,9 +36,7 @@ export default function Page() {
 " /> {/* Corrected prop passing */}
       <Desert heading="Riyadh City Tour" Desert={SaudiCityTour11} Desert2={SaudiCityTour2} Desert3={SaudiCityTour3} />
       <Map bgimg5={hotelx4} img1={hotelx2} img2={hotelx3} img3={hotelx1} img4={hotelx5} map="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2532.941421316346!2d-74.4093007!3d40.4799582!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3c621c111af0f%3A0xf6a3d20dff5c4484!2sHilton%20East%20Brunswick%20Hotel%20%26%20Executive%20Meeting%20Center!5e1!3m2!1sen!2s!4v1742244753311!5m2!1sen!2s"    hname="Hilton East Brunswick Hotel & Executive Meeting Center
-" disc="This modern hotel is just six miles east of New Brunswick, NJ—the home of Rutgers University. It is straight off the New Jersey Turnpike, which connects you to New York within an hour. Enjoy our heated indoor pool, whirlpool, and fitness center. We also serve Starbucks® coffee in the lobby cafe.
-
-"/>
+" disc="This hotel is six miles east of New Brunswick, NJ, near Rutgers University, and right off the New Jersey Turnpike, connecting you to New York in an hour. Enjoy our heated pool, whirlpool, fitness center, and Starbucks® coffee in the lobby café."/>
       <Event img1={event1} img2={event2} img3={event3} img4={event4} img5={event5} />
       <Shedule timeing='Riyadh, Saudi Arabia' />
       <ScrollToTop />

@@ -150,7 +150,7 @@ export default function Card() {
              {/* Overlay Text on Hover */}
 {/* Always Visible Section */}
 
-<div className="absolute top-[260px] sm:top-72 md:top-56  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
+<div className="absolute top-4 sm:top-72 md:top-56  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
   <Image
     src={card.icon}
     alt={card.subtitle}
