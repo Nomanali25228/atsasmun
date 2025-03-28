@@ -133,7 +133,7 @@ export async function POST(request) {
                     <!-- CTA BUTTON -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <a href="#" style=" background: linear-gradient(to right, #00509E, #003A70, #002855); color:#fff; text-decoration:none; padding:10px 30px; border-radius:5px; font-size:16px; display:inline-block;">
+                            <a href="https://www.atsasmun.com/UAEpayment/1?userid=${id}" style=" background: linear-gradient(to right, #00509E, #003A70, #002855); color:#fff; text-decoration:none; padding:10px 30px; border-radius:5px; font-size:16px; display:inline-block;">
                                 Click here for Conference Fee
                             </a>
                         </td>
