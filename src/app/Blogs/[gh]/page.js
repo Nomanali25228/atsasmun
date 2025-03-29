@@ -183,7 +183,7 @@ export default function Home() {
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-5 ml-24 text-sm font-medium text-[#A8ABBA]">
                         {/* Home */}
-                        <a
+                        <Link
                             href="/"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "home" ? "" : ""
                                 }`}
@@ -193,10 +193,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
 
-                        <a
+                        <Link
                             href="/#events"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "events" ? "text-white" : ""
                                 }`}
@@ -206,10 +206,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "events" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
                         {/* atsasMun */}
-                        <a
+                        <Link
                             href="/#atsasMun"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "atsasMun" ? "text-white" : ""
                                 }`}
@@ -219,9 +219,9 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "atsasMun" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
                         {/* Gallery */}
-                        <a
+                        <Link
                             href="/#gallery"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "gallery" ? "text-white" : ""
                                 }`}
@@ -231,13 +231,13 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "gallery" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
                         {/* Blog */}
 
 
 
                         {/* FAQ */}
-                        <a
+                        <Link
                             href="/#faq"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "faq" ? "text-white" : ""
                                 }`}
@@ -247,10 +247,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "faq" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
                         {/* Contact */}
-                        <a
+                        <Link
                             href="/#contact"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "contact" ? "text-white" : ""
                                 }`}
@@ -260,7 +260,7 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
 
                         <div
@@ -660,7 +660,7 @@ export default function Home() {
                                             <div className="img-container h-[200px] w-full sm:w-[260px] overflow-hidden rounded-b-[20px] mx-auto">
                                               <div className="img-inner">
                                                 <div className="rounded-[20px] overflow-hidden mt-[30px] bg-[#c8c2c2] h-[200px] w-full sm:w-[260px]">
-                                                  <img
+                                                  <Image
                                                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.cover.url}`}
                                                     alt={post.title || "Post Image"}
                                                     className="object-cover h-full w-full"

@@ -137,7 +137,7 @@ export default function Home() {
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-5 ml-24 text-sm font-medium text-[#A8ABBA]">
                         {/* Home */}
-                        <a
+                        <Link
                             href="/"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "home" ? "" : ""
                                 }`}
@@ -147,10 +147,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
 
-                        <a
+                       <Link
                             href="/#events"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "events" ? "text-white" : ""
                                 }`}
@@ -160,10 +160,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "events" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
                         {/* atsasMun */}
-                        <a
+                                               <Link
                             href="/#atsasMun"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "atsasMun" ? "text-white" : ""
                                 }`}
@@ -173,9 +173,9 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "atsasMun" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
                         {/* Gallery */}
-                        <a
+                        <Link
                             href="/#gallery"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "gallery" ? "text-white" : ""
                                 }`}
@@ -185,13 +185,13 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "gallery" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
                         {/* Blog */}
 
 
 
                         {/* FAQ */}
-                        <a
+                                                <Link
                             href="/#faq"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "faq" ? "text-white" : ""
                                 }`}
@@ -201,10 +201,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "faq" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
                         {/* Contact */}
-                        <a
+                                                <Link
                             href="/#contact"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "contact" ? "text-white" : ""
                                 }`}
@@ -214,7 +214,7 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </a>
+                        </Link>
 
 
                         <div
@@ -601,7 +601,7 @@ export default function Home() {
                     <p className="mb-6">
                         Your privacy matters to us, and we{"’"}re committed to keeping your personal information
                         safe. This Privacy Policy explains how we collect, use, and protect your data when you
-                        visit our website or participate in our events. By using <a href="/" className="text-blue-600 underline" >ATSASMUN.com</a>, you{"’"}re agreeing
+                        visit our website or participate in our events. By using <Link href="/" className="text-blue-600 underline" >ATSASMUN.com</Link>, you{"’"}re agreeing
                         to the terms outlined here.
                     </p>
                     <ul className=" pl-6 mb-6 text-xl space-y-2">
@@ -650,7 +650,7 @@ export default function Home() {
                         </li>
                     </ul>
 
-                    <p className="mb-8">We use your data to make your experience with <a href="/" className="text-blue-600 underline" >ATSASMUN</a> better. Here{"’"}s how:
+                    <p className="mb-8">We use your data to make your experience with <Link href="/" className="text-blue-600 underline" >ATSASMUN</Link> better. Here{"’"}s how:
                     </p>
                     <p className="mb-8"> <strong>Event Management:</strong> To handle event registrations
                         and keep you informed about event updates.
@@ -771,7 +771,7 @@ export default function Home() {
                     <p className="mb-4"> <strong>Email:</strong> atsasmun@gmail.com</p>
                     <p className="mb-4"> <strong>Mailing Address:</strong> 42 Hennerton Way, High Wycombe, HP13 7UE, United Kingdom
                     </p>
-                    <p className="mb-4">Thank you for trusting <a href="/" className="text-blue-600 " >ATSASMUN</a> Your privacy is central to everything we do!</p>
+                    <p className="mb-4">Thank you for trusting <Link href="/" className="text-blue-600 " >ATSASMUN</Link> Your privacy is central to everything we do!</p>
             
 
                 </div>

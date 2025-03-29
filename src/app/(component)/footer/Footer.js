@@ -34,14 +34,14 @@ const Footer = () => {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <a href="/"
+                                <Link href="/"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
                                     <span className="mr-2">&#10140;</span>
                                     <p className='hover:scale-105 transition-transform duration-500'>
                                         Home
                                     </p>
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a
@@ -245,13 +245,13 @@ const Footer = () => {
                 </p>
                 <p className="mb-4">
                     A project of{' '}
-                    <a
+                    <Link
                         href="/"
                         rel="noopener noreferrer"
                         className="text-blue-400 hover:underline"
                     >
                         Atsas Mun
-                    </a>
+                    </Link>
                 </p>
                 <div className="absolute right-6 bottom-2 text-gray-400 text-xs hidden sm:block">
                     Design by{' '}

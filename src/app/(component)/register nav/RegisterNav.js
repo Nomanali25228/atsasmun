@@ -124,13 +124,13 @@ const RegisterNav = () => {
       >
         <div data-aos="fade-down" className="container cursor-pointer mx-auto  flex items-center justify-between">
           {/* Logo */}
-          <a href="/">
+          <Link href="/">
                         <Image
                             src={logo}
                             alt="Logo"
                             className="lg:h-[100px] lg:w-[150px] md:h-[100px] md:w-[150px] sm:h-[80px] sm:w-[120px] h-[80px] w-[120px]"
                         />
-                    </a>
+                    </Link>
           <div className="flex items-center">
           </div>
 
@@ -143,7 +143,7 @@ const RegisterNav = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-5 ml-24 text-sm font-medium text-[#A8ABBA]">
             {/* Home */}
-            <a
+            <Link
               href="/"
               className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "home" ? "" : ""
                 }`}
@@ -153,10 +153,10 @@ const RegisterNav = () => {
                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "" ? "w-full" : "w-0 group-hover:w-full"
                   }`}
               ></span>
-            </a>
+            </Link>
 
 
-            <a
+            <Link
               href="/#events"
               className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "events" ? "text-white" : ""
                 }`}
@@ -166,10 +166,10 @@ const RegisterNav = () => {
                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "events" ? "w-full" : "w-0 group-hover:w-full"
                   }`}
               ></span>
-            </a>
+            </Link>
 
             {/* atsasMun */}
-            <a
+            <Link
               href="/#atsasMun"
               className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "atsasMun" ? "text-white" : ""
                 }`}
@@ -179,9 +179,9 @@ const RegisterNav = () => {
                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "atsasMun" ? "w-full" : "w-0 group-hover:w-full"
                   }`}
               ></span>
-            </a>
+            </Link>
             {/* Gallery */}
-            <a
+            <Link
               href="/#gallery"
               className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "gallery" ? "text-white" : ""
                 }`}
@@ -191,13 +191,13 @@ const RegisterNav = () => {
                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "gallery" ? "w-full" : "w-0 group-hover:w-full"
                   }`}
               ></span>
-            </a>
+            </Link>
             {/* Blog */}
 
 
 
             {/* FAQ */}
-            <a
+            <Link
               href="/#faq"
               className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "faq" ? "text-white" : ""
                 }`}
@@ -207,10 +207,10 @@ const RegisterNav = () => {
                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "faq" ? "w-full" : "w-0 group-hover:w-full"
                   }`}
               ></span>
-            </a>
+            </Link>
 
             {/* Contact */}
-            <a
+            <Link
               href="/#contact"
               className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "contact" ? "text-white" : ""
                 }`}
@@ -220,7 +220,7 @@ const RegisterNav = () => {
                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
                   }`}
               ></span>
-            </a>
+            </Link>
 
 
             <div
