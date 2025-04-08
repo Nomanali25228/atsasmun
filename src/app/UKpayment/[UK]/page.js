@@ -5,13 +5,15 @@ import logo from '@/app/public/img/logo-1.png'; // Logo
 import Link from 'next/link';
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { useContext, useEffect, useState } from 'react';
-import ScrollToTop from '../(component)/Scrolltotop/ScrollToTop';
-import Footer from '../(component)/footer/Footer';
-import Whatsapp from '../(component)/whatsapp/Whatsapp';
-import ParticleCanvas from '../(component)/ParticleCanvas';
-import ContextPage from '../Context/ContextPage';
-
+import { useContext, useEffect, useRef, useState } from 'react';
+import ScrollToTop from '@/app/(component)/Scrolltotop/ScrollToTop';
+import Footer from '@/app/(component)/footer/Footer';
+import Whatsapp from '@/app/(component)/whatsapp/Whatsapp';
+import ParticleCanvas from '@/app/(component)/ParticleCanvas';
+import ContextPage from '@/app/Context/ContextPage';
+import { useSearchParams } from 'next/navigation';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -21,10 +23,17 @@ export default function Home() {
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isScrolled, setIsScrolled] = useState(false);
-    const {check,setCheck} = useContext(ContextPage)
-    useEffect(()=>{
-    setCheck("New York, USA")
-    },[check,setCheck])
+    const { check, setCheck } = useContext(ContextPage)
+    const { amounts, setAmounts } = useContext(ContextPage)
+    const searchParams = useSearchParams();
+    const [custId, setCustID] = useState("")
+    const [selectPac, setSelectPac] = useState("")
+    const [loader, setLoader] = useState(false)
+    const [loader1, setLoader1] = useState(false)
+
+    useEffect(() => {
+        setCheck("Paris, France")
+    }, [check, setCheck])
 
     let dropdownTimeout;
     let dropdownTimeout2;
@@ -64,24 +73,24 @@ export default function Home() {
         };
     }, [mobileMenuOpen]);
 
- // Save and retrieve scroll state to/from localStorage
- useEffect(() => {
-    const savedScrollState = localStorage.getItem('isScrolled');
-    if (savedScrollState === 'true') {
-        setIsScrolled(true);
-    }
+    // Save and retrieve scroll state to/from localStorage
+    useEffect(() => {
+        const savedScrollState = localStorage.getItem('isScrolled');
+        if (savedScrollState === 'true') {
+            setIsScrolled(true);
+        }
 
-    const handleScroll = () => {
-        const scrollState = window.scrollY > 10;
-        setIsScrolled(scrollState);
-        localStorage.setItem('isScrolled', scrollState.toString());
-    };
+        const handleScroll = () => {
+            const scrollState = window.scrollY > 10;
+            setIsScrolled(scrollState);
+            localStorage.setItem('isScrolled', scrollState.toString());
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-}, []);
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 
 
@@ -115,9 +124,165 @@ export default function Home() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [activeSection]);
+    const seo = (oo) => {
+        setAmounts(oo)
+    }
+
+
+    // choose button ////////////////////////////////
+
+    // payment 1///////////////////////////////////////
+    const [showOptions1, setShowOptions1] = useState(false);
+    const optionsRef1 = useRef(null);
+
+    const handleClick1 = () => {
+        if (loader1 == true) {
+            setShowOptions1(true)
+            setShowOptions2(false)
+        } else {
+            setShowOptions1(!showOptions1);
+
+        }
+
+    };
+
+    // Close the options menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (optionsRef1.current && !optionsRef1.current.contains(event.target)) {
+                setShowOptions1(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+
+    // payment 2/////////////////////////////////////////
+    const [showOptions2, setShowOptions2] = useState(false);
+    const optionsRef = useRef(null);
+
+    const handleClick2 = () => {
+        if (loader == true) {
+            setShowOptions2(true)
+
+
+        } else {
+            setShowOptions2(!showOptions2);
+
+        }
+    };
+
+    // Close the options menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (optionsRef.current && !optionsRef.current.contains(event.target)) {
+                setShowOptions2(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+
+    // start invoice//////////////////////////////////////////////////////////////////////////////
+
+
+    const id = searchParams.get("userid");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    `https://atsas-backend.onrender.com/api/fivthnames?filters[id][$eq]=${id}`
+                );
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                const result = await response.json();
+                console.log("Fetched Data:", result.data[0].customerId); // Assuming it returns an array
+                setCustID(result.data[0].customerId)
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    const handleCreateInvoice = async (su) => {
+        setLoader(true)
+        var pac = su
+        var non
+        if (pac == 959) {
+            non = "Non-Accommodation"
+            setLoader(false)
+            setLoader1(true)
+        } else if (pac == 1659) {
+            non = "Accommodation"
+            setLoader(true)
+            setLoader1(false)
+
+        }
+
+        const customerId = `${custId}`
+
+        try {
+            const response = await fetch("/api1/create-invoice", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    customerId,
+                    amount: su + 100, // Amount in dollars (e.g., $50.00 becomes 5000 in cents)
+                    description: "Tour Package Payment",
+                    disnew: non
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Failed to create invoice");
+            }
+
+            const { invoicePdf } = await response.json();
+
+            // Trigger download of the invoice PDF
+            const link = document.createElement("a");
+            link.href = invoicePdf;
+            link.download = "invoice.pdf"; // Optional: Specify filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            toast.success("Invoice downloaded successfully!");
+            setLoader(false)
+            setLoader1(false)
+
+        } catch (error) {
+            console.error("Error creating invoice:", error.message);
+            toast.error("Error creating invoice. Please try again.");
+            setLoader(false)
+            setLoader1(false)
+
+
+        }
+    };
+
+
+    // end invoice//////////////////////////////////////////////////////////////////////////////
+
 
     return (
         <div>
+            {/* Navbar */}
             {/* Navbar */}
             <nav
                 className={`w-full fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#111827fa] shadow-md' : 'bg-transparent'
@@ -144,7 +309,7 @@ export default function Home() {
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-5 ml-24 text-sm font-medium text-[#A8ABBA]">
                         {/* Home */}
-                        <Link
+                        <a
                             href="/"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "home" ? "" : ""
                                 }`}
@@ -154,10 +319,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
 
-                       <Link
+                        <a
                             href="/#events"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "events" ? "text-white" : ""
                                 }`}
@@ -167,10 +332,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "events" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
                         {/* atsasMun */}
-                                               <Link
+                        <a
                             href="/#atsasMun"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "atsasMun" ? "text-white" : ""
                                 }`}
@@ -180,9 +345,9 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "atsasMun" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
                         {/* Gallery */}
-                        <Link
+                        <a
                             href="/#gallery"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "gallery" ? "text-white" : ""
                                 }`}
@@ -192,13 +357,13 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "gallery" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
                         {/* Blog */}
 
 
 
                         {/* FAQ */}
-                                                <Link
+                        <a
                             href="/#faq"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "faq" ? "text-white" : ""
                                 }`}
@@ -208,10 +373,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "faq" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
                         {/* Contact */}
-                                                <Link
+                        <a
                             href="/#contact"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "contact" ? "text-white" : ""
                                 }`}
@@ -221,7 +386,7 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
 
                         <div
@@ -249,13 +414,16 @@ export default function Home() {
                                     <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                                         Goa, India
                                     </Link>
+                                    <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                                        London, UK
+                                    </Link>
                                     <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                                         New York, USA
                                     </Link>
                                     <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                                         Riyadh, Saudi Arabia
                                     </Link>
-                                   {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                    {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
                                         Paris, France
                                     </Link> */}
                                 </div>
@@ -291,7 +459,7 @@ export default function Home() {
 
                             {dropdownOpen && (
                                 <div className="absolute w-[170px] left-0 mt-4 bg-white text-black rounded shadow-lg">
-                                
+
 
                                     <Link href="/payment" className="block px-4 py-2 text-blue-400">
                                         Pricing
@@ -310,7 +478,7 @@ export default function Home() {
                     {/* Register Button */}
                     <Link href="/RegisterNow">
                         <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-                        <p className='text-[13px]'> Register Now </p>
+                            <p className='text-[13px]'> Register Now </p>
                         </button>
                     </Link>
 
@@ -453,6 +621,16 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
+                                        href="/UK"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        London, UK
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link>
+                                    <Link
                                         href="/USA"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -471,7 +649,8 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link> <Link
+                                    </Link>
+                                    {/* <Link
                                         href="/franceLandingP"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -480,7 +659,7 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link>
+                                    </Link> */}
 
                                 </div>
                             )}
@@ -502,7 +681,7 @@ export default function Home() {
                             </button>
                             {mobileDropdownOpen && (
                                 <div className="ml-6 space-y-2">
-                                 
+
 
                                     <Link
                                         href="/payment"
@@ -577,95 +756,185 @@ export default function Home() {
             </nav>
             {/* Hero Section */}
             <header
-  className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-white"
-  style={{
-    backgroundImage: `url(${bg.src})`,
-    backgroundAttachment: "fixed",
-  }}
->
-    
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
+                className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-white"
+                style={{
+                    backgroundImage: `url(${bg.src})`,
+                    backgroundAttachment: "fixed",
+                }}
+            >
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
                 {/* Hero Content */}
                 <section >
-                <div className="max-w-5xl mx-auto px-4">
-  <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
-    Pricing for <span className="text-purple-400">New York, USA</span>
-  </h2>
-  <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
-    {/* Basic Plan */}
-    <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-      
-      <div className="space-y-4">
-        <h3 className="text-lg font-bold text-center">Basic</h3>
-        <div className="text-center">
-          <p className="text-3xl font-extrabold">$979
+                    <div className="max-w-5xl mx-auto px-4">
+                        <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
+                            Pricing for <span className="text-purple-400">London, UK </span>
+                        </h2>
 
-          </p>
-          <p className="text-xs line-through text-gray-500 mt-1">
-            $1100  Early Applicant Discount
-          </p>
-        </div>
-        <p className="text-center text-blue-300 font-semibold uppercase text-xs">
-          Non-Accommodation
-        </p>
-        <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-6">
-          <li>✔️ ATSASMUN Merch Kit</li>
-          <li>✔️ United Nations Simulation Sessions</li>
-          <li>✔️ ATSASMUN UNHCR Endorsed Certificates</li>
-          <li>✔️ Cultural Performances</li>
-          <li>✔️ Ice-breaking Session </li>
-          <li>✔️ Diplomatic Dinner</li>
-          <li>✔️ 1 Lunch and 2 Dinners</li>
-        </ul>
-        <div className="text-center mt-6">
-        <Link href="/RegisterNow">
-          <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">                 
-Register Now →                                            
-</button>                          
-</Link>
-          
-        </div>
-      </div>
-    </div>
 
-    {/* Full Experience Plan */}
-    <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
-  <div className="space-y-4">
-    <h3 className="text-lg font-bold text-center">Full Experience</h3>
-    <div className="text-center">
-      <p className="text-3xl font-extrabold">$1599</p>
-      {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-      <p className="text-xs line-through text-gray-500 mt-1">
-        $1700 Early Applicant Discount
-      </p>
-    </div>
-    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
-      Accommodation
-    </p>
-    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
-      <li>✔️ Everything in Non-Accomodation Package</li>
-      <li>✔️ Visa invitation letter</li>
-      <li>✔️ Airport Assistance (Arrival)</li>
-      <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
-      <li>✔️ 3 Buffet Breakfast</li>
-      <li>✔️ 2 Lunch and 3 Dinners</li>
-      <li>✔️ USA City Tour</li>
-    </ul>
-  </div>
-  <div className="text-center mt-6">
-    <Link href="/RegisterNow">
-      <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-        Register Now →
-      </button>
-    </Link>
-  </div>
-</div>
 
-  </div>
-</div>
+                        <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
+                            {/* Basic Plan */}
+                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
 
-                 
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center">Basic</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold">$959
+                                        </p>
+                                        <p className="text-xs line-through text-gray-500 mt-1">
+                                            $1059 Early Applicant Discount
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                        Non-Accommodation
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-6">
+                                        <li>✔️ ATSASMUN Merch Kit</li>
+                                        <li>✔️ United Nations Simulation Sessions</li>
+                                        <li>✔️ ATSASMUN UNHCR Endorsed Certificates</li>
+                                        <li>✔️ Cultural Performances</li>
+                                        <li>✔️ Ice-breaking Session </li>
+                                        <li>✔️ Diplomatic Dinner</li>
+                                        <li>✔️ 1 Lunch and 2 Dinners</li>
+                                    </ul>
+                                    <div className="text-center mt-6">
+                                        <div ref={optionsRef1} className="relative">
+                                            {/* "Choose" Button */}
+                                            {!showOptions1 && (
+                                                <button
+                                                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
+                                                    onClick={handleClick1}
+                                                >
+                                                    Choose
+                                                </button>
+                                            )}
+
+                                            {/* Options */}
+                                            {showOptions1 && (
+                                                <div className="mt-4 space-y-2">
+                                                    <button
+                                                        className="w-full mb-2 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white text-sm font-bold rounded-full hover:bg-red-700 hover:scale-105 transition-all duration-300"
+                                                        onClick={handleClick1}
+                                                    >
+                                                        Cancel ✖
+                                                    </button>
+                                                    <Link href="/checkout">
+                                                        <button
+                                                            onClick={() => seo(959)}
+                                                            className="w-full py-3 bg-gradient-to-r from-green-600 to-green-800 text-white text-sm font-bold rounded-full hover:bg-green-700 hover:scale-105 transition-all duration-300"
+                                                        >
+                                                            Pay now →
+                                                        </button>
+                                                    </Link>
+                                                    {loader1 && <button
+                                                        className="w-full py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300">
+                                                        <div className=" gap-4 w-full flex items-center justify-center">
+                                                            <p> Please waite. </p>
+                                                            <div
+                                                                className="w-8 h-8 border-2 border-transparent text-blue-700 text-4xl animate-spin flex items-center justify-center border-t-blue-500 rounded-full"
+                                                            >
+                                                                <div
+                                                                    className="w-6 h-6 border-2 border-transparent text-red-700 text-4xl animate-spin flex items-center justify-center border-t-red-500 rounded-full"
+                                                                ></div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </button>}
+                                                    {!loader1 && <button
+                                                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300"
+                                                        onClick={() => handleCreateInvoice(959)}>
+                                                        Invoice ↓
+                                                    </button>}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Full Experience Plan */}
+                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center">Full Experience</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold">$1659</p>
+                                        {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
+                                        <p className="text-xs line-through text-gray-500 mt-1">
+                                            $1599 Early Applicant Discount
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                        Accommodation
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
+                                        <li>✔️ Everything in Non-Accomodation Package</li>
+                                        <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
+                                        <li>✔️ 3 Buffet Breakfast</li>
+                                        <li>✔️ 2 Lunch and 3 Dinners</li>
+                                        <li>✔️ London City Tou</li>
+                                    </ul>
+                                    <div className="text-center mt-6">
+                                        <div ref={optionsRef} className="relative">
+                                            {/* "Choose" Button */}
+                                            {!showOptions2 && (
+                                                <button
+                                                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
+                                                    onClick={handleClick2}
+                                                >
+                                                    Choose
+                                                </button>
+                                            )}
+
+                                            {/* Options */}
+                                            {showOptions2 && (
+                                                <div className="mt-4 space-y-2">
+                                                    <button
+                                                        className="w-full mb-2 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white text-sm font-bold rounded-full hover:bg-red-700 hover:scale-105 transition-all duration-300"
+                                                        onClick={handleClick2}
+                                                    >
+                                                        Cancel ✖
+                                                    </button>
+                                                    <Link href="/checkout">
+                                                        <button
+                                                            onClick={() => seo(1659)}
+                                                            className="w-full py-3 bg-gradient-to-r from-green-600 to-green-800 text-white text-sm font-bold rounded-full hover:bg-green-700 hover:scale-105 transition-all duration-300"
+                                                        >
+                                                            Pay now →
+                                                        </button>
+                                                    </Link>
+                                                    {loader && <button
+                                                        className="w-full py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300">
+                                                        <div className=" gap-4 w-full flex items-center justify-center">
+                                                            <p> Please waite. </p>
+                                                            <div
+                                                                className="w-8 h-8 border-2 border-transparent text-blue-700 text-4xl animate-spin flex items-center justify-center border-t-blue-500 rounded-full"
+                                                            >
+                                                                <div
+                                                                    className="w-6 h-6 border-2 border-transparent text-red-700 text-4xl animate-spin flex items-center justify-center border-t-red-500 rounded-full"
+                                                                ></div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </button>}
+                                                    {!loader && <button
+                                                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300"
+                                                        onClick={() => handleCreateInvoice(1659)}>
+                                                        Invoice ↓
+                                                    </button>}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </section>
             </header>
             <Footer />

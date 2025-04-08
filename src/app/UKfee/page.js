@@ -11,6 +11,8 @@ import Footer from '../(component)/footer/Footer';
 import Whatsapp from '../(component)/whatsapp/Whatsapp';
 import ParticleCanvas from '../(component)/ParticleCanvas';
 import ContextPage from '../Context/ContextPage';
+
+
 export default function Home() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,12 +21,10 @@ export default function Home() {
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isScrolled, setIsScrolled] = useState(false);
-    const { check, setCheck } = useContext(ContextPage);
-
+    const { check, setCheck } = useContext(ContextPage)
     useEffect(() => {
-        setCheck("Riyadh, Saudi Arabia");
-    }, [check,setCheck]);
-
+        setCheck("Paris, France")
+    }, [check, setCheck])
 
     let dropdownTimeout;
     let dropdownTimeout2;
@@ -64,26 +64,24 @@ export default function Home() {
         };
     }, [mobileMenuOpen]);
 
-     // Save and retrieve scroll state to/from localStorage
- useEffect(() => {
-    const savedScrollState = localStorage.getItem('isScrolled');
-    if (savedScrollState === 'true') {
-        setIsScrolled(true);
-    }
+    // Save and retrieve scroll state to/from localStorage
+    useEffect(() => {
+        const savedScrollState = localStorage.getItem('isScrolled');
+        if (savedScrollState === 'true') {
+            setIsScrolled(true);
+        }
 
-    const handleScroll = () => {
-        const scrollState = window.scrollY > 10;
-        setIsScrolled(scrollState);
-        localStorage.setItem('isScrolled', scrollState.toString());
-    };
+        const handleScroll = () => {
+            const scrollState = window.scrollY > 10;
+            setIsScrolled(scrollState);
+            localStorage.setItem('isScrolled', scrollState.toString());
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-}, []);
-
-
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 
     // Track the active section
@@ -144,7 +142,7 @@ export default function Home() {
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-5 ml-24 text-sm font-medium text-[#A8ABBA]">
                         {/* Home */}
-                        <Link
+                        <a
                             href="/"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "home" ? "" : ""
                                 }`}
@@ -154,10 +152,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
 
-                       <Link
+                        <a
                             href="/#events"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "events" ? "text-white" : ""
                                 }`}
@@ -167,10 +165,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "events" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
                         {/* atsasMun */}
-                                               <Link
+                        <a
                             href="/#atsasMun"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "atsasMun" ? "text-white" : ""
                                 }`}
@@ -180,9 +178,9 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "atsasMun" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
                         {/* Gallery */}
-                        <Link
+                        <a
                             href="/#gallery"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "gallery" ? "text-white" : ""
                                 }`}
@@ -192,13 +190,13 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "gallery" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
                         {/* Blog */}
 
 
 
                         {/* FAQ */}
-                                                <Link
+                        <a
                             href="/#faq"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "faq" ? "text-white" : ""
                                 }`}
@@ -208,10 +206,10 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "faq" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
                         {/* Contact */}
-                                                <Link
+                        <a
                             href="/#contact"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "contact" ? "text-white" : ""
                                 }`}
@@ -221,7 +219,7 @@ export default function Home() {
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                        </Link>
+                        </a>
 
 
                         <div
@@ -249,13 +247,16 @@ export default function Home() {
                                     <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                                         Goa, India
                                     </Link>
+                                    <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                                        London, UK
+                                    </Link>
                                     <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                                         New York, USA
                                     </Link>
                                     <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                                         Riyadh, Saudi Arabia
                                     </Link>
-                                   {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                    {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
                                         Paris, France
                                     </Link> */}
                                 </div>
@@ -291,7 +292,7 @@ export default function Home() {
 
                             {dropdownOpen && (
                                 <div className="absolute w-[170px] left-0 mt-4 bg-white text-black rounded shadow-lg">
-                                
+
 
                                     <Link href="/payment" className="block px-4 py-2 text-blue-400">
                                         Pricing
@@ -310,7 +311,7 @@ export default function Home() {
                     {/* Register Button */}
                     <Link href="/RegisterNow">
                         <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-                        <p className='text-[13px]'> Register Now </p>
+                            <p className='text-[13px]'> Register Now </p>
                         </button>
                     </Link>
 
@@ -453,6 +454,16 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
+                                        href="/UK"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        London, UK
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link>
+                                    <Link
                                         href="/USA"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -471,7 +482,8 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link> <Link
+                                    </Link>
+                                     {/* <Link
                                         href="/franceLandingP"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -480,7 +492,7 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link>
+                                    </Link> */}
 
                                 </div>
                             )}
@@ -502,7 +514,7 @@ export default function Home() {
                             </button>
                             {mobileDropdownOpen && (
                                 <div className="ml-6 space-y-2">
-                                 
+
 
                                     <Link
                                         href="/payment"
@@ -577,98 +589,91 @@ export default function Home() {
             </nav>
             {/* Hero Section */}
             <header
-  className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-white"
-  style={{
-    backgroundImage: `url(${bg.src})`,
-    backgroundAttachment: "fixed",
-  }}
->
-    
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
+                className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-white"
+                style={{
+                    backgroundImage: `url(${bg.src})`,
+                    backgroundAttachment: "fixed",
+                }}
+            >
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
                 {/* Hero Content */}
                 <section >
-                <div className="max-w-5xl mx-auto px-4">
-  <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
-    Pricing for <span className="text-purple-400">Riyadh Saudi Arabia
-    </span>
-  </h2>
-  <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
-    {/* Basic Plan */}
-    <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-      
-      <div className="space-y-4">
-        <h3 className="text-lg font-bold text-center">Basic</h3>
-        <div className="text-center">
-          <p className="text-3xl font-extrabold">$649</p>
-          <p className="text-xs line-through text-gray-500 mt-1">
-            $780 Early Applicant Discount
-          </p>
-        </div>
-        <p className="text-center text-blue-300 font-semibold uppercase text-xs">
-          Non-Accommodation
-        </p>
-        <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-6">
-          <li>✔️ ATSASMUN Merch Kit</li>
-          <li>✔️ United Nations Simulation Sessions</li>
-          <li>✔️ ATSASMUN UNHCR Endorsed Certificates</li>
-          <li>✔️ Cultural Performances</li>
-          <li>✔️ Ice-breaking Session</li>
-          <li>✔️ Diplomatic Dinner</li>
-          <li>✔️ 1 Lunch and 2 Dinners</li>
-        </ul>
-        <div className="text-center mt-6">
-        <Link href="/RegisterNow">
-          <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">                 
-Register Now →                                            
-</button>                          
-</Link>
-        </div>
-      </div>
-    </div>
+                    <div className="max-w-5xl mx-auto px-4">
+                        <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
+                            Pricing for <span className="text-purple-400">London, UK</span>
+                        </h2>
+                        <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
+                            {/* Basic Plan */}
+                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
 
-    {/* Full Experience Plan */}
-    <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
-  <div className="space-y-4">
-    <h3 className="text-lg font-bold text-center">Full Experience</h3>
-    <div className="text-center">
-      <p className="text-3xl font-extrabold">$799</p>
-      {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-      <p className="text-xs line-through text-gray-500 mt-1">
-        $899 Early Applicant Discount
-      </p>
-    </div>
-    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
-      Accommodation
-    </p>
-    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
-      <li>✔️ Everything in Non-Accomodation Package</li>
-      <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
-      <li>✔️ 3 Buffet Breakfast</li>
-      <li>✔️ 2 Lunch and 3 Dinners</li>
-      <li>✔️ Riyadh City Tour</li>
-    </ul>
-  </div>
-  <div className="text-center mt-6">
-    <Link href="/RegisterNow">
-      <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-        Register Now →
-      </button>
-    </Link>
-  </div>
-</div>
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center">Basic</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold">$959
+                                        </p>
+                                        <p className="text-xs line-through text-gray-500 mt-1">
+                                            $1000 Early Applicant Discount
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                        Non-Accommodation
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-6">
+                                        <li>✔️ ATSASMUN Merch Kit</li>
+                                        <li>✔️ United Nations Simulation Sessions</li>
+                                        <li>✔️ ATSASMUN UNHCR Endorsed Certificates</li>
+                                        <li>✔️ Cultural Performances</li>
+                                        <li>✔️ Ice-breaking Session </li>
+                                        <li>✔️ Diplomatic Dinner</li>
+                                        <li>✔️ 1 Lunch and 2 Dinners</li>
+                                    </ul>
+                                    <div className="text-center mt-6">
+                                        <Link href="/RegisterNow">
+                                            <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+                                                Register Now →
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
 
-  </div>
-</div>
+                            {/* Full Experience Plan */}
+                            <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between h-full">
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center">Full Experience</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold">$1659</p>
+                                        {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
+                                        <p className="text-xs line-through text-gray-500 mt-1">
+                                            $1599 Early Applicant Discount
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                        Accommodation
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
+                                        <li>✔️ Everything in Non-Accomodation Package</li>
+                                        <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
+                                        <li>✔️ 3 Buffet Breakfast</li>
+                                        <li>✔️ 2 Lunch and 3 Dinners</li>
+                                        <li>✔️ London City Tou</li>
+                                    </ul>
+                                </div>
+                                <div className="text-center mt-6">
+                                    <Link href="/RegisterNow">
+                                        <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+                                            Register Now →
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
 
-                    {/* Bottom Section */}
-                    {/* <div className="mt-12 text-center bg-gradient-to-r text-white py-4 px-6 rounded-md shadow-md">
-                        <p className="text-xs leading-relaxed">
-                            We have worked with utmost determination to bring to you exquisite packages for our programs. We have devised
-                            these packages in a way to meet everyones desideratums. To keep our applicants best interest, we allow
-                            payments in interest-free installments as well.
-                        </p>
-                    </div> */}
+                        </div>
+                    </div>
+
+
                 </section>
             </header>
             <Footer />

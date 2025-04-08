@@ -1,18 +1,17 @@
 'use client';
-
 import Image from 'next/image';
 import bg from '@/app/public/img/HPbg1.jpeg'; // Hero background
 import logo from '@/app/public/img/logo-1.png'; // Logo
 import Link from 'next/link';
+import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import React, { useState, useEffect, useContext } from "react";
+import { useContext, useEffect, useState } from 'react';
 import ScrollToTop from '../(component)/Scrolltotop/ScrollToTop';
 import Footer from '../(component)/footer/Footer';
 import Whatsapp from '../(component)/whatsapp/Whatsapp';
 import ParticleCanvas from '../(component)/ParticleCanvas';
 import ContextPage from '../Context/ContextPage';
-
-export default function Page() {
+export default function Home() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [dropdownOpen2, setDropdownOpen2] = useState(false);
@@ -23,34 +22,37 @@ export default function Page() {
     const { check, setCheck } = useContext(ContextPage);
 
     useEffect(() => {
-        setCheck("Dubai, UAE");
+        setCheck("Riyadh, Saudi Arabia");
     }, [check, setCheck]);
+
 
     let dropdownTimeout;
     let dropdownTimeout2;
 
     const handleMouseEnter = () => {
-        clearTimeout(dropdownTimeout);
-        setDropdownOpen(true);
+        clearTimeout(dropdownTimeout); // Clear any existing timeout
+        setDropdownOpen(true); // Show dropdown immediately
     };
 
     const handleMouseLeave = () => {
         dropdownTimeout = setTimeout(() => {
-            setDropdownOpen(false);
-        }, 300);
+            setDropdownOpen(false); // Hide dropdown after 3 seconds
+        }, 300); // 3-second delay
     };
 
+
     const handleMouseEnter2 = () => {
-        clearTimeout(dropdownTimeout2);
-        setDropdownOpen2(true);
+        clearTimeout(dropdownTimeout2); // Clear any existing timeout
+        setDropdownOpen2(true); // Show dropdown immediately
     };
 
     const handleMouseLeave2 = () => {
         dropdownTimeout2 = setTimeout(() => {
-            setDropdownOpen2(false);
-        }, 350);
+            setDropdownOpen2(false); // Hide dropdown after 3 seconds
+        }, 350); // 3-second delay
     };
 
+    // Prevent body scrolling when mobile menu is open
     useEffect(() => {
         if (mobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -58,29 +60,33 @@ export default function Page() {
             document.body.style.overflow = 'auto';
         }
         return () => {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'; // Cleanup
         };
     }, [mobileMenuOpen]);
 
     // Save and retrieve scroll state to/from localStorage
- useEffect(() => {
-    const savedScrollState = localStorage.getItem('isScrolled');
-    if (savedScrollState === 'true') {
-        setIsScrolled(true);
-    }
+    useEffect(() => {
+        const savedScrollState = localStorage.getItem('isScrolled');
+        if (savedScrollState === 'true') {
+            setIsScrolled(true);
+        }
 
-    const handleScroll = () => {
-        const scrollState = window.scrollY > 10;
-        setIsScrolled(scrollState);
-        localStorage.setItem('isScrolled', scrollState.toString());
-    };
+        const handleScroll = () => {
+            const scrollState = window.scrollY > 10;
+            setIsScrolled(scrollState);
+            localStorage.setItem('isScrolled', scrollState.toString());
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-}, []);
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
+
+
+
+    // Track the active section
     useEffect(() => {
         const handleScroll = () => {
             const sections = [
@@ -93,7 +99,7 @@ export default function Page() {
                 { id: "contact", offset: document.getElementById("contact")?.offsetTop || 0 },
             ];
 
-            const currentPosition = window.scrollY + 100;
+            const currentPosition = window.scrollY + 100; // Offset for better accuracy
             const currentSection = sections.find((section, i) => {
                 const nextOffset = sections[i + 1]?.offset || Infinity;
                 return currentPosition >= section.offset && currentPosition < nextOffset;
@@ -109,46 +115,6 @@ export default function Page() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [activeSection]);
-
-    // const handleCreateInvoice = async () => {
-    //     const customerId = "cus_RMC98IXCvkowr8"
-
-    //     try {
-    //         const response = await fetch("/api1/create-invoice", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 customerId,
-    //                 amount: 5000, // Amount in dollars (e.g., $50.00 becomes 5000 in cents)
-    //                 description: "Tour Package Payment",
-    //             }),
-    //         });
-
-    //         if (!response.ok) {
-    //             const errorData = await response.json();
-    //             throw new Error(errorData.error || "Failed to create invoice");
-    //         }
-
-    //         const { invoicePdf } = await response.json();
-
-    //         // Trigger download of the invoice PDF
-    //         const link = document.createElement("a");
-    //         link.href = invoicePdf;
-    //         link.download = "invoice.pdf"; // Optional: Specify filename
-    //         document.body.appendChild(link);
-    //         link.click();
-    //         document.body.removeChild(link);
-
-    //         alert("Invoice downloaded successfully!");
-    //     } catch (error) {
-    //         console.error("Error creating invoice:", error.message);
-    //         alert("Error creating invoice. Please try again.");
-    //     }
-    // };
-
-
 
     return (
         <div>
@@ -191,7 +157,7 @@ export default function Page() {
                         </Link>
 
 
-                       <Link
+                        <Link
                             href="/#events"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "events" ? "text-white" : ""
                                 }`}
@@ -204,7 +170,7 @@ export default function Page() {
                         </Link>
 
                         {/* atsasMun */}
-                                               <Link
+                        <Link
                             href="/#atsasMun"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "atsasMun" ? "text-white" : ""
                                 }`}
@@ -232,7 +198,7 @@ export default function Page() {
 
 
                         {/* FAQ */}
-                                                <Link
+                        <Link
                             href="/#faq"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "faq" ? "text-white" : ""
                                 }`}
@@ -245,7 +211,7 @@ export default function Page() {
                         </Link>
 
                         {/* Contact */}
-                                                <Link
+                        <Link
                             href="/#contact"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "contact" ? "text-white" : ""
                                 }`}
@@ -283,13 +249,16 @@ export default function Page() {
                                     <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                                         Goa, India
                                     </Link>
+                                    <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                                        London, UK
+                                    </Link>
                                     <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                                         New York, USA
                                     </Link>
                                     <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                                         Riyadh, Saudi Arabia
                                     </Link>
-                                   {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                    {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
                                         Paris, France
                                     </Link> */}
                                 </div>
@@ -325,7 +294,7 @@ export default function Page() {
 
                             {dropdownOpen && (
                                 <div className="absolute w-[170px] left-0 mt-4 bg-white text-black rounded shadow-lg">
-                                
+
 
                                     <Link href="/payment" className="block px-4 py-2 text-blue-400">
                                         Pricing
@@ -344,7 +313,7 @@ export default function Page() {
                     {/* Register Button */}
                     <Link href="/RegisterNow">
                         <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-                        <p className='text-[13px]'> Register Now </p>
+                            <p className='text-[13px]'> Register Now </p>
                         </button>
                     </Link>
 
@@ -487,6 +456,16 @@ export default function Page() {
                                         ></span>
                                     </Link>
                                     <Link
+                                        href="/UK"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        London, UK
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link>
+                                    <Link
                                         href="/USA"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -505,7 +484,8 @@ export default function Page() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link> <Link
+                                    </Link>
+                                    {/* <Link
                                         href="/franceLandingP"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -514,7 +494,7 @@ export default function Page() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link>
+                                    </Link> */}
 
                                 </div>
                             )}
@@ -536,7 +516,7 @@ export default function Page() {
                             </button>
                             {mobileDropdownOpen && (
                                 <div className="ml-6 space-y-2">
-                                 
+
 
                                     <Link
                                         href="/payment"
@@ -623,21 +603,20 @@ export default function Page() {
                 {/* Hero Content */}
                 <section >
                     <div className="max-w-5xl mx-auto px-4">
-                        <h2 className="text-center mt-20 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
-                            Pricing for <span className="text-purple-400">Dubai, UAE</span>
+                        <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
+                            Pricing for <span className="text-purple-400">Riyadh Saudi Arabia
+                            </span>
                         </h2>
                         <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
                             {/* Basic Plan */}
                             <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-                               
+
                                 <div className="space-y-4">
                                     <h3 className="text-lg font-bold text-center">Basic</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$459
-
-                                        </p>
+                                        <p className="text-3xl font-extrabold">$649</p>
                                         <p className="text-xs line-through text-gray-500 mt-1">
-                                            $589  Early Applicant Discount
+                                            $780 Early Applicant Discount
                                         </p>
                                     </div>
                                     <p className="text-center text-blue-300 font-semibold uppercase text-xs">
@@ -648,7 +627,7 @@ export default function Page() {
                                         <li>✔️ United Nations Simulation Sessions</li>
                                         <li>✔️ ATSASMUN UNHCR Endorsed Certificates</li>
                                         <li>✔️ Cultural Performances</li>
-                                        <li>✔️ Ice-breaking Session </li>
+                                        <li>✔️ Ice-breaking Session</li>
                                         <li>✔️ Diplomatic Dinner</li>
                                         <li>✔️ 1 Lunch and 2 Dinners</li>
                                     </ul>
@@ -659,48 +638,51 @@ export default function Page() {
                                             </button>
                                         </Link>
                                     </div>
-
-
                                 </div>
                             </div>
 
                             {/* Full Experience Plan */}
-                            <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between h-full">
-  <div className="space-y-4">
-    <h3 className="text-lg font-bold text-center">Full Experience</h3>
-    <div className="text-center">
-      <p className="text-3xl font-extrabold">$679</p>
-      {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-      <p className="text-xs line-through text-gray-500 mt-1">
-        $789 Early Applicant Discount
-      </p>
-    </div>
-    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
-      Accommodation
-    </p>
-    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
-      <li>✔️ Everything in Non-Accommodation Package</li>
-      <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
-      <li>✔️ Visa invitation letter</li>
-      <li>✔️ Airport Assistance (Arrival)</li>
-      <li>✔️ 3 Buffet Breakfast</li>
-      <li>✔️ 2 Lunch and 3 Dinners</li>
-      <li>✔️ Dubai City Tour</li>
-    </ul>
-  </div>
-  <div className="text-center mt-6">
-    <Link href="/RegisterNow">
-      <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-        Register Now →
-      </button>
-    </Link>
-  </div>
-</div>
+                            <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center">Full Experience</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold">$799</p>
+                                        {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
+                                        <p className="text-xs line-through text-gray-500 mt-1">
+                                            $899 Early Applicant Discount
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                        Accommodation
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
+                                        <li>✔️ Everything in Non-Accomodation Package</li>
+                                        <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
+                                        <li>✔️ 3 Buffet Breakfast</li>
+                                        <li>✔️ 2 Lunch and 3 Dinners</li>
+                                        <li>✔️ Riyadh City Tour</li>
+                                    </ul>
+                                </div>
+                                <div className="text-center mt-6">
+                                    <Link href="/RegisterNow">
+                                        <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+                                            Register Now →
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
 
-
+                    {/* Bottom Section */}
+                    {/* <div className="mt-12 text-center bg-gradient-to-r text-white py-4 px-6 rounded-md shadow-md">
+                        <p className="text-xs leading-relaxed">
+                            We have worked with utmost determination to bring to you exquisite packages for our programs. We have devised
+                            these packages in a way to meet everyones desideratums. To keep our applicants best interest, we allow
+                            payments in interest-free installments as well.
+                        </p>
+                    </div> */}
                 </section>
             </header>
             <Footer />

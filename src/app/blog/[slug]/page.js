@@ -181,12 +181,12 @@ const BlogPostPage = () => {
         <div data-aos="fade-down" className="container cursor-pointer mx-auto  flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
-                        <Image
-                            src={logo}
-                            alt="Logo"
-                            className="lg:h-[100px] lg:w-[150px] md:h-[100px] md:w-[150px] sm:h-[80px] sm:w-[120px] h-[80px] w-[120px]"
-                        />
-                    </Link>
+            <Image
+              src={logo}
+              alt="Logo"
+              className="lg:h-[100px] lg:w-[150px] md:h-[100px] md:w-[150px] sm:h-[80px] sm:w-[120px] h-[80px] w-[120px]"
+            />
+          </Link>
           <div className="flex items-center">
           </div>
 
@@ -305,6 +305,9 @@ const BlogPostPage = () => {
                   <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                     Goa, India
                   </Link>
+                  <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                    London, UK
+                  </Link>
                   <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                     New York, USA
                   </Link>
@@ -364,7 +367,7 @@ const BlogPostPage = () => {
           {/* Register Button */}
           <Link href="/RegisterNow">
             <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-            <p className='text-[13px]'> Register Now </p>
+              <p className='text-[13px]'> Register Now </p>
             </button>
           </Link>
 
@@ -507,6 +510,16 @@ const BlogPostPage = () => {
                     ></span>
                   </Link>
                   <Link
+                    href="/UK"
+                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    London, UK
+                    <span
+                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                    ></span>
+                  </Link>
+                  <Link
                     href="/USA"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -527,18 +540,18 @@ const BlogPostPage = () => {
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
-                  </Link> 
+                  </Link>
                   {/* <Link
-                    href="/franceLandingP"
-                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Paris, France
+                                        href="/franceLandingP"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        Paris, France
 
-                    <span
-                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
-                    ></span>
-                  </Link> */}
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link> */}
 
                 </div>
               )}
@@ -660,9 +673,11 @@ const BlogPostPage = () => {
             <div className="flex justify-center">
               <div className="relative h-[40%] w-[90%] sm:w-[60%] -mt-24 sm:-mt-32 mb-6">
                 <Image
-                  
+
                   src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.cover.url}`}
                   alt={post.title}
+                  width={260} // specify the width
+                  height={200} // specify the height
                   className="rounded-lg w-full h-full object-cover shadow-md"
                 />
               </div>

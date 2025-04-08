@@ -17,7 +17,7 @@ import dubai from "@/app/public/img/skyline.jpeg";
 import India from '@/app/public/img/india.jpg';
 import USA from '@/app/public/img/bgUSA.jpg';
 import Saudi from '@/app/public/img/riyadhcity.jpg';
-import paris from '@/app/public/img/paris.jpeg';
+import london from '@/app/public/img/london.jpg';
 // import ContextPage from "@/app/Context/ContextPage";
 // import Link from "next/link";
 
@@ -61,16 +61,13 @@ const cards = [
   {
     id: 4,
     nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN Riyadh, Saudi Arabia ",
-    subtitle: "Riyadh, Saudi Arabia",
+    title: "ATSASMUN London, UK",
+    subtitle: "London, UK",
     description:
-      "(16th-19th, october 2025)",
-    details:
-      "ATSASMUN in Saudi Arabia embraces a culture of honor, respect, and unity. Through the spirit of majlis, it fosters dialogue, mutual understanding, and true diplomacy in a changing world.",
-      image: bell5,
-      icon: Saudi,
-      
-    },
+      "(07th-10th, August 2025)",
+    details:"An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",    image: bell6,
+    icon: london,
+  },
   {
     id: 5,
     nowOpen: "Registrations opening soon!",
@@ -83,19 +80,20 @@ const cards = [
     image: bell4,
     icon: USA,
   },
+  {
+    id: 6,
+    nowOpen: "Registrations opening soon!",
+    title: "ATSASMUN Riyadh, Saudi Arabia ",
+    subtitle: "Riyadh, Saudi Arabia",
+    description:
+      "(16th-19th, october 2025)",
+    details:
+      "ATSASMUN in Saudi Arabia embraces a culture of honor, respect, and unity. Through the spirit of majlis, it fosters dialogue, mutual understanding, and true diplomacy in a changing world.",
+      image: bell5,
+      icon: Saudi,
+      
+    },
  
-    // {
-    //   id: 6,
-    //   nowOpen: "Registrations opening soon!",
-    //   title: "ATSASMUN Paris, France",
-    //   subtitle: "Paris, France",
-    //   description:
-    //     "(07th-10th, August 2025)",
-    //   details:
-    //     "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in Paris connects delegates with the spirit of diplomacy.                                                                                        ",
-    //   image: bell6,
-    //   icon: paris,
-    // },
 ];
 
 export default function Card() {

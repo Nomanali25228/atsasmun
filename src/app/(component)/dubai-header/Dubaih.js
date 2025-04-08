@@ -257,8 +257,12 @@ export default function Dubaih(props) {
                   <Link href="/Istanbul" className={`block px-4 py-2 ${mla == "Istanbul, Turkey" ? style : stlyle2} `}>
                     Istanbul, Turkey
                   </Link>
+
                   <Link href="/India" className={`block px-4 py-2  ${mla == "Goa, India" ? style : stlyle2}`}>
                     Goa, India
+                  </Link>
+                  <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                    London, UK
                   </Link>
                   <Link href="/USA" className={`block px-4 py-2 ${mla == "New York, USA" ? style : stlyle2} `}>
                     New York, USA
@@ -320,7 +324,7 @@ export default function Dubaih(props) {
           {/* Register Button */}
           <Link href="/RegisterNow">
             <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-            <p className='text-[13px]'> Register Now </p>
+              <p className='text-[13px]'> Register Now </p>
             </button>
           </Link>
 
@@ -463,6 +467,16 @@ export default function Dubaih(props) {
                     ></span>
                   </Link>
                   <Link
+                    href="/UK"
+                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    London, UK
+                    <span
+                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                    ></span>
+                  </Link>
+                  <Link
                     href="/USA"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -483,7 +497,7 @@ export default function Dubaih(props) {
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
-                  </Link> 
+                  </Link>
                   {/* <Link
                     href="/franceLandingP"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
@@ -623,9 +637,9 @@ export default function Dubaih(props) {
           px] text-center lg:mr-[60%] md:mr-[50%] sm:mr-[30%] sm:text-left" >
             {StartDays}<sup>{sup}</sup> - {EndDays}<sup>{sup1}</sup>,  {monthsDetils}
             <br />
-            <p className="mt-2">{mla}</p>
 
           </p>
+            <p className="mt-2 relative z-10  text-[20px] sm:text-[20px] text-center lg:mr-[60%] md:mr-[50%] sm:mr-[30%] sm:text-left" >{mla}</p>
 
           {/* Buttons */}
           <div className="mt-8 relative z-10 sm:mt-12 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-12 items-center sm:items-start justify-center sm:justify-start mb-12">

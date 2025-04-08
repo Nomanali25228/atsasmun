@@ -213,7 +213,7 @@ else if (props.timeing=="Riyadh, Saudi Arabia") {
     ],
   };
 }
-else if (props.timeing=="Paris, France") {
+else if (props.timeing=="London, UK") {
   var schedules = {
     day1: [
       { time: "02:00 pm – 03:00 pm", activity: "Arrival and Registrations" },

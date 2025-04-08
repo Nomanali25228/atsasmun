@@ -125,6 +125,17 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
+                                    href="/UK"
+                                    className="flex items-center  text-gray-400 hover:text-blue-400 transition-all duration-300"
+                                >
+                                    <span className="mr-2 ">&#10140;</span>
+                                    <p className='hover:scale-105 transition-transform duration-500'>
+                                        Atsas Mun UK
+                                    </p>
+                                </Link>
+                            </li> 
+                            <li>
+                                <Link
                                     href="/USA"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
@@ -147,17 +158,7 @@ const Footer = () => {
 
                                 </Link>
                             </li>
-                            {/* <li>
-                                <Link
-                                    href="/franceLandingP"
-                                    className="flex items-center  text-gray-400 hover:text-blue-400 transition-all duration-300"
-                                >
-                                    <span className="mr-2 ">&#10140;</span>
-                                    <p className='hover:scale-105 transition-transform duration-500'>
-                                        Atsas Mun France
-                                    </p>
-                                </Link>
-                            </li> */}
+                             
                         </ul>
                     </div>
 

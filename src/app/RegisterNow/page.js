@@ -243,7 +243,7 @@ const countryNames = {
   TC: "Turks and Caicos Islands",
   TV: "Tuvalu",
   UG: "Uganda",
-  UA: "Ukraine",
+  UA: "UKraine",
   AE: "United Arab Emirates",
   GB: "United Kingdom",
   US: "United States of America",
@@ -366,16 +366,16 @@ export default function Home() {
 
       })
     }
-    // else if (destination == "Paris, France") {
-    //   setImgchange(istan2)
-    //   setChange({
-    //     from: '7th ',
-    //     to: '10',
-    //     th: 'Aug, 2025'
+    else if (destination == "London, UK") {
+      setImgchange(istan2)
+      setChange({
+        from: '7th ',
+        to: '10',
+        th: 'Aug, 2025'
 
-    //   })
+      })
 
-    // }
+    }
   }, [destination])
 
 
@@ -428,16 +428,16 @@ export default function Home() {
       setImgchange(istan4)
 
     }
-    // else if (check == "Paris, France") {
-    //   setNo1(false)
-    //   setNo2(false)
-    //   setNo3(false)
-    //   setNo4(false)
-    //   setNo(false)
-    //   setImgchange(istan2)
+    else if (check == "London, UK") {
+      setNo1(false)
+      setNo2(false)
+      setNo3(false)
+      setNo4(false)
+      setNo(false)
+      setImgchange(istan2)
 
 
-    // }
+    }
   }, [check, setCheck])
 
   useEffect(() => {
@@ -471,13 +471,13 @@ export default function Home() {
       setImgchange(istan4)
 
     }
-    // else if (destination == "Paris, France") {
-    //   setChangeApi("fivthnames")
+    else if (destination == "London, UK") {
+      setChangeApi("fivthnames")
 
-    //   setImgchange(istan2)
+      setImgchange(istan2)
 
 
-    // }
+    }
   }, [destination, setDestination])
 
 
@@ -694,10 +694,10 @@ export default function Home() {
           var g = "SaudiContact"
           ha34(e, id, g)
         }
-        // else if (destination == "Paris, France") {
-        //   var g = "FranceContact"
-        //   ha34(e, id, g)
-        // }
+        else if (destination == "London, UK") {
+          var g = "UKContact"
+          ha34(e, id, g)
+        }
 
 
 
@@ -1067,7 +1067,7 @@ export default function Home() {
                                   {no2 && <option value="Goa, India">Goa, India</option>}
                                   {no3 && <option value="New York, USA">New York, USA</option>}
                                   {no4 && <option value="Riyadh, Saudi Arabia">Riyadh, Saudi Arabia</option>}
-                                  {/* {no5 && <option value="Paris, France">Paris, France</option>} */}
+                                  {no5 && <option value="London, UK">London, UK</option>}
 
                                 </select>
                               </div>

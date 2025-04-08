@@ -31,7 +31,7 @@ export default function Home() {
     const [selectPac, setSelectPac] = useState("")
     const [loader, setLoader] = useState(false)
     const [loader1, setLoader1] = useState(false)
-    
+
     useEffect(() => {
         setCheck("New York, USA")
     }, [check, setCheck])
@@ -75,23 +75,23 @@ export default function Home() {
     }, [mobileMenuOpen]);
 
     // Save and retrieve scroll state to/from localStorage
- useEffect(() => {
-    const savedScrollState = localStorage.getItem('isScrolled');
-    if (savedScrollState === 'true') {
-        setIsScrolled(true);
-    }
+    useEffect(() => {
+        const savedScrollState = localStorage.getItem('isScrolled');
+        if (savedScrollState === 'true') {
+            setIsScrolled(true);
+        }
 
-    const handleScroll = () => {
-        const scrollState = window.scrollY > 10;
-        setIsScrolled(scrollState);
-        localStorage.setItem('isScrolled', scrollState.toString());
-    };
+        const handleScroll = () => {
+            const scrollState = window.scrollY > 10;
+            setIsScrolled(scrollState);
+            localStorage.setItem('isScrolled', scrollState.toString());
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-}, []);
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 
     // Track the active section
@@ -134,10 +134,10 @@ export default function Home() {
     const optionsRef1 = useRef(null);
 
     const handleClick1 = () => {
-        if (loader1==true) {
+        if (loader1 == true) {
             setShowOptions1(true)
             setShowOptions2(false)
-        }else{
+        } else {
             setShowOptions1(!showOptions1);
 
         }
@@ -164,11 +164,11 @@ export default function Home() {
     const optionsRef = useRef(null);
 
     const handleClick2 = () => {
-        if (loader==true) {
+        if (loader == true) {
             setShowOptions2(true)
 
-            
-        }else{
+
+        } else {
             setShowOptions2(!showOptions2);
 
         }
@@ -189,94 +189,94 @@ export default function Home() {
     }, []);
 
 
-     // start invoice//////////////////////////////////////////////////////////////////////////////
-        
-        
-     const id = searchParams.get("userid");
-    
-     useEffect(() => {
-         const fetchData = async () => {
-             try {
-                 const response = await fetch(
-                     `https://atsas-backend.onrender.com/api/fournames?filters[id][$eq]=${id}`
-                 );
-                 if (!response.ok) {
-                     throw new Error(`Error: ${response.status}`);
-                 }
-                 const result = await response.json();
-                 console.log("Fetched Data:", result.data[0].customerId); // Assuming it returns an array
-                 setCustID(result.data[0].customerId)
-             } catch (err) {
-                 console.error("Error fetching data:", err);
-             }
-         };
- 
-         fetchData();
-     }, [id]);
- 
-     const handleCreateInvoice = async (su) => {
+    // start invoice//////////////////////////////////////////////////////////////////////////////
+
+
+    const id = searchParams.get("userid");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    `https://atsas-backend.onrender.com/api/fournames?filters[id][$eq]=${id}`
+                );
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                const result = await response.json();
+                console.log("Fetched Data:", result.data[0].customerId); // Assuming it returns an array
+                setCustID(result.data[0].customerId)
+            } catch (err) {
+                console.error("Error fetching data:", err);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    const handleCreateInvoice = async (su) => {
         setLoader(true)
         var pac = su
         var non
-        if (pac==959) {
-            non   =  "Non-Accommodation"
+        if (pac == 959) {
+            non = "Non-Accommodation"
             setLoader(false)
             setLoader1(true)
-        } else if (pac==1659) {
-            non ="Accommodation"
+        } else if (pac == 1659) {
+            non = "Accommodation"
             setLoader(true)
             setLoader1(false)
 
         }
- 
-         const customerId = `${custId}`
- 
-         try {
-             const response = await fetch("/api1/create-invoice", {
-                 method: "POST",
-                 headers: {
-                     "Content-Type": "application/json",
-                 },
-                 body: JSON.stringify({
-                     customerId,
-                     amount: su + 100, // Amount in dollars (e.g., $50.00 becomes 5000 in cents)
-                     description: "Tour Package Payment",
-                     disnew: non,
-                     userEmail:"nomi4698dg@gmail.com"
-                 }),
-             });
- 
-             if (!response.ok) {
-                 const errorData = await response.json();
-                 throw new Error(errorData.error || "Failed to create invoice");
-             }
- 
-             const { invoicePdf } = await response.json();
- 
-             // Trigger download of the invoice PDF
-             const link = document.createElement("a");
-             link.href = invoicePdf;
-             link.download = "invoice.pdf"; // Optional: Specify filename
-             document.body.appendChild(link);
-             link.click();
-             document.body.removeChild(link);
- 
-             toast.success("Invoice downloaded successfully!");
-             setLoader(false)
-             setLoader1(false)
- 
-         } catch (error) {
-             console.error("Error creating invoice:", error.message);
-             toast.error("Error creating invoice. Please try again.");
-             setLoader(false)
-             setLoader1(false)
- 
- 
-         }
-     };
- 
- 
-     // end invoice//////////////////////////////////////////////////////////////////////////////
+
+        const customerId = `${custId}`
+
+        try {
+            const response = await fetch("/api1/create-invoice", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    customerId,
+                    amount: su + 100, // Amount in dollars (e.g., $50.00 becomes 5000 in cents)
+                    description: "Tour Package Payment",
+                    disnew: non,
+                    userEmail: "nomi4698dg@gmail.com"
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Failed to create invoice");
+            }
+
+            const { invoicePdf } = await response.json();
+
+            // Trigger download of the invoice PDF
+            const link = document.createElement("a");
+            link.href = invoicePdf;
+            link.download = "invoice.pdf"; // Optional: Specify filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            toast.success("Invoice downloaded successfully!");
+            setLoader(false)
+            setLoader1(false)
+
+        } catch (error) {
+            console.error("Error creating invoice:", error.message);
+            toast.error("Error creating invoice. Please try again.");
+            setLoader(false)
+            setLoader1(false)
+
+
+        }
+    };
+
+
+    // end invoice//////////////////////////////////////////////////////////////////////////////
 
 
     return (
@@ -320,7 +320,7 @@ export default function Home() {
                         </Link>
 
 
-                       <Link
+                        <Link
                             href="/#events"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "events" ? "text-white" : ""
                                 }`}
@@ -333,7 +333,7 @@ export default function Home() {
                         </Link>
 
                         {/* atsasMun */}
-                                               <Link
+                        <Link
                             href="/#atsasMun"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "atsasMun" ? "text-white" : ""
                                 }`}
@@ -361,7 +361,7 @@ export default function Home() {
 
 
                         {/* FAQ */}
-                                                <Link
+                        <Link
                             href="/#faq"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "faq" ? "text-white" : ""
                                 }`}
@@ -374,7 +374,7 @@ export default function Home() {
                         </Link>
 
                         {/* Contact */}
-                                                <Link
+                        <Link
                             href="/#contact"
                             className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "contact" ? "text-white" : ""
                                 }`}
@@ -412,13 +412,16 @@ export default function Home() {
                                     <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                                         Goa, India
                                     </Link>
+                                    <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                                        London, UK
+                                    </Link>
                                     <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                                         New York, USA
                                     </Link>
                                     <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                                         Riyadh, Saudi Arabia
                                     </Link>
-                                   {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                    {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
                                         Paris, France
                                     </Link> */}
                                 </div>
@@ -454,7 +457,7 @@ export default function Home() {
 
                             {dropdownOpen && (
                                 <div className="absolute w-[170px] left-0 mt-4 bg-white text-black rounded shadow-lg">
-                                
+
 
                                     <Link href="/payment" className="block px-4 py-2 text-blue-400">
                                         Pricing
@@ -473,7 +476,7 @@ export default function Home() {
                     {/* Register Button */}
                     <Link href="/RegisterNow">
                         <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-                        <p className='text-[13px]'> Register Now </p>
+                            <p className='text-[13px]'> Register Now </p>
                         </button>
                     </Link>
 
@@ -616,6 +619,16 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
+                                        href="/UK"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        London, UK
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link>
+                                    <Link
                                         href="/USA"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -634,7 +647,8 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link> <Link
+                                    </Link>
+                                    {/* <Link
                                         href="/franceLandingP"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -643,7 +657,7 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link>
+                                    </Link> */}
 
                                 </div>
                             )}
@@ -665,7 +679,7 @@ export default function Home() {
                             </button>
                             {mobileDropdownOpen && (
                                 <div className="ml-6 space-y-2">
-                                 
+
 
                                     <Link
                                         href="/payment"
@@ -769,7 +783,7 @@ export default function Home() {
                         <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
                             {/* Basic Plan */}
                             <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-                                
+
                                 <div className="space-y-4">
                                     <h3 className="text-lg font-bold text-center">Basic</h3>
                                     <div className="text-center">
@@ -823,7 +837,7 @@ export default function Home() {
                                                     {loader1 && <button
                                                         className="w-full py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300">
                                                         <div className=" gap-4 w-full flex items-center justify-center">
-                                                         <p> Please waite. </p>
+                                                            <p> Please waite. </p>
                                                             <div
                                                                 className="w-8 h-8 border-2 border-transparent text-blue-700 text-4xl animate-spin flex items-center justify-center border-t-blue-500 rounded-full"
                                                             >
@@ -902,7 +916,7 @@ export default function Home() {
                                                     {loader && <button
                                                         className="w-full py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300">
                                                         <div className=" gap-4 w-full flex items-center justify-center">
-                                                         <p> Please waite. </p>
+                                                            <p> Please waite. </p>
                                                             <div
                                                                 className="w-8 h-8 border-2 border-transparent text-blue-700 text-4xl animate-spin flex items-center justify-center border-t-blue-500 rounded-full"
                                                             >

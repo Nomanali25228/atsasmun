@@ -56,25 +56,25 @@ const RegisterNav = () => {
     };
   }, [mobileMenuOpen]);
 
-  
- // Save and retrieve scroll state to/from localStorage
- useEffect(() => {
-  const savedScrollState = localStorage.getItem('isScrolled');
-  if (savedScrollState === 'true') {
-      setIsScrolled(true);
-  }
 
-  const handleScroll = () => {
+  // Save and retrieve scroll state to/from localStorage
+  useEffect(() => {
+    const savedScrollState = localStorage.getItem('isScrolled');
+    if (savedScrollState === 'true') {
+      setIsScrolled(true);
+    }
+
+    const handleScroll = () => {
       const scrollState = window.scrollY > 10;
       setIsScrolled(scrollState);
       localStorage.setItem('isScrolled', scrollState.toString());
-  };
+    };
 
-  window.addEventListener('scroll', handleScroll);
-  return () => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
       window.removeEventListener('scroll', handleScroll);
-  };
-}, []);
+    };
+  }, []);
 
 
 
@@ -125,12 +125,12 @@ const RegisterNav = () => {
         <div data-aos="fade-down" className="container cursor-pointer mx-auto  flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
-                        <Image
-                            src={logo}
-                            alt="Logo"
-                            className="lg:h-[100px] lg:w-[150px] md:h-[100px] md:w-[150px] sm:h-[80px] sm:w-[120px] h-[80px] w-[120px]"
-                        />
-                    </Link>
+            <Image
+              src={logo}
+              alt="Logo"
+              className="lg:h-[100px] lg:w-[150px] md:h-[100px] md:w-[150px] sm:h-[80px] sm:w-[120px] h-[80px] w-[120px]"
+            />
+          </Link>
           <div className="flex items-center">
           </div>
 
@@ -248,6 +248,9 @@ const RegisterNav = () => {
                   <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                     Goa, India
                   </Link>
+                  <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                    London, UK
+                  </Link>
                   <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                     New York, USA
                   </Link>
@@ -310,10 +313,10 @@ const RegisterNav = () => {
             onClick={() => setActiveSection("information")} // Set active section
           >
             <span className='flex'>
-            <p className='text-[13px]'> Register</p>
-            <span className='ml-1'>
-            <p className='text-[13px]'>Now </p>
-            </span>
+              <p className='text-[13px]'> Register</p>
+              <span className='ml-1'>
+                <p className='text-[13px]'>Now </p>
+              </span>
               <span
                 className={`absolute left-0 top-7  bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "home" ? "w-full" : "w-0 group-hover:w-full"
                   }`}
@@ -460,6 +463,26 @@ const RegisterNav = () => {
                     ></span>
                   </Link>
                   <Link
+                    href="/UK"
+                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    London, UK
+                    <span
+                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                    ></span>
+                  </Link>
+                  <Link
+                    href="/UK"
+                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    London, UK
+                    <span
+                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                    ></span>
+                  </Link>
+                  <Link
                     href="/USA"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -480,7 +503,7 @@ const RegisterNav = () => {
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
-                  </Link> 
+                  </Link>
                   {/* <Link
                     href="/franceLandingP"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"

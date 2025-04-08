@@ -29,7 +29,7 @@ export default function Page() {
 
   return (
     <>
-      <Dubaih bgImage={Riyadh} tital="Riyadh, Saudi Arabia" Pricelink="/SaudiPrice" StartDays="16" sup="th" EndDays="19" sup1="th" monthsDetils="october, 2025, Hilton Riyadh Hotel
+      <Dubaih bgImage={Riyadh} tital="Riyadh, Saudi Arabia" Pricelink="/Saudifee" StartDays="16" sup="th" EndDays="19" sup1="th" monthsDetils="october, 2025, Hilton Riyadh Hotel
 " style="text-blue-400" stlyle2="hover:text-blue-400" />
       <AboutDubai aboutTitle="Riyadh
 " about="ATSASMUN Riyadh offers a distinctive opportunity to engage in forward-thinking diplomacy at the crossroads of tradition and innovation. Set in the vibrant capital of Saudi Arabia, delegates will explore bold dialogue against the backdrop of a city rich in cultural heritage and rapidly emerging as a global hub. With diverse committees and thought-provoking topics, this conference promises an unforgettable experience—where the spirit of collaboration meets the future of international relations.

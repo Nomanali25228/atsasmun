@@ -65,24 +65,24 @@ export default function Home() {
         };
     }, [mobileMenuOpen]);
 
- // Save and retrieve scroll state to/from localStorage
- useEffect(() => {
-    const savedScrollState = localStorage.getItem('isScrolled');
-    if (savedScrollState === 'true') {
-        setIsScrolled(true);
-    }
+    // Save and retrieve scroll state to/from localStorage
+    useEffect(() => {
+        const savedScrollState = localStorage.getItem('isScrolled');
+        if (savedScrollState === 'true') {
+            setIsScrolled(true);
+        }
 
-    const handleScroll = () => {
-        const scrollState = window.scrollY > 10;
-        setIsScrolled(scrollState);
-        localStorage.setItem('isScrolled', scrollState.toString());
-    };
+        const handleScroll = () => {
+            const scrollState = window.scrollY > 10;
+            setIsScrolled(scrollState);
+            localStorage.setItem('isScrolled', scrollState.toString());
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-}, []);
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 
 
@@ -288,13 +288,16 @@ export default function Home() {
                                     <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                                         Goa, India
                                     </Link>
+                                    <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                                        London, UK
+                                    </Link>
                                     <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                                         New York, USA
                                     </Link>
                                     <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                                         Riyadh, Saudi Arabia
                                     </Link>
-                                   {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                    {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
                                         Paris, France
                                     </Link> */}
 
@@ -330,7 +333,7 @@ export default function Home() {
 
                             {dropdownOpen && (
                                 <div className="absolute w-[170px] left-0 mt-4 bg-white text-black rounded shadow-lg">
-             
+
                                     <Link href="/payment" className="block px-4 py-2 hover:text-blue-400">
                                         Pricing
                                     </Link>
@@ -348,7 +351,7 @@ export default function Home() {
                     {/* Register Button */}
                     <Link href="/RegisterNow">
                         <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-                        <p className='text-[13px]'> Register Now </p>
+                            <p className='text-[13px]'> Register Now </p>
                         </button>
                     </Link>
 
@@ -491,6 +494,16 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
+                                        href="/UK"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        London, UK
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link>
+                                    <Link
                                         href="/USA"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -511,7 +524,7 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link> 
+                                    </Link>
                                     {/* <Link
                                         href="/franceLandingP"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
@@ -648,55 +661,57 @@ export default function Home() {
 
                                 {!loading && !error && (
 
-                                  <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 px-4">
-                                    {posts.length > 0 ? (
-                                      posts.map((post) => (
-                                        <div
-                                          key={post.id}
-                                          className="a-box w-full sm:w-[280px] mx-auto text-center rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
-                                        >
-                                          {/* Image Container */}
-                                          {post.cover?.url ? (
-                                            <div className="img-container h-[200px] w-full sm:w-[260px] overflow-hidden rounded-b-[20px] mx-auto">
-                                              <div className="img-inner">
-                                                <div className="rounded-[20px] overflow-hidden mt-[30px] bg-[#c8c2c2] h-[200px] w-full sm:w-[260px]">
-                                                  <Image
-                                                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.cover.url}`}
-                                                    alt={post.title || "Post Image"}
-                                                    className="object-cover h-full w-full"
-                                                  />
+                                    <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 px-4">
+                                        {posts.length > 0 ? (
+                                            posts.map((post) => (
+                                                <div
+                                                    key={post.id}
+                                                    className="a-box w-full sm:w-[280px] mx-auto text-center rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                                                >
+                                                    {/* Image Container */}
+                                                    {post.cover?.url ? (
+                                                        <div className="img-container h-[200px] w-full sm:w-[260px] overflow-hidden rounded-b-[20px] mx-auto">
+                                                            <div className="img-inner">
+                                                                <div className="rounded-[20px] overflow-hidden mt-[30px] bg-[#c8c2c2] h-[200px] w-full sm:w-[260px]">
+                                                                    <Image
+                                                                        src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.cover.url}`}
+                                                                        width={260} // specify the width
+                                                                        height={200} // specify the height
+                                                                        alt={post.title || "Post Image"}
+                                                                        className="object-cover h-full w-full"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="h-[200px] w-full sm:w-[260px] bg-gray-200 flex items-center justify-center">
+                                                            <span className="text-gray-500">No Image</span>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Text Content */}
+                                                    <div className="text-container shadow-md p-4 pt-[90px] rounded-[20px] bg-white -mt-[90px] leading-[20px] text-sm">
+                                                        <p className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 inline-block px-2 py-1 rounded-md shadow-sm">
+                                                            Article
+                                                        </p>
+                                                        <h2 className="text-base font-bold text-gray-800 mt-3 group-hover:text-blue-600 transition-colors duration-500 line-clamp-2">
+                                                            {post.title || "Untitled Post"}
+                                                        </h2>
+
+                                                        <Link href={`/blog/${post.slug}`} className="block mt-4">
+                                                            <span className="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300">
+                                                                Read More
+                                                            </span>
+                                                        </Link>
+                                                    </div>
                                                 </div>
-                                              </div>
-                                            </div>
-                                          ) : (
-                                            <div className="h-[200px] w-full sm:w-[260px] bg-gray-200 flex items-center justify-center">
-                                              <span className="text-gray-500">No Image</span>
-                                            </div>
-                                          )}
-                                  
-                                          {/* Text Content */}
-                                          <div className="text-container shadow-md p-4 pt-[90px] rounded-[20px] bg-white -mt-[90px] leading-[20px] text-sm">
-                                            <p className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 inline-block px-2 py-1 rounded-md shadow-sm">
-                                              Article
-                                            </p>
-                                            <h2 className="text-base font-bold text-gray-800 mt-3 group-hover:text-blue-600 transition-colors duration-500 line-clamp-2">
-                                              {post.title || "Untitled Post"}
-                                            </h2>
-                                  
-                                            <Link href={`/blog/${post.slug}`} className="block mt-4">
-                                              <span className="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300">
-                                                Read More
-                                              </span>
-                                            </Link>
-                                          </div>
-                                        </div>
-                                      ))
-                                    ) : (
-                                      <p className="text-gray-400 text-center">No posts available at the moment.</p>
-                                    )}
-                                  </div>
-                                  
-                                 
+                                            ))
+                                        ) : (
+                                            <p className="text-gray-400 text-center">No posts available at the moment.</p>
+                                        )}
+                                    </div>
+
+
                                 )}
 
                                 {/* Pagination Controls */}

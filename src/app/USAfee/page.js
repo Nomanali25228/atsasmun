@@ -21,10 +21,11 @@ export default function Home() {
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isScrolled, setIsScrolled] = useState(false);
-const {check,setCheck} = useContext(ContextPage)
-useEffect(()=>{
-setCheck("Goa, India")
-},[check,setCheck])
+    const { check, setCheck } = useContext(ContextPage)
+    useEffect(() => {
+        setCheck("New York, USA")
+    }, [check, setCheck])
+
     let dropdownTimeout;
     let dropdownTimeout2;
 
@@ -48,7 +49,7 @@ setCheck("Goa, India")
     const handleMouseLeave2 = () => {
         dropdownTimeout2 = setTimeout(() => {
             setDropdownOpen2(false); // Hide dropdown after 3 seconds
-        }, 300); // 3-second delay
+        }, 350); // 3-second delay
     };
 
     // Prevent body scrolling when mobile menu is open
@@ -63,24 +64,24 @@ setCheck("Goa, India")
         };
     }, [mobileMenuOpen]);
 
-     // Save and retrieve scroll state to/from localStorage
- useEffect(() => {
-    const savedScrollState = localStorage.getItem('isScrolled');
-    if (savedScrollState === 'true') {
-        setIsScrolled(true);
-    }
+    // Save and retrieve scroll state to/from localStorage
+    useEffect(() => {
+        const savedScrollState = localStorage.getItem('isScrolled');
+        if (savedScrollState === 'true') {
+            setIsScrolled(true);
+        }
 
-    const handleScroll = () => {
-        const scrollState = window.scrollY > 10;
-        setIsScrolled(scrollState);
-        localStorage.setItem('isScrolled', scrollState.toString());
-    };
+        const handleScroll = () => {
+            const scrollState = window.scrollY > 10;
+            setIsScrolled(scrollState);
+            localStorage.setItem('isScrolled', scrollState.toString());
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-}, []);
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 
 
@@ -153,7 +154,7 @@ setCheck("Goa, India")
                                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "" ? "w-full" : "w-0 group-hover:w-full"
                                     }`}
                             ></span>
-                    </Link>
+                        </Link>
 
 
                         <Link
@@ -248,13 +249,16 @@ setCheck("Goa, India")
                                     <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
                                         Goa, India
                                     </Link>
+                                    <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                                        London, UK
+                                    </Link>
                                     <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                                         New York, USA
                                     </Link>
                                     <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                                         Riyadh, Saudi Arabia
                                     </Link>
-                                   {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
+                                    {/* <Link href="/franceLandingP" className="block px-4 py-2 hover:text-blue-400">
                                         Paris, France
                                     </Link> */}
                                 </div>
@@ -290,7 +294,7 @@ setCheck("Goa, India")
 
                             {dropdownOpen && (
                                 <div className="absolute w-[170px] left-0 mt-4 bg-white text-black rounded shadow-lg">
-                                
+
 
                                     <Link href="/payment" className="block px-4 py-2 text-blue-400">
                                         Pricing
@@ -309,7 +313,7 @@ setCheck("Goa, India")
                     {/* Register Button */}
                     <Link href="/RegisterNow">
                         <button className="hidden lg:block bg-[#027CAC] text-white font-semibold py-1.5 px-4 rounded-full border-2 border-[#027CAC] transition-all duration-300 hover:bg-transparent text-sm tracking-wide">
-                        <p className='text-[13px]'> Register Now </p>
+                            <p className='text-[13px]'> Register Now </p>
                         </button>
                     </Link>
 
@@ -452,6 +456,16 @@ setCheck("Goa, India")
                                         ></span>
                                     </Link>
                                     <Link
+                                        href="/UK"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        London, UK
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link>
+                                    <Link
                                         href="/USA"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -470,7 +484,8 @@ setCheck("Goa, India")
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link> <Link
+                                    </Link>
+                                    {/* <Link
                                         href="/franceLandingP"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -479,7 +494,7 @@ setCheck("Goa, India")
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link>
+                                    </Link> */}
 
                                 </div>
                             )}
@@ -501,7 +516,7 @@ setCheck("Goa, India")
                             </button>
                             {mobileDropdownOpen && (
                                 <div className="ml-6 space-y-2">
-                                 
+
 
                                     <Link
                                         href="/payment"
@@ -589,20 +604,20 @@ setCheck("Goa, India")
                 <section >
                     <div className="max-w-5xl mx-auto px-4">
                         <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
-                            Pricing for <span className="text-purple-400">Goa, India</span>
+                            Pricing for <span className="text-purple-400">New York, USA</span>
                         </h2>
                         <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
                             {/* Basic Plan */}
                             <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-                          
+
                                 <div className="space-y-4">
                                     <h3 className="text-lg font-bold text-center">Basic</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$249
+                                        <p className="text-3xl font-extrabold">$979
 
                                         </p>
                                         <p className="text-xs line-through text-gray-500 mt-1">
-                                            $489  Early Applicant Discount
+                                            $1100  Early Applicant Discount
                                         </p>
                                     </div>
                                     <p className="text-center text-blue-300 font-semibold uppercase text-xs">
@@ -618,42 +633,48 @@ setCheck("Goa, India")
                                         <li>✔️ 1 Lunch and 2 Dinners</li>
                                     </ul>
                                     <div className="text-center mt-6">
-                                    <Link href="/RegisterNow">
-          <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">                 
-Register Now →                                            
-</button>                          
-</Link>
+                                        <Link href="/RegisterNow">
+                                            <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+                                                Register Now →
+                                            </button>
+                                        </Link>
+
                                     </div>
                                 </div>
                             </div>
 
                             {/* Full Experience Plan */}
                             <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
-    <div className="space-y-4">
-        <h3 className="text-lg font-bold text-center">Full Experience</h3>
-        <div className="text-center">
-            <p className="text-3xl font-extrabold">$579
-            </p>
-            {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-            <p className="text-xs line-through text-gray-500 mt-1">$689 Early Applicant Discount</p>
-        </div>
-        <p className="text-center text-blue-300 font-semibold uppercase text-xs">Accommodation</p>
-        <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
-            <li>✔️ Everything in Non-Accommodation Package</li>
-            <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
-            <li>✔️ 3 Buffet Breakfast</li>
-            <li>✔️ 2 Lunch and 3 Dinners</li>
-            <li>✔️ Goa City Tour</li>
-        </ul>
-    </div>
-    <div className="mt-6">
-        <Link href="/RegisterNow">
-            <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-                Register Now →
-            </button>
-        </Link>
-    </div>
-</div>
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center">Full Experience</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold">$1599</p>
+                                        {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
+                                        <p className="text-xs line-through text-gray-500 mt-1">
+                                            $1700 Early Applicant Discount
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                        Accommodation
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
+                                        <li>✔️ Everything in Non-Accomodation Package</li>
+                                        <li>✔️ Visa invitation letter</li>
+                                        <li>✔️ Airport Assistance (Arrival)</li>
+                                        <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
+                                        <li>✔️ 3 Buffet Breakfast</li>
+                                        <li>✔️ 2 Lunch and 3 Dinners</li>
+                                        <li>✔️ USA City Tour</li>
+                                    </ul>
+                                </div>
+                                <div className="text-center mt-6">
+                                    <Link href="/RegisterNow">
+                                        <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+                                            Register Now →
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
