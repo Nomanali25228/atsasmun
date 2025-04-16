@@ -10,11 +10,11 @@ import Shedule from '@/app/(component)/dubai-shedule/Shedule';
 import Footer from '@/app/(component)/footer/Footer';
 import ScrollToTop from '@/app/(component)/Scrolltotop/ScrollToTop';
 import Whatsapp from '@/app/(component)/whatsapp/Whatsapp';
-import hotelx1 from '@/app/public/img/bgHotelVenueIstanbul1.jpg';
-import hotelx2 from '@/app/public/img/HotelVenueIstanbul2.jpg';
-import hotelx3 from '@/app/public/img/HotelVenueIstanbul3.jpg';
-import hotelx4 from '@/app/public/img/HotelVenueIstanbul4.jpg';
-import hotelx5 from '@/app/public/img/HotelVenueIstanbul5.jpg';
+import hotelx1 from '@/app/public/img/bgHotelIstanbul1.jpg';
+import hotelx2 from '@/app/public/img/HotelIstanbul2.jpg';
+import hotelx3 from '@/app/public/img/HotelIstanbul3.jpg';
+import hotelx4 from '@/app/public/img/HotelIstanbul4.jpg';
+import hotelx5 from '@/app/public/img/HotelIstanbul5.jpg';
 import event1 from '@/app/public/img/Committee Sessions.png'
 import event2 from '@/app/public/img/Cultural Global Village.jpg'
 import event3 from '@/app/public/img/Open Mic Night.jpeg'
