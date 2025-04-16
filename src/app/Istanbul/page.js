@@ -40,3 +40,4 @@ export default function Page() {
   );
 }
   // const images = [hotelx1, hotelx2, hotelx3, hotelx4];
+  // n
