@@ -5,6 +5,7 @@ export const ContextProvider = ({children}) => {
   const [imgfor,setImgfor] = useState(null)
 const [amounts,setAmounts] = useState(0)
   const [check,setCheck] = useState("")
+  const [refresh,setRefresh] = useState(false)
   useEffect(() => {
     if (amounts !== 0) { // Prevent saving 0 if it's not intentional
       localStorage.setItem('amounts', amounts);
