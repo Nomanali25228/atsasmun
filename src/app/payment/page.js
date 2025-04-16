@@ -5,7 +5,7 @@ import Image from "next/image";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import istan from '@/app/public/img/istun.jpg';
 import istan1 from '@/app/public/img/india.jpg';
-import istan2 from '@/app/public/img/paris.jpeg';
+import istan2 from '@/app/public/img/london.jpg';
 import istan3 from '@/app/public/img/bgUSA.jpg';
 import istan4 from '@/app/public/img/riyadhcity.jpg';
 import istan5 from '@/app/public/img/dubia.jpg';
@@ -18,11 +18,11 @@ import ParticleCanvas from "../(component)/ParticleCanvas";
 
 export default function Flip() {
   const locations = [
-    { name: 'Dubai, UAE', image: istan5, date: '2nd-05th, May, 2025', link: '/uaefee' },
-    { name: 'Istanbul, Türkiye', image: istan, date: '05th-08th, June, 2025', link: '/Istanbulfee' },
+    { name: 'Dubai, UAE', image: istan5, date: '22th-25th, May, 2025', link: '/uaefee' },
+    { name: 'Istanbul, Türkiye', image: istan, date: '12th-15th, June, 2025', link: '/Istanbulfee' },
     { name: 'Goa, India', image: istan1, date: '26th-29th june, 2025', link: '/Indiafee' },
+    { name: 'London, UK', image: istan2, date: '07th-10th, August, 2025', link: '/UKfee' },
     { name: 'New York, USA', image: istan3, date: '04th-07th, September, 2025', link: '/USAfee' },
-    // { name: 'Paris, France', image: istan2, date: '07th-10th, August, 2025', link: '/Francefee' },
     { name: 'Riyadh, Saudi Arabia', image: istan4, date: '16th-19th, october, 2025', link: '/Saudifee' },
   ];
 

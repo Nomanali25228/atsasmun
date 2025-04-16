@@ -29,7 +29,7 @@ const cards = [
     title: "ATSASMUN Dubai, UAE",
     subtitle: "Dubai, UAE",
     description:
-      "(2nd-05th, May 2025)",
+      "(22th-25th, May 2025)",
     details:
       "Young leaders can take advantage of a futuristic platform provided by ATSASMUN in Dubai, which combines the city's cosmopolitan allure and forward-thinking perspective with the spirit of innovation.",
     image: bell2,
@@ -41,7 +41,7 @@ const cards = [
     title: "ATSASMUN Istanbul, Turkey",
     subtitle: "Istanbul, Turkey",
     description:
-      "(05th-08th, June 2025)",
+      "(12th-15th, June 2025)",
     details:
 "Aspiring diplomatic leaders are invited to attend ATSASMUN in Istanbul, located at the crossroads of civilizations. The city's rich cultural past offers global discourse inspiration unmatched by any other.",    image: bell1,
     icon: istanbul,
@@ -164,7 +164,7 @@ export default function Card() {
 
 {/* Overlay Text on Hover */}
 <div
-  className="absolute inset-0 z-10 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-between p-4 text-white group-hover:border-b-8 group-hover:border-[red]"
+  className="absolute inset-0 z-10 bg-black bg-opacity-80 opacity-50 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-between p-4 text-white group-hover:border-b-8 group-hover:border-[red]"
 >
 
 </div>

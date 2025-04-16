@@ -321,8 +321,8 @@ export default function Home() {
   useEffect(() => {
     if (destination == "Istanbul, Turkey") {
       setChange({
-        from: '05th ',
-        to: '08',
+        from: '12th ',
+        to: '15',
         th: 'June, 2025'
 
       })
@@ -333,8 +333,8 @@ export default function Home() {
     else if (destination == "Dubai, UAE") {
 
       setChange({
-        from: '2nd ',
-        to: '05',
+        from: '22th ',
+        to: '25',
         th: 'May, 2025'
 
       })
@@ -800,6 +800,11 @@ export default function Home() {
       }
     }, 10); // Adjust 10ms interval for smoother effect
   };
+
+
+
+
+
 
   return (
     <div>

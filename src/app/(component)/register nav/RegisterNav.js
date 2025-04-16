@@ -124,6 +124,7 @@ const RegisterNav = () => {
       >
         <div data-aos="fade-down" className="container cursor-pointer mx-auto  flex items-center justify-between">
           {/* Logo */}
+          
           <Link href="/">
             <Image
               src={logo}

@@ -645,10 +645,10 @@ export default function Home() {
                                 <div className="space-y-4">
                                     <h3 className="text-lg font-bold text-center">Full Experience</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$547</p>
+                                        <p className="text-3xl font-extrabold">$579</p>
                                         {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
                                         <p className="text-xs line-through text-gray-500 mt-1">
-                                            $600 Early Applicant Discount
+                                            $679 Early Applicant Discount
                                         </p>
                                     </div>
                                     <p className="text-center text-blue-300 font-semibold uppercase text-xs">

@@ -10,7 +10,10 @@ import OurMission from "./(component)/our mission/OurMission";
 import Footer from "./(component)/footer/Footer";
 import ScrollToTop from "./(component)/Scrolltotop/ScrollToTop";
 import Whatsapp from '@/app/(component)/whatsapp/Whatsapp'
+import { useEffect } from "react";
 export default function Home() {
+
+  // i want to relode page atfer go to hpme page
 
   return (
     <>

@@ -224,7 +224,7 @@ export default function Home() {
             non = "Non-Accommodation"
             setLoader(false)
             setLoader1(true)
-        } else if (pac == 547) {
+        } else if (pac == 579) {
             non = "Accommodation"
             setLoader(true)
             setLoader1(false)
@@ -867,10 +867,10 @@ export default function Home() {
                                 <div className="space-y-4">
                                     <h3 className="text-lg font-bold text-center">Full Experience</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$547 </p>
+                                        <p className="text-3xl font-extrabold">$579 </p>
                                         {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
                                         <p className="text-xs line-through text-gray-500 mt-1">
-                                            $647 Early Applicant Discount
+                                            $679 Early Applicant Discount
                                         </p>
                                     </div>
                                     <p className="text-center text-blue-300 font-semibold uppercase text-xs">
@@ -908,7 +908,7 @@ export default function Home() {
                                                     </button>
                                                     <Link href="/checkout">
                                                         <button
-                                                            onClick={() => seo(547)}
+                                                            onClick={() => seo(579)}
                                                             className="w-full py-3 bg-gradient-to-r from-green-600 to-green-800 text-white text-sm font-bold rounded-full hover:bg-green-700 hover:scale-105 transition-all duration-300"
                                                         >
                                                             Pay now →
@@ -931,7 +931,7 @@ export default function Home() {
                                                     </button>}
                                                     {!loader && <button
                                                         className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300"
-                                                        onClick={() => handleCreateInvoice(547)}>
+                                                        onClick={() => handleCreateInvoice(579)}>
                                                         Invoice ↓
                                                     </button>}
                                                 </div>
