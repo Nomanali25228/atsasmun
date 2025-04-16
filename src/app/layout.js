@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
         <link rel="preload" href="/fonts/GeistMonoVF.woff" as="font" type="font/woff" crossOrigin="anonymous" /> */}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContextProvider>
           <NextTopLoader /> {/* Top loader for navigation transitions */}
