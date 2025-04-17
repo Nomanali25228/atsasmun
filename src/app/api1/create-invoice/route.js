@@ -16,14 +16,16 @@ export async function POST(req) {
       );
     }
 
-    let discountAmount = 10000; // Amount in cents
+    let discountAmount = 10000; // $100.00 in cents
+    const currency = 'usd'; // ✅ Set this once
 
-    // Create an Invoice
+    // Step 1: Create invoice
     const invoice = await stripe.invoices.create({
       customer: customerId,
-      collection_method: "send_invoice", // Ensures invoice is emailed
+      collection_method: "send_invoice",
       days_until_due: 6,
-      auto_advance: true, // Automatically finalizes and emails the invoice
+      auto_advance: true,
+      currency, // ✅ Set currency here for safety
       footer: `
         PAY WITH ACH OR WIRE TRANSFER
 
@@ -40,29 +42,31 @@ export async function POST(req) {
 
     console.log("Invoice Created:", invoice);
 
-    // Create Invoice Item for the original amount
+    // Step 2: Create original invoice item
     await stripe.invoiceItems.create({
       customer: customerId,
-      amount: Math.round(amount * 100), // Convert amount to cents
+      amount: Math.round(amount * 100),
+      currency, // ✅ Use same currency
       description: `${disnew} ${description}`,
       invoice: invoice.id,
     });
 
     console.log("Original Invoice Item Created");
 
-    // Create Invoice Item for the discount (negative amount)
+    // Step 3: Add discount if applicable
     if (discountAmount > 0) {
       await stripe.invoiceItems.create({
         customer: customerId,
-        description: `New Year Discount (-£${(discountAmount / 100).toFixed(2)})`,
         amount: -discountAmount,
+        currency, // ✅ Use same currency
+        description: `New Year Discount (-$${(discountAmount / 100).toFixed(2)})`,
         invoice: invoice.id,
       });
 
       console.log("Discount Invoice Item Created");
     }
 
-    // Finalize the Invoice (This triggers Stripe to send the email)
+    // Step 4: Finalize invoice
     const finalizedInvoice = await stripe.invoices.finalizeInvoice(invoice.id);
 
     console.log("Finalized Invoice:", finalizedInvoice);
@@ -75,9 +79,13 @@ export async function POST(req) {
     }
 
     return new Response(
-      JSON.stringify({ message: "Invoice created and sent successfully!", invoicePdf: finalizedInvoice.invoice_pdf }),
+      JSON.stringify({
+        message: "Invoice created and sent successfully!",
+        invoicePdf: finalizedInvoice.invoice_pdf,
+      }),
       { status: 200 }
     );
+
   } catch (error) {
     console.error("Error creating invoice:", error.message, error.stack);
 
