@@ -664,7 +664,7 @@ export default function Home() {
                                         <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
                                         <li>✔️ 3 Buffet Breakfast</li>
                                         <li>✔️ 2 Lunch and 3 Dinners</li>
-                                        <li>✔️ USA City Tour</li>
+                                        <li>✔️ New York City Tour</li>
                                     </ul>
                                 </div>
                                 <div className="text-center mt-6">

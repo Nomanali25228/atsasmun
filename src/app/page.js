@@ -10,10 +10,17 @@ import OurMission from "./(component)/our mission/OurMission";
 import Footer from "./(component)/footer/Footer";
 import ScrollToTop from "./(component)/Scrolltotop/ScrollToTop";
 import Whatsapp from '@/app/(component)/whatsapp/Whatsapp'
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import ContextPage from "./Context/ContextPage";
 export default function Home() {
-
-  // i want to relode page atfer go to hpme page
+const {refresh,setRefresh} = useContext(ContextPage);
+  useEffect(() => {
+    
+    if (refresh==true) {
+      window.location.reload();
+      setRefresh(false);
+    }
+  }, []);
 
   return (
     <>
@@ -21,6 +28,7 @@ export default function Home() {
   <Events/>
   <OurMission/>
   {/* <Video/> */}
+  
   <AtsasMun/>
   <Gallery/>
   <Faq/>

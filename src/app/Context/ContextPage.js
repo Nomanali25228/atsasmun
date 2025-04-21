@@ -18,7 +18,7 @@ const [amounts,setAmounts] = useState(0)
     }
   }, []);
   return (
-    <ContextPage.Provider value={{check,setCheck,imgfor,setImgfor,amounts,setAmounts}}>
+    <ContextPage.Provider value={{check,setCheck,imgfor,setImgfor,amounts,setAmounts,refresh,setRefresh}}>
       {children}
     </ContextPage.Provider>
   );

@@ -271,6 +271,7 @@ export default function Home() {
   const [selectedRepresenting, setSelectedRepresenting] = useState("");
   const [imgchange, setImgchange] = useState(st)
   const calculateProgress = () => Math.min((step / totalSteps) * 100, 100); // Ensure max 100%
+  
   const handleNextStep = () => {
     if (validateForm(step)) {
       if (step < totalSteps) {
@@ -748,6 +749,8 @@ export default function Home() {
       }
 
       const data = await response.json();
+      console.log('Email sent successfully:', data);
+      cronjob(event, name, email, id)
       setName('');
       setEmail('');
       console.log(data);
@@ -774,7 +777,34 @@ export default function Home() {
     }
 
   };
-
+  const cronjob = async (event, name, email, id) => {
+    console.log("cronjob",id, name, email);
+    
+    event.preventDefault();
+  
+    try {
+      const response = await axios.post(`https://atsas-backend.onrender.com/api/notifications`, {
+        data: {
+          Email: email,
+          FirstName: name,
+          Idname: id,
+          Destinations: destination,
+        },
+      });
+  
+      if (response.status === 200) {
+        console.log("ok");
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        console.error('Error submitting form:', error.response.data.error?.message || error.response.data);
+        toast.error(`Error: ${error.response.data.error?.message || 'Something went wrong'}`);
+      } else {
+        toast.error('An unknown error occurred. Please try again.');
+      }
+  
+    } 
+  };
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds

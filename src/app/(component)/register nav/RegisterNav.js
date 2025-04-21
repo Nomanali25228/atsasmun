@@ -3,10 +3,12 @@ import Image from 'next/image';
 import logo from '@/app/public/img/logo-1.png'; // Logo
 import Link from 'next/link';
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import the AOS styles
 import 'react-phone-number-input/style.css'; // Ensure you are importing the style correctly
+import ContextPage from '@/app/Context/ContextPage';
+import useConfirmLeave from '@/app/hook/useConfirmLeave';
 
 const RegisterNav = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -16,7 +18,9 @@ const RegisterNav = () => {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+const {setRefresh} = useContext(ContextPage);
 
+useConfirmLeave("Do you really want to leave");
 
   let dropdownTimeout;
   let dropdownTimeout2;
@@ -125,7 +129,7 @@ const RegisterNav = () => {
         <div data-aos="fade-down" className="container cursor-pointer mx-auto  flex items-center justify-between">
           {/* Logo */}
           
-          <Link href="/">
+          <Link href="/" onClick={setRefresh(true)}>
             <Image
               src={logo}
               alt="Logo"
@@ -148,7 +152,7 @@ const RegisterNav = () => {
               href="/"
               className={`relative group text-[#A8ABBA] hover:text-white transition-all duration-300 ${activeSection === "home" ? "" : ""
                 }`}
-            >
+            onClick={setRefresh(true)}>
               Home
               <span
                 className={`absolute left-0 top-7 bottom-0 h-0.5 bg-blue-400 transition-all duration-300 ease-in-out ${activeSection === "" ? "w-full" : "w-0 group-hover:w-full"

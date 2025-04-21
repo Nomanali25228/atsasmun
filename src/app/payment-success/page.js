@@ -1,46 +1,51 @@
 'use client';
 
-import { useEffect } from 'react';
-import confetti from 'canvas-confetti'; // For celebration effect
-import bg from '@/app/public/img/HPbg1.jpeg'; // Hero background 
-import Link from 'next/link'; // Import Link for navigation
-import { useSearchParams } from 'next/navigation'; // Import useSearchParams
+import { useEffect, Suspense } from 'react';
+import confetti from 'canvas-confetti';
+import bg from '@/app/public/img/HPbg1.jpeg';
+import Link from 'next/link';
+import { useSearchParams, useRouter } from 'next/navigation'; // 🔥 include useRouter
 import ParticleCanvas from "@/app/(component)/ParticleCanvas";
-import { Suspense } from 'react'; // Import Suspense
 
 function PaymentSuccessContent() {
-  const searchParams = useSearchParams(); // Get search params using the hook
-  const amount = searchParams.get('amount'); // Access the 'amount' query parameter
+  const searchParams = useSearchParams();
+  const router = useRouter(); // ✅ get router
+  const amount = searchParams.get('amount');
 
-  // Trigger confetti and fireworks on mount
+  // ✅ Redirect to home if amount is missing
+  useEffect(() => {
+    if (!amount) {
+      router.push('/');
+    }
+  }, [amount, router]);
+
+  // 🎉 Trigger confetti on load
   useEffect(() => {
     const triggerConfetti = () => {
-      // Main confetti explosion for fireworks-like effect
       confetti({
-        particleCount: 300, 
-        spread: 50, 
-        origin: { y: 0.8 }, 
+        particleCount: 200,
+        spread: 50,
+        origin: { y: 0.8 },
         colors: ['#FFD700', '#FF4500', '#00FFFF', '#FF1493', '#FFFFFF'],
         gravity: 0.5,
         scalar: 1.2,
       });
 
-      // Rocket-like firework effect
-      const interval = setInterval(() => {
-        confetti({
-          particleCount: 10,
-          spread: 15,
-          startVelocity: 25,
-          origin: { y: 1, x: Math.random() },
-          gravity: 0.25,
-          colors: ['#FF6347', '#FFD700', '#FFFF00'],
-          angle: 90,
-          drift: 0.1,
-          scalar: 1.5,
-        });
-      }, 50);
+      // Optional: firework-style interval
+      // const interval = setInterval(() => {
+      //   confetti({
+      //     particleCount: 10,
+      //     spread: 15,
+      //     startVelocity: 25,
+      //     origin: { y: 1, x: Math.random() },
+      //     gravity: 0.25,
+      //     colors: ['#FF6347', '#FFD700', '#FFFF00'],
+      //     angle: 90,
+      //     drift: 0.1,
+      //     scalar: 1.5,
+      //   });
+      // }, 50);
 
-      // Stop the rocket effect after 2 seconds
       setTimeout(() => {
         clearInterval(interval);
       }, 2000);
@@ -57,7 +62,6 @@ function PaymentSuccessContent() {
         backgroundAttachment: 'fixed',
       }}
     >
-      {/* Overlay */}
       <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
 
       <main className="max-w-4xl relative z-10 mx-auto px-8 py-16 text-center">
@@ -76,12 +80,10 @@ function PaymentSuccessContent() {
           </div>
         </div>
 
-        {/* Celebrate Section */}
         <p className="text-lg md:text-xl text-gray-300 mt-8">
           We appreciate your support! You{"’"}re awesome! 🎉
         </p>
 
-        {/* Back to Home Button */}
         <div className="mt-12">
           <Link href="/" passHref>
             <button className="px-8 py-3 text-xl font-semibold text-white bg-purple-600 hover:bg-purple-800 rounded-full shadow-lg transition duration-300">

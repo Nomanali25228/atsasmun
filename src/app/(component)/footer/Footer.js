@@ -176,7 +176,9 @@ const Footer = () => {
                         </p>
                         <div className="text-sm text-gray-400 mt-4">
                             <span className="font-bold text-white">Phone:</span>{' '}
-                            <a href="tel:+447487302322" className="hover:text-blue-400">
+                            <a href="tel:+447487302322"
+                                target="_blank"
+                                rel="noopener noreferrer" className="hover:text-blue-400">
                                 <p className='hover:scale-105 transition-transform duration-500'>
                                 +447487302322
                                 </p>
@@ -184,7 +186,7 @@ const Footer = () => {
                         </div>
                         <div className="text-sm text-gray-400">
                             <span className="font-bold text-white">Email:</span>{' '}
-                            <a href="mailto:info@atsasmun.com" className="hover:text-blue-400">
+                            <a href="mailto:info@atsasmun.com"  className="hover:text-blue-400">
                                 <p className='hover:scale-105 transition-transform duration-500'>
                                 info@atsasmun.com
                                 </p>
