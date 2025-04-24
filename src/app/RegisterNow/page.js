@@ -316,7 +316,6 @@ export default function Home() {
   const [change, setChange] = useState({})
   const [loader, setLoader] = useState(false)
   const [attachment, setAttachment] = useState(istan);
-  const [openemailloader, setOpenemailloader] = useState(false);
   const [chnageApi, setChangeApi] = useState("")
 
   useEffect(() => {
@@ -548,13 +547,13 @@ export default function Home() {
       !formData.PhoneNumber ||
       !formData.Destinations
     ) {
-      toast.error('Please fill out all required fields.');
+      toast.info('Please fill out all required fields.');
       return false;
     }
 
     // Check if emails match
     if (formData.Email !== formData.ReEnterEmail) {
-      toast.error('Emails do not match.');
+      toast.info('Emails do not match.');
       return false;
     }
 
@@ -564,13 +563,13 @@ export default function Home() {
 
     // Check if the date is valid
     if (isNaN(enteredDate)) {
-      toast.error('Please enter a valid birth date.');
+      toast.info('Please enter a valid birth date.');
       return false;
     }
 
     // Check if the date is in the future
     if (enteredDate > today) {
-      toast.error('Birth date cannot be in the future.');
+      toast.info('Birth date cannot be in the future.');
       return false;
     }
 
@@ -585,11 +584,11 @@ export default function Home() {
     }
 
     if (age < 7) {
-      toast.error('You must be at least 7 years old to register.');
+      toast.info('You must be at least 7 years old to register.');
       return false;
     }
     if (age > 90) {
-      toast.error('Please enter a realistic birth date.');
+      toast.info('Please enter a realistic birth date.');
       return false;
     }
 
@@ -637,7 +636,7 @@ export default function Home() {
 
       if (response.status === 200) {
         alert('Form submitted successfully!');
-        setLoader(false)
+
         setFormData({
           FirstName: '',
           MiddleName: '',
@@ -669,16 +668,13 @@ export default function Home() {
         setSelectedNationality(""); // Reset nationality selection
         setSelectedResidency(""); // Reset residency selection
         setSelectedRepresenting(""); // Reset representing country selection
-        setLoader(false)
 
       }
-      setLoader(false)
       console.log("response of First Name Api++++: ", response.data.data.id);
       localStorage.setItem("userEmail", formData.Email);
       localStorage.setItem("customerId", customerId);
       var id = response.data.data.id
-      if (step < totalSteps) {
-        setStep(step + 1);
+      
         if (destination == "Istanbul, Turkey") {
           var g = "IstanbulContact"
           ha34(e, id, g)
@@ -698,32 +694,24 @@ export default function Home() {
         else if (destination == "London, UK") {
           var g = "UKContact"
           ha34(e, id, g)
-        }
+        
 
 
 
-      } else if (step === totalSteps) {
-        setSubmitted(true); // Mark the form as submitted 
-      }
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // Smooth scrolling effect
-      });
+      } 
+     
     } catch (error) {
       // console.error('Submission error:', error);
       if (error.response && error.response.data) {
         // alert(`Error submitting form: ${error.response.data.error.message}`);
         console.log(alert);
-        setLoader(false)
-
+setLoader(false)
       } else {
         toast.error('An unknown error occurred. Please try again.');
         if (step < totalSteps) {
           setStep(step);
 
-        } else if (step === totalSteps) {
-          setSubmitted(true); // Mark the form as submitted
-        }
+        } 
         setLoader(false)
 
       }
@@ -734,7 +722,6 @@ export default function Home() {
   const ha34 = async (event, id, g) => {
     event.preventDefault();
     // setLoading(true);
-    setOpenemailloader(true)
 
     try {
       const response = await fetch(`/api1/${g}`, {
@@ -754,13 +741,9 @@ export default function Home() {
       setName('');
       setEmail('');
       console.log(data);
-      setOpenemailloader(false)
 
       // Top par scroll kare
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // Smooth scrolling effect
-      });
+      
 
 
 
@@ -773,7 +756,6 @@ export default function Home() {
         setStep(5);
       }
     } finally {
-      setLoading(false);
     }
 
   };
@@ -793,17 +775,38 @@ export default function Home() {
       });
   
       if (response.status === 200) {
+        
+      setLoading(false);
+
         console.log("ok");
       }
+      if (step < totalSteps) {
+        setStep(step + 1);}
+        else if (step === totalSteps) {
+          setSubmitted(true); // Mark the form as submitted
+        }
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Smooth scrolling effect
+        });
     } catch (error) {
       if (error.response && error.response.data) {
         console.error('Error submitting form:', error.response.data.error?.message || error.response.data);
         toast.error(`Error: ${error.response.data.error?.message || 'Something went wrong'}`);
+        setLoading(false);
+        if (step > 1 && !submitted) {
+          setStep(5);
+        }
       } else {
         toast.error('An unknown error occurred. Please try again.');
+        setLoading(false);
+        if (step > 1 && !submitted) {
+          setStep(5);
+        }
       }
   
     } 
+    setLoader(false)
   };
   useEffect(() => {
     AOS.init({

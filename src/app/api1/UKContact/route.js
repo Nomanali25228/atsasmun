@@ -41,7 +41,7 @@ console.log("nodemailer id",id);
 		const pdfPath = 'https://res.cloudinary.com/dhqbmpldd/image/upload/v1735156197/Rundown_br2xjm.pdf'; // Corrected Google Drive link for direct download
  //  first email template 
 		const mailOptions = {
-			from: username,
+			from: 'Atsas MUN',
 			to: email,
 			subject: 'Your Registration has been Received',
 			html: `<!DOCTYPE html>
@@ -668,7 +668,7 @@ console.log("nodemailer id",id);
 
 //  //  sec email template 
 //                 const mailOptions = {
-//                     from: username,
+//                     from: 'Atsas MUN',
 //                     to: email,
 //                     subject: 'Your Registration has been Received',
 //                     html: `<!DOCTYPE html>

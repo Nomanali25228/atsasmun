@@ -41,7 +41,7 @@ export async function POST(request) {
         const pdfPath = 'https://res.cloudinary.com/dhqbmpldd/image/upload/v1735156197/Rundown_br2xjm.pdf'; // Corrected Google Drive link for direct download
         //  first email template 
         const mailOptions = {
-            from: username,
+            from: 'Atsas MUN',
             to: email,
             subject: 'Your Registration has been Received',
             html: `<!DOCTYPE html>
@@ -263,7 +263,7 @@ export async function POST(request) {
                          <tr>
                              <td>
                                     
-                                      <a href="http://localhost:3000/UAEpayment/1?userid=${id}"
+                                      <a href="https://www.atsasmun.com/UAEpayment/1?userid=${id}"
                                      style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
                                      Now</a>
                              </td>
@@ -619,7 +619,7 @@ export async function POST(request) {
 
 //          //  sec email template 
 //                         const mailOptions = {
-//                             from: username,
+//                             from: 'Atsas MUN',
 //                             to: email,
 //                             subject: 'Your Registration has been Received',
 //                             html: `<!DOCTYPE html>
