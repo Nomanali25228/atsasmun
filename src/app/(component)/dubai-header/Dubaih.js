@@ -261,7 +261,7 @@ export default function Dubaih(props) {
                   <Link href="/India" className={`block px-4 py-2  ${mla == "Goa, India" ? style : stlyle2}`}>
                     Goa, India
                   </Link>
-                  <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
+                  <Link href="/UK" className={`block px-4 py-2 ${mla == "London, UK" ? style : stlyle2} `}>
                     London, UK
                   </Link>
                   <Link href="/USA" className={`block px-4 py-2 ${mla == "New York, USA" ? style : stlyle2} `}>
