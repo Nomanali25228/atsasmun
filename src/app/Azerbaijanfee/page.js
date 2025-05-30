@@ -23,7 +23,7 @@ export default function Home() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { check, setCheck } = useContext(ContextPage)
     useEffect(() => {
-        setCheck("Goa, India")
+        setCheck("Baku, Azerbaijan")
     }, [check, setCheck])
     let dropdownTimeout;
     let dropdownTimeout2;
@@ -245,8 +245,8 @@ export default function Home() {
                                     <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400 ">
                                         Istanbul, Turkey
                                     </Link>
-                                    <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
-                                        Goa, India
+                                    <Link href="/Azerbaijan" className="block px-4 py-2 hover:text-blue-400">
+                                        Baku, Azerbaijan
                                     </Link>
                                     <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
                                         London, UK
@@ -445,11 +445,11 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
-                                        href="/India"
+                                        href="/Azerbaijan"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
-                                        Goa, India
+                                        Baku, Azerbaijan
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
@@ -603,7 +603,7 @@ export default function Home() {
                 <section >
                     <div className="max-w-5xl mx-auto px-4">
                         <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
-                            Pricing for <span className="text-purple-400">Goa, India</span>
+                            Pricing for <span className="text-purple-400">Baku, Azerbaijan</span>
                         </h2>
                         <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
                             {/* Basic Plan */}
@@ -612,7 +612,8 @@ export default function Home() {
                                 <div className="space-y-4">
                                     <h3 className="text-lg font-bold text-center">Basic</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$249
+                                        <p className="text-3xl font-extrabold">$349
+
 
                                         </p>
                                         <p className="text-xs line-through text-gray-500 mt-1">
@@ -646,10 +647,10 @@ export default function Home() {
                                 <div className="space-y-4">
                                     <h3 className="text-lg font-bold text-center">Full Experience</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$579
+                                        <p className="text-3xl font-extrabold">$499
                                         </p>
                                         {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-                                        <p className="text-xs line-through text-gray-500 mt-1">$689 Early Applicant Discount</p>
+                                        <p className="text-xs line-through text-gray-500 mt-1">$5s89 Early Applicant Discount</p>
                                     </div>
                                     <p className="text-center text-blue-300 font-semibold uppercase text-xs">Accommodation</p>
                                     <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
@@ -657,7 +658,7 @@ export default function Home() {
                                         <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
                                         <li>✔️ 3 Buffet Breakfast</li>
                                         <li>✔️ 2 Lunch and 3 Dinners</li>
-                                        <li>✔️ Goa City Tour</li>
+                                        <li>✔️ Baku City Tour</li>
                                     </ul>
                                 </div>
                                 <div className="mt-6">

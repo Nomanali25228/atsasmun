@@ -29,7 +29,7 @@ export default function Page() {
 
   return (
     <>
-      <Dubaih bgImage={london} tital="London, UK" Pricelink="/UKfee" StartDays="7" sup="th" EndDays="10" sup1="th" monthsDetils="August, 2025, Hilton London Heathrow Airport Terminal 5" style="text-blue-400" stlyle2="hover:text-blue-400" />
+      <Dubaih bgImage={london} tital="London, UK" Pricelink="/UKfee" StartDays="28" sup="th" EndDays="31" sup1="st" monthsDetils="August, 2025, Hilton London Heathrow Airport Terminal 5" style="text-blue-400" stlyle2="hover:text-blue-400" />
       <AboutDubai aboutTitle="London" about="Atsas MUN, which takes place in the famous setting of one of the liveliest cities on earth, blends scholarly debates with the exceptional chance to experience London's rich history and vibrant atmosphere. With a variety of committees and thoughtfully chosen subjects, attendees will come away feeling motivated and equipped to change the world" /> {/* Corrected prop passing */}
       <Desert heading="London City Tour " Desert={ParisCityTour1} Desert2={ParisCityTour2} Desert3={ParisCityTour3} />
       <Map bgimg5={hotelx4} img1={hotelx2} img2={hotelx3} img3={hotelx1} img4={hotelx5} hname="Hilton London Heathrow Airport Terminal 5" disc="Discover a new definition of contemporary comfort at the Paris Marriott Charles de Gaulle Airport Hotel. With a complimentary shuttle, our airport hotel at Charles de Gaulle (CDG) provides access to the terminal 2 B/D. Visit nearby attractions such as the Paris-Nord Villepinte Exhibition Center, Aéroville shopping center, and Parc Astérix. Explore our renowned restaurant for delicious cuisine..

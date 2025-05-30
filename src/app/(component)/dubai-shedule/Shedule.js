@@ -87,47 +87,48 @@ if  (props.timeing=="Istanbul, Turkey") {
     ],
   };
 }
-else if (props.timeing=="Goa, India") {
-  var schedules = {
-    day1: [
-      { time: "02:00 pm  03:00 pm", activity: "Arrival and Registrations" },
-      { time: "03:00 pm  04:00 pm", activity: "Check-In" },
-      { time: "05:00 pm  06:00 pm", activity: "Preparation Opening Ceremony" },
-      { time: "06:00 pm  07:00 pm", activity: "Opening Ceremony" },
-      { time: "07:00 pm  08:00 pm", activity: "Opening Dinner" },
-      { time: "08:00 pm  09:00 pm", activity: "Scavenger Hunt" },
-      { time: "09:00 pm  10:00 pm", activity: "Ice Breaking  First Committee Session" },
-      { time: "10:00 pm  Onwards", activity: "Free Night" },
-    ],
-    day2: [
-      { time: "06:00 am  08:00 am", activity: "Breakfast" },
-      { time: "08:00 am  09:00 am", activity: "Committee Session Preparation" },
-      { time: "09:00 am  11:00 am", activity: "Committee Session 2" },
-      { time: "11:00 am  11:30 am", activity: "Break" },
-      { time: "11:30 am  01:30 pm", activity: "Committee Session 3" },
-      { time: "01:30 pm  03:00 pm", activity: "Lunch" },
-      { time: "03:00 pm  04:30 pm", activity: "Committee Session 4" },
-      { time: "04:30 pm  04:45 pm", activity: "Break" },
-      { time: "04:45 pm  05:30 pm", activity: "Crisis Session" },
-      { time: "05:30 pm  06:15 pm", activity: "Preparation for Cultural Global Village" },
-      { time: "06:30 pm  07:30 pm", activity: "Awarding Ceremony" },
-      { time: "07:30 pm  08:15 pm", activity: "Dinner" },
-      { time: "08:15 pm  11:00 pm", activity: "Cultural Global Village" },
-    ],
-    day3: [
-      { time: "06:00 am  09:00 am", activity: "Breakfast" },
-      { time: "09:00 am  10:00 am", activity: "Lobby for City Tour" },
-      { time: "10:00 am  02:00 pm", activity: "Free Time" },
-      { time: "02:00 pm  03:00 pm", activity: "Lunch" },
-      { time: "03:00 pm  07:00 pm", activity: "Anjuna Beach" },
-      { time: "07:00 pm  09:00 pm", activity: "Dinner" },
-      { time: "09:00 pm  Onwards", activity: "Back to Hotel" },
-    ],
-    day4: [
-      { time: "06:00 am  09:00 am", activity: "Breakfast" },
-      { time: "12:00 pm  Onwards", activity: "Check-Out" },
-    ],
-  };
+else if (props.timeing=="Baku, Azerbaijan") {
+ var schedules = {
+  day1: [
+    { time: "02:00 pm – 03:00 pm", activity: "Arrival and Registrations" },
+    { time: "03:00 pm – 04:00 pm", activity: "Check-In" },
+    { time: "05:00 pm – 06:00 pm", activity: "Preparation Opening Ceremony" },
+    { time: "06:00 pm – 07:00 pm", activity: "Opening Ceremony" },
+    { time: "07:00 pm – 08:00 pm", activity: "Opening Dinner" },
+    { time: "08:00 pm – 09:00 pm", activity: "Scavenger Hunt" },
+    { time: "09:00 pm – 10:00 pm", activity: "Ice Breaking – First Committee Session" },
+    { time: "10:00 pm – Onwards", activity: "Free Night" },
+  ],
+  day2: [
+    { time: "06:00 am – 08:00 am", activity: "Breakfast" },
+    { time: "08:00 am – 09:00 am", activity: "Committee Session Preparation" },
+    { time: "09:00 am – 11:00 am", activity: "Committee Session 2" },
+    { time: "11:00 am – 11:30 am", activity: "Break" },
+    { time: "11:30 am – 01:30 pm", activity: "Committee Session 3" },
+    { time: "01:30 pm – 03:00 pm", activity: "Lunch" },
+    { time: "03:00 pm – 04:30 pm", activity: "Committee Session 4" },
+    { time: "04:30 pm – 04:45 pm", activity: "Break" },
+    { time: "04:45 pm – 05:30 pm", activity: "Crisis Session" },
+    { time: "05:30 pm – 06:15 pm", activity: "Preparation for Cultural Global Village" },
+    { time: "06:30 pm – 07:30 pm", activity: "Awarding Ceremony" },
+    { time: "07:30 pm – 08:15 pm", activity: "Dinner" },
+    { time: "08:15 pm – 11:00 pm", activity: "Cultural Global Village" },
+  ],
+  day3: [
+    { time: "06:00 am – 09:00 am", activity: "Breakfast" },
+    { time: "09:00 am – 10:00 am", activity: "Lobby for City Tour" },
+    { time: "10:00 am – 01:00 pm", activity: "City Tour" },
+    { time: "01:00 pm – 02:00 pm", activity: "Lunch" },
+    { time: "02:00 pm – 07:00 pm", activity: "City Tour Baku" },
+    { time: "07:00 pm – 09:00 pm", activity: "Dinner" },
+    { time: "09:00 pm – Onwards", activity: "Back to Hotel" },
+  ],
+  day4: [
+    { time: "06:00 am – 09:00 am", activity: "Breakfast" },
+    { time: "12:00 pm – Onwards", activity: "Check-Out" },
+  ],
+};
+
 }
 else if (props.timeing=="New York, USA") {
   var schedules = {
@@ -161,7 +162,7 @@ else if (props.timeing=="New York, USA") {
       { time: "09:00 am  10:00 am", activity: "Lobby for City Tour" },
       { time: "10:00 am  01:00 pm", activity: "City Tour" },
       { time: "01:00 pm  02:00 pm", activity: "Lunch" },
-      { time: "02:00 pm  07:00 pm", activity: "City Tour" },
+      { time: "02:00 pm  07:00 pm", activity: "New York City Tour" },
       { time: "07:00 pm  09:00 pm", activity: "Dinner" },
       { time: "09:00 pm  Onwards", activity: "Back to Hotel" }
     ],
@@ -203,7 +204,7 @@ else if (props.timeing=="Riyadh, Saudi Arabia") {
       { time: "09:00 am  10:00 am", activity: "Lobby for City Tour" },
       { time: "10:00 am  01:00 pm", activity: "City Tour" },
       { time: "01:00 pm  02:00 pm", activity: "Lunch" },
-      { time: "02:00 pm  07:00 pm", activity: "City Tour" },
+      { time: "02:00 pm  07:00 pm", activity: "Riyadh City Tour" },
       { time: "07:00 pm  09:00 pm", activity: "Dinner" },
       { time: "09:00 pm  Onwards", activity: "Back to Hotel" },
     ],
@@ -245,7 +246,7 @@ else if (props.timeing=="London, UK") {
       { time: "09:00 am – 10:00 am", activity: "Lobby for City Tour" },
       { time: "10:00 am – 01:00 pm", activity: "City Tour" },
       { time: "01:00 pm – 02:00 pm", activity: "Lunch" },
-      { time: "02:00 pm – 07:00 pm", activity: "City Tour" },
+      { time: "02:00 pm – 07:00 pm", activity: "London City Tour" },
       { time: "07:00 pm – 09:00 pm", activity: "Dinner" },
       { time: "09:00 pm – Onwards", activity: "Back to Hotel" },
     ],

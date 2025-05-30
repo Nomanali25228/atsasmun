@@ -18,7 +18,7 @@ import 'aos/dist/aos.css'; // Import the AOS styles
 import Whatsapp from '../(component)/whatsapp/Whatsapp';
 import ContextPage from '../Context/ContextPage';
 import istan from '@/app/public/img/istun.jpg';
-import istan1 from '@/app/public/img/india.jpg';
+import istan1 from '@/app/public/img/Azerbaijan.jpeg';
 import istan2 from '@/app/public/img/paris.jpeg';
 import istan3 from '@/app/public/img/bgUSA.jpg';
 import istan4 from '@/app/public/img/riyadhcity.jpg';
@@ -321,9 +321,9 @@ export default function Home() {
   useEffect(() => {
     if (destination == "Istanbul, Turkey") {
       setChange({
-        from: '12th ',
-        to: '15',
-        th: 'June, 2025'
+        from: '24th ',
+        to: '27th',
+        th: 'July , 2025'
 
       })
 
@@ -333,26 +333,26 @@ export default function Home() {
     else if (destination == "Dubai, UAE") {
 
       setChange({
-        from: '22th ',
-        to: '25',
-        th: 'May, 2025'
+        from: '14th ',
+        to: '17th',
+        th: 'August , 2025'
 
       })
 
-    } else if (destination == "Goa, India") {
+    } else if (destination == "Baku, Azerbaijan") {
 
       setChange({
-        from: '26th ',
-        to: '29',
-        th: 'june, 2025'
+        from: '28th ',
+        to: '31st',
+        th: 'August, 2025'
 
       })
 
     } else if (destination == "New York, USA") {
 
       setChange({
-        from: '04th ',
-        to: '07',
+        from: '18th ',
+        to: '21st',
         th: 'September, 2025'
 
       })
@@ -361,7 +361,7 @@ export default function Home() {
 
       setChange({
         from: '16th ',
-        to: '19',
+        to: '19th',
         th: 'october, 2025'
 
       })
@@ -369,9 +369,9 @@ export default function Home() {
     else if (destination == "London, UK") {
       setImgchange(istan2)
       setChange({
-        from: '7th ',
-        to: '10',
-        th: 'Aug, 2025'
+        from: '28th ',
+        to: '31st',
+        th: 'August, 2025'
 
       })
 
@@ -401,7 +401,7 @@ export default function Home() {
       setImgchange(istan5)
 
 
-    } else if (check == "Goa, India") {
+    } else if (check == "Baku, Azerbaijan") {
       setNo1(false)
       setNo(false)
       setNo3(false)
@@ -453,7 +453,7 @@ export default function Home() {
       setImgchange(istan5)
 
 
-    } else if (destination == "Goa, India") {
+    } else if (destination == "Baku, Azerbaijan") {
       setChangeApi("thirdnames")
 
       setImgchange(istan1)
@@ -681,8 +681,8 @@ export default function Home() {
         } else if (destination == "Dubai, UAE") {
           var g = "DubaiContact"
           ha34(e, id, g)
-        } else if (destination == "Goa, India") {
-          var g = "IndiaContact"
+        } else if (destination == "Baku, Azerbaijan") {
+          var g = "AzerbaijanContact"
           ha34(e, id, g)
         } else if (destination == "New York, USA") {
           var g = "USAContact"
@@ -920,7 +920,7 @@ setLoader(false)
                       </div>
                       <div className='flex justify-center items-center'>
                         <p className="text-sm sm:text-base font-semibold mt-1">
-                          {destination === "" ? "" : "from "} {change.from}{destination === "" ? "" : "to "} {change.to}{destination === "" ? "" : "th "} {change.th}
+                          {destination === "" ? "" : "from "} {change.from}{destination === "" ? "" : "to "} {change.to}{} {change.th}
 
                         </p>
                       </div>
@@ -1102,7 +1102,7 @@ setLoader(false)
                                   </option>
                                   {no && <option value="Istanbul, Turkey">Istanbul, Turkey</option>}
                                   {no1 && <option value="Dubai, UAE">Dubai, UAE</option>}
-                                  {no2 && <option value="Goa, India">Goa, India</option>}
+                                  {no2 && <option value="Baku, Azerbaijan">Baku, Azerbaijan</option>}
                                   {no3 && <option value="New York, USA">New York, USA</option>}
                                   {no4 && <option value="Riyadh, Saudi Arabia">Riyadh, Saudi Arabia</option>}
                                   {no5 && <option value="London, UK">London, UK</option>}

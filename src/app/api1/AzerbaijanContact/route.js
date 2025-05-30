@@ -17,8 +17,8 @@ export async function POST(request) {
         let link2o;
         if (destination == "Dubai, UAE") {
             link2o = "http://localhost:3000/UAEpayment/1";
-        } else if (destination == "Goa, India") {
-            link2o = "http://localhost:3000/Indiapayment/1";
+        } else if (destination == "Baku, Azerbaijan") {
+            link2o = "http://localhost:3000/Azerbaijanpayment/1";
         } else if (destination == "New York, USA") {
             link2o = "http://localhost:3000/USApayment/1";
         } else if (destination == "Riyadh, Saudi Arabia") {
@@ -81,7 +81,7 @@ export async function POST(request) {
                             padding:70px;">
                             <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
                             <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
-                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Goa, India</p>
+                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Baku, Azerbaijan</p>
                             <p style="margin:20px 0 0; font-size:22px; color: white;">(${name})</p>
                         </td>
                     </tr>
@@ -89,7 +89,7 @@ export async function POST(request) {
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 26th-29th june, 2025</h2>
+                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 28th-31st August , 2025</h2>
                             <hr style="width:80%; border-top:1px solid #ddd; margin-top: 20px;">
                             <p style="font-size:16px; color: #000;">We are pleased to inform you that your registration at Atsas International Model United Nations has been received. The shortlisted applicants will be contacted shortly through email within 24 hours.</p>
                         </td>
@@ -133,7 +133,7 @@ export async function POST(request) {
                     <!-- CTA BUTTON -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <a href="https://www.atsasmun.com/Indiapayment/1?userid=${id}" style=" background: linear-gradient(to right, #00509E, #003A70, #002855); color:#fff; text-decoration:none; padding:10px 30px; border-radius:5px; font-size:16px; display:inline-block;">
+                            <a href="https://www.atsasmun.com/Azerbaijanpayment/1?userid=${id}" style=" background: linear-gradient(to right, #00509E, #003A70, #002855); color:#fff; text-decoration:none; padding:10px 30px; border-radius:5px; font-size:16px; display:inline-block;">
                                 Click here for Conference Fee
                             </a>
                         </td>
@@ -183,12 +183,13 @@ export async function POST(request) {
         <!-- Non-Accommodation Column -->
         <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
   color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 8px 0 0 0; text-align: center;">
-            Non-Accommodation $249 
+            Non-Accommodation $349
+ 
         </td>
         <!-- Accommodation Column -->
         <td style="            background: linear-gradient(to right, #00509E, #003A70, #002855);
 ; color: white; padding: 10px; font-size: 16px; font-weight: bold; border-radius: 0 8px 0 0; text-align: center;">
-            Accommodation $579
+            Accommodation $499
         </td>
     </tr>
     <tr>
@@ -229,7 +230,7 @@ export async function POST(request) {
             Ice-breaking Session
         </td>
         <td style="background: #f8f9fa; color: #333; font-size: 14px; padding: 10px; border: 1px solid #ddd; text-align: left;">
-       Goa City Tour
+       Baku City Tour
         </td>
     </tr>
     <tr>
@@ -263,7 +264,7 @@ export async function POST(request) {
                          <tr>
                              <td>
                                     
-                                      <a href="https://www.atsasmun.com/Indiapayment/1?userid=${id}"
+                                      <a href="https://www.atsasmun.com/Azerbaijanpayment/1?userid=${id}"
                                      style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
                                      Now</a>
                              </td>
@@ -330,7 +331,7 @@ export async function POST(request) {
                     <!-- Highlighted Line -->
                     <tr>
                         <td style="padding: 20px; font-size: 1rem; color: black; font-weight: bold;">
-                            We look forward to meeting you in Goa, India!
+                            We look forward to meeting you in Baku, Azerbaijan!
                         </td>
                     </tr>
                     <!-- Final Thank You Line -->
@@ -355,7 +356,7 @@ export async function POST(request) {
                     <!-- FOOTER -->
                     <tr>
                         <td align="center" style="background-color:#003366; color:#fff; padding:20px;">
-                            <p style="margin:0; font-size:14px;">Atsas MUN India © 2024 Atsas Creation International Ltd</p>
+                            <p style="margin:0; font-size:14px;">Atsas MUN Azerbaijan © 2024 Atsas Creation International Ltd</p>
                             <p style="margin:5px 0 0; font-size:12px; color:#fff;"><em>Forging a Diplomatic World of Unity and Peace</em></p>
                         </td>
                     </tr>
@@ -442,9 +443,9 @@ export async function POST(request) {
 
 //               <p style="color:#333333;">
 //                 Dear Applicant,<br /><br />
-//                 We are grateful to inform you that you have been selected to join the Atsas International MUN Goa, India
+//                 We are grateful to inform you that you have been selected to join the Atsas International MUN Baku, Azerbaijan
 //                 2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
-//                 from 26th to 29th June 2025 in Goa, India.
+//                 from 26th to 29th June 2025 in Baku, Azerbaijan.
 //               </p>
 
 //               <p style="color:#333333;">
@@ -459,14 +460,14 @@ export async function POST(request) {
 //                 <strong>Name:</strong> ${name}<br />
 //                 <strong>Duration of stay:</strong> 26<sup>th</sup> – 29<sup>th</sup> June, 2025<br />
 //                 <strong>Venue:</strong> Grand Hyatt Goa India <br />
-//                 <strong>Destination:</strong> Goa, India
+//                 <strong>Destination:</strong> Baku, Azerbaijan
 //               </p>
 
 //               <p style="color:#333333;">
 //                 <em>You are requested to pay your delegate fee in order to become a confirmed delegate at Atsasmun India
 //                   on the following link:</em><br />
-//                 <a href="https://www.atsasmun.com/Indiapayment/1?userid=${id}" style="color:#003c71;">
-//                   https://www.atsasmun.com/Indiapayment
+//                 <a href="https://www.atsasmun.com/Azerbaijanpayment/1?userid=${id}" style="color:#003c71;">
+//                   https://www.atsasmun.com/Azerbaijanpayment
 //                 </a>
 //               </p>
 
@@ -519,14 +520,14 @@ export async function POST(request) {
 //               <ul style="padding-left: 20px; margin-top: 0 ; color:#333333; ">
 //                 <li>
 //                   Each participant will be responsible for his/her visa fee
-//                   and flight ticket to and from Goa, India
+//                   and flight ticket to and from Baku, Azerbaijan
 // .
 //                 </li>
 //                 <li>
 //                   We will accommodate your Visa Invitation Letter.
 //                 </li>
 //                 <li>
-//                   We provide visa services for Goa, India
+//                   We provide visa services for Baku, Azerbaijan
 // .
 //                 </li>
 //                 <li>
@@ -552,7 +553,7 @@ export async function POST(request) {
 
 //               <p style="margin-top: 20px ; color:#333333;">
 //                 We would like to thank you in advance for your cooperation and
-//                 kind attention. Looking forward to seeing you in Goa, India.
+//                 kind attention. Looking forward to seeing you in Baku, Azerbaijan.
 //               </p>
 
 //               <p style="margin-top: 40px">Regards</p>
@@ -661,7 +662,7 @@ export async function POST(request) {
 //                             ${name}</p>
 //                         <!-- Subtext -->
 //                         <p style="font-size: 0.9rem; margin: 30px 30px 10px 20px; color: white;">
-//                             You have been selected as one of the delegates at AtsasMUN Goa, India
+//                             You have been selected as one of the delegates at AtsasMUN Baku, Azerbaijan
 //                             Please find attached the official acceptance letter in this email.
 //                         </p>
 //                         <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
@@ -879,7 +880,7 @@ export async function POST(request) {
 //                                 <tr>
 //                                     <td>
 
-//                                         <a href="http://localhost:3000/Indiapayment/1?userid=${id}"
+//                                         <a href="http://localhost:3000/Azerbaijanpayment/1?userid=${id}"
 //                                             style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
 //                                             Now</a>
 //                                     </td>
@@ -914,7 +915,7 @@ export async function POST(request) {
 //                                 <!-- Highlighted Line -->
 //                                 <tr>
 //                                     <td style="padding: 20px; font-size: 1rem; color: black; font-weight: bold;">
-//                                         We look forward to meeting you in Goa, India!
+//                                         We look forward to meeting you in Baku, Azerbaijan!
 //                                     </td>
 //                                 </tr>
 //                                 <!-- Final Thank You Line -->

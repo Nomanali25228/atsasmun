@@ -411,8 +411,8 @@ export default function Home() {
                                     <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400 ">
                                         Istanbul, Turkey
                                     </Link>
-                                    <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
-                                        Goa, India
+                                    <Link href="/Azerbaijan" className="block px-4 py-2 hover:text-blue-400">
+                                        Baku, Azerbaijan
                                     </Link>
                                     <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
                                         London, UK
@@ -611,11 +611,11 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
-                                        href="/India"
+                                        href="/Azerbaijan"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
-                                        Goa, India
+                                        Baku, Azerbaijan
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>

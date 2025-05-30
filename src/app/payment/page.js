@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from "next/image";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import istan from '@/app/public/img/istun.jpg';
-import istan1 from '@/app/public/img/india.jpg';
+import istan1 from '@/app/public/img/Azerbaijan.jpeg';
 import istan2 from '@/app/public/img/london.jpg';
 import istan3 from '@/app/public/img/bgUSA.jpg';
 import istan4 from '@/app/public/img/riyadhcity.jpg';
@@ -18,12 +18,12 @@ import ParticleCanvas from "../(component)/ParticleCanvas";
 
 export default function Flip() {
   const locations = [
-    { name: 'Dubai, UAE', image: istan5, date: '22th-25th, May, 2025', link: '/uaefee' },
-    { name: 'Istanbul, Türkiye', image: istan, date: '12th-15th, June, 2025', link: '/Istanbulfee' },
-    { name: 'Goa, India', image: istan1, date: '26th-29th june, 2025', link: '/Indiafee' },
-    { name: 'London, UK', image: istan2, date: '07th-10th, August, 2025', link: '/UKfee' },
-    { name: 'New York, USA', image: istan3, date: '04th-07th, September, 2025', link: '/USAfee' },
-    { name: 'Riyadh, Saudi Arabia', image: istan4, date: '16th-19th, october, 2025', link: '/Saudifee' },
+    { name: 'Istanbul, Türkiye', image: istan, date: '24th  27th July 2025', link: '/Istanbulfee' },
+    { name: 'Dubai, UAE', image: istan5, date: '14th  17th August 2025', link: '/uaefee' },
+    { name: 'Baku, Azerbaijan', image: istan1, date: '28th-31st August, 2025', link: '/Azerbaijanfee' },
+    { name: 'London, UK', image: istan2, date: '28th  31st August 2025', link: '/UKfee' },
+    { name: 'New York, USA', image: istan3, date: '18th  21st September 2025', link: '/USAfee' },
+    { name: 'Riyadh, Saudi Arabia', image: istan4, date: '16th  19th October 2025', link: '/Saudifee' },
   ];
 
 
@@ -260,8 +260,8 @@ export default function Flip() {
                   <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400 ">
                     Istanbul, Turkey
                   </Link>
-                  <Link href="/India" className="block px-4 py-2 hover:text-blue-400">
-                    Goa, India
+                  <Link href="/Azerbaijan" className="block px-4 py-2 hover:text-blue-400">
+                    Baku, Azerbaijan
                   </Link>
                   <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
                     London, UK
@@ -458,11 +458,11 @@ export default function Flip() {
                     ></span>
                   </Link>
                   <Link
-                    href="/India"
+                    href="/Azerbaijan"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Goa, India
+                    Baku, Azerbaijan
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>

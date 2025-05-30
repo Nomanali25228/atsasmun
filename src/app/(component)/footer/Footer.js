@@ -113,12 +113,12 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/India"
+                                    href="/Azerbaijan"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
                                 >
                                     <span className="mr-2">&#10140;</span>
                                     <p className='hover:scale-105 transition-transform duration-500'>
-                                        Atsas Mun India
+                                        Atsas Mun Azerbaijan
                                     </p>
 
                                 </Link>
