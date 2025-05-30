@@ -13,7 +13,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import the AOS styles
 import ParticleCanvas from '../ParticleCanvas';
 import { IoPlayOutline } from 'react-icons/io5';
-import { getDestination } from '@react-pdf-viewer/core';
 
 
 

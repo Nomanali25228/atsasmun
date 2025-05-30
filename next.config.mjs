@@ -1,40 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   webpack(config) {
-//     // Rule for handling video files
-//     config.module.rules.push({
-//       test: /\.(mp4|webm|ogg|avi|mov|wmv)$/,
-//       use: {
-//         loader: 'file-loader',
-//         options: {
-//           publicPath: '/_next/static/videos',
-//           outputPath: 'static/videos',
-//           name: '[name].[hash].[ext]',
-//           esModule: false,
-//         },
-//       },
-//     });
-
-//     // Rule for handling audio files
-//     config.module.rules.push({
-//       test: /\.(mp3|wav)$/,
-//       use: {
-//         loader: 'file-loader',
-//         options: {
-//           publicPath: '/_next/static/media',
-//           outputPath: 'static/media',
-//           name: '[name].[hash].[ext]',
-//         },
-//       },
-//     });
-
-//     return config;
-//   },
-// };
-
-// export default nextConfig;
-
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -47,33 +10,42 @@ const nextConfig = {
       },
     ],
   },
-  webpack(config) {
-    // ویڈیو فائلوں کے لیے رول
-    config.module.rules.push({
-      test: /\.(mp4|webm|ogg|avi|mov|wmv)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          publicPath: '/_next/static/videos',
-          outputPath: 'static/videos',
-          name: '[name].[hash].[ext]',
-          esModule: false,
+  webpack(config, { isServer }) {
+    config.module.rules.push(
+      {
+        test: /\.(mp4|webm|ogg|avi|mov|wmv)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next/static/videos',
+            outputPath: 'static/videos',
+            name: '[name].[hash].[ext]',
+            esModule: false,
+          },
         },
       },
-    });
+      {
+        test: /\.(mp3|wav)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next/static/media',
+            outputPath: 'static/media',
+            name: '[name].[hash].[ext]',
+          },
+        },
+      }
+    );
 
-    // آڈیو فائلوں کے لیے رول
-    config.module.rules.push({
-      test: /\.(mp3|wav)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          publicPath: '/_next/static/media',
-          outputPath: 'static/media',
-          name: '[name].[hash].[ext]',
-        },
-      },
-    });
+    // ✅ Prevent loading native modules like canvas.node in client bundle
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        canvas: false,
+        fs: false,
+        path: false,
+      };
+    }
 
     return config;
   },
