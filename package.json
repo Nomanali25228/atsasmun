@@ -1,63 +1,173 @@
 {
+  
   "name": "tandcaer",
+  
   "version": "0.1.0",
+  
   "private": true,
+  
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  
+    
+  "dev": "next dev",
+  
+    
+  "build": "next build",
+  
+    
+  "start": "next start",
+  
+    
+  "lint": "next lint"
+  
   },
+  
   "dependencies": {
-    "@babel/runtime": "~7.26.10",
-    "@react-pdf-viewer/default-layout": "^3.12.0",
-    "@react-pdf/renderer": "^4.1.5",
-    "@stripe/react-stripe-js": "^3.5.1",
-    "@stripe/stripe-js": "^5.2.0",
-    "@uiw/react-markdown-editor": "^6.1.2",
-    "aos": "^2.3.4",
-    "axios": "~1.8.2",
-    "canvas": "^3.1.0",
-    "canvas-confetti": "^1.9.3",
-    "dotenv": "^16.4.7",
-    "emoji-picker-react": "^4.12.0",
-    "framer-motion": "^11.18.2",
-    "gsap": "^3.12.5",
-    "iconv-lite": "^0.6.3",
-    "moment": "^2.30.1",
-    "nanoid": "~3.3.8",
-    "next": "^15.2.4",
-    "nextjs-toploader": "^3.6.15",
-    "nodemailer": "^6.10.0",
-    "pdfkit": "^0.15.2",
-    "prismjs": "~1.30.0",
-    "puppeteer": "^23.11.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-flags-select": "^2.2.3",
-    "react-gtm-module": "^2.0.11",
-    "react-hot-toast": "^2.4.1",
-    "react-icons": "^5.3.0",
-    "react-loader-spinner": "^6.1.6",
-    "react-markdown": "^9.0.1",
-    "react-pdf": "^9.2.1",
-    "react-phone-number-input": "^3.4.9",
-    "react-slick": "^0.30.3",
-    "react-slugify": "^4.0.1",
-    "react-syntax-highlighter": "^15.6.1",
-    "react-toastify": "^10.0.6",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0",
-    "slick-carousel": "^1.8.1",
-    "stream-buffers": "^3.0.3",
-    "stripe": "^17.4.0",
-    "tar-fs": "~3.0.7"
+  
+    
+  "@babel/runtime": "~7.26.10",
+  
+    
+  "@react-pdf-viewer/default-layout": "^3.12.0",
+  
+    
+  "@react-pdf/renderer": "^4.1.5",
+  
+    
+  "@stripe/react-stripe-js": "^3.5.1",
+  
+    
+  "@stripe/stripe-js": "^5.2.0",
+  
+    
+  "@uiw/react-markdown-editor": "^6.1.2",
+  
+    
+  "aos": "^2.3.4",
+  
+    
+  "axios": "~1.8.2",
+  
+    
+  "canvas-confetti": "^1.9.3",
+  
+    
+  "dotenv": "^16.4.7",
+  
+    
+  "emoji-picker-react": "^4.12.0",
+  
+    
+  "framer-motion": "^11.18.2",
+  
+    
+  "gsap": "^3.12.5",
+  
+    
+  "iconv-lite": "^0.6.3",
+  
+    
+  "moment": "^2.30.1",
+  
+    
+  "nanoid": "~3.3.8",
+  
+    
+  "next": "^15.2.4",
+  
+    
+  "nextjs-toploader": "^3.6.15",
+  
+    
+  "nodemailer": "^6.10.0",
+  
+    
+  "pdfkit": "^0.15.2",
+  
+    
+  "prismjs": "~1.30.0",
+  
+    
+  "puppeteer": "^23.11.1",
+  
+    
+  "react": "^18.3.1",
+  
+    
+  "react-dom": "^18.3.1",
+  
+    
+  "react-flags-select": "^2.2.3",
+  
+    
+  "react-gtm-module": "^2.0.11",
+  
+    
+  "react-hot-toast": "^2.4.1",
+  
+    
+  "react-icons": "^5.3.0",
+  
+    
+  "react-loader-spinner": "^6.1.6",
+  
+    
+  "react-markdown": "^9.0.1",
+  
+    
+  "react-pdf": "^9.2.1",
+  
+    
+  "react-phone-number-input": "^3.4.9",
+  
+    
+  "react-slick": "^0.30.3",
+  
+    
+  "react-slugify": "^4.0.1",
+  
+    
+  "react-syntax-highlighter": "^15.6.1",
+  
+    
+  "react-toastify": "^10.0.6",
+  
+    
+  "rehype-raw": "^7.0.0",
+  
+    
+  "remark-gfm": "^4.0.0",
+  
+    
+  "slick-carousel": "^1.8.1",
+  
+    
+  "stream-buffers": "^3.0.3",
+  
+    
+  "stripe": "^17.4.0",
+  
+    
+  "tar-fs": "~3.0.7"
+  
   },
+  
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "^15.2.4",
-    "file-loader": "^6.2.0",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+  
+    
+  "eslint": "^8",
+  
+    
+  "eslint-config-next": "^15.2.4",
+  
+    
+  "file-loader": "^6.2.0",
+  
+    
+  "postcss": "^8",
+  
+    
+  "tailwindcss": "^3.4.1"
+  
   }
 }
