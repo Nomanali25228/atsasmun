@@ -14,7 +14,7 @@ import hotelx1 from '@/app/public/img/HotelVenueBaku1.avif';
 import hotelx2 from '@/app/public/img/HotelVenueBaku2.avif';
 import hotelx3 from '@/app/public/img/HotelVenueBaku3.avif';
 import hotelx4 from '@/app/public/img/BgHotelVenueBaku4.avif';
-import hotelx5 from '@/app/public/img/HotelVenueBaku5.avif';
+import hotelx5 from '@/app/public/img/HotelVenueBAku5.avif';
 import event1 from '@/app/public/img/india-CommitteeSessions.jpg'
 import event2 from '@/app/public/img/india-culturalGlobalVillage.jpg'
 import event3 from '@/app/public/img/india-openMicCight.jpg'
