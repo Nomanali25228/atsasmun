@@ -12,6 +12,7 @@ import ScrollToTop from "./(component)/Scrolltotop/ScrollToTop";
 import Whatsapp from '@/app/(component)/whatsapp/Whatsapp'
 import { useContext, useEffect } from "react";
 import ContextPage from "./Context/ContextPage";
+import ConnotFound from '@/app/ConnotFound/page'
 export default function Home() {
 const {refresh,setRefresh} = useContext(ContextPage);
   useEffect(() => {
@@ -24,18 +25,20 @@ const {refresh,setRefresh} = useContext(ContextPage);
 
   return (
     <>
-  <Navbar/>
+    <ConnotFound/>
+  {/* <Navbar/>
   <Events/>
-  <OurMission/>
+  <OurMission/> */}
+  
   {/* <Video/> */}
   
-  <AtsasMun/>
+  {/* <AtsasMun/>
   <Gallery/>
   <Faq/>
   <Contact/>
   <Footer/>
   <ScrollToTop/>
-  <Whatsapp/>
+  <Whatsapp/> */}
   </>  
   );
 }
