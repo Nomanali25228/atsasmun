@@ -25,20 +25,20 @@ const {refresh,setRefresh} = useContext(ContextPage);
 
   return (
     <>
-    <ConnotFound/>
-  {/* <Navbar/>
+    {/* <ConnotFound/> */}
+  <Navbar/>
   <Events/>
-  <OurMission/> */}
+  <OurMission/>
   
   {/* <Video/> */}
   
-  {/* <AtsasMun/>
+  <AtsasMun/>
   <Gallery/>
   <Faq/>
   <Contact/>
   <Footer/>
   <ScrollToTop/>
-  <Whatsapp/> */}
+  <Whatsapp/>
   </>  
   );
 }
