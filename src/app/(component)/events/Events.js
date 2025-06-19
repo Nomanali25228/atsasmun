@@ -58,16 +58,16 @@ const cards = [
     image: bell3,
     icon: Azerbaijan,
   },
-  // {
-  //   id: 4,
-  //   nowOpen: "Registrations opening soon!",
-  //   title: "ATSASMUN London, UK",
-  //   subtitle: "London, UK",
-  //   description:
-  //     "( 28th – 31st August 2025)",
-  //   details:"An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",    image: bell6,
-  //   icon: london,
-  // },
+  {
+    id: 4,
+    nowOpen: "Registrations opening soon!",
+    title: "ATSASMUN London, UK",
+    subtitle: "London, UK",
+    description:
+      "( 28th – 31st August 2025)",
+    details:"An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",    image: bell6,
+    icon: london,
+  },
   {
     id: 5,
     nowOpen: "Registrations opening soon!",
