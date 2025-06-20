@@ -18,11 +18,11 @@ import ParticleCanvas from "../(component)/ParticleCanvas";
 
 export default function Flip() {
   const locations = [
-    { name: 'Istanbul, Türkiye', image: istan, date: '24th  27th July 2025', link: '/Istanbulfee' },
-    { name: 'Dubai, UAE', image: istan5, date: '14th  17th August 2025', link: '/uaefee' },
-    { name: 'Baku, Azerbaijan', image: istan1, date: '28th-31st August, 2025', link: '/Azerbaijanfee' },
-    { name: 'London, UK', image: istan2, date: '28th  31st August 2025', link: '/UKfee' },
-    { name: 'New York, USA', image: istan3, date: '18th  21st September 2025', link: '/USAfee' },
+    { name: 'Istanbul, Türkiye', image: istan, date: '28th  31st August 2025', link: '/Istanbulfee' },
+    { name: 'Dubai, UAE', image: istan5, date: '11th  14th September 2025', link: '/uaefee' },
+    { name: 'Baku, Azerbaijan', image: istan1, date: '06th-09th November, 2025', link: '/Azerbaijanfee' },
+    { name: 'London, UK', image: istan2, date: '20th  24th November 2025', link: '/UKfee' },
+    { name: 'New York, USA', image: istan3, date: '25th  28th September 2025', link: '/USAfee' },
     { name: 'Riyadh, Saudi Arabia', image: istan4, date: '16th  19th October 2025', link: '/Saudifee' },
   ];
 

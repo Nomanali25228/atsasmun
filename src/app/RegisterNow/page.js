@@ -321,9 +321,9 @@ export default function Home() {
   useEffect(() => {
     if (destination == "Istanbul, Turkey") {
       setChange({
-        from: '24th ',
-        to: '27th',
-        th: 'July , 2025'
+        from: '28th',
+        to: '31st',
+        th: 'August,2025',
 
       })
 
@@ -333,26 +333,26 @@ export default function Home() {
     else if (destination == "Dubai, UAE") {
 
       setChange({
-        from: '14th ',
-        to: '17th',
-        th: 'August , 2025'
+        from: '11th ',
+        to: '14th',
+        th: 'September , 2025'
 
       })
 
     } else if (destination == "Baku, Azerbaijan") {
 
       setChange({
-        from: '28th ',
-        to: '31st',
-        th: 'August, 2025'
+        from: '06th ',
+        to: '09th',
+        th: 'November, 2025'
 
       })
 
     } else if (destination == "New York, USA") {
 
       setChange({
-        from: '18th ',
-        to: '21st',
+        from: '25th ',
+        to: '28th',
         th: 'September, 2025'
 
       })
@@ -369,9 +369,9 @@ export default function Home() {
     else if (destination == "London, UK") {
       setImgchange(istan2)
       setChange({
-        from: '28th ',
-        to: '31st',
-        th: 'August, 2025'
+        from: '20th ',
+        to: '24th',
+        th: 'November, 2025'
 
       })
 
@@ -920,7 +920,7 @@ setLoader(false)
                       </div>
                       <div className='flex justify-center items-center'>
                         <p className="text-sm sm:text-base font-semibold mt-1">
-                          {destination === "" ? "" : "from "} {change.from}{destination === "" ? "" : "to "} {change.to}{} {change.th}
+                          {destination === "" ? "" : "from "} {change.from} {destination === "" ? "" : "to "} {change.to}{} {change.th}
 
                         </p>
                       </div>

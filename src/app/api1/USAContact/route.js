@@ -91,7 +91,7 @@ export async function POST(request) {
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 18th–21st September, 2025</h2>
+                            <h2 style="margin:0; font-size:20px; color:#000;">Date: 25th–28th September, 2025</h2>
                             <hr style="width:80%; border-top:1px solid #ddd; margin-top: 20px;">
                             <p style="font-size:16px; color: #000;">We are pleased to inform you that your registration at Atsas
                                 International Model United Nations has been received. The shortlisted applicants will be

@@ -29,7 +29,7 @@ const cards = [
     title: "ATSASMUN Istanbul, Turkey",
     subtitle: "Istanbul, Turkey",
     description:
-      "(24th – 27th July 2025)",
+      "(28th – 31st August 2025)",
     details:
 "Aspiring diplomatic leaders are invited to attend ATSASMUN in Istanbul, located at the crossroads of civilizations. The city's rich cultural past offers global discourse inspiration unmatched by any other.",    image: bell1,
     icon: istanbul,
@@ -40,7 +40,7 @@ const cards = [
     title: "ATSASMUN Dubai, UAE",
     subtitle: "Dubai, UAE",
     description:
-      "(14th – 17th August 2025)",
+      "(11th – 14th September 2025)",
     details:
       "Young leaders can take advantage of a futuristic platform provided by ATSASMUN in Dubai, which combines the city's cosmopolitan allure and forward-thinking perspective with the spirit of innovation.",
     image: bell2,
@@ -52,7 +52,7 @@ const cards = [
     title: "ATSASMUN Baku, Azerbaijan ",
     subtitle: "Baku, Azerbaijan",
     description:
-      "(28th-31st, August 2025)",
+      "(06th-09th, November 2025)",
     details:
     "A multicultural hub is present in Baku, Azerbaijan where the participants of the ATSASMUN are immersed. This center embodies the harmony and variety that is important for future diplomacy.",
     image: bell3,
@@ -64,7 +64,7 @@ const cards = [
     title: "ATSASMUN London, UK",
     subtitle: "London, UK",
     description:
-      "( 28th – 31st August 2025)",
+      "( 20th – 24th November 2025)",
     details:"An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",    image: bell6,
     icon: london,
   },
@@ -74,7 +74,7 @@ const cards = [
     title: "ATSASMUN New York, USA",
     subtitle: "New York, USA",
     description:
-      "(18th – 21st September 2025)",
+      "(25th – 28th September 2025)",
     details:
       "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in New York connects delegates with the spirit of diplomacy.",
     image: bell4,
