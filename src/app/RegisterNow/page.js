@@ -609,6 +609,7 @@ export default function Home() {
       const errorData = await customerResponse.json();
       throw new Error(`Customer creation failed: ${errorData.error || "Unknown error"}`);
       console.log("error");
+        setLoader(false)
 
     }
 
@@ -617,6 +618,7 @@ export default function Home() {
     if (!customerId) {
       throw new Error("Customer ID not returned from Stripe API.");
       console.log("error");
+        setLoader(false)
 
     }
 
