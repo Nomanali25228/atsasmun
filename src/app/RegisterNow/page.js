@@ -696,7 +696,6 @@ export default function Home() {
         else if (destination == "London, UK") {
           var g = "UKContact"
           ha34(e, id, g)
-        
 
 
 
