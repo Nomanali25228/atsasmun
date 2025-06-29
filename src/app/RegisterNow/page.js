@@ -777,30 +777,35 @@ setLoader(false)
   
       if (response.status === 200) {
         
-      setLoading(false);
+      setLoader(false);
 
         console.log("ok");
       }
       if (step < totalSteps) {
-        setStep(step + 1);}
+        setStep(step + 1);
+}
+
         else if (step === totalSteps) {
           setSubmitted(true); // Mark the form as submitted
         }
         window.scrollTo({
           top: 0,
           behavior: "smooth", // Smooth scrolling effect
+
         });
+                                setLoader(false);
+
     } catch (error) {
       if (error.response && error.response.data) {
         console.error('Error submitting form:', error.response.data.error?.message || error.response.data);
         toast.error(`Error: ${error.response.data.error?.message || 'Something went wrong'}`);
-        setLoading(false);
+        setLoader(false);
         if (step > 1 && !submitted) {
           setStep(5);
         }
       } else {
         toast.error('An unknown error occurred. Please try again.');
-        setLoading(false);
+        setLoader(false);
         if (step > 1 && !submitted) {
           setStep(5);
         }
@@ -890,8 +895,8 @@ setLoader(false)
                       {destination === "" ? "" : "at"} {check === "" ? destination : check}
                     </p>
                     <p className="text-sm sm:text-base md:text-lg mt-1">
-                      {destination === "" ? "" : "from "} {change.from}{destination === "" ? "" : " to "} {change.to}
-                      <sup>{destination === "" ? "" : "th "}</sup> {change.th}
+                                                {destination === "" ? "" : "from "} {change.from}  {destination === "" ? "" : "to "} {change.to}{} {change.th}
+
                     </p>
                     </div>
                   </div>
@@ -1650,6 +1655,7 @@ setLoader(false)
 
 
                               </div>}
+
                               {!loader && <button
 
                                 type="submit"
