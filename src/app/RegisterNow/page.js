@@ -321,9 +321,9 @@ export default function Home() {
   useEffect(() => {
     if (destination == "Istanbul, Turkey") {
       setChange({
-        from: '28th',
-        to: '31st',
-        th: 'August,2025',
+        from: '11th',
+        to: '14th',
+        th: 'September,2025',
 
       })
 
@@ -333,9 +333,9 @@ export default function Home() {
     else if (destination == "Dubai, UAE") {
 
       setChange({
-        from: '11th ',
-        to: '14th',
-        th: 'September , 2025'
+        from: '2nd ',
+        to: '5th',
+        th: 'October , 2025'
 
       })
 
@@ -351,9 +351,9 @@ export default function Home() {
     } else if (destination == "New York, USA") {
 
       setChange({
-        from: '25th ',
-        to: '28th',
-        th: 'September, 2025'
+        from: '12th ',
+        to: '15th',
+        th: 'February, 2026'
 
       })
 
