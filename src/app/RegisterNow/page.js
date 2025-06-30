@@ -898,8 +898,7 @@ setLoader(false)
                       {destination === "" ? "" : "at"} {check === "" ? destination : check}
                     </p>
                     <p className="text-sm sm:text-base md:text-lg mt-1">
-                                                {destination === "" ? "" : "from "} {change.from}  {destination === "" ? "" : "to "} {change.to}{} {change.th}
-
+                      {destination === "" ? "" : "from "} {change.from}   {destination === "" ? "" : "to "} {change.to}{} {change.th}
                     </p>
                     </div>
                   </div>
@@ -929,7 +928,7 @@ setLoader(false)
                       </div>
                       <div className='flex justify-center items-center'>
                         <p className="text-sm sm:text-base font-semibold mt-1">
-                          {destination === "" ? "" : "from "} {change.from}  {destination === "" ? "" : "to "} {change.to}{} {change.th}
+                          {destination === "" ? "" : "from "} {change.from}   {destination === "" ? "" : "to "} {change.to}{} {change.th}
 
                         </p>
                       </div>
