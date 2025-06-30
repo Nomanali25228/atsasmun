@@ -520,6 +520,9 @@ export default function Home() {
     Destinations: check == "" ? "" : check,
   });
 
+useEffect(() => {
+  setLoader(false);
+}, []);
 
 
 
