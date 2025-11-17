@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from 'next/link';
 import Image from "next/image";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
@@ -15,15 +15,24 @@ import ScrollToTop from '../(component)/Scrolltotop/ScrollToTop';
 import Whatsapp from '@/app/(component)/whatsapp/Whatsapp'
 import logo from '@/app/public/img/logo-1.png'; // Logo
 import ParticleCanvas from "../(component)/ParticleCanvas";
+import ContextPage from "../Context/ContextPage";
 
 export default function Flip() {
+
+    const {dubaidates,setDubaidates} = useContext(ContextPage);
+    const {istanbuldates,setIstanbuldates} = useContext(ContextPage);
+    const {saudidates,setSaudidates} = useContext(ContextPage);
+    const {newyorkdates,setNewyorkdates} = useContext(ContextPage);
+    const {londondates,setLondondates} = useContext(ContextPage);
+    const {bakudates,setBakudates} = useContext(ContextPage);
+
   const locations = [
-    { name: 'Istanbul, Türkiye', image: istan, date: '11th  14th September 2025', link: '/Istanbulfee' },
-    { name: 'Dubai, UAE', image: istan5, date: '2nd  5th October 2025', link: '/uaefee' },
-        { name: 'Riyadh, Saudi Arabia', image: istan4, date: '16th  19th October 2025', link: '/Saudifee' },
-    { name: 'Baku, Azerbaijan', image: istan1, date: '06th-09th November, 2025', link: '/Azerbaijanfee' },
-    { name: 'London, UK', image: istan2, date: '20th  24th November 2025', link: '/UKfee' },
-    { name: 'New York, USA', image: istan3, date: '12th  15th February 2026', link: '/USAfee' },
+    { name: 'Istanbul, Türkiye', image: istan, date:istanbuldates.startdate+" – "+istanbuldates.enddate+" "+istanbuldates.month+" "+istanbuldates.year, link: '/Istanbulfee' },
+    { name: 'Dubai, UAE', image: istan5, date:dubaidates.startdate+" – "+dubaidates.enddate+" "+dubaidates.month+" "+dubaidates.year, link: '/uaefee' },
+    { name: 'Riyadh, Saudi Arabia', image: istan4, date:saudidates.startdate+" – "+saudidates.enddate+" "+saudidates.month+" "+saudidates.year, link: '/Saudifee' },
+    // { name: 'Baku, Azerbaijan', image: istan1, date:bakudates.startdate+" – "+bakudates.enddate+" "+bakudates.month+" "+bakudates.year, link: '/Azerbaijanfee' },
+    // { name: 'London, UK', image: istan2, date:londondates.startdate+" – "+londondates.enddate+" "+londondates.month+" "+londondates.year, link: '/UKfee' },
+    // { name: 'New York, USA', image: istan3, date:newyorkdates.startdate+" – "+newyorkdates.enddate+" "+newyorkdates.month+" "+newyorkdates.year, link: '/USAfee' },
   ];
 
 
@@ -254,13 +263,13 @@ export default function Flip() {
 
               {dropdownOpen2 && (
                 <div className="absolute w-[200px]  mt-4 bg-white text-black rounded shadow-lg">
-                  <Link href="/dubai" className="block px-4 py-2 hover:text-blue-400">
-                    Dubai, UAE
-                  </Link>
                   <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400 ">
                     Istanbul, Turkey
                   </Link>
-                  <Link href="/Azerbaijan" className="block px-4 py-2 hover:text-blue-400">
+                  <Link href="/dubai" className="block px-4 py-2 hover:text-blue-400">
+                    Dubai, UAE
+                  </Link>
+                  {/* <Link href="/Azerbaijan" className="block px-4 py-2 hover:text-blue-400">
                     Baku, Azerbaijan
                   </Link>
                   <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
@@ -268,7 +277,7 @@ export default function Flip() {
                   </Link>
                   <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                     New York, USA
-                  </Link>
+                  </Link> */}
                   <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                     Riyadh, Saudi Arabia
                   </Link>
@@ -438,16 +447,6 @@ export default function Flip() {
               {mobileDropdownOpen2 && (
                 <div className="ml-6 space-y-2">
                   <Link
-                    href="/dubai"
-                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Dubai, UAE
-                    <span
-                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
-                    ></span>
-                  </Link>
-                  <Link
                     href="/Istanbul"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -458,6 +457,16 @@ export default function Flip() {
                     ></span>
                   </Link>
                   <Link
+                    href="/dubai"
+                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Dubai, UAE
+                    <span
+                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                    ></span>
+                  </Link>
+                  {/* <Link
                     href="/Azerbaijan"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -487,7 +496,7 @@ export default function Flip() {
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/Saudi"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
@@ -617,8 +626,8 @@ export default function Flip() {
 
       </div>
 
-      <div className="min-h-screen py-12 bg-[#1d212b] flex justify-center items-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="min-h-screen py-8 bg-[#1d212b] flex justify-center items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {locations.map((location, index) => (
             <div key={index} className="group relative w-72 h-72 perspective">
               {/* Front Side */}

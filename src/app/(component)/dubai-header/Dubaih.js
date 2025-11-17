@@ -12,7 +12,7 @@ import ContextPage from "@/app/Context/ContextPage";
 
 export default function Dubaih(props) {
 
-  const { bgImage, tital, Pricelink, style, stlyle2, StartDays, EndDays, monthsDetils, sup, sup1 } = props;
+  const { bgImage, tital, Pricelink, style, stlyle2, StartDays, EndDays, monthsDetils,  } = props;
 
 
 
@@ -252,14 +252,14 @@ export default function Dubaih(props) {
 
               {dropdownOpen2 && (
                 <div className="absolute w-[200px]  mt-4 bg-white text-black rounded shadow-lg">
-                  <Link href="/dubai" className={`block px-4 py-2 ${mla == "Dubai, UAE" ? style : stlyle2} `}>
-                    Dubai, UAE
-                  </Link>
                   <Link href="/Istanbul" className={`block px-4 py-2 ${mla == "Istanbul, Turkey" ? style : stlyle2} `}>
                     Istanbul, Turkey
                   </Link>
+                  <Link href="/dubai" className={`block px-4 py-2 ${mla == "Dubai, UAE" ? style : stlyle2} `}>
+                    Dubai, UAE
+                  </Link>
 
-                  <Link href="/Azerbaijan" className={`block px-4 py-2  ${mla == "Baku, Azerbaijan" ? style : stlyle2}`}>
+                  {/* <Link href="/Azerbaijan" className={`block px-4 py-2  ${mla == "Baku, Azerbaijan" ? style : stlyle2}`}>
                     Baku, Azerbaijan
                   </Link>
                   <Link href="/UK" className={`block px-4 py-2 ${mla == "London, UK" ? style : stlyle2} `}>
@@ -267,7 +267,7 @@ export default function Dubaih(props) {
                   </Link>
                   <Link href="/USA" className={`block px-4 py-2 ${mla == "New York, USA" ? style : stlyle2} `}>
                     New York, USA
-                  </Link>
+                  </Link> */}
                   <Link href="/Saudi" className={`block px-4 py-2 ${mla == "Riyadh, Saudi Arabia" ? style : stlyle2} `}>
                     Riyadh, Saudi Arabia
                   </Link>
@@ -438,16 +438,6 @@ export default function Dubaih(props) {
               {mobileDropdownOpen2 && (
                 <div className="ml-6 space-y-2">
                   <Link
-                    href="/dubai"
-                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Dubai, UAE
-                    <span
-                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
-                    ></span>
-                  </Link>
-                  <Link
                     href="/Istanbul"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -458,6 +448,16 @@ export default function Dubaih(props) {
                     ></span>
                   </Link>
                   <Link
+                    href="/dubai"
+                    className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Dubai, UAE
+                    <span
+                      className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                    ></span>
+                  </Link>
+                  {/* <Link
                     href="/Azerbaijan"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                     onClick={() => setMobileMenuOpen(false)}
@@ -487,7 +487,7 @@ export default function Dubaih(props) {
                     <span
                       className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                     ></span>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/Saudi"
                     className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
@@ -636,7 +636,7 @@ export default function Dubaih(props) {
           {/* Date and Location */}
           <p className="mt-8 relative z-10 sm:mt-8 text-[20px] sm:text-[20
           px] text-center lg:mr-[60%] md:mr-[50%] sm:mr-[30%] sm:text-left" >
-            {StartDays}<sup>{sup}</sup> - {EndDays}<sup>{sup1}</sup>,  {monthsDetils}
+            {StartDays} - {EndDays}  {monthsDetils}
             <br />
 
           </p>

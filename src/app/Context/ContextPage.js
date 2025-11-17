@@ -6,6 +6,55 @@ export const ContextProvider = ({children}) => {
 const [amounts,setAmounts] = useState(0)
   const [check,setCheck] = useState("")
   const [refresh,setRefresh] = useState(false)
+
+  // 1 dubai dates/////////////////////////////////////
+  const [dubaidates,setDubaidates] = useState({
+    startdate: "13th",
+    enddate:"16th",
+    month:"February",
+    year:"2026"
+  })
+
+  // 2 istanbul dates/////////////////////////////////////
+   const [istanbuldates,setIstanbuldates] = useState({
+    startdate: "22nd",
+    enddate:"25th",
+    month:"January",
+    year:"2026"
+  })
+
+   // 3 Saudia  dates/////////////////////////////////////
+   const [saudidates,setSaudidates] = useState({
+    startdate: "1st",
+    enddate:"4th",
+    month:"October",
+    year:"2026"
+  })
+
+  // 4 New York dates/////////////////////////////////////
+    const [newyorkdates,setNewyorkdates] = useState({ 
+    startdate: "12th",
+    enddate:"15th",
+    month:"February",
+    year:"2026"
+  })
+
+   // 5 London dates/////////////////////////////////////
+    const [londondates,setLondondates] = useState({
+    startdate: "20th",
+    enddate:"24th",
+    month:"November",
+    year:"2026"
+  })
+
+    // 6 Baku dates/////////////////////////////////////
+  const [bakudates,setBakudates] = useState({
+    startdate: "06th",
+    enddate:"09th",
+    month:"November",
+    year:"2026"
+  })
+
   useEffect(() => {
     if (amounts !== 0) { // Prevent saving 0 if it's not intentional
       localStorage.setItem('amounts', amounts);
@@ -18,7 +67,7 @@ const [amounts,setAmounts] = useState(0)
     }
   }, []);
   return (
-    <ContextPage.Provider value={{check,setCheck,imgfor,setImgfor,amounts,setAmounts,refresh,setRefresh}}>
+    <ContextPage.Provider value={{check,setCheck,imgfor,setImgfor,amounts,setAmounts,refresh,setRefresh,dubaidates,setDubaidates,istanbuldates,setIstanbuldates ,saudidates,setSaudidates,newyorkdates,setNewyorkdates,londondates,setLondondates,bakudates,setBakudates}}>
       {children}
     </ContextPage.Provider>
   );

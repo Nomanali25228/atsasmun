@@ -22,15 +22,26 @@ import london from '@/app/public/img/london.jpg';
 // import Link from "next/link";
 
 // Card Data
-const cards = [
+
+export default function Card() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const { check, setCheck } = useContext(ContextPage);
+  const {dubaidates,setDubaidates} = useContext(ContextPage);
+  const {istanbuldates,setIstanbuldates} = useContext(ContextPage);
+  const {saudidates,setSaudidates} = useContext(ContextPage);
+  const {newyorkdates,setNewyorkdates} = useContext(ContextPage);
+  const {londondates,setLondondates} = useContext(ContextPage);
+  const {bakudates,setBakudates} = useContext(ContextPage);
+  const cards = [
+
   {
     id: 1,
     nowOpen: "Registrations are now open!",
     title: "ATSASMUN Istanbul, Turkey",
     subtitle: "Istanbul, Turkey",
-    description:
-      "(11th – 14th September 2025)",
-    details:
+    description:  istanbuldates.startdate+" – "+istanbuldates.enddate+" "+istanbuldates.month+" "+istanbuldates.year 
+,    details:
 "Aspiring diplomatic leaders are invited to attend ATSASMUN in Istanbul, located at the crossroads of civilizations. The city's rich cultural past offers global discourse inspiration unmatched by any other.",    image: bell1,
     icon: istanbul,
   },
@@ -40,7 +51,7 @@ const cards = [
     title: "ATSASMUN Dubai, UAE",
     subtitle: "Dubai, UAE",
     description:
-      "(2nd– 5th October 2025)",
+      dubaidates.startdate+" – "+dubaidates.enddate+" "+dubaidates.month+" "+dubaidates.year ,
     details:
       "Young leaders can take advantage of a futuristic platform provided by ATSASMUN in Dubai, which combines the city's cosmopolitan allure and forward-thinking perspective with the spirit of innovation.",
     image: bell2,
@@ -48,60 +59,56 @@ const cards = [
   },
     {
     id: 3,
-    nowOpen: "Registrations opening soon!",
+    nowOpen: "Registrations are now open!",
     title: "ATSASMUN Riyadh, Saudi Arabia ",
     subtitle: "Riyadh, Saudi Arabia",
     description:
-      "(16th – 19th October 2025)",
+      saudidates.startdate+" – "+saudidates.enddate+" "+saudidates.month+" "+saudidates.year ,
     details:
       "ATSASMUN in Saudi Arabia embraces a culture of honor, respect, and unity. Through the spirit of majlis, it fosters dialogue, mutual understanding, and true diplomacy in a changing world.",
       image: bell5,
       icon: Saudi,
       
     },
-  {
-    id: 4,
-    nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN Baku, Azerbaijan ",
-    subtitle: "Baku, Azerbaijan",
-    description:
-      "(06th-09th, November 2025)",
-    details:
-    "A multicultural hub is present in Baku, Azerbaijan where the participants of the ATSASMUN are immersed. This center embodies the harmony and variety that is important for future diplomacy.",
-    image: bell3,
-    icon: Azerbaijan,
-  },
-  {
-    id: 5,
-    nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN London, UK",
-    subtitle: "London, UK",
-    description:
-      "( 20th – 24th November 2025)",
-    details:"An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",    image: bell6,
-    icon: london,
-  },
-  {
-    id: 6,
-    nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN New York, USA",
-    subtitle: "New York, USA",
-    description:
-      "(12th – 15th February 2026)",
-    details:
-      "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in New York connects delegates with the spirit of diplomacy.",
-    image: bell4,
-    icon: USA,
-  },
+  // {
+  //   id: 4,
+  //   nowOpen: "Registrations opening soon!",
+  //   title: "ATSASMUN Baku, Azerbaijan ",
+  //   subtitle: "Baku, Azerbaijan",
+  //   description:
+  //     bakudates.startdate+" – "+bakudates.enddate+" "+bakudates.month+" "+bakudates.year ,
+  //   details:
+  //   "A multicultural hub is present in Baku, Azerbaijan where the participants of the ATSASMUN are immersed. This center embodies the harmony and variety that is important for future diplomacy.",
+  //   image: bell3,
+  //   icon: Azerbaijan,
+  // },
+  // {
+  //   id: 5,
+  //   nowOpen: "Registrations opening soon!",
+  //   title: "ATSASMUN London, UK",
+  //   subtitle: "London, UK",
+  //   description:
+  //     londondates.startdate+" – "+londondates.enddate+" "+londondates.month+" "+londondates.year ,
+  //   details:"An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",    image: bell6,
+  //   icon: london,
+  // },
+  // {
+  //   id: 6,
+  //   nowOpen: "Registrations opening soon!",
+  //   title: "ATSASMUN New York, USA",
+  //   subtitle: "New York, USA",
+  //   description:
+  //     newyorkdates.startdate+" – "+newyorkdates.enddate+" "+newyorkdates.month+" "+newyorkdates.year ,
+  //   details:
+  //     "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in New York connects delegates with the spirit of diplomacy.",
+  //   image: bell4,
+  //   icon: USA,
+  // },
 
  
 ];
 
-export default function Card() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [showMore, setShowMore] = useState(false);
-  const { check, setCheck } = useContext(ContextPage);
-
+ 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
@@ -198,12 +205,12 @@ export default function Card() {
         </div>
 
         {/* Show More Button */}
-        <button
+        {/* <button
           onClick={() => setShowMore(!showMore)}
           className="mt-8 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
         >
           {showMore ? "Show Less" : "Show More"}
-        </button>
+        </button> */}
       </div>
     </section>
   );

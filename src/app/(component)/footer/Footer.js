@@ -86,20 +86,9 @@ const Footer = () => {
                         <h3 className="text-lg font-bold mb-4 border-b-2 border-blue-400 w-max">
                             Delegate Destinations
                         </h3>
-                        <ul className="space-y-3">
-                            <li>
-                                <Link
-                                    href="/dubai"
-                                    className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
-                                >
-                                    <span className="mr-2">&#10140;</span>
-                                    <p className='hover:scale-105 transition-transform duration-500'>
-                                        Atsas Mun Dubai
-                                    </p>
 
-                                </Link>
-                            </li>
-                            <li>
+                        <ul className="space-y-3">
+                         <li>
                                 <Link
                                     href="/Istanbul"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
@@ -112,6 +101,19 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
+                                <Link
+                                    href="/dubai"
+                                    className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
+                                >
+                                    <span className="mr-2">&#10140;</span>
+                                    <p className='hover:scale-105 transition-transform duration-500'>
+                                        Atsas Mun Dubai
+                                    </p>
+
+                                </Link>
+                            </li>
+                           
+                            {/* <li>
                                 <Link
                                     href="/Azerbaijan"
                                     className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300"
@@ -145,7 +147,7 @@ const Footer = () => {
                                     </p>
 
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link
                                     href="/Saudi"

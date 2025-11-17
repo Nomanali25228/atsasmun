@@ -18,12 +18,12 @@ import { IoPlayOutline } from 'react-icons/io5';
 
 // getDestination name typing animation////////////////////////////
 const cities = [
-    'Dubai, UAE',
     'Istanbul, Turkey',
-    'Baku, Azerbaijan',
-    'London, UK',
-    'New York, USA',
+    'Dubai, UAE',
     'Riyadh, Saudi Arabia',
+    // 'Baku, Azerbaijan',
+    // 'London, UK',
+    // 'New York, USA',
 ];
 
 export default function Home() {
@@ -310,13 +310,13 @@ export default function Home() {
 
                             {dropdownOpen2 && (
                                 <div className="absolute w-[200px]  mt-4 bg-white text-black rounded shadow-lg">
-                                    <Link href="/dubai" className="block px-4 py-2 hover:text-blue-400">
-                                        Dubai, UAE
-                                    </Link>
                                     <Link href="/Istanbul" className="block px-4 py-2 hover:text-blue-400">
                                         Istanbul, Turkey
                                     </Link>
-                                    <Link href="/Azerbaijan" className="block px-4 py-2 hover:text-blue-400">
+                                    <Link href="/dubai" className="block px-4 py-2 hover:text-blue-400">
+                                        Dubai, UAE
+                                    </Link>
+                                    {/* <Link href="/Azerbaijan" className="block px-4 py-2 hover:text-blue-400">
                                         Baku, Azerbaijan
                                     </Link>
                                     <Link href="/UK" className="block px-4 py-2 hover:text-blue-400">
@@ -324,7 +324,7 @@ export default function Home() {
                                     </Link>
                                     <Link href="/USA" className="block px-4 py-2 hover:text-blue-400">
                                         New York, USA
-                                    </Link>
+                                    </Link> */}
                                     <Link href="/Saudi" className="block px-4 py-2 hover:text-blue-400">
                                         Riyadh, Saudi Arabia
                                     </Link>
@@ -491,16 +491,6 @@ export default function Home() {
                             {mobileDropdownOpen2 && (
                                 <div className="ml-6 space-y-2">
                                     <Link
-                                        href="/dubai"
-                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                    >
-                                        Dubai, UAE
-                                        <span
-                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
-                                        ></span>
-                                    </Link>
-                                    <Link
                                         href="/Istanbul"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -511,6 +501,16 @@ export default function Home() {
                                         ></span>
                                     </Link>
                                     <Link
+                                        href="/dubai"
+                                        className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        Dubai, UAE
+                                        <span
+                                            className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
+                                        ></span>
+                                    </Link>
+                                    {/* <Link
                                         href="/Azerbaijan"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"
                                         onClick={() => setMobileMenuOpen(false)}
@@ -540,7 +540,7 @@ export default function Home() {
                                         <span
                                             className="absolute bottom-0 left-0 w-0 h-[3px] bg-white transition-all duration-500 ease-in-out group-hover:w-full"
                                         ></span>
-                                    </Link>
+                                    </Link> */}
                                     <Link
                                         href="/Saudi"
                                         className="relative block font-bold text-lg text-[#A8ABBA] hover:text-white py-3 px-5 rounded-lg transition-all duration-500 ease-in-out transform group hover:translate-x-2 hover:shadow-lg hover:shadow-blue-500/50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-700"

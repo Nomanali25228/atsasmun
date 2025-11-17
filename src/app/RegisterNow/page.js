@@ -261,6 +261,14 @@ const countryNames = {
 };
 
 export default function Home() {
+    const {dubaidates,setDubaidates} = useContext(ContextPage);
+    const {istanbuldates,setIstanbuldates} = useContext(ContextPage);
+    const {saudidates,setSaudidates} = useContext(ContextPage);
+    const {newyorkdates,setNewyorkdates} = useContext(ContextPage);
+    const {londondates,setLondondates} = useContext(ContextPage);
+    const {bakudates,setBakudates} = useContext(ContextPage);
+
+    
   const totalSteps = 6; // Total steps in the form
   const stepTexts = ["Please enter your contact information", "Please enter your regional information", "Nearly finished - just a few more questions", "We are almost done...", "You may submit the registration form now"]; // Step texts
   const [step, setStep] = useState(1); // Current step
@@ -317,13 +325,16 @@ export default function Home() {
   const [loader, setLoader] = useState(false)
   const [attachment, setAttachment] = useState(istan);
   const [chnageApi, setChangeApi] = useState("")
+useEffect(() => {
+   setLoader(false);
+}, [step]);
 
   useEffect(() => {
     if (destination == "Istanbul, Turkey") {
       setChange({
-        from: '11th',
-        to: '14th',
-        th: 'September,2025',
+        from: istanbuldates.startdate,
+        to: istanbuldates.enddate,
+        th: `${istanbuldates.month} , ${istanbuldates.year}`
 
       })
 
@@ -333,45 +344,45 @@ export default function Home() {
     else if (destination == "Dubai, UAE") {
 
       setChange({
-        from: '2nd ',
-        to: '5th',
-        th: 'October , 2025'
+        from: dubaidates.startdate,
+        to: dubaidates.enddate,
+        th: `${dubaidates.month} , ${dubaidates.year}`
 
       })
 
     } else if (destination == "Baku, Azerbaijan") {
 
       setChange({
-        from: '06th ',
-        to: '09th',
-        th: 'November, 2025'
+        from: bakudates.startdate,
+        to: bakudates.enddate,
+        th: `${bakudates.month} , ${bakudates.year}`
 
       })
 
     } else if (destination == "New York, USA") {
 
       setChange({
-        from: '12th ',
-        to: '15th',
-        th: 'February, 2026'
+        from: newyorkdates.startdate,
+        to: newyorkdates.enddate,
+        th: `${newyorkdates.month} , ${newyorkdates.year}`
 
       })
 
     } else if (destination == "Riyadh, Saudi Arabia") {
 
       setChange({
-        from: '16th ',
-        to: '19th',
-        th: 'october, 2025'
+        from: saudidates.startdate,
+        to: saudidates.enddate,
+        th: `${saudidates.month} , ${saudidates.year}`
 
       })
     }
     else if (destination == "London, UK") {
       setImgchange(istan2)
       setChange({
-        from: '20th ',
-        to: '24th',
-        th: 'November, 2025'
+        from: londondates.startdate,
+        to: londondates.enddate,
+        th: `${londondates.month} , ${londondates.year}`
 
       })
 
@@ -638,7 +649,6 @@ useEffect(() => {
         }
 
       });
-
       if (response.status === 200) {
         alert('Form submitted successfully!');
 
@@ -682,23 +692,47 @@ useEffect(() => {
       
         if (destination == "Istanbul, Turkey") {
           var g = "IstanbulContact"
-          ha34(e, id, g)
+          var startdate = istanbuldates.startdate
+          var enddate = istanbuldates.enddate
+          var month = istanbuldates.month
+          var year = istanbuldates.year
+          ha34(e, id, g , startdate, enddate, month, year)
         } else if (destination == "Dubai, UAE") {
           var g = "DubaiContact"
-          ha34(e, id, g)
+          var startdate = dubaidates.startdate
+          var enddate = dubaidates.enddate
+          var month = dubaidates.month
+          var year = dubaidates.year
+          ha34(e, id, g, startdate, enddate, month, year)
         } else if (destination == "Baku, Azerbaijan") {
           var g = "AzerbaijanContact"
-          ha34(e, id, g)
+          var startdate = bakudates.startdate
+          var enddate = bakudates.enddate
+          var month = bakudates.month
+          var year = bakudates.year
+          ha34(e, id, g , startdate, enddate, month, year)
         } else if (destination == "New York, USA") {
           var g = "USAContact"
-          ha34(e, id, g)
+           var startdate = newyorkdates.startdate
+          var enddate = newyorkdates.enddate
+          var month = newyorkdates.month
+          var year = newyorkdates.year 
+          ha34(e, id, g, startdate, enddate, month, year)
         } else if (destination == "Riyadh, Saudi Arabia") {
           var g = "SaudiContact"
-          ha34(e, id, g)
+          var startdate = saudidates.startdate
+          var enddate = saudidates.enddate
+          var month = saudidates.month
+          var year = saudidates.year
+          ha34(e, id, g, startdate, enddate, month, year)
         }
         else if (destination == "London, UK") {
           var g = "UKContact"
-          ha34(e, id, g)
+          var startdate = londondates.startdate
+          var enddate = londondates.enddate
+          var month = londondates.month
+          var year = londondates.year
+          ha34(e, id, g, startdate, enddate, month, year)
 
 
 
@@ -723,15 +757,17 @@ setLoader(false)
 
 
   };
-  const ha34 = async (event, id, g) => {
-    event.preventDefault();
+  const ha34 = async (e, id, g, startdate, enddate, month, year) => {
+    e.preventDefault();
     // setLoading(true);
 
     try {
       const response = await fetch(`/api1/${g}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, destination, id, }),
+        body: JSON.stringify({ name, email, destination, id,
+          startdate, enddate, month, year
+         }),
 
       });
 
@@ -741,7 +777,7 @@ setLoader(false)
 
       const data = await response.json();
       console.log('Email sent successfully:', data);
-      cronjob(event, name, email, id)
+      cronjob(e, name, email, id)
       setName('');
       setEmail('');
       console.log(data);
@@ -763,10 +799,11 @@ setLoader(false)
     }
 
   };
-  const cronjob = async (event, name, email, id) => {
+  const cronjob = async (e, name, email, id, startdate, enddate, month, year) => {
+        e.preventDefault();
+
     console.log("cronjob",id, name, email);
     
-    event.preventDefault();
   
     try {
       const response = await axios.post(`https://atsas-backend.onrender.com/api/notifications`, {
@@ -775,6 +812,10 @@ setLoader(false)
           FirstName: name,
           Idname: id,
           Destinations: destination,
+          startdate: startdate,
+          enddate: enddate,
+          month: month,
+          year: year
         },
       });
   
@@ -1110,10 +1151,10 @@ setLoader(false)
                                   </option>
                                   {no && <option value="Istanbul, Turkey">Istanbul, Turkey</option>}
                                   {no1 && <option value="Dubai, UAE">Dubai, UAE</option>}
-                                  {no2 && <option value="Baku, Azerbaijan">Baku, Azerbaijan</option>}
-                                  {no3 && <option value="New York, USA">New York, USA</option>}
+                                  {/* {no2 && <option value="Baku, Azerbaijan">Baku, Azerbaijan</option>}
+                                  {no3 && <option value="New York, USA">New York, USA</option>} */}
                                   {no4 && <option value="Riyadh, Saudi Arabia">Riyadh, Saudi Arabia</option>}
-                                  {no5 && <option value="London, UK">London, UK</option>}
+                                  {/* {no5 && <option value="London, UK">London, UK</option>} */}
 
                                 </select>
                               </div>
@@ -1638,8 +1679,14 @@ setLoader(false)
                               >
                                 ← Back
                               </button>
+  {step === 5 && !loader && <button
 
-                              {loader && <div
+                                type="submit"
+                                className="w-full sm:w-auto px-6 py-3 rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition duration-300"
+                              >
+                                {"Submit →"}
+                              </button>}
+                              {step === 5 && loader &&<div
 
                                 className="w-full sm:w-auto px-6 py-3 cursor-not-allowed rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition duration-300"
                               >
@@ -1658,13 +1705,7 @@ setLoader(false)
 
                               </div>}
 
-                              {!loader && <button
-
-                                type="submit"
-                                className="w-full sm:w-auto px-6 py-3 rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition duration-300"
-                              >
-                                {"Submit →"}
-                              </button>}
+                            
                             </div>
                           </div>
 
