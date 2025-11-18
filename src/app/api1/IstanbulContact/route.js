@@ -7,7 +7,7 @@ export async function POST(request) {
     const password = process.env.NEXT_PUBLIC_SMTP_PASSWORD;
 
     try {
-        const { name, email, destination, id ,  startdate, enddate, month, year} = await request.json();
+        const { name, email, destination, id ,startdate, enddate, month, year} = await request.json();
         console.log("nodemailer id", id);
 
         if (!name || !email || !destination) {

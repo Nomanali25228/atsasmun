@@ -777,7 +777,15 @@ setLoader(false)
 
       const data = await response.json();
       console.log('Email sent successfully:', data);
-      cronjob(e, name, email, id)
+    
+     cronjob(
+  e,
+  name,
+  email,
+  id,
+ startdate, enddate, month, year
+);
+
       setName('');
       setEmail('');
       console.log(data);
@@ -799,7 +807,7 @@ setLoader(false)
     }
 
   };
-  const cronjob = async (e, name, email, id, startdate, enddate, month, year) => {
+  const cronjob = async (e, name, email, id,startdate, enddate, month, year) => {
         e.preventDefault();
 
     console.log("cronjob",id, name, email);
@@ -808,15 +816,15 @@ setLoader(false)
     try {
       const response = await axios.post(`https://atsas-backend.onrender.com/api/notifications`, {
         data: {
-          Email: email,
-          FirstName: name,
-          Idname: id,
-          Destinations: destination,
-          startdate: startdate,
-          enddate: enddate,
-          month: month,
-          year: year
-        },
+        Email: email,
+        FirstName: name,
+        Idname: id,
+        Destinations: destination,
+      startdate: startdate,
+      enddate: enddate,
+      month: month,
+      year: year,
+      },
       });
   
       if (response.status === 200) {
