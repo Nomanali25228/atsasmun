@@ -52,12 +52,12 @@ export default function ContactUs() {
             </div>
             <h3 className="text-lg font-semibold text-gray-800 mb-2">PHONE</h3>
             <a
-              href="tel:+447487302322"
+              href="tel:+447498072531"
               className="text-blue-600 hover:underline"
               target="blank"
 
             >
-              +447487302322
+              +447498072531
             </a>
             <hr className="mt-10 w-3/4 mx-auto border-gray-300" />
           </div>
@@ -126,12 +126,12 @@ export default function ContactUs() {
               WHATSAPP
             </h3>
             <a
-              href="https://wa.me/+447487302322"
+              href="https://wa.me/+447498072531"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
-             +447487302322
+             +447498072531
             </a>
             <hr className="mt-10 w-3/4 mx-auto border-gray-300" />
           </div>

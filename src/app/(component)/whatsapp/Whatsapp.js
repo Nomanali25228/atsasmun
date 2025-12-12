@@ -11,7 +11,7 @@ const Whatsapp = () => {
     "Hello! I have questions regarding Atsas International MUN."
   );
   const [showEmojis, setShowEmojis] = useState(false);
-  const phoneNumber = "+447487302322";
+  const phoneNumber = "+447498072531";
   const chatRef = useRef(null);
 
   useEffect(() => {

@@ -178,11 +178,11 @@ const Footer = () => {
                         </p>
                         <div className="text-sm text-gray-400 mt-4">
                             <span className="font-bold text-white">Phone:</span>{' '}
-                            <a href="tel:+447487302322"
+                            <a href="tel:+447498072531"
                                 target="_blank"
                                 rel="noopener noreferrer" className="hover:text-blue-400">
                                 <p className='hover:scale-105 transition-transform duration-500'>
-                                +447487302322
+                                +447498072531
                                 </p>
                             </a>
                         </div>
@@ -214,7 +214,7 @@ const Footer = () => {
                                 <FaInstagram className="text-lg" />
                             </a>
                             <a
-                                href="https://wa.me/+447487302322"
+                                href="https://wa.me/+447498072531"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 flex items-center justify-center border-2 border-green-500 text-green-500 rounded-full hover:bg-green-500 hover:text-white transition-colors duration-200"
@@ -230,7 +230,7 @@ const Footer = () => {
                                 <FaEnvelope className="text-lg" />
                             </a>
                             <a
-                                href="tel:+447487302322"
+                                href="tel:+447498072531"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 flex items-center justify-center border-2 border-teal-500 text-teal-500 rounded-full hover:bg-teal-500 hover:text-white transition-colors duration-200"

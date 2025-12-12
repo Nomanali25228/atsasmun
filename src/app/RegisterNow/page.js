@@ -1779,13 +1779,13 @@ setLoader(false)
                           {/* Contact Info */}
                           <div className="flex flex-wrap items-center justify-center space-x-4 sm:space-x-10 mb-8">
                             <a
-                              href="https://wa.me/+447487302322"
+                              href="https://wa.me/+447498072531"
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex items-center text-red-600 text-sm sm:text-base"
                             >
                               <FaWhatsapp size={20} className="mr-2 sm:text-lg" />
-                              +447487302322
+                              +447498072531
                             </a>
                             <a
                               href="mailto:info@atsasmun.com"
