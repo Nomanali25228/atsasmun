@@ -3,8 +3,6 @@ import nodemailer from "nodemailer";
 import { setTimeout } from "timers/promises";
 import { NextResponse } from "next/server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 // Email Sending Function
 async function sendEmail(to, subject, text) {
   const smtpUser = process.env.NEXT_PUBLIC_SMTP_USERNAME || process.env.SMTP_EMAIL;
@@ -33,7 +31,7 @@ async function sendEmail(to, subject, text) {
 }
 
 // Invoice Reminder & Expiration Function
-async function handleInvoiceLifecycle(invoiceId, customerEmail) {
+async function handleInvoiceLifecycle(stripe, invoiceId, customerEmail) {
   await setTimeout(60 * 1000); // Wait 4 days
   const invoice = await stripe.invoices.retrieve(invoiceId);
 
@@ -56,6 +54,7 @@ async function handleInvoiceLifecycle(invoiceId, customerEmail) {
 
 // Stripe Webhook Handler
 export async function POST(req) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const sig = req.headers.get("stripe-signature");
   let event;
 
@@ -70,7 +69,7 @@ export async function POST(req) {
   switch (event.type) {
     case "invoice.finalized":
       console.log("Invoice Finalized:", event.data.object.id);
-      handleInvoiceLifecycle(event.data.object.id, event.data.object.customer_email);
+      handleInvoiceLifecycle(stripe, event.data.object.id, event.data.object.customer_email);
       break;
 
     case "invoice.payment_failed":
