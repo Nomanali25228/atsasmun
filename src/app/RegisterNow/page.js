@@ -272,6 +272,40 @@ export default function Home() {
   const totalSteps = 6; // Total steps in the form
   const stepTexts = ["Please enter your contact information", "Please enter your regional information", "Nearly finished - just a few more questions", "We are almost done...", "You may submit the registration form now"]; // Step texts
   const [step, setStep] = useState(1); // Current step
+
+  const MIN_DELEGATES = 2;
+  const MAX_DELEGATES = 25;
+  const [delegates, setDelegates] = useState(Array(MIN_DELEGATES).fill(""));
+  const [delegateDetails, setDelegateDetails] = useState(
+    Array(MIN_DELEGATES).fill({ shirtSize: "", foodPreference: "", pricePackage: "" })
+  );
+
+  const updateDelegateName = (idx, value) => {
+    setDelegates((prev) => {
+      const copy = [...prev];
+      copy[idx] = value;
+      return copy;
+    });
+  };
+
+  const updateDelegateDetail = (idx, field, value) => {
+    setDelegateDetails((prev) => {
+      const copy = [...prev];
+      copy[idx] = { ...copy[idx], [field]: value };
+      return copy;
+    });
+  };
+
+  const addDelegate = () => {
+    setDelegates((prev) => (prev.length >= MAX_DELEGATES ? prev : [...prev, ""]));
+    setDelegateDetails((prev) => (prev.length >= MAX_DELEGATES ? prev : [...prev, { shirtSize: "", foodPreference: "", pricePackage: "" }]));
+  };
+
+  const removeDelegate = (idx) => {
+    setDelegates((prev) => (prev.length <= MIN_DELEGATES ? prev : prev.filter((_, i) => i !== idx)));
+    setDelegateDetails((prev) => (prev.length <= MIN_DELEGATES ? prev : prev.filter((_, i) => i !== idx)));
+  };
+
   const [submitted, setSubmitted] = useState(false); // Submission status
   const [phone, setPhone] = useState('');
   const [selectedNationality, setSelectedNationality] = useState("");
@@ -503,6 +537,9 @@ export default function Home() {
   // strapi fuction//////////////////////////////////////////////////////////////////////////////////////////////
 
   const [formData, setFormData] = useState({
+    RegistrationType: 'single',
+    GroupName: '',
+    NumberOfDelegates: '',
     FirstName: '',
     MiddleName: '',
     LastName: '',
@@ -550,6 +587,14 @@ export default function Home() {
   };
 
   const validateForm = () => {
+    // Group delegate validation
+    if (formData.RegistrationType === 'group') {
+      if (!formData.GroupName || !formData.NumberOfDelegates || parseInt(formData.NumberOfDelegates) < 2) {
+        toast.info('Please enter a valid institution name and at least 2 delegates.');
+        return false;
+      }
+    }
+
     // Check if all required fields are filled
     if (
       !formData.FirstName ||
@@ -562,6 +607,12 @@ export default function Home() {
       !formData.Destinations
     ) {
       toast.info('Please fill out all required fields.');
+      return false;
+    }
+
+    // Check if destination is selected
+    if (!formData.Destinations && !destination) {
+      toast.info('Please select a destination.');
       return false;
     }
 
@@ -651,11 +702,24 @@ export default function Home() {
 
       console.log(`Sending to collection: ${targetCollection} for destination: ${destination}`);
 
+      let finalData = {
+        ...formData,
+        customerId: customerId
+      };
+
+      if (formData.RegistrationType === 'group') {
+        finalData.delegates = delegates
+          .map((name, idx) => ({
+            name: name.trim(),
+            WhatIsYourShirtSize: delegateDetails[idx]?.shirtSize || null,
+            DoYouHaveAFoodpreference: delegateDetails[idx]?.foodPreference || null,
+            pricepackage: delegateDetails[idx]?.pricePackage || null,
+          }))
+          .filter((d) => d.name);
+      }
+
       const response = await axios.post(`/api1/api/${targetCollection}`, {
-        data: {
-          ...formData,
-          customerId: customerId
-        }
+        data: finalData
       });
 
       if (response.status === 200 || response.status === 201) {
@@ -688,8 +752,16 @@ export default function Home() {
           datesObj = londondates;
         }
 
-        if (g && datesObj) {
+        // Only call email API if we have ALL required date info
+        const hasAllDateInfo = g &&
+          datesObj.startdate && datesObj.enddate &&
+          datesObj.month && datesObj.year;
+
+        if (hasAllDateInfo) {
           await ha34(e, id, g, datesObj.startdate, datesObj.enddate, datesObj.month, datesObj.year, formData.FirstName, formData.Email);
+        } else {
+          console.warn('Skipping email: missing date info or destination not matched. g=', g, 'datesObj=', datesObj);
+          // Still show success because DB save worked
         }
 
         toast.success('Form submitted successfully!');
@@ -721,13 +793,19 @@ export default function Home() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: nameParam, email: emailParam, destination, id,
-          startdate, enddate, month, year
+          name: nameParam,
+          email: emailParam,
+          destination: destination || formData.Destinations,  // fallback to formData
+          id,
+          startdate, enddate, month, year,
+          type: formData.RegistrationType
         }),
       });
 
       if (!response.ok) {
-        console.error('Failed to send email');
+        const errData = await response.json().catch(() => ({}));
+        // Throw so caller knows email failed
+        throw new Error(`Email API error (${response.status}): ${errData.message || 'Unknown'}`);
       }
 
       const data = await response.json();
@@ -762,6 +840,7 @@ export default function Home() {
           enddate: enddate,
           month: month,
           year: year,
+          type: formData.RegistrationType,
         },
       });
 
@@ -832,7 +911,7 @@ export default function Home() {
             </h2>
           </div>
           <div >
-            <div data-aos="fade-up" className="w-full max-w-7xl bg-gradient-to-b from-blue-100 to-pink-100 shadow-xl rounded-xl overflow-hidden">
+            <div data-aos="fade-up" className="w-full max-w-7xl shadow-xl rounded-xl overflow-hidden" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.1)' }}>
               <div className="flex flex-col lg:flex-row">
                 {/* Mobile Text Section */}
                 <div className="w-full h-52 relative block lg:hidden ">
@@ -893,7 +972,7 @@ export default function Home() {
                   </div>
                 </div>
                 {/* Form Section */}
-                <div className="lg:w-2/3 px-4 sm:px-6 md:px-12 py-6 sm:py-12 bg-gradient-to-br from-gray-50 to-white">
+                <div className="lg:w-2/3 px-4 sm:px-6 md:px-12 py-6 sm:py-12" style={{ background: '#12142B' }}>
                   {/* Progress Bar */}
                   <div
                     className="bg-gradient-to-r from-purple-700 to-blue-600 h-2 rounded transition-all duration-700 ease-in-out"
@@ -921,6 +1000,123 @@ export default function Home() {
                         {/* Dynamic Inputs */}
                         {step === 1 && (
                           <div className="space-y-8">
+                            {/* Registration Type Select */}
+                            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-6">
+                              <label className="flex items-center space-x-3 cursor-pointer group">
+                                <input 
+                                  type="radio" 
+                                  name="RegistrationType" 
+                                  value="single"
+                                  checked={formData.RegistrationType === 'single'}
+                                  onChange={handleChange}
+                                  className="w-5 h-5 cursor-pointer accent-[#FF5A5F]"
+                                />
+                                <span className="text-lg font-semibold group-hover:text-[#FF5A5F] transition" style={{ color: formData.RegistrationType === 'single' ? '#FF5A5F' : '#F5F1E8' }}>Single Delegate</span>
+                              </label>
+                              <label className="flex items-center space-x-3 cursor-pointer group">
+                                <input 
+                                  type="radio" 
+                                  name="RegistrationType" 
+                                  value="group"
+                                  checked={formData.RegistrationType === 'group'}
+                                  onChange={handleChange}
+                                  className="w-5 h-5 cursor-pointer accent-[#FF5A5F]"
+                                />
+                                <span className="text-lg font-semibold group-hover:text-[#FF5A5F] transition" style={{ color: formData.RegistrationType === 'group' ? '#FF5A5F' : '#F5F1E8' }}>Group Delegation</span>
+                              </label>
+                            </div>
+
+                            {/* Group Delegation Fields */}
+                            {formData.RegistrationType === 'group' && (
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 p-6 rounded-xl mb-6 shadow-sm" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.1)' }}>
+                                <div>
+                                  <label className="block text-sm font-medium" style={{ color: '#F5F1E8' }}>
+                                    Delegation / Institution Name <span className="text-red-500">*</span>
+                                  </label>
+                                  <input
+                                    type="text" 
+                                    name="GroupName" 
+                                    value={formData.GroupName} 
+                                    onChange={handleChange}
+                                    className="mt-2 w-full border-2 outline-none rounded-lg shadow-inner py-3 px-4 focus:ring-2 transition duration-300 ease-in-out transform hover:-translate-y-1" 
+                                    style={{ borderColor: 'rgba(245,241,232,0.1)', background: '#12142B', color: '#F5F1E8' }}
+                                    placeholder="e.g. Harvard MUN Team"
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium" style={{ color: '#F5F1E8' }}>
+                                    Target Number of Delegates <span className="text-red-500">*</span>
+                                  </label>
+                                  <input
+                                    type="number" 
+                                    name="NumberOfDelegates" 
+                                    value={formData.NumberOfDelegates} 
+                                    onChange={handleChange}
+                                    min="2"
+                                    className="mt-2 w-full border-2 outline-none rounded-lg shadow-inner py-3 px-4 focus:ring-2 transition duration-300 ease-in-out transform hover:-translate-y-1" 
+                                    style={{ borderColor: 'rgba(245,241,232,0.1)', background: '#12142B', color: '#F5F1E8' }}
+                                    placeholder="e.g. 5"
+                                  />
+                                </div>
+                              </div>
+                            )}
+
+                            {formData.RegistrationType === 'group' && (
+                              <div className="space-y-4 mt-8 bg-gray-50/10 p-6 rounded-xl border border-gray-200/20" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.1)' }}>
+                                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mb-4">
+                                  <div>
+                                    <h3 className="text-xl font-semibold text-[#F2B705]">Delegation Members</h3>
+                                    <p className="text-sm text-gray-300">Members ({delegates.length}/{MAX_DELEGATES})</p>
+                                  </div>
+                                  <button
+                                    type="button"
+                                    onClick={addDelegate}
+                                    disabled={delegates.length >= MAX_DELEGATES}
+                                    className="rounded-md cursor-pointer disabled:opacity-50 w-full sm:w-auto px-4 py-2 border text-sm sm:text-base transition-all bg-[#FF5A5F] border-[#FF5A5F] text-white hover:bg-[#e0484d]"
+                                  >
+                                    + Add another delegate
+                                  </button>
+                                </div>
+
+                                <div className={delegates.length > 6 ? "max-h-[350px] overflow-auto pr-2" : "pr-2"}>
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                                    {delegates.map((name, idx) => (
+                                      <div key={idx} className="relative p-5 bg-[#12142B] border border-[rgba(245,241,232,0.1)] rounded-xl shadow-md">
+                                        <label className="block text-sm font-medium text-[#F5F1E8] mb-1">Delegate {idx + 1} Name <span className="text-red-500">*</span></label>
+                                        <input
+                                          type="text"
+                                          value={name}
+                                          onChange={(e) => updateDelegateName(idx, e.target.value)}
+                                          className="w-full h-[50px] border-2 outline-none border-[rgba(245,241,232,0.1)] rounded-lg shadow-inner px-4 text-base bg-[#1B1E3D] text-[#F5F1E8] focus:ring-2 focus:ring-[#FF5A5F] transition duration-300 ease-in-out transform hover:-translate-y-1 block"
+                                          placeholder={`Delegate ${idx + 1} full name`}
+                                          required={formData.RegistrationType === 'group'}
+                                        />
+                                        {delegates.length > MIN_DELEGATES && (
+                                          <button
+                                            type="button"
+                                            onClick={() => removeDelegate(idx)}
+                                            className="absolute top-3 right-3 text-red-500 cursor-pointer hover:text-red-400 font-bold text-xl hover:scale-110 transition-transform"
+                                            aria-label={`Remove delegate ${idx + 1}`}
+                                          >
+                                            ×
+                                          </button>
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+                            {formData.RegistrationType === 'group' && (
+                              <div className="w-full flex items-center mb-[-1rem]">
+                                <h3 className="text-xl font-semibold uppercase tracking-wider" style={{ color: '#F2B705', fontSize: '14px' }}>
+                                  Head Delegate Information
+                                </h3>
+                                <div className="flex-grow h-px ml-4" style={{ background: 'rgba(245,241,232,0.1)' }}></div>
+                              </div>
+                            )}
+
                             {/* Name Fields */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                               <div>
@@ -1136,7 +1332,7 @@ export default function Home() {
                                         Nationality: countryName,
                                       }));
                                     }}
-                                    className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-1 px-1 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+                                    className="atsas-flags mt-2 w-full rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 block"
                                     searchable
                                     searchPlaceholder="Search for a country..."
                                     customLabels={countryNames}
@@ -1158,7 +1354,7 @@ export default function Home() {
                                       Residency: countryName,
                                     }));
                                   }}
-                                  className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-1 px-1 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+                                  className="atsas-flags mt-2 w-full rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 block"
                                   searchable
                                   searchPlaceholder="Search for a country..."
                                   customLabels={countryNames}
@@ -1321,65 +1517,116 @@ export default function Home() {
 
                               </div>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                              {/* Shirt Size */}
-                              {/* Shirt Size Dropdown */}
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700">
-                                  Shirt Size
-                                </label>
-                                <select
-                                  name="WhatIsYourShirtSize"
-                                  value={shirtSize}
-                                  onChange={(e) => {
-                                    const newSize = e.target.value;
-                                    setShirtSize(newSize); // Update local shirtSize state
-                                    setFormData((prevFormData) => ({
-                                      ...prevFormData,
-                                      WhatIsYourShirtSize: newSize, // Update formData
-                                    }));
-                                  }}
-                                  required
-                                  className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-3 px-4 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
-                                >
-                                  <option value="" disabled hidden>
-                                    Select Shirt Size
-                                  </option>
-                                  <option value="Small">Small</option>
-                                  <option value="Medium">Medium</option>
-                                  <option value="Large">Large</option>
-                                  <option value="X-Large">X-Large</option>
-                                </select>
+                            {formData.RegistrationType === 'group' ? (
+                              <div className="space-y-6 mt-6 p-6 sm:p-8 rounded-2xl border border-[rgba(245,241,232,0.1)] shadow-xl" style={{ background: '#12142B' }}>
+                                <h3 className="text-xl font-bold text-[#F2B705] border-b border-[rgba(245,241,232,0.1)] pb-3">Delegates: Details & Price Package</h3>
+                                <div className="grid grid-cols-1 gap-6">
+                                  {delegates.map((name, idx) => (
+                                    <div key={idx} className="bg-[#1B1E3D] p-5 sm:p-6 rounded-xl border border-[rgba(245,241,232,0.1)] shadow-md transition-all hover:border-[rgba(245,241,232,0.2)] flex flex-col gap-4">
+                                      {/* Delegate Name Display as plain text on top */}
+                                      <div>
+                                        <span className="block text-xl font-bold text-[#F5F1E8] truncate" title={name || `Delegate ${idx + 1}`}>
+                                          {name || `Delegate ${idx + 1}`}
+                                        </span>
+                                        <div className="h-px bg-[rgba(245,241,232,0.1)] w-full mt-2"></div>
+                                      </div>
+                                      
+                                      {/* The 3 Selection Fields */}
+                                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-end">
+                                        <div className="flex flex-col justify-end h-full">
+                                          <label className="block text-sm font-semibold text-[#F5F1E8] mb-2">Shirt Size <span className="text-red-500">*</span></label>
+                                          <select value={delegateDetails[idx]?.shirtSize || ""} onChange={(e) => updateDelegateDetail(idx, 'shirtSize', e.target.value)} className="w-full h-[50px] border-2 outline-none rounded-lg shadow-inner px-2 sm:px-3 text-sm lg:text-base focus:ring-2 focus:ring-[#FF5A5F] transition duration-300 ease-in-out transform hover:-translate-y-1 block cursor-pointer" style={{ borderColor: 'rgba(245,241,232,0.1)', background: '#12142B', color: '#F5F1E8' }} required>
+                                            <option value="" disabled>Select Shirt</option>
+                                            <option>Small</option>
+                                            <option>Medium</option>
+                                            <option>Large</option>
+                                            <option>X-Large</option>
+                                          </select>
+                                        </div>
+                                        <div className="flex flex-col justify-end h-full">
+                                          <label className="block text-sm font-semibold text-[#F5F1E8] mb-2">Food Preference <span className="text-red-500">*</span></label>
+                                          <select value={delegateDetails[idx]?.foodPreference || ""} onChange={(e) => updateDelegateDetail(idx, 'foodPreference', e.target.value)} className="w-full h-[50px] border-2 outline-none rounded-lg shadow-inner px-2 sm:px-3 text-sm lg:text-base focus:ring-2 focus:ring-[#FF5A5F] transition duration-300 ease-in-out transform hover:-translate-y-1 block cursor-pointer" style={{ borderColor: 'rgba(245,241,232,0.1)', background: '#12142B', color: '#F5F1E8' }} required>
+                                            <option value="" disabled>Select Food</option>
+                                            <option>Vegetarian</option>
+                                            <option>Non-Vegetarian</option>
+                                            <option>Vegan</option>
+                                          </select>
+                                        </div>
+                                        <div className="flex flex-col justify-end h-full">
+                                          <label className="block text-sm font-semibold text-[#F5F1E8] mb-2">Price Package <span className="text-red-500">*</span></label>
+                                          <select value={delegateDetails[idx]?.pricePackage || ""} onChange={(e) => updateDelegateDetail(idx, 'pricePackage', e.target.value)} className="w-full h-[50px] border-2 outline-none rounded-lg shadow-inner px-2 sm:px-3 text-sm lg:text-base focus:ring-2 focus:ring-[#FF5A5F] transition duration-300 ease-in-out transform hover:-translate-y-1 block cursor-pointer" style={{ borderColor: 'rgba(245,241,232,0.1)', background: '#12142B', color: '#F5F1E8' }} required>
+                                            <option value="" disabled>Select Package</option>
+                                            <option value="Basic">Basic</option>
+                                            <option value="Shepandum">Shepandum</option>
+                                            <option value="Zagatiya">Zagatiya</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
-                              {/* Food Preference */}
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700">
-                                  Food Preference
-                                </label>
-                                <select
-                                  className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-3 px-4 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
-                                  required
-                                  value={foodPreference}
-                                  onChange={(e) => {
-                                    const newPreference = e.target.value;
-                                    setFoodPreference(newPreference);
-                                    setFormData((prevFormData) => ({
-                                      ...prevFormData,
-                                      DoYouHaveAFoodpreference: newPreference,
-                                    }));
-                                  }}
-                                  name="DoYouHaveAFoodpreference"
-                                >
-                                  <option value="" disabled hidden>
-                                    Select Food Preference
-                                  </option>
-                                  <option value="Vegetarian">Vegetarian</option>
-                                  <option value="Non-Vegetarian">Non-Vegetarian</option>
-                                  <option value="Vegan">Vegan</option>
-                                </select>
+                            ) : (
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-4">
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700">
+                                    Shirt Size
+                                  </label>
+                                  <select
+                                    name="WhatIsYourShirtSize"
+                                    value={shirtSize}
+                                    onChange={(e) => {
+                                      const newSize = e.target.value;
+                                      setShirtSize(newSize); // Update local shirtSize state
+                                      setFormData((prevFormData) => ({
+                                        ...prevFormData,
+                                        WhatIsYourShirtSize: newSize, // Update formData
+                                      }));
+                                    }}
+                                    required
+                                    className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-3 px-4 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+                                  >
+                                    <option value="" disabled hidden>
+                                      Select Shirt Size
+                                    </option>
+                                    <option value="Small">Small</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Large">Large</option>
+                                    <option value="X-Large">X-Large</option>
+                                  </select>
+                                </div>
+                                {/* Food Preference */}
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700">
+                                    Food Preference
+                                  </label>
+                                  <select
+                                    className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-3 px-4 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+                                    required
+                                    value={foodPreference}
+                                    onChange={(e) => {
+                                      const newPreference = e.target.value;
+                                      setFoodPreference(newPreference);
+                                      setFormData((prevFormData) => ({
+                                        ...prevFormData,
+                                        DoYouHaveAFoodpreference: newPreference,
+                                      }));
+                                    }}
+                                    name="DoYouHaveAFoodpreference"
+                                  >
+                                    <option value="" disabled hidden>
+                                      Select Food Preference
+                                    </option>
+                                    <option value="Vegetarian">Vegetarian</option>
+                                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                                    <option value="Vegan">Vegan</option>
+                                  </select>
+                                </div>
                               </div>
+                            )}
 
-                              {/* Heard About Us */}
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                               {/* Heard About Us */}
                               <div>
                                 <label className="block text-sm font-medium text-gray-700">
                                   How Did You Hear About Us?

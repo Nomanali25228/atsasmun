@@ -4,96 +4,108 @@ import React, { useState } from "react";
 const faqData = [
   {
     question: "What is the duration of the event?",
-    answer: "It will be a four-day event.",
+    answer: "Each ATSASMUN session runs across several days of committee work, culminating in a closing ceremony — check each destination page for exact dates specific to that city.",
   },
   {
     question: "How can I be helped in obtaining my visa?",
-    answer: "We help our accepted applicants with their visa acquiring process if they opt for it. We also send an official invitation letter which can be presented at the Turkish embassy to obtain a timely visa conveniently. Furthermore, we personally contact the embassies regarding the visa application processes of our delegates.",
+    answer: "Once registered, delegates traveling internationally receive a formal invitation letter to support their visa application, along with guidance on timelines for each destination.",
   },
   {
     question: "Will this event benefit my resume/CV?",
-    answer: "Most certainly, yes. Attending an international conference and strategising and devising solutions to world problems with the global community will add to your career profile. Learn more here.",
+    answer: "Yes — delegates receive a UNHCR-endorsed certificate of participation, and the negotiation, research, and public-speaking experience is exactly the kind of thing universities and employers look for.",
   },
   {
     question: "Where can I view the packages and their pricing?",
-    answer: "To see the packages and their respective prices, please proceed to the Pricing page.",
+    answer: "Full pricing and package details, including early applicant discounts, are on our pricing page.",
   },
 ];
 
 const Faq = () => {
-  const [openIndex, setOpenIndex] = useState(null); // Track which question is open
+  const [openIndex, setOpenIndex] = useState(0);
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index); // Toggle the selected question
-  };
+  const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faq">
+    <section id="faq" style={{ position: 'relative', zIndex: 1, padding: '96px 0', background: '#12142B' }}>
+      <div className="atsas-wrap">
+        <div style={{ maxWidth: 640, marginBottom: 52 }}>
+          <span className="atsas-eyebrow">F.A.Q</span>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 3.8vw, 46px)',
+              marginTop: 14,
+              lineHeight: 1.06,
+              letterSpacing: '-0.01em',
+              color: '#F5F1E8',
+            }}
+          >
+            Good questions, straight answers.
+          </h2>
+        </div>
 
-    <div  className="max-w-4xl mx-auto px-6 py-12">
-      {/* FAQ Title */}
-      <h2 data-aos="fade-up" className="text-4xl font-semibold text-center text-gray-800">F.A.Q</h2>
-      <div data-aos="fade-up" className="w-16 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
-
-
-      {/* FAQ Items */}
-      <div className="mt-10 space-y-6">
-        {faqData.map((item, index) => (
-          <div data-aos="fade-right"
-            key={index}
-            className="border border-gray-300 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-[1.02]"
+        <div style={{ maxWidth: 760 }}>
+          {faqData.map((item, i) => (
+            <div
+              key={i}
+              style={{ borderBottom: '1px solid rgba(245,241,232,0.14)', padding: '22px 0' }}
             >
-            <button
-              className="w-full flex justify-between items-center px-6 py-4 text-left text-gray-900 font-semibold text-lg hover:bg-gradient-to-r from-blue-100 to-indigo-100 focus:outline-none"
-              onClick={() => toggleFAQ(index)}
-            >
-              <span>{item.question}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={`w-6 h-6 text-blue-600 transition-transform duration-300 ${
-                  openIndex === index ? "rotate-180" : "rotate-0"
-                }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {openIndex === index && (
-              <div
-                className="px-6 py-4 text-gray-700 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200"
+              <button
+                onClick={() => toggle(i)}
                 style={{
-                  animation: "fadeIn 0.3s ease-in-out",
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  padding: 0,
                 }}
               >
-                {item.answer}
-              </div>
-            )}
-          </div>
-        ))}
+                <span
+                  style={{
+                    fontFamily: "'Space Grotesk',sans-serif",
+                    fontWeight: 600,
+                    fontSize: 17,
+                    color: '#F5F1E8',
+                  }}
+                >
+                  {item.question}
+                </span>
+                <span
+                  style={{
+                    fontSize: 22,
+                    color: '#2EC4B6',
+                    fontWeight: 400,
+                    marginLeft: 16,
+                    flexShrink: 0,
+                  }}
+                >
+                  {openIndex === i ? '–' : '+'}
+                </span>
+              </button>
+              {openIndex === i && (
+                <p
+                  style={{
+                    color: 'rgba(245,241,232,0.62)',
+                    marginTop: 12,
+                    fontSize: 15,
+                    maxWidth: 640,
+                    fontFamily: "'Work Sans', sans-serif",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {item.answer}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* Add subtle animation for the dropdown */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-    </div>
-            </section>
+    </section>
   );
 };
 

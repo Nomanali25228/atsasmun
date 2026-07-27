@@ -123,16 +123,16 @@ export default function Home() {
                                                     )}
 
                                                     {/* Text Content */}
-                                                    <div className="text-container shadow-md p-4 pt-[90px] rounded-[20px] bg-white -mt-[90px] leading-[20px] text-sm">
-                                                        <p className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 inline-block px-2 py-1 rounded-md shadow-sm">
+                                                    <div className="text-container p-4 pt-[90px] rounded-[20px] -mt-[90px] leading-[20px] text-sm" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.1)' }}>
+                                                        <p className="text-xs font-bold uppercase tracking-wider inline-block px-2 py-1 rounded-md" style={{ color: '#F2B705', background: 'rgba(242,183,5,0.12)' }}>
                                                             Article
                                                         </p>
-                                                        <h2 className="text-base font-bold text-gray-800 mt-3 group-hover:text-blue-600 transition-colors duration-500 line-clamp-2">
+                                                        <h2 className="text-base font-bold mt-3 line-clamp-2" style={{ color: '#F5F1E8' }}>
                                                             {post.title || "Untitled Post"}
                                                         </h2>
 
                                                         <Link href={`/blog/${post.slug}`} className="block mt-4">
-                                                            <span className="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300">
+                                                            <span className="inline-block px-4 py-2 text-sm font-medium rounded-full transition-all duration-300" style={{ background: '#FF5A5F', color: '#12142B', fontFamily: "'Space Mono', monospace" }}>
                                                                 Read More
                                                             </span>
                                                         </Link>

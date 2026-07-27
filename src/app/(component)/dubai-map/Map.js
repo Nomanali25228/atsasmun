@@ -1,126 +1,132 @@
+'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function Map(props) {
   const [selectedImage, setSelectedImage] = useState(null);
-
-  // Defining images array
   const images = [props.img3, props.img2, props.img1, props.img4];
-  var bgimg = [props.bgimg5];
 
   const handlePrev = () => {
     const currentIndex = images.indexOf(selectedImage);
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    setSelectedImage(images[prevIndex]);
+    setSelectedImage(images[(currentIndex - 1 + images.length) % images.length]);
   };
 
   const handleNext = () => {
     const currentIndex = images.indexOf(selectedImage);
-    const nextIndex = (currentIndex + 1) % images.length;
-    setSelectedImage(images[nextIndex]);
+    setSelectedImage(images[(currentIndex + 1) % images.length]);
   };
 
   return (
-    <section id="venue">
-      {/* Title */}
-      <div data-aos="fade-up" className="text-center mt-12 mb-6">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-gray-700 tracking-wide animate-fade-in">
-          Event Venue
-        </h2>
-        <p className="text-gray-500 text-lg mt-2">
-          Event venue location info and gallery
-        </p>
-      </div>
+    <section id="venue" style={{ background: '#12142B', padding: '72px 0', position: 'relative', zIndex: 1 }}>
+      <div className="atsas-wrap">
+        {/* Header */}
+        <div style={{ maxWidth: 640, marginBottom: 44 }}>
+          <span className="atsas-eyebrow">Event Venue</span>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(26px, 3.5vw, 44px)',
+              marginTop: 14,
+              lineHeight: 1.08,
+              letterSpacing: '-0.01em',
+              color: '#F5F1E8',
+            }}
+          >
+            {props.hname}
+          </h2>
+          <p style={{ color: 'rgba(245,241,232,0.62)', marginTop: 12, fontSize: 15, fontFamily: "'Work Sans', sans-serif", lineHeight: 1.7 }}>
+            {props.disc}
+          </p>
+        </div>
 
-      {/* Map & Description Section */}
-      <div className="flex flex-col md:flex-row items-stretch px-4 bg-white">
-        {/* Left: Google Map */}
-        <div data-aos="fade-right" className="w-full md:w-1/2 h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
-          <div className="h-full">
+        {/* Map + Hotel Image */}
+        <div
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, borderRadius: 16, overflow: 'hidden' }}
+          className="atsas-map-grid"
+        >
+          {/* Map */}
+          <div style={{ aspectRatio: '4/3', position: 'relative' }}>
             <iframe
               src={props.map}
-              width="99.6%"
+              width="100%"
               height="100%"
               allowFullScreen=""
               loading="lazy"
-              className="border border-gray-200"
-            ></iframe>
+              style={{ border: 'none', display: 'block', filter: 'invert(90%) hue-rotate(180deg)' }}
+            />
+          </div>
+
+          {/* Hotel Image */}
+          <div style={{ aspectRatio: '4/3', position: 'relative', borderRadius: 12, overflow: 'hidden' }}>
+            <Image
+              src={props.bgimg5}
+              alt={props.hname}
+              fill
+              style={{ objectFit: 'cover', filter: 'saturate(0.85)' }}
+              sizes="50vw"
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(18,20,43,0.55)' }} />
           </div>
         </div>
 
-        {/* Right: Hotel Description with background image */}
+        {/* Thumbnails */}
         <div
-          data-aos="fade-up"
-          className="w-full md:w-1/2 h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] bg-cover bg-center relative"
-          style={{ backgroundImage: `url(${props.bgimg5.src})` }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginTop: 10 }}
+          className="atsas-thumb-grid"
         >
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 sm:px-8">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-              {props.hname}
-            </h1>
-            <p className="max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed">
-              {props.disc}
-            </p>
-          </div>
+          {images.map((image, index) => (
+            <div
+              key={index}
+              style={{ borderRadius: 10, overflow: 'hidden', aspectRatio: '4/3', position: 'relative', cursor: 'pointer' }}
+              onClick={() => setSelectedImage(image)}
+            >
+              <Image
+                src={image}
+                alt={`Venue image ${index + 1}`}
+                fill
+                style={{ objectFit: 'cover', filter: 'saturate(0.88)', transition: 'transform .3s ease' }}
+                sizes="25vw"
+              />
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Thumbnails */}
-      <div
-        data-aos="fade-up"
-        className="px-4 mt-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1"
-      >
-        {images.map((image, index) => (
-          <div key={index} className="relative w-full h-[20vh] sm:h-[29vh] md:h-[29vh] lg:h-[33vh]">
-            <Image
-              src={image}
-              alt={`Image ${index + 1}`}
-              className="cursor-pointer  object-cover"
-              layout="fill"
-              onClick={() => setSelectedImage(image)}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Image Viewer Modal with Text Overlay */}
+      {/* Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 pt-8">
-          {/* Left Arrow */}
-          <button
-            className="absolute z-10 left-4 text-white text-3xl"
-            onClick={handlePrev}
-          >
-            &#8592;
-          </button>
-          
-          {/* Modal Image */}
-          <div className="relative">
-            <Image
-              src={selectedImage}
-              alt="Selected"
-              className="max-h-[80vh] w-[70vw] sm:w-[80vw] md:w-[80vw] lg:w-[100vw] object-contain"
-            />
-          </div>
-
-          {/* Right Arrow */}
-          <button
-            className="absolute right-4 text-white text-3xl"
-            onClick={handleNext}
-          >
-            &#8594;
-          </button>
-
-          {/* Close Button */}
-          <button
-            className="absolute top-4 right-4 text-white text-2xl"
-            onClick={() => setSelectedImage(null)}
-          >
-            ✕
-          </button>
+        <div
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.88)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50,
+          }}
+        >
+          <button onClick={() => setSelectedImage(null)}
+            style={{ position: 'absolute', top: 16, right: 16, color: '#F5F1E8', fontSize: 22, background: 'none', border: 'none', cursor: 'pointer' }}
+          ><FaTimes /></button>
+          <button onClick={handlePrev}
+            style={{ position: 'absolute', left: 16, color: '#F5F1E8', background: 'rgba(0,0,0,0.5)', border: 'none', borderRadius: '50%', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+          ><FaChevronLeft /></button>
+          <Image
+            src={selectedImage}
+            alt="Selected venue image"
+            width={700}
+            height={500}
+            style={{ borderRadius: 10, objectFit: 'cover', maxWidth: '90vw', maxHeight: '80vh' }}
+          />
+          <button onClick={handleNext}
+            style={{ position: 'absolute', right: 16, color: '#F5F1E8', background: 'rgba(0,0,0,0.5)', border: 'none', borderRadius: '50%', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+          ><FaChevronRight /></button>
         </div>
       )}
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .atsas-map-grid { grid-template-columns: 1fr !important; }
+          .atsas-thumb-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }

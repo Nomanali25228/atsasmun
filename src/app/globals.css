@@ -2,6 +2,186 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== ATSASMUN DARK REDESIGN SYSTEM ===== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --ink: #12142B;
+  --ink-2: #1B1E3D;
+  --coral: #FF5A5F;
+  --coral-soft: #FF8A8E;
+  --gold: #F2B705;
+  --mint: #2EC4B6;
+  --cream: #F5F1E8;
+  --dim: rgba(245,241,232,0.62);
+  --line: rgba(245,241,232,0.14);
+}
+
+body {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
+  font-family: 'Work Sans', sans-serif !important;
+}
+
+/* Wrap utility */
+.atsas-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Eyebrow */
+.atsas-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Buttons */
+.atsas-btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  background: var(--coral);
+  color: var(--ink);
+  border: 1.5px solid var(--coral);
+  border-radius: 100px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .25s ease;
+  white-space: nowrap !important;
+}
+.atsas-btn-solid:hover {
+  background: var(--coral-soft);
+  border-color: var(--coral-soft);
+}
+
+.atsas-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  border: 1.5px solid var(--coral);
+  color: var(--coral-soft);
+  background: transparent;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .25s ease;
+  white-space: nowrap !important;
+}
+.atsas-btn-outline:hover {
+  background: var(--coral);
+  color: var(--ink);
+}
+
+.atsas-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  background: var(--gold);
+  border: 1.5px solid var(--gold);
+  color: var(--ink);
+  border-radius: 100px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .25s ease;
+  white-space: nowrap !important;
+}
+.atsas-btn-gold:hover {
+  background: #ffce33;
+  border-color: #ffce33;
+}
+
+/* Ambient grain background */
+.atsas-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255,90,95,0.10), transparent 35%),
+    radial-gradient(circle at 85% 10%, rgba(46,196,182,0.10), transparent 35%),
+    radial-gradient(circle at 70% 90%, rgba(242,183,5,0.08), transparent 40%);
+}
+
+/* Responsive grids */
+@media(max-width:900px) {
+  .atsas-events-grid { grid-template-columns: 1fr !important; }
+  .atsas-why-grid { grid-template-columns: 1fr 1fr !important; }
+  .atsas-about-grid { grid-template-columns: 1fr !important; }
+  .atsas-contact-grid { grid-template-columns: 1fr !important; padding: 36px 24px !important; }
+  .atsas-foot-cols { grid-template-columns: 1fr 1fr !important; }
+}
+@media(max-width:700px) {
+  .atsas-stats-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media(max-width:560px) {
+  .atsas-why-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ===== GLOBAL DARK THEME OVERRIDES FOR ENTIRE WEBSITE ===== */
+.bg-white, .bg-gray-50, .bg-gray-100, .bg-gray-200, .bg-slate-50, .bg-slate-100 {
+  background-color: transparent !important;
+}
+
+.text-black, .text-gray-900, .text-gray-800, .text-gray-700, .text-slate-900, .text-slate-800 {
+  color: var(--cream) !important;
+}
+
+.text-gray-600, .text-gray-500, .text-slate-600, .text-slate-500 {
+  color: var(--dim) !important;
+}
+
+/* Force dark styling on cards/containers previously styled with white background */
+.bg-white.shadow-lg, .bg-white.shadow-md, .bg-gray-50.shadow-lg, .bg-gray-100.shadow-lg {
+  background-color: var(--ink-2) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: none !important;
+}
+
+/* Override sections with gradient backgrounds */
+.bg-gradient-to-r.from-gray-50.to-gray-100,
+.bg-gradient-to-r.from-white,
+.bg-gradient-to-br.from-white,
+.bg-gradient-to-br.from-gray-50.to-white,
+.from-blue-100.to-pink-100,
+.bg-gray-50, .bg-gray-100 {
+  background: var(--ink-2) !important;
+}
+
+/* Form Inputs */
+input, textarea, select {
+  background-color: var(--ink-2) !important;
+  color: var(--cream) !important;
+  border-color: var(--line) !important;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--dim) !important;
+}
+.border-gray-200, .border-gray-300 {
+  border-color: var(--line) !important;
+}
+
 /* styles/globals.css */
 .slick-dots {
   margin-top: 2rem !important; /* mt-8 equivalent */
@@ -20,7 +200,6 @@ html, body {
 /* Text Wrapping Issue Fix */
 * {
   word-wrap: break-word;
-  white-space: normal !important;
   overflow-wrap: break-word;
 }
 
@@ -138,5 +317,63 @@ html {
   font-weight: bold;
 }
 
+/* Professional Styling for ReactFlagsSelect Component */
+.atsas-flags {
+  background-color: var(--ink-2) !important;
+  border: 2px solid rgba(245, 241, 232, 0.1) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !important;
+  padding: 0 !important;
+}
 
+.atsas-flags:focus-within {
+  border-color: rgba(245, 241, 232, 0.3) !important;
+}
 
+/* Main Dropdown Button */
+.atsas-flags button {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--cream) !important;
+  padding: 0.75rem 1rem !important; 
+  font-size: 1rem !important;
+  width: 100% !important;
+}
+
+/* ReactFlagsSelect Dark Theme Dropdown Fixes */
+.atsas-flags ul,
+.atsas-flags [role="listbox"],
+.atsas-flags [class*="selectOptions"],
+.atsas-flags [class*="options"] {
+  background-color: var(--ink-2) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0.5rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.atsas-flags li,
+.atsas-flags [class*="selectOption"],
+.atsas-flags [class*="option"] {
+  color: var(--cream) !important;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem !important;
+}
+
+.atsas-flags li:hover,
+.atsas-flags [class*="selectOption"]:hover,
+.atsas-flags [class*="option"]:hover,
+.atsas-flags li[aria-selected="true"],
+.atsas-flags [aria-selected="true"] {
+  background-color: var(--coral) !important;
+  color: var(--ink-2) !important;
+}
+
+.atsas-flags input {
+  background-color: var(--ink) !important;
+  color: var(--cream) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0.25rem !important;
+  padding: 0.5rem !important;
+  margin: 0.5rem !important;
+  width: calc(100% - 1rem) !important;
+}

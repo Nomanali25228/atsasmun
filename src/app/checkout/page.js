@@ -68,8 +68,8 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="bg-white text-black rounded-lg shadow-md p-2 md:p-6 lg:p-10">
-          <h3 className="text-lg font-semibold mb-4">Please Complete Your Payment</h3>
+        <div className="rounded-lg shadow-md p-2 md:p-6 lg:p-10" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.14)', color: '#F5F1E8' }}>
+          <h3 className="text-lg font-semibold mb-4" style={{ color: '#F5F1E8' }}>Please Complete Your Payment</h3>
           <Elements
             stripe={stripePromise}
             options={{

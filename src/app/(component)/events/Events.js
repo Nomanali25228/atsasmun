@@ -1,217 +1,204 @@
 "use client";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import ContextPage from "@/app/Context/ContextPage";
 import Link from "next/link";
 
-// Import Images
-import bell1 from "@/app/public/img/ax11.jpeg";
-import bell2 from "@/app/public/img/az1.jpeg";
-import bell3 from "@/app/public/img/ax13.jpeg";
-import bell4 from "@/app/public/img/ax18.jpeg";
-import bell5 from "@/app/public/img/ax15.jpeg";
-import bell6 from "@/app/public/img/az6.jpeg";
-
 import istanbul from '@/app/public/img/turkey.jpeg';
-import dubai from "@/app/public/img/skyline.jpeg";
-import Azerbaijan from '@/app/public/img/Azerbaijan.jpeg';
-import USA from '@/app/public/img/bgUSA.jpg';
 import Saudi from '@/app/public/img/riyadhcity.jpg';
 import london from '@/app/public/img/london.jpg';
-// import ContextPage from "@/app/Context/ContextPage";
-// import Link from "next/link";
 
-// Card Data
-
-export default function Card() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [showMore, setShowMore] = useState(false);
+export default function Events() {
   const { check, setCheck } = useContext(ContextPage);
-  const {dubaidates,setDubaidates} = useContext(ContextPage);
-  const {istanbuldates,setIstanbuldates} = useContext(ContextPage);
-  const {saudidates,setSaudidates} = useContext(ContextPage);
-  const {newyorkdates,setNewyorkdates} = useContext(ContextPage);
-  const {londondates,setLondondates} = useContext(ContextPage);
-  const {bakudates,setBakudates} = useContext(ContextPage);
-  const cards = [
+  const { istanbuldates } = useContext(ContextPage);
+  const { londondates } = useContext(ContextPage);
+  const { saudidates } = useContext(ContextPage);
 
-  {
-    id: 1,
-    nowOpen: "Registrations are now open!",
-    title: "ATSASMUN Istanbul, Turkey",
-    subtitle: "Istanbul, Turkey",
-    description:  istanbuldates.startdate+" – "+istanbuldates.enddate+" "+istanbuldates.month+" "+istanbuldates.year 
-,    details:
-"Aspiring diplomatic leaders are invited to attend ATSASMUN in Istanbul, located at the crossroads of civilizations. The city's rich cultural past offers global discourse inspiration unmatched by any other.",    image: bell1,
-    icon: istanbul,
-  },
-{
-      id: 5,
-      nowOpen: "Registrations opening soon!",
-      title: "ATSASMUN London, UK",
-      subtitle: "London, UK",
-      description:
-        londondates.startdate+" – "+londondates.enddate+" "+londondates.month+" "+londondates.year ,
-      details:"An iconic stage for the leaders of the future is provided by the ATSASMUN in London. This stage is founded in the legacy of global governance and ideas that have the potential to change the world.",    image: bell6,
-      icon: london,
+  const cards = [
+    {
+      id: 1,
+      status: 'open',
+      statusLabel: 'Registrations Open',
+      place: 'ISTANBUL, TURKEY',
+      title: 'ATSASMUN Istanbul',
+      date: istanbuldates.startdate === 'Coming Soon' ? 'Coming Soon' : `${istanbuldates.startdate} – ${istanbuldates.enddate} ${istanbuldates.month} ${istanbuldates.year}`,
+      desc: 'Aspiring diplomatic leaders convene at the crossroads of civilizations, where centuries of cultural history inspire global discourse unmatched anywhere else.',
+      image: istanbul,
+      href: '/Istanbul',
+      btnLabel: 'Register Now',
+      btnClass: 'atsas-btn-solid',
+      subtitle: 'Istanbul, Turkey',
     },
     {
-    id: 3,
-    nowOpen: "Registrations opening soon!",
-    title: "ATSASMUN Riyadh, Saudi Arabia ",
-    subtitle: "Riyadh, Saudi Arabia",
-    description:
-      saudidates.startdate+" – "+saudidates.enddate+" "+saudidates.month+" "+saudidates.year ,
-    details:
-      "ATSASMUN in Saudi Arabia embraces a culture of honor, respect, and unity. Through the spirit of majlis, it fosters dialogue, mutual understanding, and true diplomacy in a changing world.",
-      image: bell5,
-      icon: Saudi,
-      
+      id: 5,
+      status: 'soon',
+      statusLabel: 'Coming Soon',
+      place: 'LONDON, UK',
+      title: 'ATSASMUN London',
+      date: londondates.startdate === 'Coming Soon' ? 'Coming Soon' : `${londondates.startdate} – ${londondates.enddate} ${londondates.month} ${londondates.year}`,
+      desc: 'An iconic stage for tomorrow\'s leaders, built on the legacy of global governance and the ideas that have changed the world before.',
+      image: london,
+      href: '/UK',
+      btnLabel: 'Registrations Opening Soon',
+      btnClass: 'atsas-btn-outline',
+      subtitle: 'London, UK',
     },
-    
-  // {
-  //   id: 2,
-  //   nowOpen: "Registrations are now open!",
-  //   title: "ATSASMUN Dubai, UAE",
-  //   subtitle: "Dubai, UAE",
-  //   description:
-  //     dubaidates.startdate+" – "+dubaidates.enddate+" "+dubaidates.month+" "+dubaidates.year ,
-  //   details:
-  //     "Young leaders can take advantage of a futuristic platform provided by ATSASMUN in Dubai, which combines the city's cosmopolitan allure and forward-thinking perspective with the spirit of innovation.",
-  //   image: bell2,
-  //   icon: dubai,
-  // },
-  // {
-  //   id: 4,
-  //   nowOpen: "Registrations opening soon!",
-  //   title: "ATSASMUN Baku, Azerbaijan ",
-  //   subtitle: "Baku, Azerbaijan",
-  //   description:
-  //     bakudates.startdate+" – "+bakudates.enddate+" "+bakudates.month+" "+bakudates.year ,
-  //   details:
-  //   "A multicultural hub is present in Baku, Azerbaijan where the participants of the ATSASMUN are immersed. This center embodies the harmony and variety that is important for future diplomacy.",
-  //   image: bell3,
-  //   icon: Azerbaijan,
-  // },
-  // {
-  //   id: 6,
-  //   nowOpen: "Registrations opening soon!",
-  //   title: "ATSASMUN New York, USA",
-  //   subtitle: "New York, USA",
-  //   description:
-  //     newyorkdates.startdate+" – "+newyorkdates.enddate+" "+newyorkdates.month+" "+newyorkdates.year ,
-  //   details:
-  //     "In the City of Light, which is a shining example of culture, art, and revolutionary ideas, the ATSASMUN in New York connects delegates with the spirit of diplomacy.",
-  //   image: bell4,
-  //   icon: USA,
-  // },
-
- 
-];
-
- 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const visibleCards = showMore ? cards : cards.slice(0, isMobile ? 3 : 4);
+    {
+      id: 3,
+      status: 'soon',
+      statusLabel: 'Coming Soon',
+      place: 'RIYADH, SAUDI ARABIA',
+      title: 'ATSASMUN Riyadh',
+      date: saudidates.startdate === 'Coming Soon' ? 'Coming Soon' : `${saudidates.startdate} – ${saudidates.enddate} ${saudidates.month} ${saudidates.year}`,
+      desc: 'Rooted in a culture of honor and unity, ATSASMUN Riyadh channels the spirit of majlis: dialogue, mutual understanding, true diplomacy.',
+      image: Saudi,
+      href: '/Saudi',
+      btnLabel: 'Registrations Opening Soon',
+      btnClass: 'atsas-btn-outline',
+      subtitle: 'Riyadh, Saudi Arabia',
+    },
+  ];
 
   return (
-    <section id="events">
-      {/* Header */}
-     
+    <section id="events" style={{ position: 'relative', zIndex: 1, padding: '96px 0', background: '#12142B' }}>
+      <div className="atsas-wrap">
+        <div style={{ maxWidth: 640, marginBottom: 52 }}>
+          <span className="atsas-eyebrow">Series of Events</span>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 3.8vw, 46px)',
+              marginTop: 14,
+              lineHeight: 1.06,
+              letterSpacing: '-0.01em',
+              color: '#F5F1E8',
+            }}
+          >
+            Pick your city. Then aim for New York.
+          </h2>
+          <p
+            style={{
+              color: 'rgba(245,241,232,0.62)',
+              marginTop: 16,
+              fontSize: 16,
+              maxWidth: 520,
+              fontFamily: "'Work Sans', sans-serif",
+            }}
+          >
+            Every regional session feeds into ATSASMUN&apos;s flagship finale — where delegates from every destination meet in New York City each September.
+          </p>
+        </div>
 
-
-      {/* Cards */}
-      <div className="flex flex-col items-center py-8 bg-gray-100 ">
-      <div data-aos="fade-up" className="text-center  mb-10">
-        <h2 className="text-4xl sm:text-5xl font-bold text-gray-700 tracking-wide animate-fade-in">
-          Series of Events
-        </h2>
-        <p className="text-gray-500 text-lg mt-2">Our key events</p>
-        <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
-      </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:px-6 lg:px-8">
-          {visibleCards.map((card) => (
+        {/* Cards Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3,1fr)',
+            gap: 1,
+            background: 'rgba(245,241,232,0.14)',
+            border: '1px solid rgba(245,241,232,0.14)',
+          }}
+          className="atsas-events-grid"
+        >
+          {cards.map((card) => (
             <div
               key={card.id}
-              className="relative bg-white shadow-lg rounded-lg overflow-hidden w-[90vw] sm:w-[80vw] md:w-[40vw] group transition-all duration-700 ease-in-out h-[500px] "
+              className="atsas-event-card"
+              style={{
+                background: '#12142B',
+                transition: 'background .25s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = '#1B1E3D'}
+              onMouseLeave={(e) => e.currentTarget.style.background = '#12142B'}
             >
-              {/* Image section */}
-              <div
-                className="absolute inset-0 z- transition-all duration-700 ease-in-out group-hover:h-full "
-              >
+              {/* Photo Section */}
+              <div style={{ height: 190, position: 'relative', overflow: 'hidden' }}>
                 <Image
                   src={card.image}
                   alt={card.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-700 ease-in-out group-hover:scale-105  "
+                  fill
+                  style={{ objectFit: 'cover', filter: 'saturate(0.9)' }}
+                  sizes="(max-width: 900px) 100vw, 33vw"
                 />
+                <span
+                  style={{
+                    position: 'absolute',
+                    top: 14,
+                    left: 14,
+                    fontFamily: "'Space Mono',monospace",
+                    fontSize: 11,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    padding: '6px 12px',
+                    borderRadius: 100,
+                    background: card.status === 'open' ? '#2EC4B6' : '#FF5A5F',
+                    color: '#12142B',
+                    fontWeight: 700,
+                  }}
+                >
+                  {card.statusLabel}
+                </span>
               </div>
 
-              {/* Overlay Text on Hover */}
-             {/* Overlay Text on Hover */}
-{/* Always Visible Section */}
-
-<div className="absolute top-4 sm:top-72 md:top-56  lg:top-52 group-hover:top-4 left-4 z-20 flex items-center space-x-2 text-white">
-  <Image
-    src={card.icon}
-    alt={card.subtitle}
-    
-    className="h-12 w-12 sm:h-12 sm:w-12 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
-  />
-  <div>
-   <span className="font-bold text-xs sm:text-sm md:text-base">{card.subtitle}</span>
-<p className="font-medium text-sm sm:text-md md:text-md">{card.description}</p>
-
-  </div>
-</div>
-
-{/* Overlay Text on Hover */}
-<div
-  className="absolute inset-0 z-10 bg-black bg-opacity-80 opacity-50 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-between p-4 text-white group-hover:border-b-8 group-hover:border-[red]"
->
-
-</div>
-
-
-              {/* Non-hover Text Below Image */}
-         {/* Non-hover Text Below Image */}
-            {/* Non-hover Text Below Image */}
-   <div className="absolute bottom-0 z-10 p-3 md:p-4 transition-colors duration-300 pb-4 ease-in-out w-full h-auto min-h-[120px] md:min-h-[160px] lg:min-h-[190px] flex flex-col justify-center bg-white text-gray-900 group-hover:bg-transparent group-hover:text-white">
-  <p className="text-xs md:text-sm lg:text-base text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out">{card.nowOpen}</p>
-  <h3 className="text-sm md:text-lg font-bold mt-1 md:mt-2 text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out">{card.title}</h3>
-  <p className="text-xs md:text-sm lg:text-base mt-1 text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out">
-    {card.details}
-  </p>
-   <div className="">
-      <Link href="/RegisterNow">
-        <p
-          className="text-white group-hover:text-red-500 cursor-pointer group-hover:underline"
-          onClick={() => setCheck(card.subtitle)}
-        >
-          Register Now
-        </p>
-      </Link>
-    </div>
-</div>
-
-
+              {/* Body */}
+              <div style={{ padding: 26 }}>
+                <div
+                  style={{
+                    fontFamily: "'Space Mono',monospace",
+                    fontSize: 12,
+                    color: 'rgba(245,241,232,0.62)',
+                    letterSpacing: '0.04em',
+                  }}
+                >
+                  {card.place}
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "'Space Grotesk',sans-serif",
+                    fontSize: 21,
+                    fontWeight: 600,
+                    marginTop: 8,
+                    color: '#F5F1E8',
+                  }}
+                >
+                  {card.title}
+                </h3>
+                <div
+                  style={{
+                    color: '#F2B705',
+                    fontWeight: 600,
+                    fontSize: 14,
+                    marginTop: 6,
+                    fontFamily: "'Work Sans', sans-serif",
+                  }}
+                >
+                  {card.date}
+                </div>
+                <p
+                  style={{
+                    color: 'rgba(245,241,232,0.62)',
+                    fontSize: 14,
+                    marginTop: 12,
+                    fontFamily: "'Work Sans', sans-serif",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {card.desc}
+                </p>
+                <Link href={card.href}>
+                  <button
+                    onClick={() => setCheck(card.subtitle)}
+                    className={card.btnClass}
+                    style={{ marginTop: 20, width: '100%', justifyContent: 'center' }}
+                  >
+                    {card.btnLabel}
+                  </button>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
-
-        {/* Show More Button */}
-        {/* <button
-          onClick={() => setShowMore(!showMore)}
-          className="mt-8 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
-        >
-          {showMore ? "Show Less" : "Show More"}
-        </button> */}
       </div>
     </section>
   );

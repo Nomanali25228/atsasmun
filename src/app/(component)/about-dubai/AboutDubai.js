@@ -1,26 +1,39 @@
 import React from 'react';
 
 export default function AboutDubai(props) {
-  // Using destructuring to extract aboutTitle from props
-  const { aboutTitle ,about } = props;
+  const { aboutTitle, about } = props;
 
   return (
-    <>
-      <div className="bg-white py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Heading */}
-          <div data-aos="fade-up" className="text-center mt-4 mb-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-gray-700 tracking-wide animate-fade-in">
-            About Atsas International MUN - {aboutTitle}
-            </h2>
-          </div>
-
-          {/* Paragraph */}
-          <p className="mt-4 text-base text-gray-600 sm:text-lg md:text-xl lg:text-2xl">
+    <section style={{ background: '#12142B', padding: '72px 0', position: 'relative', zIndex: 1 }}>
+      <div className="atsas-wrap">
+        <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+          <span className="atsas-eyebrow">About the City</span>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(26px, 3.5vw, 44px)',
+              marginTop: 14,
+              lineHeight: 1.08,
+              letterSpacing: '-0.01em',
+              color: '#F5F1E8',
+            }}
+          >
+            About Atsas International MUN – {aboutTitle}
+          </h2>
+          <p
+            style={{
+              color: 'rgba(245,241,232,0.62)',
+              marginTop: 20,
+              fontSize: 17,
+              fontFamily: "'Work Sans', sans-serif",
+              lineHeight: 1.7,
+            }}
+          >
             {about}
           </p>
         </div>
       </div>
-    </>
+    </section>
   );
 }

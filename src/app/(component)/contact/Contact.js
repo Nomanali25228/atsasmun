@@ -1,142 +1,114 @@
-import {
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaFacebookF,
-  FaInstagram,
-  FaWhatsapp,
-} from "react-icons/fa";
-
 export default function ContactUs() {
   return (
-    <div id="contact" className="bg-gray-50 py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div data-aos="fade-up" className="text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 tracking-wide">
-        CONTACT US
-        </h2>
-        <p className="text-gray-500 text-base md:text-lg mt-2">
-        We are here to help
-        </p>
-        <div className="w-12 md:w-24 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
-      </div>
-
-        {/* Contact Grid */}
-        <div className="grid mt-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {/* Address */}
-          <div className="relative text-center">
-            <div className="flex justify-center items-center mb-4">
-              <FaMapMarkerAlt className="text-blue-500 text-5xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              ADDRESS
-            </h3>
-            <a
-            target="blank"
-              href="https://www.google.com/maps/dir//42+Hennerton+Way,+High+Wycombe+HP13+7UE,+UK/@51.624744,-0.725527,1899m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x487661a45dd605d9:0xc19b70789701c53f!2m2!1d-0.7203776!2d51.6247444!3e0?hl=en&entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
-              className="text-blue-600 hover:underline"
+    <section id="contact" style={{ position: 'relative', zIndex: 1, padding: '96px 0', background: '#12142B' }}>
+      <div className="atsas-wrap">
+        <div
+          style={{
+            background: `radial-gradient(ellipse at 20% 20%, rgba(242,183,5,0.14), transparent 55%), #1B1E3D`,
+            borderRadius: 20,
+            padding: 56,
+            display: 'grid',
+            gridTemplateColumns: '1.1fr 1fr',
+            gap: 50,
+            border: '1px solid rgba(245,241,232,0.14)',
+          }}
+          className="atsas-contact-grid"
+        >
+          {/* Left Column */}
+          <div>
+            <span className="atsas-eyebrow">Contact Us</span>
+            <h2
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 'clamp(28px, 3.8vw, 46px)',
+                marginTop: 14,
+                lineHeight: 1.06,
+                letterSpacing: '-0.01em',
+                color: '#F5F1E8',
+              }}
             >
-
-
-            42 Hennerton Way,High Wycombe, HP13 7UE,United Kingdom
-           
+              We&apos;re here to help.
+            </h2>
+            <p
+              style={{
+                color: 'rgba(245,241,232,0.62)',
+                marginTop: 14,
+                fontSize: 15,
+                fontFamily: "'Work Sans', sans-serif",
+                lineHeight: 1.6,
+              }}
+            >
+              Questions about registration, visas, or which destination is right for you? Reach out — we usually reply within a day.
+            </p>
+            <a href="https://wa.me/+447498072531">
+              <button className="atsas-btn-gold" style={{ marginTop: 24 }}>
+                Message us on WhatsApp
+              </button>
             </a>
-            <hr className="mt-4 w-3/4 mx-auto border-gray-300" />
           </div>
 
-          {/* Phone */}
-          <div className="relative text-center">
-            <div className="flex justify-center items-center mb-4">
-              <FaPhoneAlt className="text-blue-500 text-5xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">PHONE</h3>
-            <a
-              href="tel:+447498072531"
-              className="text-blue-600 hover:underline"
-              target="blank"
-
-            >
-              +447498072531
-            </a>
-            <hr className="mt-10 w-3/4 mx-auto border-gray-300" />
-          </div>
-
-          {/* Email */}
-          <div className="relative text-center">
-            <div className="flex justify-center items-center mb-4">
-              <FaEnvelope className="text-blue-500 text-5xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">EMAIL</h3>
-            <a
-              href="mailto:info@atsasmun.com"
-              className="text-blue-600 hover:underline"
-              target="blank"
-
-            >
-              info@atsasmun.com
-            </a>
-            <hr className="mt-10 w-3/4 mx-auto border-gray-300" />
-          </div>
-
-          {/* Facebook */}
-          <div className="relative text-center">
-            <div className="flex justify-center items-center mb-4">
-              <FaFacebookF className="text-blue-500 text-5xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              FACEBOOK
-            </h3>
-            <a
-              href="https://www.facebook.com/share/189wEJeHZ5/?mibextid=wwXIfr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              facebook.com/atsasmun
-            </a>
-            <hr className="mt-10 w-3/4 mx-auto border-gray-300" />
-          </div>
-
-          {/* Instagram */}
-          <div className="relative text-center">
-            <div className="flex justify-center items-center mb-4">
-              <FaInstagram className="text-blue-500 text-5xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              INSTAGRAM
-            </h3>
-            <a
-              href="https://www.instagram.com/atsasmun/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              instagram.com/atsasmun
-            </a>
-            <hr className="mt-10 w-3/4 mx-auto border-gray-300" />
-          </div>
-
-          {/* WhatsApp */}
-          <div className="relative text-center">
-            <div className="flex justify-center items-center mb-4">
-              <FaWhatsapp className="text-blue-500 text-5xl" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              WHATSAPP
-            </h3>
-            <a
-              href="https://wa.me/+447498072531"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-             +447498072531
-            </a>
-            <hr className="mt-10 w-3/4 mx-auto border-gray-300" />
+          {/* Right Column */}
+          <div>
+            {[
+              { lbl: 'Address', content: '42 Hennerton Way, High Wycombe, HP13 7UE, United Kingdom', href: 'https://www.google.com/maps/dir//42+Hennerton+Way' },
+              { lbl: 'Phone', content: '+44 7498 072531', href: 'tel:+447498072531' },
+              { lbl: 'Email', content: 'info@atsasmun.com', href: 'mailto:info@atsasmun.com' },
+              { lbl: 'Social', content: 'Facebook · Instagram', href: null, facebook: 'https://www.facebook.com/share/189wEJeHZ5/', instagram: 'https://www.instagram.com/atsasmun/' },
+            ].map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  display: 'flex',
+                  gap: 16,
+                  padding: '16px 0',
+                  borderTop: i === 0 ? 'none' : '1px solid rgba(245,241,232,0.14)',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'Space Mono',monospace",
+                    fontSize: 11,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: '#F2B705',
+                    width: 90,
+                    flexShrink: 0,
+                  }}
+                >
+                  {item.lbl}
+                </div>
+                <div style={{ color: '#F5F1E8', fontSize: 14, fontFamily: "'Work Sans', sans-serif" }}>
+                  {item.lbl === 'Social' ? (
+                    <>
+                      <a href={item.facebook} target="_blank" rel="noopener noreferrer" style={{ color: '#F5F1E8', textDecoration: 'none' }}
+                        onMouseEnter={(e) => e.target.style.color = '#2EC4B6'}
+                        onMouseLeave={(e) => e.target.style.color = '#F5F1E8'}
+                      >Facebook</a>
+                      {' · '}
+                      <a href={item.instagram} target="_blank" rel="noopener noreferrer" style={{ color: '#F5F1E8', textDecoration: 'none' }}
+                        onMouseEnter={(e) => e.target.style.color = '#2EC4B6'}
+                        onMouseLeave={(e) => e.target.style.color = '#F5F1E8'}
+                      >Instagram</a>
+                    </>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target={item.lbl === 'Address' ? '_blank' : undefined}
+                      rel={item.lbl === 'Address' ? 'noopener noreferrer' : undefined}
+                      style={{ color: '#F5F1E8', textDecoration: 'none' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#2EC4B6'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#F5F1E8'}
+                    >
+                      {item.content}
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

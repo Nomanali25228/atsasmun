@@ -38,7 +38,7 @@ export default function Home() {
                 Atsas MUN Terms & Conditions
               </h1>
             </div>
-            <div className="max-w-5xl mx-4 lg:mx-auto bg-white shadow-lg rounded-lg p-6">
+            <div className="max-w-5xl mx-4 lg:mx-auto rounded-lg p-6" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.14)', color: '#F5F1E8' }}>
               <h2 className="text-2xl font-semibold mb-4">Terms and Conditions</h2>
               <p className="mb-4">
                 These terms and conditions {`("Agreement")`} apply to all delegates

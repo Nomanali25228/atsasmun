@@ -1,180 +1,174 @@
 'use client';
-import Image from 'next/image';
-// import bg from '@/app/public/img/HPbg1.jpeg'; // Hero background
-import bg from '@/app/public/img/HPbg1.jpeg'; // Hero background 
-// import bg from '@/app/public/img/HPbg2.png'; // Hero background
-import logo from '@/app/public/img/logo-1.png'; // Logo
 import Link from 'next/link';
-import { MdOutlineArrowRightAlt } from "react-icons/md";
-import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { useEffect, useState } from 'react';
-// import videoFile from "@/app/public/videos/header.mp4"; // Replace with your video path
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import the AOS styles
-import ParticleCanvas from '../ParticleCanvas';
 import Navbar from '../navbar/Navbar';
-import { IoPlayOutline } from 'react-icons/io5';
 
-
-
-// getDestination name typing animation////////////////////////////
-const cities = [
-    'Istanbul, Turkey',
-    'London, UK',
-    'Riyadh, Saudi Arabia',
-    // 'Baku, Azerbaijan',
-    // 'Dubai, UAE',
-    // 'New York, USA',
-];
 const HeroSection = () => {
+  return (
+    <div>
+      <Navbar />
 
-    // auto text ////////////////////////////////////
-    const [currentCityIndex, setCurrentCityIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [charIndex, setCharIndex] = useState(0);
+      {/* Hero Section */}
+      <section
+        className="atsas-hero"
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          padding: '120px 0 70px',
+          borderBottom: '1px solid rgba(245,241,232,0.14)',
+          overflow: 'hidden',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        {/* Background */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            background: `
+              linear-gradient(120deg, rgba(18,20,43,0.94) 15%, rgba(18,20,43,0.7) 55%, rgba(18,20,43,0.95) 100%),
+              url('https://www.atsasmun.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fax11.c9e48db1.jpeg&w=1920&q=75') center/cover no-repeat`,
+          }}
+        />
 
-    const [currentText, setCurrentText] = useState('');
-    useEffect(() => {
-        const currentCity = cities[currentCityIndex];
-        let timer;
+        <div className="atsas-wrap" style={{ width: '100%' }}>
+          {/* Date Badge */}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 10,
+              border: '1px solid rgba(245,241,232,0.14)',
+              borderRadius: 100,
+              padding: '8px 18px',
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 12,
+              letterSpacing: '0.08em',
+              color: 'rgba(245,241,232,0.62)',
+              marginBottom: 36,
+            }}
+          >
+            <span
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: '50%',
+                background: '#2EC4B6',
+                display: 'inline-block',
+              }}
+            />
+            ISTANBUL · LONDON · RIYADH · NYC FINALE
+          </div>
 
-        if (!isDeleting && charIndex < currentCity.length) {
-            // Typing effect
-            timer = setTimeout(() => {
-                setCurrentText((prev) => prev + currentCity[charIndex]);
-                setCharIndex((prev) => prev + 1);
-            }, 70);
-        } else if (isDeleting && charIndex > 0) {
-            // Deleting effect
-            timer = setTimeout(() => {
-                setCurrentText((prev) => prev.slice(0, -1));
-                setCharIndex((prev) => prev - 1);
-            }, 50);
-        } else if (!isDeleting && charIndex === currentCity.length) {
-            // Pause before deleting
-            timer = setTimeout(() => setIsDeleting(true), 1000);
-        } else if (isDeleting && charIndex === 0) {
-            // Switch to the next city
-            setIsDeleting(false);
-            setCurrentCityIndex((prev) => (prev + 1) % cities.length); // Move to the next city
-        }
-
-        return () => clearTimeout(timer);
-    }, [charIndex, isDeleting, currentCityIndex]);
-
-
-    useEffect(() => {
-        AOS.init({
-            duration: 1000, // Animation duration in milliseconds
-            easing: 'ease-in-out', // Easing for the animation
-            once: true, // Whether animation should happen only once
-        });
-    }, []);
-
-
-    return (
-        <div>
-            {/* navbar//////////////////////////////// */}
-
-            <Navbar />
-
-            {/* Hero Section */}
-
-            <header
-                className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-white"
-                style={{
-                    backgroundImage: `url(${bg.src})`,
-                    backgroundAttachment: "fixed",
-                }}
+          {/* H1 */}
+          <h1
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(40px, 6.8vw, 80px)',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              maxWidth: 820,
+              color: '#F5F1E8',
+            }}
+          >
+            Debate hard.<br />Dress up.{' '}
+            <span
+              style={{
+                color: '#12142B',
+                background: '#F2B705',
+                padding: '0 10px',
+                display: 'inline-block',
+                borderRadius: 6,
+                transform: 'rotate(-1deg)',
+              }}
             >
+              Lead loud.
+            </span>
+          </h1>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
+          {/* Subtext */}
+          <p
+            style={{
+              maxWidth: 540,
+              marginTop: 26,
+              fontSize: 17,
+              color: 'rgba(245,241,232,0.62)',
+              fontFamily: "'Work Sans', sans-serif",
+              lineHeight: 1.6,
+            }}
+          >
+            ATSASMUN puts student delegates inside the truest simulation of the United Nations — real committee work, sharp negotiation, and a global network that spans continents. Every regional session builds toward our flagship finale in New York City.
+          </p>
 
-                {/* Hero Content */}
-                <div className="relative z-10  mt-[120px] text-center px-6 sm:px-8">
-                    <h1
-                        data-aos="fade-right"
-                        className="text-3xl sm:text-3xl lg:text-4xl font-bold leading-tight text-gray-100"
-                    >
-                        THE WORLD OF DIPLOMACY WITH
-                    </h1>
-                    <h1
-                        data-aos="fade-right"
-                        className="text-3xl sm:text-4xl lg:text-6xl mt-2 font-bold leading-tight"
-                    >
-                        <span className="bg-gradient-to-r from-[#C38E87] to-[#465D88] bg-clip-text text-transparent ">
-                            Atsas Model United Nations
-                        </span>
-                    </h1>
+          {/* CTAs */}
+          <div style={{ marginTop: 40, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <Link href="/payment">
+              <button className="atsas-btn-solid">
+                Early Applicant Pricing — Limited Slots
+              </button>
+            </Link>
+            <Link href="/Live-MUN">
+              <button className="atsas-btn-outline">
+                ▶ Watch a Live MUN Experience
+              </button>
+            </Link>
+          </div>
 
-                    <h1
-                        data-aos="fade-right"
-                        className="text-2xl sm:text-2xl lg:text-3xl mt-2 font-bold leading-tight text-gray-100"
-                    >
-                        By Atsas International Network
-                    </h1>
-
-                    {/* Typing Effect */}
-                    <div className="text-center py-6">
-                        <h1 data-aos="fade-down" className="text-3xl lg:text-4xl font-bold bg-gradient-to-r  from-[#ca8980] to-[#315fb6] bg-clip-text text-transparent">
-                            <span>{currentText}</span>
-                            <span className="animate-blink">|</span>
-                        </h1>
-                    </div>
-
-                    {/* Play Button */}
-
-
-                    {/* Pricing Button */}
-
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center py-6">
-                        <Link href="/Live-MUN">
-                            <button className="rounded-[50px] bg-transparent hover:bg-gradient-to-r  from-[#315fb6] to-[#ca8980]  transition-all duration-300 border-[#ffffffce]  border-[1px]">
-
-                                {/* Top Content */}
-                                <div className="flex py-1 px-4 sm:px-6 justify-center items-center">
-                                    <p className="font-bold text-sm sm:text-[16px] lg:text-xl text-[#ffffff]">
-                                        Start Live MUN Experience
-                                    </p>
-                                    <MdOutlineArrowRightAlt className="text-lg sm:text-[30px] lg:text-[40px] mt-1 sm:mt-2 text-[#ffffff]" />
-                                </div>
-
-                                {/* Divider Line */}
-                                <hr className="w-[70%] sm:w-[80%] mx-auto border-t border-gray-100" />
-
-                                {/* Bottom Text */}
-                                <p className="py-2 px-6 sm:px-9 text-[11px] sm:text-[13px] lg:text-base text-gray-200">
-                                    Experience a Live MUN Before You Register    </p>
-
-                            </button>
-                        </Link>
-                        <Link href="/payment">
-                            <button className="rounded-[50px] bg-transparent hover:bg-gradient-to-r  from-[#ca8980] to-[#315fb6] transition-all duration-300 border-[#ffffffce]  border-[1px]">
-                                <div className="flex py-1 px-4 sm:px-6 justify-center items-center">
-                                    <p className="font-bold text-sm sm:text-[16px] lg:text-xl text-[#ffffff]">
-                                        Pricing
-                                    </p>
-                                    <MdOutlineArrowRightAlt className="text-lg sm:text-[30px] lg:text-[40px] mt-1 sm:mt-2 text-[#ffffff]" />
-                                </div>
-                                <hr className="w-[70%] sm:w-[80%] mx-auto border-t border-gray-100" />
-                                <p className="py-2 px-6 sm:px-9 text-[11px] sm:text-[13px] lg:text-base text-gray-200">
-                                    Early Applicant Discounts (Limited Slots Left)
-                                </p>
-                            </button>
-                        </Link>
-
-                    </div>
+          {/* Stats */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4,1fr)',
+              borderTop: '1px solid rgba(245,241,232,0.14)',
+              marginTop: 70,
+            }}
+            className="atsas-stats-grid"
+          >
+            {[
+              { num: '3', lbl: 'Global Destinations' },
+              { num: '1', lbl: 'NYC Flagship Finale' },
+              { num: 'UNHCR', lbl: 'Endorsed Certificate' },
+              { num: '2026', lbl: 'Founding Season' },
+            ].map((s, i) => (
+              <div
+                key={i}
+                style={{
+                  padding: '26px 20px 0 0',
+                  borderRight: i < 3 ? '1px solid rgba(245,241,232,0.14)' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: 34,
+                    color: '#F2B705',
+                  }}
+                >
+                  {s.num}
                 </div>
-            </header>
-
-
-            {/* <div className="hidden sm:block"> */}
-            <ParticleCanvas />
-            {/* </div> */}
-
+                <div
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 11,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(245,241,232,0.62)',
+                    marginTop: 4,
+                  }}
+                >
+                  {s.lbl}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-    )
-}
+      </section>
+    </div>
+  );
+};
 
-export default HeroSection
+export default HeroSection;

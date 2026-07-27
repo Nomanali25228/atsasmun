@@ -3,49 +3,67 @@ import Image from "next/image";
 
 export default function Desert({ Desert, Desert2, Desert3, heading }) {
   return (
-    <div className="flex flex-col items-center justify-center py-2 lg:py-8 px-6 sm:px-10 md:px-12 lg:px-14">
-      {/* Title */} 
-      <div data-aos="fade-up" className="text-center  mb-6">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-gray-700 tracking-wide animate-fade-in">
-       {heading}
-        </h2>
+    <section style={{ background: '#12142B', padding: '72px 0', position: 'relative', zIndex: 1 }}>
+      <div className="atsas-wrap">
+        <div style={{ maxWidth: 640, marginBottom: 44 }}>
+          <span className="atsas-eyebrow">City Tour</span>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(26px, 3.5vw, 44px)',
+              marginTop: 14,
+              lineHeight: 1.08,
+              letterSpacing: '-0.01em',
+              color: '#F5F1E8',
+            }}
+          >
+            {heading}
+          </h2>
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 16,
+          }}
+          className="atsas-desert-grid"
+        >
+          {[Desert, Desert2, Desert3].map((src, i) => (
+            <div
+              key={i}
+              style={{
+                borderRadius: 12,
+                overflow: 'hidden',
+                aspectRatio: '4/3',
+                position: 'relative',
+              }}
+            >
+              <Image
+                src={src}
+                alt={`City tour image ${i + 1}`}
+                fill
+                style={{ objectFit: 'cover', filter: 'saturate(0.88)' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Image Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 justify-center items-center">
-        {/* First Image */}
-        <div className="w-[250px] h-[180px] sm:w-[270px] sm:h-[190px] md:w-[300px] md:h-[200px] lg:w-[310px] lg:h-[230px] overflow-hidden rounded-lg mx-auto">
-          <Image
-            src={Desert}
-            alt="Camels walking in the desert"
-            className="w-full h-full object-cover rounded-lg"
-            width={400}
-            height={280}
-          />
-        </div>
-
-        {/* Second Image */}
-        <div className="w-[250px] h-[180px] sm:w-[270px] sm:h-[190px] md:w-[300px] md:h-[200px] lg:w-[310px] lg:h-[230px] overflow-hidden rounded-lg mx-auto">
-          <Image
-            src={Desert2}
-            alt="Running camels in the desert"
-            className="w-full h-full object-cover rounded-lg"
-            width={200}
-            height={280}
-          />
-        </div>
-
-        {/* Third Image */}
-        <div className="w-[250px] h-[180px] sm:w-[270px] sm:h-[190px] md:w-[300px] md:h-[200px] lg:w-[310px] lg:h-[230px] overflow-hidden rounded-lg mx-auto">
-          <Image
-            src={Desert3}
-            alt="SUV dune bashing in the desert"
-            className="w-full h-full object-cover rounded-lg"
-            width={400}
-            height={280}
-          />
-        </div>
-      </div>
-    </div>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .atsas-desert-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .atsas-desert-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+      `}</style>
+    </section>
   );
 }

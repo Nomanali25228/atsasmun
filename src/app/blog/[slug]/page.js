@@ -92,11 +92,11 @@ const BlogPostPage = () => {
 
 
 
-        <div className="w-[90%] sm:w-[80%] rounded-lg relative z-10 mb-24 mt-56 bg-[#e7e5e5] p-4 sm:p-8">
+        <div className="w-[90%] sm:w-[80%] rounded-lg relative z-10 mb-24 mt-56 p-4 sm:p-8" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.14)' }}>
 
           {/* Time Section */}
-          <div className="w-full relative -top-36 flex items-center justify-center text-gray-800 text-xs sm:text-sm font-medium tracking-wide mb-6">
-            <span className="bg-gray-100 px-4 py-2 rounded-full shadow-md">
+          <div className="w-full relative -top-36 flex items-center justify-center text-xs sm:text-sm font-medium tracking-wide mb-6">
+            <span className="px-4 py-2 rounded-full" style={{ background: 'rgba(242,183,5,0.15)', color: '#F2B705', fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: '0.08em' }}>
               Published: {moment(post.createdAt).fromNow()}
             </span>
           </div>
@@ -120,7 +120,7 @@ const BlogPostPage = () => {
 
 
           {/* Title Section */}
-          <h3 className="text-xl sm:text-3xl leading-[40px] sm:leading-[60px] capitalize text-center font-bold text-gray-800 font-jet-brains mb-4">
+          <h3 className="text-xl sm:text-3xl leading-[40px] sm:leading-[60px] capitalize text-center font-bold font-jet-brains mb-4" style={{ color: '#F5F1E8', fontFamily: "'Space Grotesk', sans-serif" }}>
             {post.title}
           </h3>
 
@@ -139,7 +139,7 @@ const BlogPostPage = () => {
           )}
 
           {/* Description */}
-          <p className="text-sm sm:text-base text-gray-500 leading-[28px] sm:leading-[32px] tracking-wide italic mt-2 mb-6">
+          <p className="text-sm sm:text-base leading-[28px] sm:leading-[32px] tracking-wide italic mt-2 mb-6" style={{ color: 'rgba(245,241,232,0.62)' }}>
             {post.description}
           </p>
 
@@ -186,29 +186,10 @@ const BlogPostPage = () => {
           <div className='pt-10'>
             <button
               onClick={() => window.history.back()}
-              className="bg-white  text-center w-36 rounded-xl h-10 relative text-black text-lg font-semibold group"
+              className="atsas-btn-outline"
               type="button"
             >
-              <div
-                className="bg-blue-400 rounded-xl h-8 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[95%] z-10 duration-500"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1024 1024"
-                  height="18px"
-                  width="18px"
-                >
-                  <path
-                    d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
-                    fill="#000000"
-                  ></path>
-                  <path
-                    d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
-                    fill="#000000"
-                  ></path>
-                </svg>
-              </div>
-              <p className="translate-x-2 text-sm">Go Back</p>
+              ← Go Back
             </button>
           </div>
 

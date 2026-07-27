@@ -40,33 +40,24 @@ export default function Dubaih(props) {
       <h1 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] xl:text-[64px] font-bold leading-tight text-center sm:text-left">
         ATSAS MUN <br />
         <div className="sm:flex items-center">
-          <span className="text-[#027CAC]">{tital}</span>
-
-        
+          <span style={{ color: '#FF5A5F' }}>{tital}</span>
         </div>
       </h1>
 
       <p className="mt-6 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-center sm:text-left">
-        {StartDays} – {EndDays} {monthsDetils}
+        {StartDays === 'Coming Soon' ? 'Coming Soon' : `${StartDays} – ${EndDays} ${monthsDetils}`}
       </p>
 
       <p className="mt-2 text-[16px] sm:text-[18px] md:text-[20px] text-center sm:text-left">
         {tital}
       </p>
 
-      <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-12 items-center sm:items-start">
-        <Link
-          href="/RegisterNow"
-          className="hover:text-[#027CAC] font-medium hover:underline"
-        >
-          Register Now ➔
+      <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center sm:items-start">
+        <Link href="/RegisterNow">
+          <button className="atsas-btn-solid">Register Now →</button>
         </Link>
-
-        <Link
-          href={Pricelink}
-          className="hover:text-[#027CAC] font-medium hover:underline"
-        >
-          Pricing ➔
+        <Link href={Pricelink}>
+          <button className="atsas-btn-outline">Pricing →</button>
         </Link>
       </div>
     </div>

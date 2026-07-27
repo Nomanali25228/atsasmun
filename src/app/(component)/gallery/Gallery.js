@@ -1,10 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import Slider from "react-slick";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
+import Slider from "react-slick";
 
-// Import images
 import gallry2 from "@/app/public/img/ax2.jpeg";
 import gallry3 from "@/app/public/img/ax3.jpeg";
 import gallry4 from "@/app/public/img/ax4.jpeg";
@@ -33,149 +32,217 @@ import gallry26 from "@/app/public/img/az6.jpeg";
 import gallry27 from "@/app/public/img/az7.jpeg";
 import gallry28 from "@/app/public/img/az8.jpeg";
 
-// Store images in an array
 const images = [
   gallry2, gallry3, gallry4, gallry5, gallry6, gallry7, gallry8, gallry9, gallry10,
-  gallry11, gallry12, gallry13, gallry14, gallry15, gallry16, gallry17, gallry18, gallry19,
-  gallry20, gallry21, gallry22, gallry23, gallry24, gallry25, gallry26, gallry27, gallry28
+  gallry11, gallry12, gallry13, gallry14, gallry15, gallry16, gallry17, gallry18,
+  gallry19, gallry20, gallry21, gallry22, gallry23, gallry24, gallry25, gallry26,
+  gallry27, gallry28,
 ];
 
 const GallerySlider = () => {
-  const sliderRef = React.useRef(null);
+  const sliderRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Slider settings
   const settings = {
     dots: false,
     infinite: true,
-    speed: 2000, // Smooth speed
+    speed: 2000,
     slidesToShow: 4,
     slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 3000, // Change images every 3 sec
+    autoplaySpeed: 3000,
     cssEase: "ease-in-out",
     pauseOnHover: false,
     pauseOnFocus: false,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
       { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } }
-    ]
+      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+    ],
   };
 
-
-  // Open modal and set image index
   const openModal = (index) => {
     setCurrentIndex(index);
     setIsOpen(true);
   };
-
-  // Close modal
   const closeModal = () => setIsOpen(false);
-
-  // Navigate to previous image
-  const prevImage = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  // Navigate to next image
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
+  const prevImage = () => setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1));
+  const nextImage = () => setCurrentIndex((p) => (p === images.length - 1 ? 0 : p + 1));
 
   return (
-    <section id="gallery">
-    <div data-aos="fade-up" className="text-center mt-11">
-      <h2 className="text-3xl md:text-4xl mt-14 font-semibold text-gray-800 tracking-wide">
-        Gallery
-      </h2>
-      <p className="text-gray-500 text-base md:text-lg mt-2">
-        View our gallery from the recent events
-      </p>
-      <div className="w-12 md:w-16 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
-    </div>
-    <div className="w-full flex flex-col items-center justify-center py-10 px-8">
-      
-
-      <div className="relative w-full max-w-7xl">
-        {/* Left Arrow */}
-        <button
-          onClick={() => sliderRef.current?.slickPrev()}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white p-2 shadow-md rounded-full"
-        >
-          <FaChevronLeft size={24} />
-        </button>
+    <section
+      id="gallery"
+      style={{ position: 'relative', zIndex: 1, padding: '96px 0', background: '#12142B' }}
+    >
+      <div className="atsas-wrap">
+        <div style={{ maxWidth: 640, marginBottom: 52 }}>
+          <span className="atsas-eyebrow">Gallery</span>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 3.8vw, 46px)',
+              marginTop: 14,
+              lineHeight: 1.06,
+              letterSpacing: '-0.01em',
+              color: '#F5F1E8',
+            }}
+          >
+            Moments from recent sessions.
+          </h2>
+        </div>
 
         {/* Slider */}
-        <Slider ref={sliderRef} {...settings}>
-          {images.map((src, index) => (
-            <div key={index} className="px-2">
-              <div
-                className="rounded-lg overflow-hidden shadow-md flex items-center justify-center cursor-pointer"
-                onClick={() => openModal(index)}
-              >
-                <Image
-                  src={src}
-                  alt={`Gallery image ${index + 1}`}
-                  width={400}
-                  height={300}
-                  className="w-full h-auto aspect-[4/3] object-cover"
-                />
+        <div style={{ position: 'relative' }}>
+          <button
+            onClick={() => sliderRef.current?.slickPrev()}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              background: 'rgba(18,20,43,0.8)',
+              border: '1px solid rgba(245,241,232,0.14)',
+              color: '#F5F1E8',
+              width: 40,
+              height: 40,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <FaChevronLeft />
+          </button>
+
+          <Slider ref={sliderRef} {...settings}>
+            {images.map((src, index) => (
+              <div key={index} style={{ padding: '0 5px' }}>
+                <div
+                  style={{
+                    borderRadius: 10,
+                    overflow: 'hidden',
+                    aspectRatio: '1/1',
+                    position: 'relative',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => openModal(index)}
+                >
+                  <Image
+                    src={src}
+                    alt={`Gallery image ${index + 1}`}
+                    fill
+                    style={{ objectFit: 'cover', filter: 'saturate(0.9)', transition: 'transform .3s ease' }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
 
-        {/* Right Arrow */}
-        <button
-          onClick={() => sliderRef.current?.slickNext()}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white p-2 shadow-md rounded-full"
-        >
-          <FaChevronRight size={24} />
-        </button>
+          <button
+            onClick={() => sliderRef.current?.slickNext()}
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              background: 'rgba(18,20,43,0.8)',
+              border: '1px solid rgba(245,241,232,0.14)',
+              color: '#F5F1E8',
+              width: 40,
+              height: 40,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+
+        {/* Modal */}
+        {isOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(0,0,0,0.85)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 50,
+            }}
+          >
+            <button
+              onClick={closeModal}
+              style={{
+                position: 'absolute',
+                top: 16,
+                right: 16,
+                color: '#F5F1E8',
+                fontSize: 20,
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              <FaTimes />
+            </button>
+            <button
+              onClick={prevImage}
+              style={{
+                position: 'absolute',
+                left: 16,
+                color: '#F5F1E8',
+                background: 'rgba(0,0,0,0.5)',
+                border: 'none',
+                borderRadius: '50%',
+                width: 44,
+                height: 44,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+              }}
+            >
+              <FaChevronLeft />
+            </button>
+            <Image
+              src={images[currentIndex]}
+              alt={`Gallery image ${currentIndex + 1}`}
+              width={600}
+              height={400}
+              style={{ borderRadius: 10, objectFit: 'cover', maxWidth: '90vw', maxHeight: '80vh' }}
+            />
+            <button
+              onClick={nextImage}
+              style={{
+                position: 'absolute',
+                right: 16,
+                color: '#F5F1E8',
+                background: 'rgba(0,0,0,0.5)',
+                border: 'none',
+                borderRadius: '50%',
+                width: 44,
+                height: 44,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+              }}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        )}
       </div>
-
-      {/* Modal for Enlarged Image */}
-{isOpen && (
-  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-    {/* Close Button */}
-    <button
-      onClick={closeModal}
-      className="absolute top-4 right-4 text-white text-2xl p-2"
-    >
-      <FaTimes />
-    </button>
-
-    {/* Left Arrow */}
-    <button
-      onClick={prevImage}
-      className="absolute left-4 text-white text-2xl p-2 bg-black bg-opacity-50 rounded-full"
-    >
-      <FaChevronLeft />
-    </button>
-
-    {/* Image with Fixed Size */}
-    <Image
-  src={images[currentIndex]}
-  alt={`Gallery image ${currentIndex + 1}`}
-  width={600}
-  height={400}
-  className="w-[600px] h-[300px] object-cover rounded-lg shadow-lg"
-/>
-
-
-    {/* Right Arrow */}
-    <button
-      onClick={nextImage}
-      className="absolute right-4 text-white text-2xl p-2 bg-black bg-opacity-50 rounded-full"
-    >
-      <FaChevronRight />
-    </button>
-  </div>
-
-      )}
-    </div>
     </section>
   );
 };

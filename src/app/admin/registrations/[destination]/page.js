@@ -107,11 +107,12 @@ export default function RegistrationModule() {
       headers.join(","),
       ...registrations.map((row) =>
         headers
-          .map((h) =>
-            typeof row[h] === "string"
-              ? `"${row[h].replace(/"/g, '""')}"`
-              : row[h] || ""
-          )
+          .map((h) => {
+            const val = row[h];
+            if (typeof val === "string") return `"${val.replace(/"/g, '""')}"`;
+            if (typeof val === "object" && val !== null) return `"${JSON.stringify(val).replace(/"/g, '""')}"`;
+            return val || "";
+          })
           .join(",")
       ),
     ].join("\n");
@@ -216,8 +217,9 @@ export default function RegistrationModule() {
                     </td>
                     <td className="px-6 py-4">
                       <span className="text-white text-sm font-medium">
-                        {reg.FirstName || reg.firstName || "-"}{" "}
-                        {reg.LastName || reg.lastName || ""}
+                        {reg.RegistrationType === 'group' && reg.GroupName 
+                          ? `${reg.GroupName} (Group)` 
+                          : `${reg.FirstName || reg.firstName || "-"} ${reg.LastName || reg.lastName || ""}`}
                       </span>
                     </td>
                     <td className="px-6 py-4">
@@ -318,9 +320,15 @@ export default function RegistrationModule() {
                     <span className="text-gray-500 text-xs uppercase tracking-wider font-medium">
                       {key.replace(/([A-Z])/g, " $1").trim()}
                     </span>
-                    <span className="text-white text-sm bg-[#0a0e1a] px-4 py-2 rounded-lg border border-[#1a2035]">
-                      {value || "-"}
-                    </span>
+                    <div className="text-white text-sm bg-[#0a0e1a] px-4 py-2 rounded-lg border border-[#1a2035]">
+                      {typeof value === 'object' && value !== null ? (
+                        <pre className="whitespace-pre-wrap font-sans">
+                          {JSON.stringify(value, null, 2)}
+                        </pre>
+                      ) : (
+                        value || "-"
+                      )}
+                    </div>
                   </div>
                 );
               })}

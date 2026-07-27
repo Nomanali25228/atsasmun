@@ -32,7 +32,7 @@ export default function Home() {
 
                 {/* Privacy Policy Content */}
                 <div className=' pb-10 relative z-10 w-screen'>
-                    <div className="max-w-5xl mx-4 mt-40 lg:mx-auto bg-white shadow-lg rounded-lg p-6 ">
+                    <div className="max-w-5xl mx-4 mt-40 lg:mx-auto rounded-lg p-6" style={{ background: '#1B1E3D', border: '1px solid rgba(245,241,232,0.14)', color: '#F5F1E8' }}>
                         <h1 className="text-4xl font-bold text-center mb-4">Privacy Policy</h1>
                         <p className="text-center text-gray-500 mb-4">Effective Date: December 20, 2024</p>
 

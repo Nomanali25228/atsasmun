@@ -8,12 +8,17 @@ export async function POST(request) {
     const smtpPort = parseInt(process.env.NEXT_PUBLIC_SMTP_PORT || process.env.SMTP_PORT || '465');
 
     try {
-        const { name, email, destination, id ,startdate, enddate, month, year} = await request.json();
-        console.log("nodemailer id", id);
+        const { name, email, destination, id, startdate, enddate, month, year, type } = await request.json();
+        console.log("nodemailer id", id, "| destination:", destination, "| name:", name, "| email:", email);
 
-        if (!name || !email || !destination) {
+        if (!name || !email) {
             return NextResponse.json({ message: "Name and email are required" }, { status: 400 });
         }
+
+        if (!destination) {
+            console.warn("Warning: destination was empty — email will still be sent with fallback label");
+        }
+
 
         let link2o = "";
         if (destination == "Dubai, UAE") {
@@ -84,13 +89,13 @@ export async function POST(request) {
                             <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
                             <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
                             <p style="margin:6px 0 0; font-size:18px; color: white;">for Istanbul, Türkiye</p>
-                            <p style="margin:20px 0 0; font-size:22px; color: white;">(${name})</p>
+                            <p style="margin:20px 0 0; font-size:22px; color: white;">(${type === 'group' ? 'Head of Delegate: ' : ''}${name})</p>
                         </td>
                     </tr>
                     <!-- DATE -->
                     <tr>
                         <td align="center" style="padding:20px;">
-                            <h2 style="margin:0; font-size:20px; color:#000;">Date: ${startdate}–${enddate} ${month}, ${year}</h2>
+                            <h2 style="margin:0; font-size:20px; color:#000;">Date: ${startdate === 'Coming Soon' ? 'Coming Soon' : `${startdate === 'Coming Soon' ? 'Coming Soon' : `${startdate}–${enddate} ${month}, ${year}`}`}</h2>
                             <hr style="width:80%; border-top:1px solid #ddd; margin-top: 20px;">
                             <p style="font-size:16px; color: #000;">We are pleased to inform you that your registration at Atsas International Model United Nations has been received. The shortlisted applicants will be contacted shortly through email within 24 hours.</p>
                         </td>
@@ -131,14 +136,14 @@ export async function POST(request) {
 </tr>
 
 
-                    <!-- CTA BUTTON -->
+                    ${type === 'group' ? '' : `<!-- CTA BUTTON -->
                     <tr>
                         <td align="center" style="padding:20px;">
                             <a href="${link2o}?userid=${id}" style=" background: linear-gradient(to right, #00509E, #003A70, #002855); color:#fff; text-decoration:none; padding:10px 30px; border-radius:5px; font-size:16px; display:inline-block;">
                                 Click here for Conference Fee
                             </a>
                         </td>
-                    </tr>
+                    </tr>`}
 
 
 <!-- facbook-----section--------------------- -->
@@ -255,7 +260,7 @@ export async function POST(request) {
     </tr>
 </table>
 
- <table
+ ${type === 'group' ? '' : `<table
                         style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
                         <tr>
                             <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment
@@ -274,7 +279,7 @@ export async function POST(request) {
                             </td>
                         </tr>
 
-                    </table>
+                    </table>`}
 
                    <!-- CONTACT INFO -->
                    <table style="width: 100%; max-width: 800px; margin: 40px auto; text-align: center; padding: 40px; background: #f2f4f7;  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-collapse: collapse;">

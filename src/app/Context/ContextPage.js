@@ -9,50 +9,50 @@ const [amounts,setAmounts] = useState(0)
 
   // 1 dubai dates/////////////////////////////////////
   const [dubaidates,setDubaidates] = useState({
-    startdate: "13th",
-    enddate:"16th",
-    month:"February",
-    year:"2026"
+    startdate: "Coming Soon",
+    enddate:"",
+    month:"",
+    year:""
   })
 
   // 2 istanbul dates/////////////////////////////////////
    const [istanbuldates,setIstanbuldates] = useState({
-    startdate: "1st",
-    enddate:"4th",
-    month:"May",
+    startdate: "29 October",
+    enddate:"1",
+    month:"November",
     year:"2026"
   })
 
-   // 3 Saudia  dates/////////////////////////////////////
+   // 3 Saudia  dates/////////////////////////////////////
    const [saudidates,setSaudidates] = useState({
-    startdate: "Coming soon",
+    startdate: "Coming Soon",
     enddate:"",
-    month:"October",
-    year:"2026"
+    month:"",
+    year:""
   })
 
   // 4 New York dates/////////////////////////////////////
     const [newyorkdates,setNewyorkdates] = useState({ 
-    startdate: "12th",
-    enddate:"15th",
-    month:"February",
-    year:"2026"
+    startdate: "Coming Soon",
+    enddate:"",
+    month:"",
+    year:""
   })
 
    // 5 London dates/////////////////////////////////////
     const [londondates,setLondondates] = useState({
-    startdate: "Coming soon",
+    startdate: "Coming Soon",
     enddate:"",
-    month:"November",
-    year:"2026"
+    month:"",
+    year:""
   })
 
     // 6 Baku dates/////////////////////////////////////
   const [bakudates,setBakudates] = useState({
-    startdate: "06th",
-    enddate:"09th",
-    month:"November",
-    year:"2026"
+    startdate: "Coming Soon",
+    enddate:"",
+    month:"",
+    year:""
   })
 
   useEffect(() => {

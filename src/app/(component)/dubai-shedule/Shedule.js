@@ -271,53 +271,102 @@ else if (props.timeing=="London, UK") {
   const [selectedDay, setSelectedDay] = useState("day1");
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center px-6 py-10 sm:py-12">
-      {/* Header */}
-      <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
-        Program Schedule
-      </h2>
-      <p className="text-gray-400 mb-6 text-center text-sm sm:text-base">
-        Below is the breakdown of the event by days.
-      </p>
-
-      {/* Day Tabs */}
-      <div className="flex flex-wrap justify-center space-x-0 sm:space-x-4 mb-6 gap-2">
-        {Object.keys(schedules).map((day) => (
-          <button
-            key={day}
-            className={`px-3 py-2 text-sm sm:text-lg font-medium rounded-md ${
-              selectedDay === day
-                ? "bg-gray-800 text-white underline"
-                : "bg-gray-700 text-gray-400 hover:text-gray-300"
-            }`}
-            onClick={() => setSelectedDay(day)}
+    <section style={{ background: '#12142B', padding: '72px 0', position: 'relative', zIndex: 1 }}>
+      <div className="atsas-wrap">
+        {/* Header */}
+        <div style={{ maxWidth: 640, marginBottom: 44 }}>
+          <span className="atsas-eyebrow">Schedule</span>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(26px, 3.5vw, 44px)',
+              marginTop: 14,
+              lineHeight: 1.08,
+              letterSpacing: '-0.01em',
+              color: '#F5F1E8',
+            }}
           >
-            {day.replace("day", "Day ")}
-          </button>
-        ))}
-      </div>
-
-      {/* Schedule Table */}
-      <div className="w-full max-w-5xl border border-gray-700 rounded-lg overflow-hidden">
-        {/* Table Header */}
-        <div className="hidden sm:flex bg-gray-800 text-sm sm:text-lg font-semibold p-3">
-          <div className="w-1/2">Time</div>
-          <div className="w-1/2">Activity</div>
+            Program Schedule
+          </h2>
+          <p style={{ color: 'rgba(245,241,232,0.62)', marginTop: 10, fontSize: 15, fontFamily: "'Work Sans', sans-serif" }}>
+            Below is the breakdown of the event by days.
+          </p>
         </div>
 
-        {/* Table Content */}
-        {schedules[selectedDay].map((item, index) => (
+        {/* Day Tabs */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
+          {Object.keys(schedules).map((day) => (
+            <button
+              key={day}
+              onClick={() => setSelectedDay(day)}
+              style={{
+                padding: '8px 20px',
+                borderRadius: 100,
+                border: '1.5px solid',
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 12,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                transition: 'all .2s ease',
+                background: selectedDay === day ? '#FF5A5F' : 'transparent',
+                borderColor: selectedDay === day ? '#FF5A5F' : 'rgba(245,241,232,0.25)',
+                color: selectedDay === day ? '#12142B' : 'rgba(245,241,232,0.62)',
+                fontWeight: selectedDay === day ? 700 : 400,
+              }}
+            >
+              {day.replace("day", "Day ")}
+            </button>
+          ))}
+        </div>
+
+        {/* Schedule Table */}
+        <div
+          style={{
+            border: '1px solid rgba(245,241,232,0.14)',
+            borderRadius: 12,
+            overflow: 'hidden',
+          }}
+        >
+          {/* Table Header */}
           <div
-            key={index}
-            className="flex flex-col sm:flex-row p-3 border-t border-gray-700 text-sm sm:text-base text-gray-300"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 2fr',
+              background: '#1B1E3D',
+              padding: '14px 20px',
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 12,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#F2B705',
+            }}
           >
-            <div className="w-full sm:w-1/2 font-medium sm:font-normal">
-              {item.time}
-            </div>
-            <div className="w-full sm:w-1/2">{item.activity}</div>
+            <div>Time</div>
+            <div>Activity</div>
           </div>
-        ))}
+
+          {/* Table Rows */}
+          {schedules[selectedDay].map((item, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 2fr',
+                padding: '14px 20px',
+                borderTop: '1px solid rgba(245,241,232,0.08)',
+                background: index % 2 === 0 ? 'transparent' : 'rgba(27,30,61,0.4)',
+                fontFamily: "'Work Sans', sans-serif",
+                fontSize: 14,
+              }}
+            >
+              <div style={{ color: '#F2B705', fontWeight: 500 }}>{item.time}</div>
+              <div style={{ color: 'rgba(245,241,232,0.85)' }}>{item.activity}</div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

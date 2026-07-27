@@ -203,8 +203,9 @@ export default function AdminDashboard() {
                     >
                       <td className="px-6 py-4">
                         <span className="text-white text-sm font-medium">
-                          {reg.FirstName || reg.firstName || "-"}{" "}
-                          {reg.LastName || reg.lastName || ""}
+                          {reg.RegistrationType === 'group' && reg.GroupName 
+                            ? `${reg.GroupName} (Group)` 
+                            : `${reg.FirstName || reg.firstName || "-"} ${reg.LastName || reg.lastName || ""}`}
                         </span>
                       </td>
                       <td className="px-6 py-4">

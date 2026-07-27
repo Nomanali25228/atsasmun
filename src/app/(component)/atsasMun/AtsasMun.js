@@ -1,81 +1,94 @@
 import React from 'react'
-import logo from '@/app/public/img/logo.png'; // Logo
-import watermarkBg from '@/app/public/img/unbg.png'; // Background Watermark
 import Image from 'next/image'
+import Link from 'next/link'
+import ax15 from '@/app/public/img/ax15.jpeg';
+
 const AtsasMun = () => {
   return (
-    <section id="atsasMun" className="relative bg-white py-14 px-6 overflow-hidden">
-
-      {/* Background Watermark Image Layer - Requested Style */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.2]"
-        style={{
-          backgroundImage: `url(${watermarkBg.src})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "650px auto", // Increased watermark size
-          backgroundPosition: "center right -1px", // Repositioned further right
-          filter: "grayscale(90%) brightness(70%)",
-        }}
-      ></div>
-
-      {/* Container - Added relative z-10 */}
-      <div className="relative z-10 max-w-7xl mx-auto text-center">
-        {/* Title */}
-        <h2 data-aos="fade-up" className="text-4xl font-semibold text-gray-700 tracking-wide animate-fade-in">
-          ATSAS MUN
-        </h2>
-        <p data-aos="fade-up" className="text-gray-500 text-lg mt-2">Our parent company</p>
-        <div data-aos="fade-down" className="w-16 h-1 bg-blue-500 mx-auto mt-4 rounded"></div>
-
-        {/* Content */}
-        <div className="mt-10 flex flex-col justify-center md:flex-row items-center md:items-start gap-6 md:gap-12">
-          {/* Logo */}
-          <div data-aos="fade-right" className="flex-shrink-0">
-            <div className="w-24 h-24   flex items-center justify-center rounded">
-              <Image
-                src={logo}
-                alt=''
-              />
-            </div>
+    <section id="atsasMun" style={{ position: 'relative', zIndex: 1, padding: '96px 0', background: '#12142B' }}>
+      <div className="atsas-wrap">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 60,
+            alignItems: 'center',
+          }}
+          className="atsas-about-grid"
+        >
+          {/* Text Column */}
+          <div>
+            <span className="atsas-eyebrow">Our Parent Company</span>
+            <h2
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 'clamp(28px, 3.8vw, 46px)',
+                marginTop: 14,
+                lineHeight: 1.06,
+                letterSpacing: '-0.01em',
+                color: '#F5F1E8',
+              }}
+            >
+              ATSASMUN is the flagship of Atsas International Creations.
+            </h2>
+            <p
+              style={{
+                color: 'rgba(245,241,232,0.62)',
+                marginTop: 16,
+                fontSize: 16,
+                fontFamily: "'Work Sans', sans-serif",
+                lineHeight: 1.6,
+              }}
+            >
+              Based in the United Kingdom, Atsas International Creations LTD is committed to cultivating the next generation of leaders — and ATSASMUN is its flagship endeavor, bringing together a global community of young minds for diplomacy, problem-solving, and teamwork.
+            </p>
+            <p style={{ color: 'rgba(245,241,232,0.62)', marginTop: 14, fontSize: 15, fontFamily: "'Work Sans', sans-serif", lineHeight: 1.6 }}>
+              The programme travels beyond borders — Istanbul, Dubai, Kuala Lumpur — giving delegates the tools to handle major global issues while building leadership, negotiation, and analytical skills through immersive cultural and diplomatic experience.
+            </p>
+            <p style={{ color: 'rgba(245,241,232,0.62)', marginTop: 14, fontSize: 15, fontFamily: "'Work Sans', sans-serif", lineHeight: 1.6 }}>
+              It all builds toward New York City each September, where winners from every regional conference meet for the journey&apos;s culmination — a platform for the next generation of changemakers to be heard on a global stage.
+            </p>
+            <Link href="#contact">
+              <button className="atsas-btn-outline" style={{ marginTop: 24 }}>
+                Get In Touch
+              </button>
+            </Link>
           </div>
 
-          {/* Text Content */}
-          <div data-aos="fade-up" className="max-w-3xl  md:ml-[-25px] text-left text-gray-700 leading-relaxed">
-            <p className='text-[14px]'>
-              As the flagship project of Atsas International Creations LTD, a company based
-              in the United Kingdom that is committed to cultivating the next generation of
-              leaders, AtsasMUN is the organization{"'"}s flagship endeavor. By providing a
-              Model United Nations experience that is unrivaled, AtsasMUN brings together
-              a global community of young minds to engage in activities such as diplomacy,
-              problem-solving, and teamwork, so laying the groundwork for a more favorable
-              prospect in the future.
-            </p>
-            <div className='md:ml-[-120px]'>
-
-              <p className="mt-2 text-[14px] ">
-
-                This one-of-a-kind program goes beyond national boundaries and travels all over the world in order to provide participants with a wide range of chances and viewpoints. The purpose of AtsasMUN events is to provide delegates with the tools necessary to handle major global concerns while simultaneously cultivating leadership, negotiating, and analytical abilities. These events are designed to immerse participants in comprehensive cultural and diplomatic experiences.
-              </p>
-              <p className="mt-2 text-[14px] ">
-
-                An incredible platform for students and young leaders to make their mark, AtsasMUN offers events that span prominent destinations such as Istanbul, Dubai, and Kuala Lumpur. This platform leaves just enough suspense for what is to come, and it offers this opportunity to students and young leaders. This is not merely a meeting; rather, it is a movement that is currently serving to mold the leaders of the future.
-
-              </p>
-              <p className="mt-2 text-[14px] ">
-
-                The culmination of this journey is the AtsasMUN, which takes place in New York City. This event is a landmark event that takes place in September and brings together the winners of every MUN conference from across the world to represent the culmination of their MUN adventure. This trip has the potential to be the journey of a lifetime, as it will act as a platform for future changemakers to have their views heard on a global scale.              </p>
-              <p className="mt-2 text-[14px] ">
-                Explore the journey and become a part of this global legacy at <a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline hover:text-blue-700"
-                >
-                  atsasmun.com.
-                </a>
-
-
-              </p>
+          {/* Image Column */}
+          <div
+            style={{
+              aspectRatio: '4/5',
+              borderRadius: 16,
+              overflow: 'hidden',
+              position: 'relative',
+            }}
+          >
+            <Image
+              src={ax15}
+              alt="ATSASMUN delegates"
+              fill
+              style={{ objectFit: 'cover', filter: 'saturate(0.85)' }}
+              sizes="(max-width: 900px) 100vw, 50vw"
+            />
+            <div
+              style={{
+                content: '',
+                position: 'absolute',
+                bottom: 18,
+                left: 18,
+                fontFamily: "'Space Mono',monospace",
+                fontSize: 11,
+                letterSpacing: '0.08em',
+                color: '#12142B',
+                background: '#F2B705',
+                padding: '7px 14px',
+                borderRadius: 100,
+                fontWeight: 700,
+              }}
+            >
+              NYC · FLAGSHIP FINALE
             </div>
           </div>
         </div>

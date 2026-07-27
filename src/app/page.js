@@ -10,8 +10,8 @@ import ScrollToTop from "./(component)/Scrolltotop/ScrollToTop";
 import Whatsapp from '@/app/(component)/whatsapp/Whatsapp'
 import { useContext, useEffect } from "react";
 import ContextPage from "./Context/ContextPage";
-import ConnotFound from '@/app/ConnotFound/page'
 import HeroSection from "./(component)/herosection/HeroSection";
+
 export default function Home() {
   const { refresh, setRefresh } = useContext(ContextPage);
   useEffect(() => {
@@ -23,13 +23,12 @@ export default function Home() {
 
   return (
     <>
-      {/* <ConnotFound/> */}
+      {/* Ambient grain background overlay */}
+      <div className="atsas-grain" />
+
       <HeroSection />
       <Events />
       <OurMission />
-
-      {/* <Video/> */}
-
       <AtsasMun />
       <Gallery />
       <Faq />

@@ -162,7 +162,7 @@ export async function GET(request) {
                         <!-- Name -->
                         <p
                             style="font-size: 1.4rem; font-weight: bold; margin: 10px 0; color: white; text-decoration: underline;">
-                          ${userName}</p>
+                          ${notif.type === 'group' ? 'Head of Delegate: ' : ''}${userName}</p>
                         <!-- Subtext -->
                         <p style="font-size: 0.9rem; margin: 30px 30px 10px 20px; color: white;">
                             You have been selected as one of the delegates at AtsasMUN ${desname}
@@ -375,7 +375,7 @@ export async function GET(request) {
                                 </tr>
                             </table>
 
-                            <table
+                            ${notif.type === 'group' ? '' : `<table
                                 style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
                                 <tr>
                                     <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment
@@ -393,7 +393,7 @@ export async function GET(request) {
                                             Now</a>
                                     </td>
                                 </tr>
-                            </table>
+                            </table>`}
 
 
                             <table
