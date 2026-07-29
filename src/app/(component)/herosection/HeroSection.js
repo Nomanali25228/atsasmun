@@ -128,10 +128,10 @@ const HeroSection = () => {
             className="atsas-stats-grid"
           >
             {[
-              { num: '3', lbl: 'Global Destinations' },
-              { num: '1', lbl: 'NYC Flagship Finale' },
+              { num: 'Istanbul', lbl: 'Next Destination' },
+              { num: '29', lbl: '29 October 1 November' },
               { num: 'UNHCR', lbl: 'Endorsed Certificate' },
-              { num: '2026', lbl: 'Founding Season' },
+              { num: '2023', lbl: 'Founding Season' },
             ].map((s, i) => (
               <div
                 key={i}

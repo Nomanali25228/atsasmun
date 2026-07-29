@@ -18,19 +18,18 @@ const AtsasMun = () => {
         >
           {/* Text Column */}
           <div>
-            <span className="atsas-eyebrow">Our Parent Company</span>
             <h2
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 700,
                 fontSize: 'clamp(28px, 3.8vw, 46px)',
-                marginTop: 14,
+                marginTop: 0,
                 lineHeight: 1.06,
                 letterSpacing: '-0.01em',
                 color: '#F5F1E8',
               }}
             >
-              ATSASMUN is the flagship of Atsas International Creations.
+              About Us
             </h2>
             <p
               style={{

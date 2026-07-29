@@ -75,7 +75,7 @@ export default function Events() {
               color: '#F5F1E8',
             }}
           >
-            Pick your city. Then aim for New York.
+            Pick your city.
           </h2>
           <p
             style={{

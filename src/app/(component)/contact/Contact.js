@@ -51,7 +51,6 @@ export default function ContactUs() {
           {/* Right Column */}
           <div>
             {[
-              { lbl: 'Address', content: '42 Hennerton Way, High Wycombe, HP13 7UE, United Kingdom', href: 'https://www.google.com/maps/dir//42+Hennerton+Way' },
               { lbl: 'Phone', content: '+44 7498 072531', href: 'tel:+447498072531' },
               { lbl: 'Email', content: 'info@atsasmun.com', href: 'mailto:info@atsasmun.com' },
               { lbl: 'Social', content: 'Facebook · Instagram', href: null, facebook: 'https://www.facebook.com/share/189wEJeHZ5/', instagram: 'https://www.instagram.com/atsasmun/' },
@@ -94,8 +93,6 @@ export default function ContactUs() {
                   ) : (
                     <a
                       href={item.href}
-                      target={item.lbl === 'Address' ? '_blank' : undefined}
-                      rel={item.lbl === 'Address' ? 'noopener noreferrer' : undefined}
                       style={{ color: '#F5F1E8', textDecoration: 'none' }}
                       onMouseEnter={(e) => e.currentTarget.style.color = '#2EC4B6'}
                       onMouseLeave={(e) => e.currentTarget.style.color = '#F5F1E8'}
