@@ -59,7 +59,7 @@ const HeroSection = () => {
                 display: 'inline-block',
               }}
             />
-            ISTANBUL · LONDON · RIYADH · NYC FINALE
+            ISTANBUL · LONDON · RIYADH
           </div>
 
           {/* H1 */}
@@ -100,7 +100,7 @@ const HeroSection = () => {
               lineHeight: 1.6,
             }}
           >
-            ATSASMUN puts student delegates inside the truest simulation of the United Nations — real committee work, sharp negotiation, and a global network that spans continents. Every regional session builds toward our flagship finale in New York City.
+            ATSASMUN puts student delegates inside the truest simulation of the United Nations — real committee work, sharp negotiation, and a global network that spans continents.
           </p>
 
           {/* CTAs */}

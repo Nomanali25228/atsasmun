@@ -77,17 +77,7 @@ export default function Events() {
           >
             Pick your city.
           </h2>
-          <p
-            style={{
-              color: 'rgba(245,241,232,0.62)',
-              marginTop: 16,
-              fontSize: 16,
-              maxWidth: 520,
-              fontFamily: "'Work Sans', sans-serif",
-            }}
-          >
-            Every regional session feeds into ATSASMUN&apos;s flagship finale — where delegates from every destination meet in New York City each September.
-          </p>
+
         </div>
 
         {/* Cards Grid */}

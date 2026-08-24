@@ -104,7 +104,7 @@ function Navbar() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '18px 28px',
+          padding: '6px 28px',
           maxWidth: 1120,
           margin: '0 auto',
         }}
