@@ -40,10 +40,10 @@ const AtsasMun = () => {
                 lineHeight: 1.6,
               }}
             >
-              Based in the United Kingdom, Atsas International Creations LTD is committed to cultivating the next generation of leaders — and ATSASMUN is its flagship endeavor, bringing together a global community of young minds for diplomacy, problem-solving, and teamwork.
+              ATSASMUN is dedicated to the cultivation of the next generation of global leaders. Our flagship programme convenes an international community of young delegates in pursuit of structured diplomacy, critical problem solving, and collaborative engagement in matters of global concern.
             </p>
             <p style={{ color: 'rgba(245,241,232,0.62)', marginTop: 14, fontSize: 15, fontFamily: "'Work Sans', sans-serif", lineHeight: 1.6 }}>
-              The programme travels beyond borders — Istanbul, Dubai, Kuala Lumpur — giving delegates the tools to handle major global issues while building leadership, negotiation, and analytical skills through immersive cultural and diplomatic experience.
+              The programme is convened across a series of international host cities including Istanbul, Dubai and Kuala Lumpur providing delegates with the requisite tools to engage substantively with pressing global issues. Through this immersive diplomatic and cross cultural experience, participants cultivate core competencies in leadership, negotiation and analytical reasoning, in keeping with the principles of international cooperation and mutual understanding.
             </p>
 
             <Link href="#contact">

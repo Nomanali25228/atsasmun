@@ -17,8 +17,8 @@ const [amounts,setAmounts] = useState(0)
 
   // 2 istanbul dates/////////////////////////////////////
    const [istanbuldates,setIstanbuldates] = useState({
-    startdate: "29 October",
-    enddate:"1",
+    startdate: "5",
+    enddate:"8",
     month:"November",
     year:"2026"
   })

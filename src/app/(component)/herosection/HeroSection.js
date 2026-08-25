@@ -59,7 +59,7 @@ const HeroSection = () => {
                 display: 'inline-block',
               }}
             />
-            ISTANBUL · LONDON · RIYADH
+            ISTANBUL · LONDON · RIYADH · NEW YORK
           </div>
 
           {/* H1 */}
@@ -129,7 +129,7 @@ const HeroSection = () => {
           >
             {[
               { num: 'Istanbul', lbl: 'Next Destination' },
-              { num: '29', lbl: '29 October 1 November' },
+              { num: '5 – 8', lbl: '5 – 8 November 2026' },
               { num: 'UNHCR', lbl: 'Endorsed Certificate' },
               { num: '2023', lbl: 'Founding Season' },
             ].map((s, i) => (
