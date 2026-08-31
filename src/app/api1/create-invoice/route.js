@@ -36,9 +36,7 @@ export async function POST(req) {
       );
     }
 
-    // Use a fixed discount or 0 if it would make the total negative
     const baseAmountCents = Math.round(amount * 100);
-    const discountAmountCents = 10000; // $100 discount
     const currency = 'usd';
 
     // 1. Create the base invoice
@@ -58,26 +56,16 @@ export async function POST(req) {
     });
 
     // 2. Add description item
+    const itemDescription = description || disnew || "Tour Package Payment";
     await stripe.invoiceItems.create({
       customer: customerId,
       amount: baseAmountCents,
       currency,
-      description: `${disnew || ""} ${description || "Tour Package Payment"}`.trim(),
+      description: itemDescription,
       invoice: invoice.id,
     });
 
-    // 3. Add discount item if applicable (only if total remains positive)
-    if (discountAmountCents > 0 && baseAmountCents > discountAmountCents) {
-      await stripe.invoiceItems.create({
-        customer: customerId,
-        amount: -discountAmountCents,
-        currency,
-        description: `Early Applicant Discount (-$${(discountAmountCents / 100).toFixed(2)})`,
-        invoice: invoice.id,
-      });
-    }
-
-    // 4. Finalize the invoice
+    // 3. Finalize the invoice
     const finalizedInvoice = await stripe.invoices.finalizeInvoice(invoice.id);
 
     return new Response(

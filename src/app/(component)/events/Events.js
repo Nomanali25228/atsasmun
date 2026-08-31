@@ -75,96 +75,115 @@ export default function Events() {
     },
   ];
 
-  const renderCard = (card) => (
+  const renderCard = (card, index) => (
     <div
       key={card.id}
-      className="atsas-event-card"
+      className={`atsas-event-card ${index === 3 ? 'atsas-event-card-ny' : ''}`}
       style={{
         background: '#12142B',
-        transition: 'background .25s ease',
+        border: '1px solid rgba(245, 241, 232, 0.14)',
+        borderRadius: 12,
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        transition: 'background .25s ease, transform .25s ease, border-color .25s ease',
       }}
-      onMouseEnter={(e) => e.currentTarget.style.background = '#1B1E3D'}
-      onMouseLeave={(e) => e.currentTarget.style.background = '#12142B'}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = '#1B1E3D';
+        e.currentTarget.style.borderColor = 'rgba(245, 241, 232, 0.3)';
+        e.currentTarget.style.transform = 'translateY(-4px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = '#12142B';
+        e.currentTarget.style.borderColor = 'rgba(245, 241, 232, 0.14)';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
     >
-      {/* Photo Section */}
-      <div style={{ height: 190, position: 'relative', overflow: 'hidden' }}>
-        <Image
-          src={card.image}
-          alt={card.title}
-          fill
-          style={{ objectFit: 'cover', filter: 'saturate(0.9)' }}
-          sizes="(max-width: 900px) 100vw, 33vw"
-        />
-        <span
-          style={{
-            position: 'absolute',
-            top: 14,
-            left: 14,
-            fontFamily: "'Space Mono',monospace",
-            fontSize: 11,
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-            padding: '6px 12px',
-            borderRadius: 100,
-            background: card.status === 'open' ? '#2EC4B6' : '#FF5A5F',
-            color: '#12142B',
-            fontWeight: 700,
-          }}
-        >
-          {card.statusLabel}
-        </span>
+      <div>
+        {/* Photo Section */}
+        <div style={{ height: 200, position: 'relative', overflow: 'hidden' }}>
+          <Image
+            src={card.image}
+            alt={card.title}
+            fill
+            style={{ objectFit: 'cover', filter: 'saturate(0.9)' }}
+            sizes="(max-width: 900px) 100vw, 33vw"
+          />
+          <span
+            style={{
+              position: 'absolute',
+              top: 14,
+              left: 14,
+              fontFamily: "'Space Mono',monospace",
+              fontSize: 11,
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
+              padding: '6px 12px',
+              borderRadius: 100,
+              background: card.status === 'open' ? '#2EC4B6' : '#FF5A5F',
+              color: '#12142B',
+              fontWeight: 700,
+            }}
+          >
+            {card.statusLabel}
+          </span>
+        </div>
+
+        {/* Body */}
+        <div style={{ padding: 26 }}>
+          <div
+            style={{
+              fontFamily: "'Space Mono',monospace",
+              fontSize: 12,
+              color: 'rgba(245,241,232,0.62)',
+              letterSpacing: '0.04em',
+            }}
+          >
+            {card.place}
+          </div>
+          <h3
+            style={{
+              fontFamily: "'Space Grotesk',sans-serif",
+              fontSize: 21,
+              fontWeight: 600,
+              marginTop: 8,
+              color: '#F5F1E8',
+            }}
+          >
+            {card.title}
+          </h3>
+          <div
+            style={{
+              color: '#F2B705',
+              fontWeight: 600,
+              fontSize: 14,
+              marginTop: 6,
+              fontFamily: "'Work Sans', sans-serif",
+            }}
+          >
+            {card.date}
+          </div>
+          <p
+            style={{
+              color: 'rgba(245,241,232,0.62)',
+              fontSize: 14,
+              marginTop: 12,
+              fontFamily: "'Work Sans', sans-serif",
+              lineHeight: 1.6,
+            }}
+          >
+            {card.desc}
+          </p>
+        </div>
       </div>
 
-      {/* Body */}
-      <div style={{ padding: 26 }}>
-        <div
-          style={{
-            fontFamily: "'Space Mono',monospace",
-            fontSize: 12,
-            color: 'rgba(245,241,232,0.62)',
-            letterSpacing: '0.04em',
-          }}
-        >
-          {card.place}
-        </div>
-        <h3
-          style={{
-            fontFamily: "'Space Grotesk',sans-serif",
-            fontSize: 21,
-            fontWeight: 600,
-            marginTop: 8,
-            color: '#F5F1E8',
-          }}
-        >
-          {card.title}
-        </h3>
-        <div
-          style={{
-            color: '#F2B705',
-            fontWeight: 600,
-            fontSize: 14,
-            marginTop: 6,
-            fontFamily: "'Work Sans', sans-serif",
-          }}
-        >
-          {card.date}
-        </div>
-        <p
-          style={{
-            color: 'rgba(245,241,232,0.62)',
-            fontSize: 14,
-            marginTop: 12,
-            fontFamily: "'Work Sans', sans-serif",
-            lineHeight: 1.6,
-          }}
-        >
-          {card.desc}
-        </p>
+      <div style={{ padding: '0 26px 26px 26px' }}>
         <Link href={card.href}>
           <button
             onClick={() => setCheck(card.subtitle)}
             className={card.btnClass}
-            style={{ marginTop: 20, width: '100%', justifyContent: 'center' }}
+            style={{ width: '100%', justifyContent: 'center' }}
           >
             {card.btnLabel}
           </button>
@@ -193,27 +212,52 @@ export default function Events() {
           </h2>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="atsas-events-grid-4">
-          {cards.map(renderCard)}
+        {/* 3-Column Grid with New York on second row */}
+        <div className="atsas-events-grid-container">
+          <div className="atsas-events-top-row">
+            {cards.slice(0, 3).map((card, idx) => renderCard(card, idx))}
+          </div>
+          <div className="atsas-events-bottom-row">
+            {cards.slice(3, 4).map((card, idx) => renderCard(card, 3))}
+          </div>
         </div>
 
         <style jsx>{`
-          .atsas-events-grid-4 {
+          .atsas-events-top-row {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(245, 241, 232, 0.14);
-            border: 1px solid rgba(245, 241, 232, 0.14);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+          }
+          .atsas-events-bottom-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+          }
+          .atsas-events-bottom-row :global(.atsas-event-card-ny) {
+            grid-column: 1;
           }
           @media (max-width: 1024px) {
-            .atsas-events-grid-4 {
+            .atsas-events-top-row {
               grid-template-columns: repeat(2, 1fr);
+            }
+            .atsas-events-bottom-row {
+              grid-template-columns: repeat(2, 1fr);
+            }
+            .atsas-events-bottom-row :global(.atsas-event-card-ny) {
+              grid-column: auto;
             }
           }
           @media (max-width: 640px) {
-            .atsas-events-grid-4 {
+            .atsas-events-top-row,
+            .atsas-events-bottom-row {
               grid-template-columns: 1fr;
+            }
+            .atsas-events-bottom-row {
+              margin-top: 24px;
+            }
+            .atsas-events-bottom-row :global(.atsas-event-card-ny) {
+              grid-column: auto;
             }
           }
         `}</style>
