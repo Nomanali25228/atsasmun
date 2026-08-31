@@ -191,7 +191,7 @@ export default function Home() {
                 body: JSON.stringify({
                     customerId: customerIdToUse,
                     email: emailToUse,
-                    amount: su + 100, 
+                    amount: su, 
                     description: "Tour Package Payment",
                     disnew: non
                 }),

@@ -55,13 +55,12 @@ export async function POST(req) {
       `,
     });
 
-    // 2. Add description item
-    const itemDescription = description || disnew || "Tour Package Payment";
+    // 2. Add package line item
     await stripe.invoiceItems.create({
       customer: customerId,
       amount: baseAmountCents,
       currency,
-      description: itemDescription,
+      description: `${disnew || ""} ${description || "Tour Package Payment"}`.trim(),
       invoice: invoice.id,
     });
 

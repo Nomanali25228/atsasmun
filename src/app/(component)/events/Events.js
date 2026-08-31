@@ -235,7 +235,7 @@ export default function Events() {
             margin-top: 24px;
           }
           .atsas-events-bottom-row :global(.atsas-event-card-ny) {
-            grid-column: 1;
+            grid-column: 2;
           }
           @media (max-width: 1024px) {
             .atsas-events-top-row {
