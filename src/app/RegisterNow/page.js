@@ -330,7 +330,7 @@ export default function Home() {
   const [disability, setDisability] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [shirtSize, setShirtSize] = useState("");
-  const [destination, setDestination] = useState(check);
+  const [destination, setDestination] = useState("Istanbul, Turkey");
   const [foodPreference, setFoodPreference] = useState("");
   const [heardAboutUs, setHeardAboutUs] = useState("");
   const [name, setName] = useState('');
@@ -425,65 +425,10 @@ export default function Home() {
 
 
   useEffect(() => {
-    if (check == "Istanbul, Turkey") {
-
-      setNo1(false)
-      setNo2(false)
-      setNo3(false)
-      setNo4(false)
-      setNo5(false)
-      setImgchange(istan)
-
-      console.log(change["from"]); // "7th"
-
-    }
-    else if (check == "Dubai, UAE") {
-      setNo(false)
-      setNo2(false)
-      setNo3(false)
-      setNo4(false)
-      setNo5(false)
-      setImgchange(istan5)
-
-
-    } else if (check == "Baku, Azerbaijan") {
-      setNo1(false)
-      setNo(false)
-      setNo3(false)
-      setNo4(false)
-      setNo5(false)
-      setImgchange(istan1)
-
-
-    } else if (check == "New York, USA") {
-      setNo1(false)
-      setNo2(false)
-      setNo(false)
-      setNo4(false)
-      setNo5(false)
-      setImgchange(istan3)
-
-
-    } else if (check == "Riyadh, Saudi Arabia") {
-      setNo1(false)
-      setNo2(false)
-      setNo3(false)
-      setNo(false)
-      setNo5(false)
-      setImgchange(istan4)
-
-    }
-    else if (check == "London, UK") {
-      setNo1(false)
-      setNo2(false)
-      setNo3(false)
-      setNo4(false)
-      setNo(false)
-      setImgchange(istan2)
-
-
-    }
-  }, [check, setCheck])
+    setNo(true);
+    setDestination("Istanbul, Turkey");
+    setImgchange(istan);
+  }, [check, setCheck]);
 
   useEffect(() => {
     if (destination == "Istanbul, Turkey") {
@@ -565,7 +510,7 @@ export default function Home() {
     HaveYouAttendSimilarInternationalProgramsBefore: '',
     WhatExcitesYouTheMostAboutJoiningOurProgram: '',
     AnyThingElseThatYouWantToShare: '',
-    Destinations: check == "" ? "" : check,
+    Destinations: check === "Istanbul, Turkey" ? check : "Istanbul, Turkey",
   });
 
   useEffect(() => {
@@ -1245,7 +1190,7 @@ export default function Home() {
                                 </label>
                                 <select
                                   name="Destinations"
-                                  value={destination}
+                                  value={destination || "Istanbul, Turkey"}
                                   onChange={(e) => {
                                     const val = e.target.value;
                                     setDestination(val);
@@ -1255,18 +1200,24 @@ export default function Home() {
                                     }));
                                   }}
                                   required
-                                  className=" mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-3 px-4 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+                                  style={{ color: '#111827', backgroundColor: '#FFFFFF' }}
+                                  className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-3 px-4 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
                                 >
-                                  <option value="" disabled hidden>
+                                  <option value="" disabled style={{ color: '#6B7280', backgroundColor: '#FFFFFF' }}>
                                     Select Destination
                                   </option>
-                                  {no && <option value="Istanbul, Turkey">Istanbul, Turkey</option>}
-                                  {/* {no1 && <option value="Dubai, UAE">Dubai, UAE</option>} */}
-                                  {/* {no2 && <option value="Baku, Azerbaijan">Baku, Azerbaijan</option>}
-                                  {no3 && <option value="New York, USA">New York, USA</option>} */}
-                                  {no5 && <option value="London, UK">London, UK</option>}
-                                  {no4 && <option value="Riyadh, Saudi Arabia">Riyadh, Saudi Arabia</option>}
-
+                                  <option value="Istanbul, Turkey" style={{ color: '#111827', backgroundColor: '#FFFFFF' }}>
+                                    Istanbul, Turkey
+                                  </option>
+                                  <option value="London, UK" disabled style={{ color: '#9CA3AF', backgroundColor: '#FFFFFF' }}>
+                                    London, UK (Coming Soon)
+                                  </option>
+                                  <option value="Riyadh, Saudi Arabia" disabled style={{ color: '#9CA3AF', backgroundColor: '#FFFFFF' }}>
+                                    Riyadh, Saudi Arabia (Coming Soon)
+                                  </option>
+                                  <option value="New York, USA" disabled style={{ color: '#9CA3AF', backgroundColor: '#FFFFFF' }}>
+                                    New York, USA (Coming Soon)
+                                  </option>
                                 </select>
                               </div>
                             </div>

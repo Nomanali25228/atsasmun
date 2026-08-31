@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import newLogo from "@/app/public/img/new-logo.png";
 import {
   AiOutlineDown,
   AiOutlineUp,
@@ -91,7 +93,7 @@ function Navbar() {
     transition: 'color .2s',
   };
 
-  const destinations = ["/Istanbul", "/UK", "/Saudi"];
+  const destinations = ["/Istanbul", "/UK", "/Saudi", "/USA"];
   const isDestinationActive = destinations.some((d) => pathname?.startsWith(d));
 
   // Don't render anything until we know if it's mobile or desktop
@@ -110,7 +112,15 @@ function Navbar() {
         }}
       >
         {/* Brand */}
-        <Link href="/" style={{ textDecoration: 'none' }}>
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
+          <Image
+            src={newLogo}
+            alt="ATSASMUN Logo"
+            width={34}
+            height={34}
+            style={{ objectFit: 'contain', borderRadius: '50%' }}
+            priority
+          />
           <div
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
@@ -175,6 +185,7 @@ function Navbar() {
                   { href: '/Istanbul', label: 'Istanbul, Turkey' },
                   { href: '/UK', label: 'London, UK' },
                   { href: '/Saudi', label: 'Riyadh, Saudi Arabia' },
+                  { href: '/USA', label: 'New York, USA' },
                 ].map((item) => (
                   <Link
                     key={item.href}
@@ -327,12 +338,31 @@ function Navbar() {
               overflowY: 'auto',
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingBottom: 12, borderBottom: '1px solid rgba(245,241,232,0.1)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <Image
+                  src={newLogo}
+                  alt="ATSASMUN Logo"
+                  width={28}
+                  height={28}
+                  style={{ objectFit: 'contain', borderRadius: '50%' }}
+                />
+                <div
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: 18,
+                    color: '#F5F1E8',
+                  }}
+                >
+                  ATSAS<span style={{ color: '#FF5A5F' }}>MUN</span>
+                </div>
+              </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                style={{ background: 'none', border: 'none', color: '#F5F1E8', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: '#F5F1E8', cursor: 'pointer', padding: 4 }}
               >
-                <AiOutlineClose style={{ width: 24, height: 24 }} />
+                <AiOutlineClose style={{ width: 22, height: 22 }} />
               </button>
             </div>
 
@@ -390,6 +420,7 @@ function Navbar() {
                     { href: '/Istanbul', label: 'Istanbul, Turkey' },
                     { href: '/UK', label: 'London, UK' },
                     { href: '/Saudi', label: 'Riyadh, Saudi Arabia' },
+                    { href: '/USA', label: 'New York, USA' },
                   ].map((item) => (
                     <Link
                       key={item.href}

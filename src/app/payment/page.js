@@ -28,12 +28,10 @@ export default function Flip() {
     const {bakudates,setBakudates} = useContext(ContextPage);
 
   const locations = [
-    { name: 'Istanbul, Türkiye', image: istan, date:istanbuldates.startdate+" – "+istanbuldates.enddate+" "+istanbuldates.month+" "+istanbuldates.year, link: '/Istanbulfee' },
-    // { name: 'Dubai, UAE', image: istan5, date:dubaidates.startdate+" – "+dubaidates.enddate+" "+dubaidates.month+" "+dubaidates.year, link: '/uaefee' },
-    { name: 'London, UK', image: istan2, date:londondates.startdate+" – "+londondates.enddate+" "+londondates.month+" "+londondates.year, link: '/UKfee' },
-    { name: 'Riyadh, Saudi Arabia', image: istan4, date:saudidates.startdate+" – "+saudidates.enddate+" "+saudidates.month+" "+saudidates.year, link: '/Saudifee' },
-    // { name: 'Baku, Azerbaijan', image: istan1, date:bakudates.startdate+" – "+bakudates.enddate+" "+bakudates.month+" "+bakudates.year, link: '/Azerbaijanfee' },
-    // { name: 'New York, USA', image: istan3, date:newyorkdates.startdate+" – "+newyorkdates.enddate+" "+newyorkdates.month+" "+newyorkdates.year, link: '/USAfee' },
+    { name: 'Istanbul, Türkiye', image: istan, date: istanbuldates.startdate === 'Coming Soon' ? 'Coming Soon' : `${istanbuldates.startdate} – ${istanbuldates.enddate} ${istanbuldates.month} ${istanbuldates.year}`, link: '/Istanbulfee', isOpen: true },
+    { name: 'London, UK', image: istan2, date: londondates.startdate === 'Coming Soon' ? 'Coming Soon' : `${londondates.startdate} – ${londondates.enddate} ${londondates.month} ${londondates.year}`, link: '/UKfee', isOpen: false },
+    { name: 'Riyadh, Saudi Arabia', image: istan4, date: saudidates.startdate === 'Coming Soon' ? 'Coming Soon' : `${saudidates.startdate} – ${saudidates.enddate} ${saudidates.month} ${saudidates.year}`, link: '/Saudifee', isOpen: false },
+    { name: 'New York, USA', image: istan3, date: newyorkdates.startdate === 'Coming Soon' ? 'Coming Soon' : `${newyorkdates.startdate} – ${newyorkdates.enddate} ${newyorkdates.month} ${newyorkdates.year}`, link: '/USAfee', isOpen: false },
   ];
 
 
@@ -81,12 +79,22 @@ export default function Flip() {
                 <div className="flex flex-col justify-center items-center h-full text-center p-4 bg-black bg-opacity-60 text-white rounded-lg">
                   <h2 className="text-lg font-bold">{location.name}</h2>
                   <p className="text-sm">{location.date}</p>
-                  <a
-                    href={location.link}
-                    className="mt-4 px-3 py-1 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600"
-                  >
-                    Pay for {location.name}
-                  </a>
+                  {location.isOpen ? (
+                    <a
+                      href={location.link}
+                      className="mt-4 px-4 py-2 atsas-btn-solid text-xs"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      Pay for {location.name}
+                    </a>
+                  ) : (
+                    <span
+                      className="mt-4 px-4 py-2 atsas-btn-outline text-xs opacity-75 cursor-default inline-block"
+                      style={{ borderStyle: 'dashed' }}
+                    >
+                      Coming Soon
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

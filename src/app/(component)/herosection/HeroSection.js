@@ -130,7 +130,7 @@ const HeroSection = () => {
             {[
               { num: 'Istanbul', lbl: 'Next Destination' },
               { num: '5 – 8', lbl: '5 – 8 November 2026' },
-              { num: 'UNHCR', lbl: 'Endorsed Certificate' },
+              { num: '250', lbl: 'Seats Available' },
               { num: '2023', lbl: 'Founding Season' },
             ].map((s, i) => (
               <div

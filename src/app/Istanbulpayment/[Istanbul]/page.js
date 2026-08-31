@@ -25,34 +25,62 @@ export default function Home() {
     const [custId, setCustID] = useState("")
     const [selectPac, setSelectPac] = useState("")
     const [loader, setLoader] = useState(false)
-    const [loader1, setLoader1] = useState(false)
-
+    const [loader1, setLoader1] = useState(false);
+    const [loader2, setLoader2] = useState(false);
+    const [loader3, setLoader3] = useState(false);
 
     useEffect(() => {
         setCheck("Istanbul, Turkey")
     }, [check, setCheck])
 
-
     const seo = (oo) => {
         setAmounts(oo)
     }
 
-
-    // choose button ////////////////////////////////
-
-    // payment 1///////////////////////////////////////
+    // choose buttons ////////////////////////////////
+    // Package 1
     const [showOptions1, setShowOptions1] = useState(false);
     const optionsRef1 = useRef(null);
-
     const handleClick1 = () => {
-        if (loader1 == true) {
-            setShowOptions1(true)
-            setShowOptions2(false)
+        if (loader1) {
+            setShowOptions1(true);
+            setShowOptions2(false);
+            setShowOptions3(false);
         } else {
             setShowOptions1(!showOptions1);
-
+            setShowOptions2(false);
+            setShowOptions3(false);
         }
+    };
 
+    // Package 2
+    const [showOptions2, setShowOptions2] = useState(false);
+    const optionsRef2 = useRef(null);
+    const handleClick2 = () => {
+        if (loader2) {
+            setShowOptions2(true);
+            setShowOptions1(false);
+            setShowOptions3(false);
+        } else {
+            setShowOptions2(!showOptions2);
+            setShowOptions1(false);
+            setShowOptions3(false);
+        }
+    };
+
+    // Package 3
+    const [showOptions3, setShowOptions3] = useState(false);
+    const optionsRef3 = useRef(null);
+    const handleClick3 = () => {
+        if (loader3) {
+            setShowOptions3(true);
+            setShowOptions1(false);
+            setShowOptions2(false);
+        } else {
+            setShowOptions3(!showOptions3);
+            setShowOptions1(false);
+            setShowOptions2(false);
+        }
     };
 
     // Close the options menu when clicking outside
@@ -61,35 +89,11 @@ export default function Home() {
             if (optionsRef1.current && !optionsRef1.current.contains(event.target)) {
                 setShowOptions1(false);
             }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
-
-
-    // payment 2/////////////////////////////////////////
-    const [showOptions2, setShowOptions2] = useState(false);
-    const optionsRef = useRef(null);
-
-    const handleClick2 = () => {
-        if (loader == true) {
-            setShowOptions2(true)
-
-
-        } else {
-            setShowOptions2(!showOptions2);
-
-        }
-    };
-
-    // Close the options menu when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (optionsRef.current && !optionsRef.current.contains(event.target)) {
+            if (optionsRef2.current && !optionsRef2.current.contains(event.target)) {
                 setShowOptions2(false);
+            }
+            if (optionsRef3.current && !optionsRef3.current.contains(event.target)) {
+                setShowOptions3(false);
             }
         };
 
@@ -99,9 +103,7 @@ export default function Home() {
         };
     }, []);
 
-
     // start invoice//////////////////////////////////////////////////////////////////////////////
-
 
     const id = searchParams.get("userid");
     const [userEmail, setUserEmail] = useState("");
@@ -110,30 +112,23 @@ export default function Home() {
         if (!id) return;
         const fetchData = async () => {
             try {
-                // Use our LOCAL API instead of Strapi
                 const url = `/api1/api/firstnames?filters[userid][$eq]=${id}`;
-                console.log("Fetching User Data from Local DB...", url);
                 const response = await fetch(url);
                 if (!response.ok) {
                      const errData = await response.json();
-                     console.error("Local API Error:", errData);
                      throw new Error(`Server Error: ${response.status}`);
                 }
                 let result = await response.json();
-                
-                console.log("Final Fetch Result:", result);
                 
                 let customerId = "";
                 let email = "";
                 if (result.data && result.data.length > 0) {
                     const item = result.data[0];
-                    // Our local DB structure might be flat or nested
                     const attrs = item.attributes || item;
                     customerId = attrs.customerId;
                     email = attrs.Email || attrs.email;
                 }
 
-                console.log("Extracted Info:", { customerId, email });
                 setCustID(customerId || "");
                 setUserEmail(email || "");
             } catch (err) {
@@ -151,19 +146,13 @@ export default function Home() {
             return;
         }
 
-        setLoader(true)
-        let non = su === 389 ? "Non-Accommodation" : "Accommodation";
+        let pkgName = su === 418 ? "Delegation Package" : su === 549 ? "Delegation + Accommodation" : "Full Experience Package";
         
-        if (su === 389) {
-            setLoader(false)
-            setLoader1(true)
-        } else {
-            setLoader(true)
-            setLoader1(false)
-        }
+        if (su === 418) setLoader1(true);
+        else if (su === 549) setLoader2(true);
+        else setLoader3(true);
 
         try {
-            // If data hasn't loaded yet, fetch it now
             let customerIdToUse = custId;
             let emailToUse = userEmail;
 
@@ -185,8 +174,9 @@ export default function Home() {
 
             if (!customerIdToUse && !emailToUse) {
                 toast.error("Customer information not found in database.");
-                setLoader(false);
                 setLoader1(false);
+                setLoader2(false);
+                setLoader3(false);
                 return;
             }
 
@@ -198,9 +188,9 @@ export default function Home() {
                 body: JSON.stringify({
                     customerId: customerIdToUse,
                     email: emailToUse,
-                    amount: su + 100, 
-                    description: "Tour Package Payment",
-                    disnew: non
+                    amount: su, 
+                    description: `ATSASMUN Istanbul - ${pkgName}`,
+                    disnew: pkgName
                 }),
             });
 
@@ -210,7 +200,6 @@ export default function Home() {
                 throw new Error(data.error || "Failed to create invoice");
             }
 
-            // Download PDF directly
             if (data.invoicePdf) {
                 window.location.href = data.invoicePdf;
                 toast.success("Invoice PDF downloading!");
@@ -219,27 +208,22 @@ export default function Home() {
                 toast.success("Redirecting to invoice page...");
             }
 
-            setLoader(false)
-            setLoader1(false)
+            setLoader1(false);
+            setLoader2(false);
+            setLoader3(false);
 
         } catch (error) {
             console.error("Error creating invoice:", error.message);
             toast.error(`Error: ${error.message}`);
-            setLoader(false)
-            setLoader1(false)
+            setLoader1(false);
+            setLoader2(false);
+            setLoader3(false);
         }
     };
 
-
-    // end invoice//////////////////////////////////////////////////////////////////////////////
-
-
-
     return (
         <div>
-            {/* Navbar */}
             <Navbar />
-            {/* Hero Section */}
             <header
                 className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-white"
                 style={{
@@ -247,182 +231,224 @@ export default function Home() {
                     backgroundAttachment: "fixed",
                 }}
             >
-
-                {/* Overlay */}
                 <div className="absolute inset-0 bg-[#060713] bg-opacity-80"></div>
-                {/* Hero Content */}
-                <section >
-                    <div className="max-w-5xl mx-auto px-4">
-                        <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
-                            Pricing for <span className="text-purple-400">Istanbul, Turkey</span>
+                <section>
+                    <div className="max-w-6xl mx-auto px-4 py-12">
+                        <h2 className="text-center mt-24 lg:mt-20 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                            Pricing for <span style={{ color: '#FF5A5F' }}>Istanbul, Turkey</span>
                         </h2>
 
-                        {/* <div className=" transform hover:scale-105 transition-transform duration-500 cursor-pointer mb-12 relative z-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-lg shadow-md text-center max-w-md mx-auto">
-                            <h2 className="text-lg font-semibold mb-2">Or Switch to Installments →</h2>
-                            <hr className="border-t border-white/50 my-2" />
-                            <p className="text-sm font-light">
-                                Installments help you pay conveniently over a longer period of time
-                                without any interest/markup while also locking the current limited discount
-                            </p>
-                        </div> */}
-
-
-                        <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
-                            {/* Basic Plan */}
-                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-
+                        <div className="grid grid-cols-1 mb-12 lg:grid-cols-3 gap-8">
+                            {/* Delegation Package */}
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border border-[rgba(245,241,232,0.14)] transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
                                 <div className="space-y-4">
-                                    <h3 className="text-lg font-bold text-center">Basic</h3>
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Delegation Package</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$389
-                                        </p>
-                                        <p className="text-xs text-gray-500 mt-1">
-                                            <span className="line-through">$489</span>  Early Applicant Discount
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$418 <span className="text-sm font-normal text-gray-300">+ 5% TAX</span></p>
+                                        <p className="text-xs text-gray-400 mt-1">
+                                            Early Bird <span className="text-[#2EC4B6] font-semibold">(Save $120)</span> · After <span className="line-through">$538 + 5% TAX</span>
                                         </p>
                                     </div>
-                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
                                         Non-Accommodation
                                     </p>
                                     <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-6">
                                         <li>✔️ ATSASMUN Merch Kit</li>
+                                        <li>✔️ Official ATSASMUN Certificate</li>
+                                        <li>✔️ Visa Invitation Letter</li>
                                         <li>✔️ United Nations Simulation Sessions</li>
-                                        <li>✔️ ATSASMUN UNHCR Endorsed Certificates</li>
-                                        <li>✔️ Cultural Performances</li>
-                                        <li>✔️ Ice-breaking Session </li>
-                                        <li>✔️ Diplomatic Dinner</li>
-                                        <li>✔️ 1 Lunch and 2 Dinners</li>
+                                        <li>✔️ Professional event photos</li>
+                                        <li>✔️ First come First Serve committee Allocation</li>
+                                        <li>✔️ Breakfast Every Morning</li>
+                                        <li>✔️ 1 Dinner</li>
                                     </ul>
-                                    <div className="text-center mt-6">
-                                        <div ref={optionsRef1} className="relative">
-                                            {/* "Choose" Button */}
-                                            {!showOptions1 && (
+                                </div>
+                                <div className="text-center mt-6">
+                                    <div ref={optionsRef1} className="relative">
+                                        {!showOptions1 && (
+                                            <button
+                                                className="atsas-btn-solid w-full"
+                                                style={{ width: '100%', justifyContent: 'center' }}
+                                                onClick={handleClick1}
+                                            >
+                                                Choose Package →
+                                            </button>
+                                        )}
+
+                                        {showOptions1 && (
+                                            <div className="mt-4 space-y-2">
                                                 <button
-                                                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
+                                                    className="w-full mb-2 py-2 bg-gray-700 text-white text-xs font-bold rounded-lg hover:bg-gray-600 transition duration-300"
                                                     onClick={handleClick1}
                                                 >
-                                                    Choose
+                                                    Cancel ✖
                                                 </button>
-                                            )}
-
-                                            {/* Options */}
-                                            {showOptions1 && (
-                                                <div className="mt-4 space-y-2">
+                                                <Link href="/checkout">
                                                     <button
-                                                        className="w-full mb-2 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white text-sm font-bold rounded-full hover:bg-red-700 hover:scale-105 transition-all duration-300"
-                                                        onClick={handleClick1}
+                                                        onClick={() => seo(418)}
+                                                        className="atsas-btn-solid w-full"
+                                                        style={{ width: '100%', justifyContent: 'center', background: '#2EC4B6' }}
                                                     >
-                                                        Cancel ✖
+                                                        Pay Now ($418) →
                                                     </button>
-                                                    <Link href="/checkout">
-                                                        <button
-                                                            onClick={() => seo(389)}
-                                                            className="w-full py-3 bg-gradient-to-r from-green-600 to-green-800 text-white text-sm font-bold rounded-full hover:bg-green-700 hover:scale-105 transition-all duration-300"
-                                                        >
-                                                            Pay now →
-                                                        </button>
-                                                    </Link>
-                                                    {loader1 && <button
-                                                        className="w-full py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300">
-                                                        <div className=" gap-4 w-full flex items-center justify-center">
-                                                            <p> Please waite. </p>
-                                                            <div
-                                                                className="w-8 h-8 border-2 border-transparent text-blue-700 text-4xl animate-spin flex items-center justify-center border-t-blue-500 rounded-full"
-                                                            >
-                                                                <div
-                                                                    className="w-6 h-6 border-2 border-transparent text-red-700 text-4xl animate-spin flex items-center justify-center border-t-red-500 rounded-full"
-                                                                ></div>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </button>}
-                                                    {!loader1 && <button
-                                                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300"
-                                                        onClick={() => handleCreateInvoice(389)}>
-                                                        Invoice ↓
-                                                    </button>}
-                                                </div>
-                                            )}
-                                        </div>
+                                                </Link>
+                                                {loader1 ? (
+                                                    <button className="atsas-btn-outline w-full" style={{ width: '100%', justifyContent: 'center' }}>
+                                                        Generating Invoice...
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        className="atsas-btn-outline w-full"
+                                                        style={{ width: '100%', justifyContent: 'center' }}
+                                                        onClick={() => handleCreateInvoice(418)}
+                                                    >
+                                                        Invoice PDF ↓
+                                                    </button>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Full Experience Plan */}
-                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
+                            {/* Delegation + Accommodation */}
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border-2 border-[#FF5A5F] transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
                                 <div className="space-y-4">
-                                    <h3 className="text-lg font-bold text-center">Full Experience</h3>
+                                    <div className="bg-[#FF5A5F] text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full w-max mx-auto -mt-3">
+                                        Most Popular
+                                    </div>
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Delegation + Accommodation</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$639 </p>
-                                        {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-                                        <p className="text-xs text-gray-500 mt-1">
-                                            <span className="line-through">$779</span> Early Applicant Discount
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$549 <span className="text-sm font-normal text-gray-300">+ 5% TAX</span></p>
+                                        <p className="text-xs text-gray-400 mt-1">
+                                            Early Bird <span className="text-[#2EC4B6] font-semibold">(Save $140)</span> · After <span className="line-through">$689 + 5% TAX</span>
                                         </p>
                                     </div>
-                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
-                                        Accommodation
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
+                                        Accommodation Included
                                     </p>
                                     <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
-                                        <li>✔️ Everything in Non-Accomodation Package</li>
-                                        <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
-                                        <li>✔️ Visa invitation letter</li>
-                                        <li>✔️ Airport Assistance (Arrival)</li>
-                                        <li>✔️ 3 Buffet Breakfast</li>
-                                        <li>✔️ 2 Lunch and 3 Dinners</li>
-                                        <li>✔️ Istanbul, City Tour </li>
+                                        <li>✔️ Everything in Delegation Package</li>
+                                        <li>✔️ 4-5 Star Accommodation (Twin Shared Room)</li>
+                                        <li>✔️ Airport Arrival Assistance</li>
+                                        <li>✔️ Guided City Tour</li>
+                                        <li>✔️ 1 Lunch & 2 Dinner</li>
                                     </ul>
-                                    <div className="text-center mt-6">
-                                        <div ref={optionsRef} className="relative">
-                                            {/* "Choose" Button */}
-                                            {!showOptions2 && (
+                                </div>
+                                <div className="text-center mt-6">
+                                    <div ref={optionsRef2} className="relative">
+                                        {!showOptions2 && (
+                                            <button
+                                                className="atsas-btn-solid w-full"
+                                                style={{ width: '100%', justifyContent: 'center', background: '#FF5A5F' }}
+                                                onClick={handleClick2}
+                                            >
+                                                Choose Package →
+                                            </button>
+                                        )}
+
+                                        {showOptions2 && (
+                                            <div className="mt-4 space-y-2">
                                                 <button
-                                                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
+                                                    className="w-full mb-2 py-2 bg-gray-700 text-white text-xs font-bold rounded-lg hover:bg-gray-600 transition duration-300"
                                                     onClick={handleClick2}
                                                 >
-                                                    Choose
+                                                    Cancel ✖
                                                 </button>
-                                            )}
-
-                                            {/* Options */}
-                                            {showOptions2 && (
-                                                <div className="mt-4 space-y-2">
+                                                <Link href="/checkout">
                                                     <button
-                                                        className="w-full mb-2 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white text-sm font-bold rounded-full hover:bg-red-700 hover:scale-105 transition-all duration-300"
-                                                        onClick={handleClick2}
+                                                        onClick={() => seo(549)}
+                                                        className="atsas-btn-solid w-full"
+                                                        style={{ width: '100%', justifyContent: 'center', background: '#2EC4B6' }}
                                                     >
-                                                        Cancel ✖
+                                                        Pay Now ($549) →
                                                     </button>
-                                                    <Link href="/checkout">
-                                                        <button
-                                                            onClick={() => seo(639)}
-                                                            className="w-full py-3 bg-gradient-to-r from-green-600 to-green-800 text-white text-sm font-bold rounded-full hover:bg-green-700 hover:scale-105 transition-all duration-300"
-                                                        >
-                                                            Pay now →
-                                                        </button>
-                                                    </Link>
-                                                    {loader && <button
-                                                        className="w-full py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300">
-                                                        <div className=" gap-4 w-full flex items-center justify-center">
-                                                            <p> Please waite. </p>
-                                                            <div
-                                                                className="w-8 h-8 border-2 border-transparent text-blue-700 text-4xl animate-spin flex items-center justify-center border-t-blue-500 rounded-full"
-                                                            >
-                                                                <div
-                                                                    className="w-6 h-6 border-2 border-transparent text-red-700 text-4xl animate-spin flex items-center justify-center border-t-red-500 rounded-full"
-                                                                ></div>
-                                                            </div>
-                                                        </div>
+                                                </Link>
+                                                {loader2 ? (
+                                                    <button className="atsas-btn-outline w-full" style={{ width: '100%', justifyContent: 'center' }}>
+                                                        Generating Invoice...
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        className="atsas-btn-outline w-full"
+                                                        style={{ width: '100%', justifyContent: 'center' }}
+                                                        onClick={() => handleCreateInvoice(549)}
+                                                    >
+                                                        Invoice PDF ↓
+                                                    </button>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
 
+                            {/* Full Experience Package */}
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border border-[rgba(245,241,232,0.14)] transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Full Experience Package</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$689 <span className="text-sm font-normal text-gray-300">+ 5% TAX</span></p>
+                                        <p className="text-xs text-gray-400 mt-1">
+                                            Early Bird <span className="text-[#2EC4B6] font-semibold">(Save $150)</span> · After <span className="line-through">$839 + 5% TAX</span>
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
+                                        VIP Full Experience
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
+                                        <li>✔️ Everything in Delegation + Accommodation</li>
+                                        <li>✔️ Bosphorus Dinner Cruise Trip</li>
+                                        <li>✔️ Airport Arrival & Dropoff Assistance</li>
+                                        <li>✔️ Lucky Draw</li>
+                                        <li>✔️ Priority Registration</li>
+                                        <li>✔️ 2 Lunch & 3 Dinner</li>
+                                    </ul>
+                                </div>
+                                <div className="text-center mt-6">
+                                    <div ref={optionsRef3} className="relative">
+                                        {!showOptions3 && (
+                                            <button
+                                                className="atsas-btn-solid w-full"
+                                                style={{ width: '100%', justifyContent: 'center' }}
+                                                onClick={handleClick3}
+                                            >
+                                                Choose Package →
+                                            </button>
+                                        )}
 
-                                                    </button>}
-                                                    {!loader && <button
-                                                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:scale-105 transition-all duration-300"
-                                                        onClick={() => handleCreateInvoice(639)}>
-                                                        Invoice ↓
-                                                    </button>}
-                                                </div>
-                                            )}
-                                        </div>
+                                        {showOptions3 && (
+                                            <div className="mt-4 space-y-2">
+                                                <button
+                                                    className="w-full mb-2 py-2 bg-gray-700 text-white text-xs font-bold rounded-lg hover:bg-gray-600 transition duration-300"
+                                                    onClick={handleClick3}
+                                                >
+                                                    Cancel ✖
+                                                </button>
+                                                <Link href="/checkout">
+                                                    <button
+                                                        onClick={() => seo(689)}
+                                                        className="atsas-btn-solid w-full"
+                                                        style={{ width: '100%', justifyContent: 'center', background: '#2EC4B6' }}
+                                                    >
+                                                        Pay Now ($689) →
+                                                    </button>
+                                                </Link>
+                                                {loader3 ? (
+                                                    <button className="atsas-btn-outline w-full" style={{ width: '100%', justifyContent: 'center' }}>
+                                                        Generating Invoice...
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        className="atsas-btn-outline w-full"
+                                                        style={{ width: '100%', justifyContent: 'center' }}
+                                                        onClick={() => handleCreateInvoice(689)}
+                                                    >
+                                                        Invoice PDF ↓
+                                                    </button>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

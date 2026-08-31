@@ -75,9 +75,6 @@ export default function Events() {
     },
   ];
 
-  const topCards = cards.filter(c => c.id !== 4);
-  const nyCard = cards.find(c => c.id === 4);
-
   const renderCard = (card) => (
     <div
       key={card.id}
@@ -196,38 +193,30 @@ export default function Events() {
           </h2>
         </div>
 
-        {/* Top 3 Cards Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3,1fr)',
-            gap: 1,
-            background: 'rgba(245,241,232,0.14)',
-            border: '1px solid rgba(245,241,232,0.14)',
-          }}
-          className="atsas-events-grid"
-        >
-          {topCards.map(renderCard)}
+        {/* 4 Cards Grid */}
+        <div className="atsas-events-grid-4">
+          {cards.map(renderCard)}
         </div>
 
-        {/* New York Card — left aligned below first card */}
-        {nyCard && (
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr',
-              background: 'rgba(245,241,232,0.14)',
-              border: '1px solid rgba(245,241,232,0.14)',
-              maxWidth: '33.33%',
-              marginLeft: 0,
-              marginRight: 'auto',
-              marginTop: 16,
-            }}
-          >
-            {renderCard(nyCard)}
-          </div>
-        )}
-
+        <style jsx>{`
+          .atsas-events-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(245, 241, 232, 0.14);
+            border: 1px solid rgba(245, 241, 232, 0.14);
+          }
+          @media (max-width: 1024px) {
+            .atsas-events-grid-4 {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (max-width: 640px) {
+            .atsas-events-grid-4 {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );

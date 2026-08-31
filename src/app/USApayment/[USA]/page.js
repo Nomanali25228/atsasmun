@@ -258,20 +258,20 @@ export default function Home() {
                         </div> */}
 
 
-                        <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
+                        <div className="grid grid-cols-1 mb-12 sm:grid-cols-2 gap-14">
                             {/* Basic Plan */}
-                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border border-[rgba(245,241,232,0.14)] transform hover:scale-105 transition-transform duration-500">
 
                                 <div className="space-y-4">
-                                    <h3 className="text-lg font-bold text-center">Basic</h3>
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Basic</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$979
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$979
                                         </p>
-                                        <p className="text-xs text-gray-500 mt-1">
+                                        <p className="text-xs text-gray-400 mt-1">
                                             <span className="line-through">$1059</span>  Early Applicant Discount
                                         </p>
                                     </div>
-                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
                                         Non-Accommodation
                                     </p>
                                     <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-6">
@@ -340,17 +340,16 @@ export default function Home() {
                             </div>
 
                             {/* Full Experience Plan */}
-                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border border-[rgba(245,241,232,0.14)] transform hover:scale-105 transition-transform duration-500">
                                 <div className="space-y-4">
-                                    <h3 className="text-lg font-bold text-center">Full Experience</h3>
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Full Experience</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$1599          </p>
-                                        {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-                                        <p className="text-xs text-gray-500 mt-1">
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$1599</p>
+                                        <p className="text-xs text-gray-400 mt-1">
                                             <span className="line-through">$1759</span> Early Applicant Discount
                                         </p>
                                     </div>
-                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
                                         Accommodation
                                     </p>
                                     <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">

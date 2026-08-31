@@ -40,22 +40,6 @@ export default function RootLayout({ children }) {
         {/* ✅ Favicon */}
         <link rel="icon" href="/favicon.ico" />
 
-        {/* Preload Custom Fonts */}
-        <link
-          rel="preload"
-          href="/fonts/GeistVF.woff"
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/GeistMonoVF.woff"
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-
         {/* ✅ Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{

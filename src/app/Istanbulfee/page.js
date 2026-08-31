@@ -41,77 +41,106 @@ export default function Home() {
                 {/* Hero Content */}
                 <section >
                     <div className="max-w-5xl mx-auto px-4">
-                        <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide">
-                            Pricing for <span className="text-purple-400">Istanbul, Turkey</span>
+                        <h2 className="text-center mt-32 lg:mt-28 relative z-10 text-3xl lg:text-4xl font-bold text-white mb-10 leading-tight tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                            Pricing for <span style={{ color: '#FF5A5F' }}>Istanbul, Turkey</span>
                         </h2>
-                        <div className="grid  grid-cols-1 mb-12  sm:grid-cols-2 gap-14">
-                            {/* Basic Plan */}
-                            <div className=" relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500">
-
+                        <div className="grid grid-cols-1 mb-12 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                            {/* Delegation Package */}
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border border-[rgba(245,241,232,0.14)] transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
                                 <div className="space-y-4">
-                                    <h3 className="text-lg font-bold text-center">Basic</h3>
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Delegation Package</h3>
                                     <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$389
-                                        </p>
-                                        <p className="text-xs text-gray-500 mt-1">
-                                            <span className="line-through">$429</span>  Early Applicant Discount
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$418 <span className="text-sm font-normal text-gray-300">+ 5% TAX</span></p>
+                                        <p className="text-xs text-gray-400 mt-1">
+                                            Early Bird <span className="text-[#2EC4B6] font-semibold">(Save $120)</span> · After <span className="line-through">$538 + 5% TAX</span>
                                         </p>
                                     </div>
-                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
                                         Non-Accommodation
                                     </p>
                                     <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-6">
                                         <li>✔️ ATSASMUN Merch Kit</li>
+                                        <li>✔️ Official ATSASMUN Certificate</li>
+                                        <li>✔️ Visa Invitation Letter</li>
                                         <li>✔️ United Nations Simulation Sessions</li>
-                                        <li>✔️ ATSASMUN UNHCR Endorsed Certificates</li>
-                                        <li>✔️ Cultural Performances</li>
-                                        <li>✔️ Ice-breaking Session </li>
-                                        <li>✔️ Diplomatic Dinner</li>
-                                        <li>✔️ 1 Lunch and 2 Dinners</li>
-                                    </ul>
-                                    <div className="text-center mt-6">
-                                        <Link href="/RegisterNow">
-                                            <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
-                                                Register Now →
-                                            </button>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Full Experience Plan */}
-                            <div className="relative z-10 bg-[#281a50] text-white rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between h-full">
-                                <div className="space-y-4">
-                                    <h3 className="text-lg font-bold text-center">Full Experience</h3>
-                                    <div className="text-center">
-                                        <p className="text-3xl font-extrabold">$639</p>
-                                        {/* <p className="text-xs mt-1 text-gray-400">(+5% tax)</p> */}
-                                        <p className="text-xs text-gray-500 mt-1">
-                                            <span className="line-through">$779</span> Early Applicant Discount
-                                        </p>
-                                    </div>
-                                    <p className="text-center text-blue-300 font-semibold uppercase text-xs">
-                                        Accommodation
-                                    </p>
-                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
-                                        <li>✔️ Everything in Non-Accomodation Package</li>
-                                        <li>✔️ 5 Star Accommodation-Twin Shared (3 Nights)</li>
-                                        <li>✔️ Visa invitation letter</li>
-                                        <li>✔️ Airport Assistance (Arrival)</li>
-                                        <li>✔️ 3 Buffet Breakfast</li>
-                                        <li>✔️ 2 Lunch and 3 Dinners</li>
-                                        <li>✔️ Istanbul, City Tour</li>
+                                        <li>✔️ Professional event photos</li>
+                                        <li>✔️ First come First Serve committee Allocation (Limited Spaces)</li>
+                                        <li>✔️ Breakfast Every Morning</li>
+                                        <li>✔️ 1 Dinner</li>
                                     </ul>
                                 </div>
-                                <div className="mt-6">
+                                <div className="text-center mt-6">
                                     <Link href="/RegisterNow">
-                                        <button className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300">
+                                        <button className="atsas-btn-solid w-full" style={{ width: '100%', justifyContent: 'center' }}>
                                             Register Now →
                                         </button>
                                     </Link>
                                 </div>
                             </div>
 
+                            {/* Delegation + Accommodation */}
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border-2 border-[#FF5A5F] transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
+                                <div className="space-y-4">
+                                    <div className="bg-[#FF5A5F] text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full w-max mx-auto -mt-3">
+                                        Most Popular
+                                    </div>
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Delegation + Accommodation</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$549 <span className="text-sm font-normal text-gray-300">+ 5% TAX</span></p>
+                                        <p className="text-xs text-gray-400 mt-1">
+                                            Early Bird <span className="text-[#2EC4B6] font-semibold">(Save $140)</span> · After <span className="line-through">$689 + 5% TAX</span>
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
+                                        Accommodation Included
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
+                                        <li>✔️ Everything in Delegation Package</li>
+                                        <li>✔️ 4-5 Star Accommodation (Twin Shared Room)</li>
+                                        <li>✔️ Airport Arrival Assistance</li>
+                                        <li>✔️ Guided City Tour</li>
+                                        <li>✔️ 1 Lunch & 2 Dinner</li>
+                                    </ul>
+                                </div>
+                                <div className="text-center mt-6">
+                                    <Link href="/RegisterNow">
+                                        <button className="atsas-btn-solid w-full" style={{ width: '100%', justifyContent: 'center', background: '#FF5A5F' }}>
+                                            Register Now →
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
+
+                            {/* Full Experience Package */}
+                            <div className="relative z-10 bg-[#1B1E3D] text-white rounded-xl p-6 shadow-lg border border-[rgba(245,241,232,0.14)] transform hover:scale-105 transition-transform duration-500 flex flex-col justify-between">
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-center" style={{ color: '#F5F1E8' }}>Full Experience Package</h3>
+                                    <div className="text-center">
+                                        <p className="text-3xl font-extrabold" style={{ color: '#F2B705' }}>$689 <span className="text-sm font-normal text-gray-300">+ 5% TAX</span></p>
+                                        <p className="text-xs text-gray-400 mt-1">
+                                            Early Bird <span className="text-[#2EC4B6] font-semibold">(Save $150)</span> · After <span className="line-through">$839 + 5% TAX</span>
+                                        </p>
+                                    </div>
+                                    <p className="text-center text-[#2EC4B6] font-semibold uppercase text-xs">
+                                        VIP Full Experience
+                                    </p>
+                                    <ul className="mt-3 space-y-2 text-gray-300 text-xs leading-5">
+                                        <li>✔️ Everything in Delegation + Accommodation</li>
+                                        <li>✔️ Bosphorus Dinner Cruise Trip</li>
+                                        <li>✔️ Airport Arrival & Dropoff Assistance</li>
+                                        <li>✔️ Lucky Draw</li>
+                                        <li>✔️ Priority Registration</li>
+                                        <li>✔️ 2 Lunch & 3 Dinner</li>
+                                    </ul>
+                                </div>
+                                <div className="mt-6">
+                                    <Link href="/RegisterNow">
+                                        <button className="atsas-btn-solid w-full" style={{ width: '100%', justifyContent: 'center' }}>
+                                            Register Now →
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

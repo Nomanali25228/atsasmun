@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import newLogo from '@/app/public/img/new-logo.png';
 
 const Footer = () => {
   return (
@@ -72,7 +74,16 @@ const Footer = () => {
                   marginBottom: 14,
                 }}
               >
-                ATSAS<span style={{ color: '#FF5A5F' }}>MUN</span>
+                <Image
+                  src={newLogo}
+                  alt="ATSASMUN Logo"
+                  width={34}
+                  height={34}
+                  style={{ objectFit: 'contain', borderRadius: '50%' }}
+                />
+                <div>
+                  ATSAS<span style={{ color: '#FF5A5F' }}>MUN</span>
+                </div>
               </div>
               <p style={{ maxWidth: 320, color: 'rgba(245,241,232,0.62)', lineHeight: 1.6, fontFamily: "'Work Sans', sans-serif" }}>
                 An international platform where participants experience the truest simulation of the United Nations — an immersive, adventurous experience for every delegate.

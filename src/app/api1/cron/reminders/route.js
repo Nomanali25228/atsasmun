@@ -65,8 +65,8 @@ export async function GET(request) {
                 if (desname === 'Istanbul, Turkey') {
                     payment = 'Istanbulpayment';
                     Hotel = 'G Rotana Hotel';
-                    basicprice = '389';
-                    fullprice = '639';
+                    basicprice = '418';
+                    fullprice = '549';
                     CityTour = 'Visa invitation letter';
                     serves1 = 'Airport Assistance (Arrival)';
                     serves2 = 'Istanbul City Tour';

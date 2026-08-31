@@ -53,12 +53,25 @@ export default function Dubaih(props) {
       </p>
 
       <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center sm:items-start">
-        <Link href="/RegisterNow">
-          <button className="atsas-btn-solid">Register Now →</button>
-        </Link>
-        <Link href={Pricelink}>
-          <button className="atsas-btn-outline">Pricing →</button>
-        </Link>
+        {StartDays === 'Coming Soon' ? (
+          <>
+            <button className="atsas-btn-outline" style={{ cursor: 'default' }}>
+              Registrations Opening Soon
+            </button>
+            <Link href={Pricelink}>
+              <button className="atsas-btn-outline">Pricing (Coming Soon) →</button>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="/RegisterNow">
+              <button className="atsas-btn-solid">Register Now →</button>
+            </Link>
+            <Link href={Pricelink}>
+              <button className="atsas-btn-outline">Pricing →</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
 
