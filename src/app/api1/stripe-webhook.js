@@ -13,14 +13,18 @@ async function sendEmail(to, subject, text) {
   const transporter = nodemailer.createTransport({
     host: smtpHost,
     port: smtpPort,
-    secure: smtpPort === 465,
+    secure: false,
+    requireTLS: true,
     auth: {
       user: smtpUser,
       pass: smtpPass,
     },
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
-  const mailOptions = { from: smtpUser, to, subject, text };
+  const mailOptions = { from: `"Atsas MUN" <${smtpUser}>`, to, subject, text };
 
   try {
     await transporter.sendMail(mailOptions);

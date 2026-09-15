@@ -37,16 +37,20 @@ console.log("nodemailer id",id);
         const transporter = nodemailer.createTransport({
             host: smtpHost,
             port: smtpPort,
-            secure: smtpPort === 465,
+            secure: false,
+            requireTLS: true,
             auth: {
                 user: username,
                 pass: password,
+            },
+            tls: {
+                rejectUnauthorized: false,
             },
         });
 		const pdfPath = 'https://res.cloudinary.com/dhqbmpldd/image/upload/v1735156197/Rundown_br2xjm.pdf'; // Corrected Google Drive link for direct download
  //  first email template 
 		const mailOptions = {
-			from: 'Atsas MUN',
+			from: `"Atsas MUN" <${username}>`,
 			to: email,
 			subject: 'Your Registration has been Received',
 			html: `<!DOCTYPE html>

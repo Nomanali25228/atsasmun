@@ -214,7 +214,7 @@ export default function Home() {
                         <p className="mb-8">Have questions or concerns? We{"’"}re here to help!
                         </p>
 
-                        <p className="mb-4"> <strong>Email:</strong> atsasmun@gmail.com</p>
+                        <p className="mb-4"> <strong>Email:</strong> <a href="mailto:info@atsasmun.com" style={{color: '#2563eb'}}>info@atsasmun.com</a></p>
                         <p className="mb-4"> <strong>Mailing Address:</strong> 42 Hennerton Way, High Wycombe, HP13 7UE, United Kingdom
                         </p>
                         <p className="mb-4">Thank you for trusting <Link href="/" className="text-blue-600 " >ATSASMUN</Link> Your privacy is central to everything we do!</p>

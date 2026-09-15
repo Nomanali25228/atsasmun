@@ -38,16 +38,20 @@ export async function POST(request) {
         const transporter = nodemailer.createTransport({
             host: smtpHost,
             port: smtpPort,
-            secure: smtpPort === 465, // true for 465, false for other ports
+            secure: false,       // STARTTLS - Microsoft 365 uses port 587 with STARTTLS
+            requireTLS: true,    // Force STARTTLS upgrade
             auth: {
                 user: username,
                 pass: password,
+            },
+            tls: {
+                rejectUnauthorized: false, // Allow self-signed certs
             },
         });
         const pdfPath = 'https://res.cloudinary.com/dhqbmpldd/image/upload/v1735156197/Rundown_br2xjm.pdf'; // Corrected Google Drive link for direct download
         //  first email template 
         const mailOptions = {
-            from: 'Atsas MUN',
+            from: `"Atsas MUN" <${username}>`,
             to: email,
             subject: 'Your Registration has been Received',
             html: `<!DOCTYPE html>
@@ -340,7 +344,7 @@ export async function POST(request) {
                     </tr>
                     <tr>
                         <td style="padding: 10px; font-size: 17px; color: #000000;">
-                             <a href="mailto:atsasmun@gmail.com" target="_blank" style="text-decoration: underline;  font-weight: bold; color: #000000;">turkiye@atsasmun.com</a>
+                             <a href="mailto:info@atsasmun.com" target="_blank" style="text-decoration: underline;  font-weight: bold; color: #000000;">info@atsasmun.com</a>
                             We will be happy to assist you. </td>
                     </tr>
                     <!-- Assistance Line -->

@@ -18,10 +18,14 @@ export async function GET(request) {
     const transporter = nodemailer.createTransport({
         host: smtpHost,
         port: smtpPort,
-        secure: smtpPort === 465,
+        secure: false,
+        requireTLS: true,
         auth: {
             user: username,
             pass: password,
+        },
+        tls: {
+            rejectUnauthorized: false,
         },
     });
 
@@ -125,7 +129,7 @@ export async function GET(request) {
                 }
 
                 const mailOptions = {
-                    from: 'Atsas MUN',
+                    from: `"Atsas MUN" <${username}>`,
                     to: notif.Email,
                     subject: 'YOUR LETTER OF ACCEPTANCE',
                     html: `<!DOCTYPE html>
