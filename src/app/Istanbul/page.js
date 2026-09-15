@@ -10,11 +10,6 @@ import Shedule from "@/app/(component)/dubai-shedule/Shedule";
 import Footer from "@/app/(component)/footer/Footer";
 import ScrollToTop from "@/app/(component)/Scrolltotop/ScrollToTop";
 import Whatsapp from "@/app/(component)/whatsapp/Whatsapp";
-import hotelx1 from "@/app/public/img/bghotelistanbul1.jpg";
-import hotelx2 from "@/app/public/img/hotelistanbul2.jpg";
-import hotelx3 from "@/app/public/img/hotelistanbul3.jpg";
-import hotelx4 from "@/app/public/img/hotelistanbul4.jpg";
-import hotelx5 from "@/app/public/img/hotelistanbul5.jpg";
 import event1 from "@/app/public/img/Committee Sessions.png";
 import event2 from "@/app/public/img/Cultural Global Village.jpg";
 import event3 from "@/app/public/img/Open Mic Night.jpeg";
@@ -25,6 +20,12 @@ import img13 from "@/app/public/img/turkeytour2.jpeg";
 import img14 from "@/app/public/img/turkeytour3.jpeg";
 import ContextPage from "../Context/ContextPage";
 
+// Euro Park Otel Images
+const hotelx1 = "/img/Euro Park Otel-1.jpg";
+const hotelx2 = "/img/Euro Park Otel-2.jpg";
+const hotelx3 = "/img/Euro Park Otel-3.jpg";
+const hotelx4 = "/img/Euro Park Otel-4.jpg";
+const hotelx5 = "/img/Euro Park Otel-5.webp";
 
 export default function Page() {
   // ✅ Get data from Context instead of local state
@@ -38,7 +39,7 @@ const {istanbuldates, setIstanbuldates} = useContext(ContextPage);
         Pricelink="/Istanbulfee"
         StartDays={istanbuldates.startdate}
         EndDays={istanbuldates.enddate}
-        monthsDetils={`${istanbuldates.month} ${istanbuldates.year} G Rotana Hotel`}
+        monthsDetils={`${istanbuldates.month} ${istanbuldates.year} Euro Park Otel`}
         style="text-blue-400"
         stlyle2="hover:text-blue-400"
       />
@@ -58,9 +59,9 @@ const {istanbuldates, setIstanbuldates} = useContext(ContextPage);
         img2={hotelx3}
         img3={hotelx2}
         img4={hotelx5}
-        map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.9473144053363!2d28.809779175186865!3d41.05945921627315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5d52a209bfd%3A0xc941d8ad912e1418!2sG%20Rotana!5e1!3m2!1sen!2sus!4v1744738203590!5m2!1sen!2sus"
-        hname="G Rotana Hotel."
-        disc="Our goal is to be recognized in Turkey and Istanbul for our service and quality, combining global standards with Turkish hospitality to be the top choice for guests. G Rotana Hotel also aims to expand its investments in the thriving tourism and hotel industry."
+        map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.4515033952553!2d28.642941!3d41.01537700000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b55f0944472211%3A0x5df99e24d97fb85e!2sEuro%20Park%20Otel!5e0!3m2!1sen!2s!4v1789481217430!5m2!1sen!2s"
+        hname="Euro Park Otel"
+        disc="Euro Park Otel is a modern and comfortable hotel located in the heart of Istanbul, Turkey. Offering premium hospitality with a perfect blend of contemporary design and Turkish warmth, it provides an ideal stay for delegates attending Atsas MUN. Conveniently situated near key landmarks, the hotel ensures easy access to Istanbul's vibrant culture and attractions."
       />
       <Event
         img1={event1}
