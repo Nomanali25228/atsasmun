@@ -146,33 +146,34 @@ export async function GET(request) {
                 style="width: 100%; max-width: 800px; margin: 20px auto; text-align: center; background: #ffffff; border-collapse: collapse;">
                 <!-- Logo Row -->
                 <tr>
-                    <td align="center" style=" background-color:#fff;">
-                        <img src="https://e75ca47a0b.imgdist.com/pub/bfra/ve0zzru6/dnd/vya/qic/Without-01-removebg-preview.png"
+                    <td align="center" style="background-color:#fff; padding: 24px 20px 16px 20px;">
+                        <img src="https://res.cloudinary.com/dmux089ac/image/upload/v1789575075/oyxcq00z7eykhobketvr.png"
                             alt="ATSAS MUN Logo" width="170">
                     </td>
                 </tr>
                 <!-- Background Image Section -->
                 <tr>
                        <td align="center" style=" text-align: center;
-                                background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/2p9/g6d/6qx/bg.png');
-                                background-size: cover;
-                            background-repeat: no-repeat;
-                            min-height: 30vh;
-                            max-width: 100%;
-                            background-position: center; 
-                            color:#fff; 
-                            padding:70px;">
-                                    <h1 style="margin:0; font-size:50px; color: white;">CONGRATULATIONS!</h1>
+                                 background-color: #010c47 !important;
+                                 background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/2p9/g6d/6qx/bg.png');
+                                 background-size: cover;
+                             background-repeat: no-repeat;
+                             min-height: 30vh;
+                             max-width: 100%;
+                             background-position: center; 
+                             color:#ffffff !important; 
+                             padding:70px;">
+                                     <h1 style="margin:0; font-size:50px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">CONGRATULATIONS!</h1>
                         <!-- Name -->
                         <p
-                            style="font-size: 1.4rem; font-weight: bold; margin: 10px 0; color: white; text-decoration: underline;">
+                            style="font-size: 1.4rem; font-weight: bold; margin: 10px 0; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; text-decoration: underline;">
                           ${notif.type === 'group' ? 'Head of Delegate: ' : ''}${userName}</p>
                         <!-- Subtext -->
-                        <p style="font-size: 0.9rem; margin: 30px 30px 10px 20px; color: white;">
+                        <p style="font-size: 0.9rem; margin: 30px 30px 10px 20px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
                             You have been selected as one of the delegates at AtsasMUN ${desname}
                             Please find attached the official acceptance letter in this email.
                         </p>
-                        <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
+                        <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
                          ${para ? para : ""}
                         </p>
                     </td>
@@ -203,23 +204,23 @@ export async function GET(request) {
 
             <table style="width: 100%; margin: 0px auto; margin-top: -50px; background-color: #fff; padding: 25px 2px 2px 2px;">
                 <tr>
-                    <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Committee
+                    <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Committee
                         Allocation Policy</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px;">
-                        <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+                        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
                             <li>AtsasMUN does not guarantee the availability of preferred countries and encourages participants
                                 to select alternatives if necessary.</li>
                         </ul>
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Payments</td>
+                    <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Payments</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px;">
-                        <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+                        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
                             <li>Payments must be made through the official AtsasMUN website.</li>
                             <li>AtsasMUN will not acknowledge payments made to unauthorized individuals claiming to represent
                                 the organization.</li>
@@ -228,11 +229,11 @@ export async function GET(request) {
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Refund Policy</td>
+                    <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Refund Policy</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px;">
-                        <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+                        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
                             <li>Subject to the following restrictions, delegates who have made their full payment may ask for a
                                 credit voucher or transfer their participation to another AtsasMUN location.</li>
                             <li>Requests have to be submitted sixty days prior to the start of the event. Credit coupons or
@@ -243,12 +244,12 @@ export async function GET(request) {
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-weight: bold; font-size: calc(1.5vw + 1px); padding: 10px; color: #000;">Code of Conduct
+                    <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Code of Conduct
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px;">
-                        <ul style="margin: 0; padding-left: 20px; font-size: calc(1.2vw + 1px); color: #333;">
+                        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
                             <li>Participants must ensure all information provided during registration is accurate. False
                                 information will result in disqualification and potential legal action.</li>
                             <li>All submitted materials must be original; plagiarism will result in disqualification.</li>
@@ -313,68 +314,68 @@ export async function GET(request) {
                                 </tr>
                                 <tr>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align:left;">
-                                        ✔️ ATSASMUN Merch Kit
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> ATSASMUN Merch Kit
                                     </td>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Everything in Delegation Package
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Everything in Delegation Package
                                     </td>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Everything in Delegation + Acc.
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Everything in Delegation + Acc.
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Official ATSASMUN Certificate
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Official ATSASMUN Certificate
                                     </td>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ 4-5 Star Accommodation (Twin Shared)
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 4-5 Star Accommodation (Twin Shared)
                                     </td>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ ${CityTour}
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> ${CityTour}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Visa Invitation Letter
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Visa Invitation Letter
                                     </td>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Airport Arrival Assistance
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Airport Arrival Assistance
                                     </td>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Airport Arrival &amp; Dropoff Assistance
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Airport Arrival &amp; Dropoff Assistance
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ UN Simulation Sessions
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> UN Simulation Sessions
                                     </td>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Guided City Tour
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Guided City Tour
                                     </td>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ ${serves1 ? serves1 : 'Lucky Draw &amp; Priority Reg.'}
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> ${serves1 ? serves1 : 'Lucky Draw &amp; Priority Reg.'}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Professional event photos
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Professional event photos
                                     </td>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ 1 Lunch &amp; 2 Dinner
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 1 Lunch &amp; 2 Dinner
                                     </td>
                                     <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ 2 Lunch &amp; 3 Dinner
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 2 Lunch &amp; 3 Dinner
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Breakfast Every Morning &amp; 1 Dinner
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Breakfast Every Morning &amp; 1 Dinner
                                     </td>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Early Bird: $549 + 5% TAX
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Early Bird: $549 + 5% TAX
                                     </td>
                                     <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-                                        ✔️ Early Bird: $689 + 5% TAX
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Early Bird: $689 + 5% TAX
                                     </td>
                                 </tr>
                             </table>
@@ -407,7 +408,7 @@ export async function GET(request) {
 
                                 <tr>
                                     <td style="padding: 20px; font-size:19px; color:#333; line-height: 1.5;">
-                                        A formal Visa Invitation Letter can be obtained from us upon request after the payment
+                                        <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Visa Invitation Letter can be obtained from us upon request after the payment
                                     </td>
                                 </tr>
                                 <tr>
@@ -444,7 +445,7 @@ export async function GET(request) {
                                 <tr>
                                     <td align="center"
                                         style="background-color:#003366; color:#fff; padding:20px; margin:0; font-size:14px;">
-                                        <p style="margin:0; font-size:14px;">Atsas MUN ${country}© 2024 Atsas Creation
+                                        <p style="margin:0; font-size:14px;">Atsas MUN  &copy; 2024 Atsas Creation
                                             International Ltd</p>
                                         <p style="margin:5px 0 0; font-size:12px; color: #fff;"><em>"Forging a Diplomatic World
                                                 of Unity and Peace"</em></p>

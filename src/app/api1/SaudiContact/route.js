@@ -15,7 +15,7 @@ export async function POST(request) {
             return NextResponse.json({ message: "Name and email are required" }, { status: 400 });
         }
         if (!destination) {
-            console.warn("Warning: destination was empty — email will still be sent");
+            console.warn("Warning: destination was empty – email will still be sent");
         }
 
 
@@ -71,8 +71,8 @@ export async function POST(request) {
                     
                     <!-- LOGO -->
                     <tr>
-                        <td align="center" style=" background-color:#fff;">
-                            <img src="https://e75ca47a0b.imgdist.com/pub/bfra/ve0zzru6/dnd/vya/qic/Without-01-removebg-preview.png" 
+                        <td align="center" style="background-color:#fff; padding: 24px 20px 16px 20px;">
+                            <img src="https://res.cloudinary.com/dmux089ac/image/upload/v1789575075/oyxcq00z7eykhobketvr.png" 
                                  alt="ATSAS MUN Logo" width="170">
                         </td>
                     </tr>
@@ -81,18 +81,19 @@ export async function POST(request) {
                   
                     <tr>
                         <td align="center" style="text-align: center;
+                            background-color: #010c47 !important;
                             background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/6tz/dj7/j5a/%23010c47.png');
                             background-size: cover;
                             background-repeat: no-repeat;
                             min-height: 30vh;
                             max-width: 100%;
                             background-position: center; 
-                            color:#fff; 
+                            color:#ffffff !important; 
                             padding:70px;">
-                            <h1 style="margin:0; font-size:50px; color: white;">Thank You</h1>
-                            <p style="margin:20px 0 0; font-size:18px; color: white;">Your Registration is Now Complete</p>
-                            <p style="margin:6px 0 0; font-size:18px; color: white;">for Riyadh, Saudi Arabia</p>
-                            <p style="margin:20px 0 0; font-size:22px; color: white;">(${type === 'group' ? 'Head of Delegate: ' : ''}${name})</p>
+                            <h1 style="margin:0; font-size:50px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">Thank You</h1>
+                            <p style="margin:20px 0 0; font-size:18px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">Your Registration is Now Complete</p>
+                            <p style="margin:6px 0 0; font-size:18px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">for Riyadh, Saudi Arabia</p>
+                            <p style="margin:20px 0 0; font-size:22px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">(${type === 'group' ? 'Head of Delegate: ' : ''}${name})</p>
                         </td>
                     </tr>
                     <!-- DATE -->
@@ -106,13 +107,13 @@ export async function POST(request) {
 
                  <!-- SOCIAL MEDIA & REFERRAL SECTION -->
 <tr>
-    <td align="center" style="padding: 30px;">
+    <td align="center" style="padding: 24px 20px;">
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
             <tr>
                 <!-- Social Media Section -->
                 <td align="center" style="width: 48%; padding: 1px; vertical-align: middle; ;">
                     <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/4wi/59y/4ps/images-removebg-preview.png" 
-                         alt="Follow Us" width="120" style="display: block; margin-bottom: 15px; margin-top: 50px">
+                         alt="Follow Us" width="120" style="display: block; margin-bottom: 12px; margin-top: 0px;">
                     <p style="font-size: 16px; color: #333; margin: 0;">
                         In the meantime, you can let the world know about your travel plans on Instagram or Facebook
                             by following us to stay updated and tag us <strong>@atsasmun</strong>
@@ -127,8 +128,8 @@ export async function POST(request) {
                 <!-- Referral Section -->
                 <td align="center" style="width: 48%; padding: 1px; vertical-align: middle; ">
                     <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/kye/y0d/e3c/images__1_-removebg-preview.png" 
-                         alt="Referral" width="100" style="display: block; margin-bottom: 15px; margin-top: -30px">
-                    <p style="font-size: 16px; color: #333; margin: 0; margin-top: -10px;">
+                         alt="Referral" width="100" style="display: block; margin-bottom: 12px; margin-top: 0px;">
+                    <p style="font-size: 16px; color: #333; margin: 0;">
                         Tag 5 of your friends to receive a special referral code for a discount in your conferenc
                         fee if the tagged delegate attends the MUN as well.
                     </p>
@@ -336,7 +337,7 @@ export async function POST(request) {
                     <!-- FOOTER -->
                     <tr>
                         <td align="center" style="background-color:#003366; color:#fff; padding:20px;">
-                            <p style="margin:0; font-size:14px;">Atsas MUN Riyadh, Saudi Arabia © 2024 Atsas Creation International Ltd</p>
+                            <p style="margin:0; font-size:14px;">Atsas MUN Riyadh, Saudi Arabia &copy; 2024 Atsas Creation International Ltd</p>
                             <p style="margin:5px 0 0; font-size:12px; color: #fff;"><em>Forging a Diplomatic World of Unity and Peace</em></p>
                         </td>
                     </tr>
@@ -618,7 +619,7 @@ export async function POST(request) {
 //                 <!-- Logo Row -->
 //                 <tr>
 //                     <td align="center" style=" background-color:#fff;">
-//                         <img src="https://e75ca47a0b.imgdist.com/pub/bfra/ve0zzru6/dnd/vya/qic/Without-01-removebg-preview.png"
+//                         <img src="https://res.cloudinary.com/dmux089ac/image/upload/v1789575075/oyxcq00z7eykhobketvr.png"
 //                             alt="ATSAS MUN Logo" width="170">
 //                     </td>
 //                 </tr>
@@ -633,7 +634,7 @@ export async function POST(request) {
 //                             background-position: center; 
 //                             color:#fff; 
 //                             padding:70px;">
-//                                     <h1 style="margin:0; font-size:50px; color: white;">CONGRATULATIONS!</h1>
+//                                     <h1 style="margin:0; font-size:50px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">CONGRATULATIONS!</h1>
 //                         <!-- Name -->
 //                         <p
 //                             style="font-size: 1.4rem; font-weight: bold; margin: 10px 0; color: white; text-decoration: underline;">
@@ -723,7 +724,7 @@ export async function POST(request) {
 //                             <li>Participants must ensure all information provided during registration is accurate. False
 //                                 information will result in disqualification and potential legal action.</li>
 //                             <li>All submitted materials must be original; plagiarism will result in disqualification.</li>
-//                             <li>Participants must obey the host country’s laws and are personally responsible for any damages or
+//                             <li>Participants must obey the host country's laws and are personally responsible for any damages or
 //                                 violations.</li>
 //                             <li>AtsasMUN is not liable for participant misconduct; individuals will bear sole responsibility for
 //                                 their actions.</li>
@@ -915,7 +916,7 @@ export async function POST(request) {
 //                                 <tr>
 //                                     <td align="center"
 //                                         style="background-color:#003366; color:#fff; padding:20px; margin:0; font-size:14px;">
-//                                         <p style="margin:0; font-size:14px;">Atsas MUN Riyadh, Saudi Arabia © 2024 Atsas Creation
+//                                         <p style="margin:0; font-size:14px;">Atsas MUN Riyadh, Saudi Arabia &copy; 2024 Atsas Creation
 //                                             International Ltd</p>
 //                                         <p style="margin:5px 0 0; font-size:12px; color: #fff;"><em>"Forging a Diplomatic World
 //                                                 of Unity and Peace"</em></p>
