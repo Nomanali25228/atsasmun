@@ -140,14 +140,7 @@ export async function POST(request) {
 </tr>
 
 
-                    ${type === 'group' ? '' : `<!-- CTA BUTTON -->
-                    <tr>
-                        <td align="center" style="padding:20px;">
-                            <a href="${link2o}?userid=${id}" style=" background: linear-gradient(to right, #00509E, #003A70, #002855); color:#fff; text-decoration:none; padding:10px 30px; border-radius:5px; font-size:16px; display:inline-block;">
-                                Click here for Conference Fee
-                            </a>
-                        </td>
-                    </tr>`}
+
 
 
 <!-- facbook-----section--------------------- -->
@@ -275,26 +268,7 @@ export async function POST(request) {
     </tr>
 </table>
 
- ${type === 'group' ? '' : `<table
-                        style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
-                        <tr>
-                            <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-size: 15px; color: #333; padding-bottom: 20px;">You can pay at the link
-                                below</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                    
-                                     <a href="${link2o}?userid=${id}"
-                                    style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;  background: linear-gradient(to right, #00509E, #003A70, #002855);">Pay
-                                    Now</a>
-                            </td>
-                        </tr>
 
-                    </table>`}
 
                    <!-- CONTACT INFO -->
                    <table style="width: 100%; max-width: 800px; margin: 40px auto; text-align: center; padding: 40px; background: #f2f4f7;  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-collapse: collapse;">
