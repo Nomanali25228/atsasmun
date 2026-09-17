@@ -674,39 +674,45 @@ export default function Home() {
         
         const id = response.data.data.id;
 
-        let g = "";
-        let datesObj = {};
+        const chosenDestination = (destination || formData.Destinations || "Istanbul, Turkey").trim();
 
-        if (destination == "Istanbul, Turkey") {
-          g = "IstanbulContact";
-          datesObj = istanbuldates;
-        } else if (destination == "Dubai, UAE") {
+        let g = "IstanbulContact";
+        let datesObj = istanbuldates;
+
+        if (chosenDestination.includes("Dubai") || chosenDestination.includes("UAE")) {
           g = "DubaiContact";
           datesObj = dubaidates;
-        } else if (destination == "Baku, Azerbaijan") {
+        } else if (chosenDestination.includes("Baku") || chosenDestination.includes("Azerbaijan")) {
           g = "AzerbaijanContact";
           datesObj = bakudates;
-        } else if (destination == "New York, USA") {
+        } else if (chosenDestination.includes("New York") || chosenDestination.includes("USA")) {
           g = "USAContact";
           datesObj = newyorkdates;
-        } else if (destination == "Riyadh, Saudi Arabia") {
+        } else if (chosenDestination.includes("Riyadh") || chosenDestination.includes("Saudi")) {
           g = "SaudiContact";
           datesObj = saudidates;
-        } else if (destination == "London, UK") {
+        } else if (chosenDestination.includes("London") || chosenDestination.includes("UK")) {
           g = "UKContact";
           datesObj = londondates;
+        } else {
+          g = "IstanbulContact";
+          datesObj = istanbuldates;
         }
 
-        // Only call email API if we have ALL required date info
-        const hasAllDateInfo = g &&
-          datesObj.startdate && datesObj.enddate &&
-          datesObj.month && datesObj.year;
+        const sDate = datesObj?.startdate || "Coming Soon";
+        const eDate = datesObj?.enddate || "";
+        const sMonth = datesObj?.month || "";
+        const sYear = datesObj?.year || "";
 
-        if (hasAllDateInfo) {
-          await ha34(e, id, g, datesObj.startdate, datesObj.enddate, datesObj.month, datesObj.year, formData.FirstName, formData.Email);
-        } else {
-          console.warn('Skipping email: missing date info or destination not matched. g=', g, 'datesObj=', datesObj);
-          // Still show success because DB save worked
+        const fullName = `${formData.FirstName || ''} ${formData.LastName || ''}`.trim() || formData.FirstName || 'Delegate';
+        const userEmail = (formData.Email || '').trim();
+
+        if (g && userEmail) {
+          try {
+            await ha34(e, id, g, sDate, eDate, sMonth, sYear, fullName, userEmail);
+          } catch (mailErr) {
+            console.error('Error sending confirmation email:', mailErr);
+          }
         }
 
         toast.success('Form submitted successfully!');
@@ -734,13 +740,14 @@ export default function Home() {
 
   const ha34 = async (e, id, g, startdate, enddate, month, year, nameParam, emailParam) => {
     try {
+      const chosenDestination = (destination || formData.Destinations || 'Istanbul, Turkey').trim();
       const response = await fetch(`/api1/${g}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: nameParam,
           email: emailParam,
-          destination: destination || formData.Destinations,  // fallback to formData
+          destination: chosenDestination,
           id,
           startdate, enddate, month, year,
           type: formData.RegistrationType
