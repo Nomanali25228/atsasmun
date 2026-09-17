@@ -129,8 +129,9 @@ export default function Home() {
                     email = attrs.Email || attrs.email;
                 }
 
-                setCustID(customerId || "");
-                setUserEmail(email || "");
+                const customerIdFromQuery = searchParams.get("customerId");
+                setCustID(customerId || customerIdFromQuery || "");
+                setUserEmail(email || searchParams.get("email") || "");
             } catch (err) {
                 console.error("Fetch Logic Error:", err.message);
                 toast.error(`Error: ${err.message}`);

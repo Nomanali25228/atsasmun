@@ -141,7 +141,8 @@ export async function GET(request, { params }) {
           // Search by our custom ID (userid) or local increment ID
           const record = allRecords.find(r => 
               (r.userid && String(r.userid) === idStr) || 
-              (r.id && String(r.id) === idStr)
+              (r.id && String(r.id) === idStr) ||
+              (r.customerId && String(r.customerId) === idStr)
           );
           if (record) {
               console.log("Match found!", record.id);
