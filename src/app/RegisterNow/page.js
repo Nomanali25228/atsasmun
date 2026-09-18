@@ -793,6 +793,7 @@ export default function Home() {
           month: month,
           year: year,
           type: formData.RegistrationType,
+          customerId: (typeof window !== "undefined" ? localStorage.getItem("customerId") : "") || "",
         },
       });
 
