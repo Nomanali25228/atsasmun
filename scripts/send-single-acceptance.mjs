@@ -66,6 +66,30 @@ async function run() {
         console.log('Message ID:', info.messageId);
         console.log('Response:', info.response);
 
+        // Update database records so it marks as sent
+        const registrationCollections = [
+            'registrations_istanbul',
+            'registrations_dubai',
+            'registrations_azerbaijan',
+            'registrations_usa',
+            'registrations_saudi',
+            'registrations_uk'
+        ];
+
+        for (const colName of registrationCollections) {
+            await db.collection(colName).updateMany(
+                { Email: { $regex: new RegExp(`^${targetEmail}$`, 'i') } },
+                { $set: { acceptanceLetterSent: true, acceptanceLetterSentAt: new Date().toISOString() } }
+            );
+        }
+
+        await db.collection('notifications').updateMany(
+            { Email: { $regex: new RegExp(`^${targetEmail}$`, 'i') } },
+            { $set: { secondEmailSent: true, secondEmailSentAt: new Date().toISOString() } }
+        );
+
+        console.log(`Updated database records for ${targetEmail} as acceptanceLetterSent: true`);
+
     } catch (err) {
         console.error('Error sending email:', err);
     } finally {
