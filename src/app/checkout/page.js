@@ -254,6 +254,55 @@ export default function Home() {
                   mode: "payment",
                   amount: convertToSubcurrency(finalAmount),
                   currency: "usd",
+                  appearance: {
+                    theme: "stripe",
+                    variables: {
+                      colorPrimary: "#2EC4B6",
+                      colorDanger: "#FF5A5F",
+                      fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                      borderRadius: "8px",
+                      spacingUnit: "4px",
+                    },
+                    rules: {
+                      ".Label": {
+                        color: "#ffffff",
+                        fontWeight: "600",
+                        fontSize: "13px",
+                        marginBottom: "6px",
+                      },
+                      ".Input": {
+                        backgroundColor: "#ffffff",
+                        color: "#0f172a",
+                        borderColor: "#d1d5db",
+                        fontSize: "14px",
+                        padding: "12px",
+                      },
+                      ".Input:focus": {
+                        borderColor: "#2EC4B6",
+                        boxShadow: "0 0 0 1px #2EC4B6",
+                      },
+                      ".Tab": {
+                        backgroundColor: "#ffffff",
+                        borderColor: "#d1d5db",
+                        color: "#0f172a",
+                      },
+                      ".Tab--selected": {
+                        borderColor: "#2EC4B6",
+                        boxShadow: "0 0 0 2px #2EC4B6",
+                      },
+                      ".TabLabel": {
+                        color: "#0f172a",
+                        fontWeight: "500",
+                      },
+                      ".TabIcon": {
+                        color: "#0f172a",
+                      },
+                      ".Block": {
+                        backgroundColor: "#ffffff",
+                        borderColor: "#d1d5db",
+                      },
+                    },
+                  },
                 }}
               >
                 <CheckoutPage

@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import nodemailer from 'nodemailer';
 import clientPromise from '../src/app/lib/mongodb.js';
 import { getEarlyBirdEmailHtml } from '../src/app/lib/earlyBirdTemplate.js';
@@ -11,7 +12,7 @@ async function sendToUser(targetEmail) {
   });
 
   if (!user) {
-    const cols = ['registrations', 'registrations_dubai', 'registrations_baku'];
+    const cols = ['registrations', 'registrations_dubai', 'registrations_baku', 'notifications'];
     for (const colName of cols) {
       try {
         const found = await db.collection(colName).findOne({
@@ -29,10 +30,10 @@ async function sendToUser(targetEmail) {
   if (!user) {
     console.log(`User not found in DB, sending as test delegate to ${targetEmail}`);
     user = {
-      FirstName: 'Noman',
-      LastName: 'Ali',
+      FirstName: 'Abdullah',
+      LastName: 'Butt',
       Email: targetEmail,
-      customerId: 'cus_test83jka9821k',
+      customerId: 'cus_Rz7QvH16i6t620',
       id: '1789760952509',
       RegistrationType: 'individual'
     };
@@ -50,13 +51,13 @@ async function sendToUser(targetEmail) {
     customerId: customerId,
     id: id,
     isGroup: isGroup,
-    deadline: '5th October, 2026'
+    deadline: '2nd October, 2026'
   });
 
-  const username = process.env.NEXT_PUBLIC_SMTP_USERNAME || process.env.SMTP_EMAIL;
-  const password = process.env.NEXT_PUBLIC_SMTP_PASSWORD || process.env.SMTP_PASS;
-  const smtpHost = process.env.NEXT_PUBLIC_SMPT_HOST || process.env.SMTP_HOST || 'smtp.gmail.com';
-  const smtpPort = parseInt(process.env.NEXT_PUBLIC_SMTP_PORT || process.env.SMTP_PORT || '465');
+  const username = process.env.NEXT_PUBLIC_SMTP_USERNAME || process.env.SMTP_EMAIL || 'info@atsasmun.com';
+  const password = process.env.NEXT_PUBLIC_SMTP_PASSWORD || process.env.SMTP_PASS || 'Abiman0786@';
+  const smtpHost = process.env.NEXT_PUBLIC_SMPT_HOST || process.env.SMTP_HOST || 'smtp.office365.com';
+  const smtpPort = parseInt(process.env.NEXT_PUBLIC_SMTP_PORT || process.env.SMTP_PORT || '587');
 
   console.log(`Connecting to SMTP host: ${smtpHost}:${smtpPort} as ${username}...`);
 
@@ -77,7 +78,7 @@ async function sendToUser(targetEmail) {
   const mailOptions = {
     from: `"Atsas MUN" <${username}>`,
     to: targetEmail,
-    subject: `ATSAS MUN Istanbul: Early Bird Discount Offer (Deadline: 5th October)`,
+    subject: `ATSAS MUN Istanbul: Early Bird Discount Offer (Deadline: 2nd October)`,
     headers: {
       'X-Entity-Ref-ID': `${Date.now()}-${Math.random()}`,
     },

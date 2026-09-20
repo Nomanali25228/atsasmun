@@ -8,7 +8,7 @@ export function getEarlyBirdEmailHtml({
   customerId = "",
   id = "1",
   isGroup = false,
-  deadline = "5th October, 2026",
+  deadline = "2nd October, 2026",
 } = {}) {
   const paymentBase = customerId ? customerId : (id || "1");
   const paymentUrl = `https://www.atsasmun.com/Istanbulpayment/${paymentBase}?userid=${id || "1"}&customerId=${customerId || ""}`;
@@ -27,7 +27,7 @@ export function getEarlyBirdEmailHtml({
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATSAS MUN Early Bird Discount - Deadline 5th October</title>
+    <title>ATSAS MUN Early Bird Discount - Deadline 2nd October</title>
 </head>
 
 <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f8f9fa; color:#333;">
@@ -60,12 +60,8 @@ export function getEarlyBirdEmailHtml({
                             color:#ffffff !important; 
                             padding:50px 20px;">
                             
-                            <div style="display: inline-block; background: #FF5A5F; color: #ffffff; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 14px; border-radius: 12px; margin-bottom: 12px; letter-spacing: 1px;">
-                                &#9889; EARLY BIRD OFFER &middot; DEADLINE 5TH OCTOBER
-                            </div>
-
                             <h1 style="margin:0; font-size:40px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-weight: 800; text-transform: uppercase;">
-                                EARLY BIRD DISCOUNT
+                                CONGRATULATIONS!
                             </h1>
                             <p style="margin:16px 0 0; font-size:18px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
                                 ${isGroup ? 'Head of Delegate: ' : 'Dear Delegate, '}<strong>${name}</strong>
@@ -83,10 +79,10 @@ export function getEarlyBirdEmailHtml({
                                 <tr>
                                     <td>
                                         <div style="font-size: 15px; font-weight: bold; color: #9A6700; margin-bottom: 4px;">
-                                            &#9200; Early Bird Offer Expires: <span style="color: #D90429; text-decoration: underline;">5th October 2026</span>
+                                            &#9200; Early Bird Offer Expires: <span style="color: #D90429; text-decoration: underline;">2nd October 2026</span>
                                         </div>
                                         <div style="font-size: 12px; color: #555; line-height: 1.5;">
-                                            After <strong>5th October</strong>, registration fees will increase automatically by <strong>$120 to $150</strong> per delegate. Complete your payment now to lock in discounted rates.
+                                            After <strong>2nd October</strong>, registration fees will increase automatically by <strong>$120 to $150</strong> per delegate. Complete your payment now to lock in discounted rates.
                                         </div>
                                     </td>
                                 </tr>

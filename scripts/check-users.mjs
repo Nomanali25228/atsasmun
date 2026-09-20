@@ -7,86 +7,55 @@ async function run() {
     await client.connect();
     const db = client.db('atsasmun');
 
-    console.log('=== CHECKING ACCEPTANCE EMAIL STATUS ACROSS ALL COLLECTIONS ===\n');
+    console.log('=== ANALYZING ALL REGISTRATIONS FOR EARLY BIRD SEND ===\n');
 
-    const collections = [
-        'registrations_istanbul',
-        'registrations_dubai',
-        'registrations_azerbaijan',
-        'registrations_usa',
-        'registrations_saudi',
-        'registrations_uk',
-        'notifications'
-    ];
+    const istCol = db.collection('registrations_istanbul');
+    const notifCol = db.collection('notifications');
 
-    let grandTotal = 0;
-    let grandSent = 0;
-    let grandUnsent = 0;
-    const allUnsentUsers = [];
+    const istUsers = await istCol.find({}).toArray();
+    const notifUsers = await notifCol.find({}).toArray();
 
-    for (const colName of collections) {
-        const col = db.collection(colName);
-        const count = await col.countDocuments();
-        if (count === 0) continue;
+    console.log(`registrations_istanbul: ${istUsers.length} records`);
+    console.log(`notifications: ${notifUsers.length} records`);
 
-        grandTotal += count;
+    // Map by email to avoid duplicates
+    const emailMap = new Map();
 
-        const sent = await col.countDocuments({
-            $or: [
-                { acceptanceLetterSent: true },
-                { secondEmailSent: true }
-            ]
-        });
-        grandSent += sent;
+    for (const u of [...istUsers, ...notifUsers]) {
+        const rawEmail = (u.Email || u.email || '').trim().toLowerCase();
+        if (!rawEmail || !rawEmail.includes('@')) continue;
 
-        const unsent = await col.find({
-            $and: [
-                { acceptanceLetterSent: { $ne: true } },
-                { secondEmailSent: { $ne: true } }
-            ]
-        }).toArray();
-
-        grandUnsent += unsent.length;
-
-        console.log(`📁 Collection: ${colName}`);
-        console.log(`   Total Registrations: ${count}`);
-        console.log(`   Acceptance Email Sent: ${sent}`);
-        console.log(`   Acceptance Email NOT Sent: ${unsent.length}\n`);
-
-        if (unsent.length > 0) {
-            unsent.forEach(u => {
-                allUnsentUsers.push({
-                    collection: colName,
-                    id: u.id || u.Idname || u._id,
-                    name: `${u.FirstName || u.firstname || ''} ${u.LastName || u.lastname || ''}`.trim() || 'N/A',
-                    email: u.Email || u.email || 'N/A',
-                    customerId: u.customerId || 'N/A',
-                    destination: u.Destination || u.destination || colName.replace('registrations_', ''),
-                    createdAt: u.createdAt || u.date || 'N/A'
-                });
-            });
+        const existing = emailMap.get(rawEmail);
+        if (!existing) {
+            emailMap.set(rawEmail, u);
+        } else {
+            // Merge or take the one with customerId if existing doesn't have it
+            if (!existing.customerId && u.customerId) {
+                emailMap.set(rawEmail, { ...existing, ...u });
+            }
         }
     }
 
-    console.log('====================================================');
-    console.log(`📊 GRAND SUMMARY:`);
-    console.log(`   Total Users Across All Collections: ${grandTotal}`);
-    console.log(`   Total Acceptance Sent: ${grandSent}`);
-    console.log(`   Total Acceptance NOT Sent: ${grandUnsent}`);
-    console.log('====================================================\n');
+    console.log(`Total unique valid emails: ${emailMap.size}\n`);
 
-    if (allUnsentUsers.length > 0) {
-        console.log(`📋 DETAILS OF USERS WHO HAVE NOT RECEIVED ACCEPTANCE LETTER (${allUnsentUsers.length}):\n`);
-        allUnsentUsers.forEach((user, idx) => {
-            console.log(`${idx + 1}. [${user.destination.toUpperCase()}] ${user.name}`);
-            console.log(`   Email: ${user.email}`);
-            console.log(`   Customer ID: ${user.customerId}`);
-            console.log(`   User ID: ${user.id}`);
-            console.log(`   Registered: ${user.createdAt}`);
-            console.log('----------------------------------------------------');
-        });
-    } else {
-        console.log('🎉 All registered users have already been sent the acceptance letter!');
+    let withCustId = 0;
+    let withoutCustId = 0;
+    const missingCustIdEmails = [];
+
+    emailMap.forEach((user, email) => {
+        if (user.customerId && user.customerId.startsWith('cus_')) {
+            withCustId++;
+        } else {
+            withoutCustId++;
+            missingCustIdEmails.push({ email, name: `${user.FirstName || ''} ${user.LastName || ''}`.trim() });
+        }
+    });
+
+    console.log(`With Stripe customerId: ${withCustId}`);
+    console.log(`Without Stripe customerId: ${withoutCustId}`);
+
+    if (missingCustIdEmails.length > 0) {
+        console.log('\nSamples without customerId:', missingCustIdEmails.slice(0, 10));
     }
 
     await client.close();

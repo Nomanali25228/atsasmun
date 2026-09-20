@@ -111,7 +111,7 @@ const CheckoutPage = ({ amount, originalAmount, appliedCoupon }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-4 md:p-6 rounded-xl text-black shadow-inner">
+    <form onSubmit={handleSubmit} className="bg-transparent">
       <PaymentElement />
 
       {errorMessage && (
