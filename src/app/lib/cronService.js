@@ -115,112 +115,127 @@ export function getFullAcceptanceTemplate(reg) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter of Acceptance</title>
 </head>
-<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#ffffff; color:#333;">
-    <table style="width: 100%; max-width: 800px; margin: 20px auto; text-align: center; background: #ffffff; border-collapse: collapse;">
-        <!-- Logo Row -->
-        <tr>
-            <td align="center" style="background-color:#fff; padding: 24px 20px 16px 20px;">
-                <img src="https://res.cloudinary.com/dmux089ac/image/upload/v1789575075/oyxcq00z7eykhobketvr.png" alt="ATSAS MUN Logo" width="170">
-            </td>
-        </tr>
-        <!-- Background Image Section -->
-        <tr>
-            <td align="center" style="text-align: center; background-color: #010c47 !important; background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/2p9/g6d/6qx/bg.png'); background-size: cover; background-repeat: no-repeat; min-height: 30vh; max-width: 100%; background-position: center; color:#ffffff !important; padding:70px;">
-                <h1 style="margin:0; font-size:50px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">CONGRATULATIONS!</h1>
-                <p style="font-size: 1.4rem; font-weight: bold; margin: 10px 0; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; text-decoration: underline;">
-                    ${isGroup ? 'Head of Delegate: ' : ''}${userName}
-                </p>
-                <p style="font-size: 0.9rem; margin: 30px 30px 10px 20px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
-                    You have been selected as one of the delegates at AtsasMUN ${desname}
-                    Please find attached the official acceptance letter in this email.
-                </p>
-                <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
-                    ${para ? para : ""}
-                </p>
-            </td>
-        </tr>
-    </table>
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f8f9fa; color:#333;">
 
-    <table style="width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; background: #ffffff;">
-        <!-- Image Section 1 -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#f8f9fa;">
         <tr>
-            <td style="margin-bottom: 30px;">
-                <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gpl/90q/wob/Capture.PNG" alt="Letter of Acceptance Page 1" style="width: 100%; max-height: 450px; object-fit: cover;">
-            </td>
-        </tr>
-    </table>
+            <td align="center">
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); width: 600px; min-width: 600px;">
 
-    <table style="width: 100%; max-width: 800px; margin: 40px auto; border-collapse: collapse; background: #ffffff;">
-        <!-- Image Section 2 -->
-        <tr>
-            <td>
-                <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/jwv/ano/u8g/Capture2.PNG" alt="Letter of Acceptance Page 2" style="width: 100%; max-height: 450px; object-fit: cover;">
-            </td>
-        </tr>
-    </table>
+                    <!-- Logo Row -->
+                    <tr>
+                        <td align="center" style="background-color:#fff; padding: 24px 20px 16px 20px;">
+                            <img src="https://res.cloudinary.com/dmux089ac/image/upload/v1789575075/oyxcq00z7eykhobketvr.png" alt="ATSAS MUN Logo" width="170" style="display:block; border:0;">
+                        </td>
+                    </tr>
 
-    <table style="width: 100%; max-width: 800px; margin: 0px auto; margin-top: -50px; background-color: #fff; padding: 25px 2px 2px 2px;">
-        <tr>
-            <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Committee Allocation Policy</td>
-        </tr>
-        <tr>
-            <td style="padding: 10px;">
-                <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
-                    <li>AtsasMUN does not guarantee the availability of preferred countries and encourages participants to select alternatives if necessary.</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Payments</td>
-        </tr>
-        <tr>
-            <td style="padding: 10px;">
-                <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
-                    <li>Payments must be made through the official AtsasMUN website.</li>
-                    <li>AtsasMUN will not acknowledge payments made to unauthorized individuals claiming to represent the organization.</li>
-                    <li>Accepted payment methods include credit/debit cards and international wire transfers.</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Refund Policy</td>
-        </tr>
-        <tr>
-            <td style="padding: 10px;">
-                <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
-                    <li>Subject to the following restrictions, delegates who have made their full payment may ask for a credit voucher or transfer their participation to another AtsasMUN location.</li>
-                    <li>Requests have to be submitted sixty days prior to the start of the event. Credit coupons or transfers are only good for AtsasMUN activities.</li>
-                    <li>Delegates who only paid an installment will not be eligible for credit vouchers or transfers; the installment will be kept as a cancellation charge.</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; font-size: 16px; padding: 10px; color: #000;">Code of Conduct</td>
-        </tr>
-        <tr>
-            <td style="padding: 10px;">
-                <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
-                    <li>Participants must ensure all information provided during registration is accurate. False information will result in disqualification and potential legal action.</li>
-                    <li>All submitted materials must be original; plagiarism will result in disqualification.</li>
-                    <li>Participants must obey the host country's laws and are personally responsible for any damages or violations.</li>
-                    <li>AtsasMUN is not liable for participant misconduct; individuals will bear sole responsibility for their actions.</li>
-                    <li>Participants must adhere to the Code of Conduct outlined in the Conference Handbook.</li>
-                </ul>
-            </td>
-        </tr>
-    </table>
+                    <!-- Background Image Section -->
+                    <tr>
+                        <td align="center" style="text-align: center;
+                            background-color: #010c47 !important;
+                            background-image: url('https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/2p9/g6d/6qx/bg.png');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            min-height: 30vh;
+                            max-width: 100%;
+                            background-position: center;
+                            color:#ffffff !important;
+                            padding:50px 20px;">
+                            <h1 style="margin:0; font-size:40px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-weight: 800; text-transform: uppercase;">CONGRATULATIONS!</h1>
+                            <p style="margin:16px 0 0; font-size:18px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
+                                ${isGroup ? 'Head of Delegate: ' : 'Dear Delegate, '}<strong>${userName}</strong>
+                            </p>
+                            <p style="margin:10px 0 0; font-size:14px; color: #e2e8f0 !important; -webkit-text-fill-color: #e2e8f0 !important; line-height: 1.5; max-width: 520px; margin-left: auto; margin-right: auto;">
+                                You have been selected as one of the delegates at AtsasMUN <strong>${desname}</strong>.
+                                Please find attached the official acceptance letter in this email.
+                                ${para ? `<br>${para}` : ""}
+                            </p>
+                        </td>
+                    </tr>
 
-    <table style="width: 100%; max-width: 800px; margin: 10px auto; margin-bottom: 0px; margin-top: 0px; border-collapse: collapse; background: #ffffff;">
-        <!-- Image Section 3 -->
-        <tr>
-            <td>
-                <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gdl/53b/vsi/Capture3.PNG" alt="Letter of Acceptance Page 3" style="width: 100%; max-height: 350px; object-fit: cover;">
-            </td>
-        </tr>
-    </table>
+                </table>
+
+                <!-- Image Section 1 -->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width: 600px; min-width: 600px; background: #ffffff;">
+                    <tr>
+                        <td>
+                            <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gpl/90q/wob/Capture.PNG" alt="Letter of Acceptance Page 1" style="width: 100%; display: block; border: 0;">
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Image Section 2 -->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width: 600px; min-width: 600px; background: #ffffff;">
+                    <tr>
+                        <td>
+                            <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/jwv/ano/u8g/Capture2.PNG" alt="Letter of Acceptance Page 2" style="width: 100%; display: block; border: 0;">
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Policies Section -->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width: 600px; min-width: 600px; background-color: #fff;">
+                    <tr>
+                        <td style="font-weight: bold; font-size: 16px; padding: 12px 15px 6px; color: #000;">Committee Allocation Policy</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 15px 12px;">
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
+                                <li>AtsasMUN does not guarantee the availability of preferred countries and encourages participants to select alternatives if necessary.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; font-size: 16px; padding: 12px 15px 6px; color: #000;">Payments</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 15px 12px;">
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
+                                <li>Payments must be made through the official AtsasMUN website.</li>
+                                <li>AtsasMUN will not acknowledge payments made to unauthorized individuals claiming to represent the organization.</li>
+                                <li>Accepted payment methods include credit/debit cards and international wire transfers.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; font-size: 16px; padding: 12px 15px 6px; color: #000;">Refund Policy</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 15px 12px;">
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
+                                <li>Subject to the following restrictions, delegates who have made their full payment may ask for a credit voucher or transfer their participation to another AtsasMUN location.</li>
+                                <li>Requests have to be submitted sixty days prior to the start of the event. Credit coupons or transfers are only good for AtsasMUN activities.</li>
+                                <li>Delegates who only paid an installment will not be eligible for credit vouchers or transfers; the installment will be kept as a cancellation charge.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; font-size: 16px; padding: 12px 15px 6px; color: #000;">Code of Conduct</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 15px 12px;">
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #333;">
+                                <li>Participants must ensure all information provided during registration is accurate. False information will result in disqualification and potential legal action.</li>
+                                <li>All submitted materials must be original; plagiarism will result in disqualification.</li>
+                                <li>Participants must obey the host country's laws and are personally responsible for any damages or violations.</li>
+                                <li>AtsasMUN is not liable for participant misconduct; individuals will bear sole responsibility for their actions.</li>
+                                <li>Participants must adhere to the Code of Conduct outlined in the Conference Handbook.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Image Section 3 -->
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width: 600px; min-width: 600px; background: #ffffff;">
+                    <tr>
+                        <td>
+                            <img src="https://6e77be9065.imgdist.com/pub/bfra/izj5d9lu/gdl/53b/vsi/Capture3.PNG" alt="Letter of Acceptance Page 3" style="width: 100%; display: block; border: 0;">
+                        </td>
+                    </tr>
+                </table>
 
     <!-- Conference Fee Packages -->
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 650px; margin: 20px auto; border-collapse: separate; border-spacing: 8px 0; font-family: Arial, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 600px; min-width: 600px; max-width: 600px; margin: 20px auto; border-collapse: separate; border-spacing: 8px 0; font-family: Arial, sans-serif; background-color: #fff;">
         <!-- Title Section -->
         <tr>
             <td colspan="3" align="center" style="padding: 30px 10px 15px 10px; font-size: 22px; font-weight: bold; color: #000;">
@@ -237,7 +252,7 @@ export function getFullAcceptanceTemplate(reg) {
             <td width="33.33%" valign="top" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                 <div style="background: linear-gradient(to right, #00509E, #003A70); color: #ffffff; padding: 14px 8px; text-align: center;">
                     <div style="font-size: 14px; font-weight: bold;">Delegation Package</div>
-                    <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">$418 <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
+                    <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">\$${basicprice} <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
                     <div style="font-size: 11px; color: #e2e8f0; margin-top: 2px;">Early Bird <span style="color: #2EC4B6; font-weight: bold;">(Save $120)</span></div>
                 </div>
                 <div style="text-align: center; padding: 8px 4px 4px; font-size: 10px; font-weight: bold; color: #2EC4B6; text-transform: uppercase;">
@@ -260,7 +275,7 @@ export function getFullAcceptanceTemplate(reg) {
                 <div style="background: linear-gradient(to right, #FF5A5F, #E0484D); color: #ffffff; padding: 10px 8px 14px; text-align: center;">
                     <div style="display: inline-block; background: #ffffff; color: #FF5A5F; font-size: 9px; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; margin-bottom: 4px;">MOST POPULAR</div>
                     <div style="font-size: 14px; font-weight: bold;">Delegation + Accommodation</div>
-                    <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">$549 <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
+                    <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">\$${fullprice} <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
                     <div style="font-size: 11px; color: #e2e8f0; margin-top: 2px;">Early Bird <span style="color: #ffffff; font-weight: bold;">(Save $140)</span></div>
                 </div>
                 <div style="text-align: center; padding: 8px 4px 4px; font-size: 10px; font-weight: bold; color: #2EC4B6; text-transform: uppercase;">
@@ -279,7 +294,7 @@ export function getFullAcceptanceTemplate(reg) {
             <td width="33.33%" valign="top" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                 <div style="background: linear-gradient(to right, #003A70, #002855); color: #ffffff; padding: 14px 8px; text-align: center;">
                     <div style="font-size: 14px; font-weight: bold;">Full Experience Package</div>
-                    <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">$689 <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
+                    <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">Contact Us <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;"></span></div>
                     <div style="font-size: 11px; color: #e2e8f0; margin-top: 2px;">Early Bird <span style="color: #2EC4B6; font-weight: bold;">(Save $150)</span></div>
                 </div>
                 <div style="text-align: center; padding: 8px 4px 4px; font-size: 10px; font-weight: bold; color: #2EC4B6; text-transform: uppercase;">
@@ -287,7 +302,7 @@ export function getFullAcceptanceTemplate(reg) {
                 </div>
                 <div style="padding: 10px 8px 16px; font-size: 11px; line-height: 1.7; color: #333333; text-align: left;">
                     <div style="margin-bottom: 7px;">${checkHtml} Everything in Delegation + Accommodation</div>
-                    <div style="margin-bottom: 7px;">${checkHtml} Bosphorus Dinner Cruise Trip</div>
+                    <div style="margin-bottom: 7px;">${checkHtml} ${CityTour}</div>
                     <div style="margin-bottom: 7px;">${checkHtml} Airport Arrival &amp; Dropoff Assistance</div>
                     <div style="margin-bottom: 7px;">${checkHtml} Lucky Draw</div>
                     <div style="margin-bottom: 7px;">${checkHtml} Priority Registration</div>
@@ -299,63 +314,60 @@ export function getFullAcceptanceTemplate(reg) {
 
                 <!-- Payment Button -->
                 ${isGroup ? '' : `
-                <table style="width: 100%; max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 600px; min-width: 600px; max-width: 600px; margin: 0 auto; background-color: #fff; font-family: Arial, sans-serif;">
                     <tr>
-                        <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 10px;">Payment</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 15px; color: #333; padding-bottom: 20px;">You can pay at the link below</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://www.atsasmun.com/${payment}/1?userid=${userId}&customerId=${customerId}"
-                               style="display: inline-block; padding: 10px 100px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; background: linear-gradient(to right, #00509E, #003A70, #002855);">
-                               Pay Now
-                            </a>
+                        <td align="center" style="padding: 10px 20px 20px 20px;">
+                            <table role="presentation" style="width: 100%; max-width: 560px; margin: 10px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
+                                <tr>
+                                    <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 8px;">Payment</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 14px; color: #333; padding-bottom: 16px;">You can pay at the link below</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://www.atsasmun.com/${payment}/1?userid=${userId}&customerId=${customerId}"
+                                           style="display: inline-block; padding: 12px 60px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; background: linear-gradient(to right, #00509E, #003A70, #002855); border-radius: 4px; box-shadow: 0 3px 6px rgba(0,0,0,0.15);">
+                                           Pay Now
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>`}
 
                 <!-- Contact & Assistance -->
-                <table style="width: 100%; max-width: 800px; margin: 40px auto; text-align: center; padding: 20px; background: #f9f9f9; border-radius: 10px; border-collapse: collapse;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 600px; min-width: 600px; max-width: 600px; margin: 0 auto; background-color: #fff; font-family: Arial, sans-serif;">
                     <tr>
-                        <td style="padding: 20px; font-size:19px; color:#333; line-height: 1.5;">
-                            ${checkHtml} Visa Invitation Letter can be obtained from us upon request after the payment
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; font-size: 17px; color: #333;">
-                            Should you have any questions, feel free to reach us at
-                            <a href="mailto:info@atsasmun.com" target="_blank" style="text-decoration: underline; font-weight: bold; color: #000000;">info@atsasmun.com</a>. We will be happy to assist you.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; font-size: 1rem; color: #333;"><hr></td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 20px; font-size: 1rem; color: black; font-weight: bold;">
-                            We look forward to meeting you in ${desname}!
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0px 10px 10px 0px; font-size: 0.9rem; color: #333; line-height: 1.5;">
-                            Once again, thank you for registering yourself as a part of this powerful Diplomatic Conference!
+                        <td align="center" style="padding: 20px; background: #f9f9f9; border-top: 1px solid #eee; text-align: center;">
+                            <p style="margin: 0 0 6px 0; font-size: 14px; color: #333; line-height: 1.5;">${checkHtml} Visa Invitation Letter can be obtained from us upon request after the payment</p>
+                            <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: bold; color: #000;">Should you have any questions, feel free to reach us at:</p>
+                            <p style="margin: 0 0 12px 0; font-size: 14px;">
+                                <a href="mailto:info@atsasmun.com" target="_blank" style="color: #00509E; font-weight: bold; text-decoration: underline;">info@atsasmun.com</a>
+                                &nbsp;|&nbsp;
+                                <a href="https://wa.me/+447498072531" target="_blank" style="color: #25D366; font-weight: bold; text-decoration: none;">WhatsApp: +44 7498 072531</a>
+                            </p>
+                            <p style="margin: 0; font-size: 13px; color: #333; font-weight: bold;">We look forward to meeting you in ${desname}!</p>
+                            <p style="margin: 6px 0 0; font-size: 12px; color: #777;">Once again, thank you for registering yourself as a part of this powerful Diplomatic Conference!</p>
                         </td>
                     </tr>
                 </table>
 
                 <!-- Footer -->
-                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 600px; min-width: 600px; max-width: 600px; margin: 0 auto;">
                     <tr>
-                        <td align="center" style="background-color:#003366; color:#fff; padding:20px; margin:0; font-size:14px;">
-                            <p style="margin:0; font-size:14px;">Atsas MUN &copy; 2024 Atsas Creation International Ltd</p>
-                            <p style="margin:5px 0 0; font-size:12px; color: #fff;"><em>"Forging a Diplomatic World of Unity and Peace"</em></p>
+                        <td align="center" style="background-color:#003366; color:#fff; padding:20px; text-align: center;">
+                            <p style="margin:0; font-size:13px; color: #fff;">Atsas MUN &copy; 2024 Atsas Creation International Ltd</p>
+                            <p style="margin:5px 0 0; font-size:11px; color: #e2e8f0;"><em>"Forging a Diplomatic World of Unity and Peace"</em></p>
                         </td>
                     </tr>
                 </table>
+
             </td>
         </tr>
     </table>
+
 </body>
 </html>`;
 }
