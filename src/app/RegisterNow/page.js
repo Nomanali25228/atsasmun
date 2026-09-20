@@ -314,16 +314,41 @@ export default function Home() {
   const [imgchange, setImgchange] = useState(st)
   const calculateProgress = () => Math.min((step / totalSteps) * 100, 100); // Ensure max 100%
 
-  const handleNextStep = () => {
-    if (validateForm(step)) {
-      if (step < totalSteps) {
-        setStep(step + 1);
-      } else if (step === totalSteps) {
-        setSubmitted(true); // Mark form as submitted
-      }
+  const handleNextStep = async () => {
+    if (!validateForm(step)) return;
 
+    if (step === 1) {
+      setLoader(true);
+      try {
+        const chosenDest = (destination || formData.Destinations || "Istanbul, Turkey").trim();
+        const checkRes = await fetch("/api1/check-registration", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.Email,
+            phone: formData.PhoneNumber,
+            destination: chosenDest,
+          }),
+        });
+
+        const checkData = await checkRes.json();
+        if (checkData.exists) {
+          toast.error(checkData.message || "This email or phone number is already registered.");
+          setLoader(false);
+          return;
+        }
+      } catch (err) {
+        console.error("Error during duplicate check on step 1:", err);
+      } finally {
+        setLoader(false);
+      }
     }
 
+    if (step < totalSteps) {
+      setStep(step + 1);
+    } else if (step === totalSteps) {
+      setSubmitted(true); // Mark form as submitted
+    }
   };
   const { check, setCheck } = useContext(ContextPage)
   const [institution, setInstitution] = useState("");
@@ -613,6 +638,25 @@ export default function Home() {
 
     setLoader(true);
     try {
+      // Re-verify duplicate check before calling Stripe or creating record
+      const chosenDest = (destination || formData.Destinations || "Istanbul, Turkey").trim();
+      const checkRes = await fetch("/api1/check-registration", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.Email,
+          phone: formData.PhoneNumber,
+          destination: chosenDest,
+        }),
+      });
+
+      const checkData = await checkRes.json();
+      if (checkData.exists) {
+        toast.error(checkData.message || "This email or phone number is already registered.");
+        setLoader(false);
+        return;
+      }
+
       const customerResponse = await fetch("/api1/get-or-create-customer", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },

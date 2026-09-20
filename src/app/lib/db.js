@@ -1,4 +1,4 @@
-import clientPromise from "./mongodb";
+import clientPromise from "./mongodb.js";
 import { ObjectId } from "mongodb";
 
 // MongoDB-based Database Utility
@@ -144,3 +144,94 @@ export const collections = {
   notifications: new MongoDBDB("notifications"),
   authors: new MongoDBDB("authors"),
 };
+
+export function getCollectionKeyFromDestination(destination) {
+  if (!destination) return "istanbul";
+  const d = String(destination).toLowerCase();
+  if (d.includes("istanbul") || d.includes("turkey") || d === "firstnames") return "istanbul";
+  if (d.includes("dubai") || d.includes("uae") || d === "secondenames") return "dubai";
+  if (d.includes("baku") || d.includes("azerbaijan") || d === "thirdnames") return "azerbaijan";
+  if (d.includes("new york") || d.includes("usa") || d === "fournames") return "usa";
+  if (d.includes("riyadh") || d.includes("saudi") || d === "fivenames") return "saudi";
+  if (d.includes("london") || d.includes("uk") || d === "fivthnames") return "uk";
+  return "istanbul";
+}
+
+function escapeRegex(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Check if a registration with the given email or phone already exists
+ * @param {string} email 
+ * @param {string} phone 
+ * @param {string} destination 
+ * @returns {Promise<{exists: boolean, field?: string, message?: string}>}
+ */
+export async function checkExistingRegistration(email, phone, destination) {
+  const trimmedEmail = (email || "").trim();
+  const rawPhone = (phone || "").trim();
+  const cleanDigits = rawPhone.replace(/\D/g, "");
+  const last9 = cleanDigits.length >= 9 ? cleanDigits.slice(-9) : cleanDigits;
+
+  if (!trimmedEmail && !cleanDigits) {
+    return { exists: false };
+  }
+
+  const collectionKey = getCollectionKeyFromDestination(destination);
+  const targetMongoDb = collections[collectionKey];
+  if (!targetMongoDb) return { exists: false };
+
+  const col = await targetMongoDb.getCollection();
+
+  // 1. Check Email
+  if (trimmedEmail) {
+    const escapedEmail = escapeRegex(trimmedEmail);
+    const existingUserByEmail = await col.findOne({
+      $or: [
+        { Email: { $regex: `^${escapedEmail}$`, $options: "i" } },
+        { email: { $regex: `^${escapedEmail}$`, $options: "i" } }
+      ]
+    });
+
+    if (existingUserByEmail) {
+      return {
+        exists: true,
+        field: "email",
+        message: "This email address is already registered. Each participant can only register once with an email."
+      };
+    }
+  }
+
+  // 2. Check Phone
+  if (cleanDigits && cleanDigits.length >= 7) {
+    const phoneQueries = [
+      { PhoneNumber: rawPhone },
+      { PhoneNumber: cleanDigits },
+      { PhoneNumber: `+${cleanDigits}` },
+      { phone: rawPhone },
+      { phone: cleanDigits },
+      { phone: `+${cleanDigits}` }
+    ];
+
+    if (last9 && last9.length >= 8) {
+      phoneQueries.push({ PhoneNumber: { $regex: `${last9}$` } });
+      phoneQueries.push({ phone: { $regex: `${last9}$` } });
+    }
+
+    const existingUserByPhone = await col.findOne({
+      $or: phoneQueries
+    });
+
+    if (existingUserByPhone) {
+      return {
+        exists: true,
+        field: "phone",
+        message: "This phone number is already registered. Each participant can only register once with a phone number."
+      };
+    }
+  }
+
+  return { exists: false };
+}
+

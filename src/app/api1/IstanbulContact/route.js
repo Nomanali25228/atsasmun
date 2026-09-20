@@ -174,100 +174,82 @@ export async function POST(request) {
     </tr>
 </table> 
 
-        <table role="presentation" width="100%" cellpadding="10" cellspacing="0" border="0" style="max-width: 600px; margin: auto; border-collapse: collapse; font-family: Arial, sans-serif;">
-    <!-- Title Section -->
-    <tr>
-        <td colspan="3" align="center" style="padding: 40px 20px 20px 10px ; font-size: 20px; font-weight: bold; color: #000; ">
-            Conference Fee Packages
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3" align="center" style="padding-bottom: 20px; font-size: 16px; color: #555;">
-            Early Bird Packages
-        </td>
-    </tr>
-    <!-- Packages Section -->
-    <tr>
-        <!-- Delegation Package -->
-        <td style="background: linear-gradient(to right, #00509E, #003A70); color: white; padding: 10px; font-size: 14px; font-weight: bold; border-radius: 8px 0 0 0; text-align: center;">
-            Delegation Package<br/>$418 + 5% TAX<br/><span style="font-size:11px;font-weight:normal;">(Save $120)</span>
-        </td>
-        <!-- Delegation + Accommodation -->
-        <td style="background: linear-gradient(to right, #FF5A5F, #E0484D); color: white; padding: 10px; font-size: 14px; font-weight: bold; text-align: center;">
-            Delegation + Acc.<br/>$549 + 5% TAX<br/><span style="font-size:11px;font-weight:normal;">(Save $140)</span>
-        </td>
-        <!-- Full Experience Package -->
-        <td style="background: linear-gradient(to right, #003A70, #002855); color: white; padding: 10px; font-size: 14px; font-weight: bold; border-radius: 0 8px 0 0; text-align: center;">
-            Full Experience<br/>$689 + 5% TAX<br/><span style="font-size:11px;font-weight:normal;">(Save $150)</span>
-        </td>
-    </tr>
-    <tr>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align:left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> ATSASMUN Merch Kit
-        </td>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Everything in Delegation Package
-        </td>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Everything in Delegation + Acc.
-        </td>
-    </tr>
-    <tr>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Official ATSASMUN Certificate
-        </td>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 4-5 Star Accommodation (Twin Shared)
-        </td>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Bosphorus Dinner Cruise Trip
-        </td>
-    </tr>
-    <tr>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Visa Invitation Letter
-        </td>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Airport Arrival Assistance
-        </td>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Airport Arrival & Dropoff Assistance
-        </td>
-    </tr>
-    <tr>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> UN Simulation Sessions
-        </td>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Guided City Tour
-        </td>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Lucky Draw & Priority Reg.
-        </td>
-    </tr>
-    <tr>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Professional event photos
-        </td>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 1 Lunch & 2 Dinner
-        </td>
-        <td style="background: #f8f9fa; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 2 Lunch & 3 Dinner
-        </td>
-    </tr>
-    <tr>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Breakfast Every Morning & 1 Dinner
-        </td>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Early Bird: $549 + 5% TAX
-        </td>
-        <td style="background: #fff; color: #333; font-size: 12px; padding: 8px; border: 1px solid #ddd; text-align: left;">
-            <span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Early Bird: $689 + 5% TAX
-        </td>
-    </tr>
-</table>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 650px; margin: auto; border-collapse: separate; border-spacing: 8px 0; font-family: Arial, sans-serif;">
+            <!-- Title Section -->
+            <tr>
+                <td colspan="3" align="center" style="padding: 30px 10px 15px 10px; font-size: 22px; font-weight: bold; color: #000;">
+                    Conference Fee Packages
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center" style="padding-bottom: 20px; font-size: 15px; color: #666;">
+                    Early Bird Packages
+                </td>
+            </tr>
+            <tr>
+                <!-- COLUMN 1: Delegation Package -->
+                <td width="33.33%" valign="top" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <div style="background: linear-gradient(to right, #00509E, #003A70); color: #ffffff; padding: 14px 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: bold;">Delegation Package</div>
+                        <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">$418 <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
+                        <div style="font-size: 11px; color: #e2e8f0; margin-top: 2px;">Early Bird <span style="color: #2EC4B6; font-weight: bold;">(Save $120)</span></div>
+                    </div>
+                    <div style="text-align: center; padding: 8px 4px 4px; font-size: 10px; font-weight: bold; color: #2EC4B6; text-transform: uppercase;">
+                        NON-ACCOMMODATION
+                    </div>
+                    <div style="padding: 10px 8px 16px; font-size: 11px; line-height: 1.7; color: #333333; text-align: left;">
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> ATSASMUN Merch Kit</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Official ATSASMUN Certificate</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Visa Invitation Letter</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> United Nations Simulation Sessions</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Professional event photos</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> First come First Serve committee Allocation (Limited Spaces)</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Breakfast Every Morning</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 1 Dinner</div>
+                    </div>
+                </td>
+
+                <!-- COLUMN 2: Delegation + Accommodation -->
+                <td width="33.33%" valign="top" style="background: #ffffff; border: 2px solid #FF5A5F; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <div style="background: linear-gradient(to right, #FF5A5F, #E0484D); color: #ffffff; padding: 10px 8px 14px; text-align: center;">
+                        <div style="display: inline-block; background: #ffffff; color: #FF5A5F; font-size: 9px; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; margin-bottom: 4px;">MOST POPULAR</div>
+                        <div style="font-size: 14px; font-weight: bold;">Delegation + Accommodation</div>
+                        <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">$549 <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
+                        <div style="font-size: 11px; color: #e2e8f0; margin-top: 2px;">Early Bird <span style="color: #ffffff; font-weight: bold;">(Save $140)</span></div>
+                    </div>
+                    <div style="text-align: center; padding: 8px 4px 4px; font-size: 10px; font-weight: bold; color: #2EC4B6; text-transform: uppercase;">
+                        ACCOMMODATION INCLUDED
+                    </div>
+                    <div style="padding: 10px 8px 16px; font-size: 11px; line-height: 1.7; color: #333333; text-align: left;">
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Everything in Delegation Package</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 4-5 Star Accommodation (Twin Shared Room)</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Airport Arrival Assistance</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Guided City Tour</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 1 Lunch &amp; 2 Dinner</div>
+                    </div>
+                </td>
+
+                <!-- COLUMN 3: Full Experience Package -->
+                <td width="33.33%" valign="top" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <div style="background: linear-gradient(to right, #003A70, #002855); color: #ffffff; padding: 14px 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: bold;">Full Experience Package</div>
+                        <div style="font-size: 18px; font-weight: 800; margin-top: 4px; color: #F2B705;">$689 <span style="font-size: 11px; font-weight: normal; color: #e2e8f0;">+ 5% TAX</span></div>
+                        <div style="font-size: 11px; color: #e2e8f0; margin-top: 2px;">Early Bird <span style="color: #2EC4B6; font-weight: bold;">(Save $150)</span></div>
+                    </div>
+                    <div style="text-align: center; padding: 8px 4px 4px; font-size: 10px; font-weight: bold; color: #2EC4B6; text-transform: uppercase;">
+                        VIP FULL EXPERIENCE
+                    </div>
+                    <div style="padding: 10px 8px 16px; font-size: 11px; line-height: 1.7; color: #333333; text-align: left;">
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Everything in Delegation + Accommodation</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Bosphorus Dinner Cruise Trip</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Airport Arrival &amp; Dropoff Assistance</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Lucky Draw</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> Priority Registration</div>
+                        <div style="margin-bottom: 7px;"><span style="color: #5A6A80; font-weight: bold; font-size: 13px; margin-right: 5px;">&#10004;</span> 2 Lunch &amp; 3 Dinner</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
 
 
 

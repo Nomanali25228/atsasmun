@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { collections } from "@/app/lib/db";
+import { collections, checkExistingRegistration } from "@/app/lib/db";
 
 // Map Strapi API names to our collections
 const apiToCollection = {
@@ -55,6 +55,18 @@ export async function POST(request, { params }) {
 
     const body = await request.json();
     const registrationData = body.data || body;
+
+    // Check duplicate email or phone number
+    const email = registrationData.Email || registrationData.email;
+    const phone = registrationData.PhoneNumber || registrationData.phone || registrationData.number;
+    const dupCheck = await checkExistingRegistration(email, phone, destination);
+    if (dupCheck.exists) {
+      console.warn(`Duplicate registration rejected for ${destination}: ${dupCheck.field} (${dupCheck.message})`);
+      return NextResponse.json(
+        { error: { message: dupCheck.message, field: dupCheck.field } },
+        { status: 400 }
+      );
+    }
 
     console.log(`Creating registration in collection: ${destination}`, registrationData);
     const record = await collections[destination].create(registrationData);
