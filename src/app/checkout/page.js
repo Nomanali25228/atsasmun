@@ -179,7 +179,7 @@ export default function Home() {
                           setCouponInput(e.target.value.toUpperCase());
                           setCouponError("");
                         }}
-                        placeholder="e.g. AMIS26"
+                        placeholder="Enter coupon code"
                         className="flex-1 bg-[#0c0e1e] border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#2EC4B6] uppercase tracking-wider font-mono"
                       />
                       <button
