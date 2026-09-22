@@ -115,11 +115,11 @@ export default function Home() {
                 const url = `/api1/api/firstnames?filters[userid][$eq]=${id}`;
                 const response = await fetch(url);
                 if (!response.ok) {
-                     const errData = await response.json();
-                     throw new Error(`Server Error: ${response.status}`);
+                    const errData = await response.json();
+                    throw new Error(`Server Error: ${response.status}`);
                 }
                 let result = await response.json();
-                
+
                 let customerId = "";
                 let email = "";
                 if (result.data && result.data.length > 0) {
@@ -148,7 +148,7 @@ export default function Home() {
         }
 
         let pkgName = su === 418 ? "Delegation Package" : su === 549 ? "Delegation + Accommodation" : "Full Experience Package";
-        
+
         if (su === 418) setLoader1(true);
         else if (su === 549) setLoader2(true);
         else setLoader3(true);
@@ -189,7 +189,7 @@ export default function Home() {
                 body: JSON.stringify({
                     customerId: customerIdToUse,
                     email: emailToUse,
-                    amount: su, 
+                    amount: su,
                     description: `ATSASMUN Istanbul - ${pkgName}`,
                     disnew: pkgName
                 }),
@@ -293,7 +293,7 @@ export default function Home() {
                                                         Pay Now ($418) →
                                                     </button>
                                                 </Link>
-                                                {loader1 ? (
+                                                {/* {loader1 ? (
                                                     <button className="atsas-btn-outline w-full" style={{ width: '100%', justifyContent: 'center' }}>
                                                         Generating Invoice...
                                                     </button>
@@ -305,7 +305,7 @@ export default function Home() {
                                                     >
                                                         Invoice PDF ↓
                                                     </button>
-                                                )}
+                                                )} */}
                                             </div>
                                         )}
                                     </div>
@@ -365,7 +365,7 @@ export default function Home() {
                                                         Pay Now ($549) →
                                                     </button>
                                                 </Link>
-                                                {loader2 ? (
+                                                {/* {loader2 ? (
                                                     <button className="atsas-btn-outline w-full" style={{ width: '100%', justifyContent: 'center' }}>
                                                         Generating Invoice...
                                                     </button>
@@ -377,7 +377,7 @@ export default function Home() {
                                                     >
                                                         Invoice PDF ↓
                                                     </button>
-                                                )}
+                                                )} */}
                                             </div>
                                         )}
                                     </div>
@@ -435,7 +435,7 @@ export default function Home() {
                                                         Pay Now ($689) →
                                                     </button>
                                                 </Link>
-                                                {loader3 ? (
+                                                {/* {loader3 ? (
                                                     <button className="atsas-btn-outline w-full" style={{ width: '100%', justifyContent: 'center' }}>
                                                         Generating Invoice...
                                                     </button>
@@ -447,7 +447,7 @@ export default function Home() {
                                                     >
                                                         Invoice PDF ↓
                                                     </button>
-                                                )}
+                                                )} */}
                                             </div>
                                         )}
                                     </div>

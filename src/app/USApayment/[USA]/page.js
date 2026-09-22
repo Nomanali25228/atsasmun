@@ -116,7 +116,7 @@ export default function Home() {
                     throw new Error(`Server returned ${response.status}`);
                 }
                 const result = await response.json();
-                
+
                 let customerId = "";
                 let email = "";
                 if (result.data && result.data.length > 0) {
@@ -146,7 +146,7 @@ export default function Home() {
 
         setLoader(true)
         let non = su === 979 ? "Non-Accommodation" : "Accommodation";
-        
+
         if (su === 979) {
             setLoader(false)
             setLoader1(true)
@@ -190,7 +190,7 @@ export default function Home() {
                 body: JSON.stringify({
                     customerId: customerIdToUse,
                     email: emailToUse,
-                    amount: su, 
+                    amount: su,
                     description: "Tour Package Payment",
                     disnew: non,
                     userEmail: emailToUse

@@ -116,7 +116,7 @@ export default function Page() {
                     throw new Error(`Server returned ${response.status}`);
                 }
                 const result = await response.json();
-                
+
                 let customerId = "";
                 let email = "";
                 if (result.data && result.data.length > 0) {
@@ -146,7 +146,7 @@ export default function Page() {
 
         setLoader(true)
         let non = su === 459 ? "Non-Accommodation" : "Accommodation";
-        
+
         if (su === 459) {
             setLoader(false)
             setLoader1(true)

@@ -106,7 +106,7 @@ export default function Home() {
 
     useEffect(() => {
         if (!id) return;
-        
+
         const fetchData = async () => {
             try {
                 // Use our LOCAL API instead of Strapi
@@ -116,12 +116,12 @@ export default function Home() {
                     throw new Error(`Server returned ${response.status}`);
                 }
                 const result = await response.json();
-                
+
                 let customerId = "";
                 let email = "";
                 if (result.data && result.data.length > 0) {
                     const item = result.data[0];
-                    const attrs = item.attributes || item; 
+                    const attrs = item.attributes || item;
                     customerId = attrs.customerId;
                     email = attrs.Email || attrs.email;
                 }
@@ -146,7 +146,7 @@ export default function Home() {
 
         setLoader(true);
         let non = su === 959 ? "Non-Accommodation" : "Accommodation";
-        
+
         if (su === 959) {
             setLoader(false);
             setLoader1(true);
