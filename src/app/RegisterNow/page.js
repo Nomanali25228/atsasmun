@@ -1297,6 +1297,7 @@ export default function Home() {
                               </button>
 
                               <button
+                                type="button"
                                 className="w-full sm:w-auto px-6 py-3 rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition duration-300"
                                 onClick={() => {
                                   // Top par scroll kare
@@ -1434,7 +1435,7 @@ export default function Home() {
                               </button>
 
                               <button
-
+                                type="button"
                                 className="w-full sm:w-auto px-6 py-3 rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition duration-300"
                                 onClick={() => {
                                   // Top par scroll kare
@@ -1443,7 +1444,7 @@ export default function Home() {
                                     behavior: "smooth", // Smooth scrolling effect
                                   });
                                   handleNextStep(); // Aapka existing function call
-                                }}                              // type="submit"
+                                }}
                               >
                                 {"Next →"}
                               </button>
@@ -1674,7 +1675,7 @@ export default function Home() {
                               </button>
 
                               <button
-
+                                type="button"
                                 className="w-full sm:w-auto px-6 py-3 rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition duration-300"
                                 onClick={() => {
                                   // Top par scroll kare
@@ -1683,7 +1684,7 @@ export default function Home() {
                                     behavior: "smooth", // Smooth scrolling effect
                                   });
                                   handleNextStep(); // Aapka existing function call
-                                }}                              // type="submit"
+                                }}
                               >
                                 {"Next →"}
                               </button>
@@ -1782,7 +1783,7 @@ export default function Home() {
                               </button>
 
                               <button
-
+                                type="button"
                                 className="w-full sm:w-auto px-6 py-3 rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition duration-300"
                                 onClick={() => {
                                   // Top par scroll kare
@@ -1791,7 +1792,7 @@ export default function Home() {
                                     behavior: "smooth", // Smooth scrolling effect
                                   });
                                   handleNextStep(); // Aapka existing function call
-                                }}                              // type="submit"
+                                }}
                               >
                                 {"Next →"}
                               </button>
