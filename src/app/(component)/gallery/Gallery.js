@@ -39,6 +39,30 @@ const images = [
   gallry27, gallry28,
 ];
 
+const NavBtn = ({ onClick, direction }) => (
+  <button
+    onClick={onClick}
+    style={{
+      width: 42,
+      height: 42,
+      borderRadius: '50%',
+      background: 'rgba(18,20,43,0.85)',
+      border: '1px solid rgba(245,241,232,0.18)',
+      color: '#F5F1E8',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      flexShrink: 0,
+      transition: 'background 0.2s',
+    }}
+    onMouseEnter={e => (e.currentTarget.style.background = 'rgba(40,44,80,0.95)')}
+    onMouseLeave={e => (e.currentTarget.style.background = 'rgba(18,20,43,0.85)')}
+  >
+    {direction === 'prev' ? <FaChevronLeft size={14} /> : <FaChevronRight size={14} />}
+  </button>
+);
+
 const GallerySlider = () => {
   const sliderRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -52,20 +76,18 @@ const GallerySlider = () => {
     slidesToScroll: 2,
     autoplay: true,
     autoplaySpeed: 3000,
-    cssEase: "ease-in-out",
+    cssEase: 'ease-in-out',
     pauseOnHover: false,
     pauseOnFocus: false,
+    arrows: false,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
       { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   };
 
-  const openModal = (index) => {
-    setCurrentIndex(index);
-    setIsOpen(true);
-  };
+  const openModal = (index) => { setCurrentIndex(index); setIsOpen(true); };
   const closeModal = () => setIsOpen(false);
   const prevImage = () => setCurrentIndex((p) => (p === 0 ? images.length - 1 : p - 1));
   const nextImage = () => setCurrentIndex((p) => (p === images.length - 1 ? 0 : p + 1));
@@ -76,173 +98,145 @@ const GallerySlider = () => {
       style={{ position: 'relative', zIndex: 1, padding: '96px 0', background: '#12142B' }}
     >
       <div className="atsas-wrap">
-        <div style={{ maxWidth: 640, marginBottom: 52 }}>
-          <span className="atsas-eyebrow">Gallery</span>
-          <h2
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 700,
-              fontSize: 'clamp(28px, 3.8vw, 46px)',
-              marginTop: 14,
-              lineHeight: 1.06,
-              letterSpacing: '-0.01em',
-              color: '#F5F1E8',
-            }}
-          >
-            Moments from recent sessions.
-          </h2>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 40 }}>
+          <div style={{ maxWidth: 560 }}>
+            <span className="atsas-eyebrow">Gallery</span>
+            <h2
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 'clamp(28px, 3.8vw, 46px)',
+                marginTop: 14,
+                lineHeight: 1.06,
+                letterSpacing: '-0.01em',
+                color: '#F5F1E8',
+                marginBottom: 0,
+              }}
+            >
+              Moments from recent sessions.
+            </h2>
+          </div>
+          <div style={{ display: 'flex', gap: 10, paddingBottom: 6 }}>
+            <NavBtn onClick={() => sliderRef.current?.slickPrev()} direction="prev" />
+            <NavBtn onClick={() => sliderRef.current?.slickNext()} direction="next" />
+          </div>
         </div>
 
-        {/* Slider */}
-        <div style={{ position: 'relative' }}>
-          <button
-            onClick={() => sliderRef.current?.slickPrev()}
-            style={{
-              position: 'absolute',
-              left: 0,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 10,
-              background: 'rgba(18,20,43,0.8)',
-              border: '1px solid rgba(245,241,232,0.14)',
-              color: '#F5F1E8',
-              width: 40,
-              height: 40,
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-            }}
-          >
-            <FaChevronLeft />
-          </button>
-
+        <div style={{ margin: '0 -12px' }}>
           <Slider ref={sliderRef} {...settings}>
             {images.map((src, index) => (
-              <div key={index} style={{ padding: '0 5px' }}>
+              <div key={index} style={{ padding: '0 12px' }}>
                 <div
                   style={{
-                    borderRadius: 10,
+                    borderRadius: 12,
                     overflow: 'hidden',
-                    aspectRatio: '1/1',
+                    aspectRatio: '4/3',
                     position: 'relative',
                     cursor: 'pointer',
                   }}
                   onClick={() => openModal(index)}
+                  onMouseEnter={e => {
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) img.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={e => {
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) img.style.transform = 'scale(1)';
+                  }}
                 >
                   <Image
                     src={src}
-                    alt={`Gallery image ${index + 1}`}
+                    alt={'Gallery image ' + (index + 1)}
                     fill
-                    style={{ objectFit: 'cover', filter: 'saturate(0.9)', transition: 'transform .3s ease' }}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+                    style={{ objectFit: 'cover', filter: 'saturate(0.9)', transition: 'transform 0.4s ease' }}
+                    sizes="100vw"
                   />
                 </div>
               </div>
             ))}
           </Slider>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div
+          onClick={closeModal}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.88)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+          }}
+        >
+          <button
+            onClick={closeModal}
+            style={{
+              position: 'absolute', top: 20, right: 20,
+              color: '#F5F1E8', fontSize: 18,
+              background: 'rgba(0,0,0,0.5)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: '50%', width: 40, height: 40,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 10000,
+            }}
+          >
+            <FaTimes />
+          </button>
 
           <button
-            onClick={() => sliderRef.current?.slickNext()}
+            onClick={e => { e.stopPropagation(); prevImage(); }}
             style={{
-              position: 'absolute',
-              right: 0,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 10,
-              background: 'rgba(18,20,43,0.8)',
-              border: '1px solid rgba(245,241,232,0.14)',
+              position: 'absolute', left: 20,
               color: '#F5F1E8',
-              width: 40,
-              height: 40,
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
+              background: 'rgba(0,0,0,0.5)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: '50%', width: 48, height: 48,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 10000,
+            }}
+          >
+            <FaChevronLeft />
+          </button>
+
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              position: 'relative',
+              width: 'min(680px, 90vw)',
+              height: 'min(500px, 80vh)',
+              borderRadius: 14,
+              overflow: 'hidden',
+              boxShadow: '0 24px 80px rgba(0,0,0,0.6)',
+            }}
+          >
+            <Image
+              src={images[currentIndex]}
+              alt={'Gallery image ' + (currentIndex + 1)}
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="90vw"
+            />
+          </div>
+
+          <button
+            onClick={e => { e.stopPropagation(); nextImage(); }}
+            style={{
+              position: 'absolute', right: 20,
+              color: '#F5F1E8',
+              background: 'rgba(0,0,0,0.5)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: '50%', width: 48, height: 48,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 10000,
             }}
           >
             <FaChevronRight />
           </button>
         </div>
-
-        {/* Modal */}
-        {isOpen && (
-          <div
-            style={{
-              position: 'fixed',
-              inset: 0,
-              background: 'rgba(0,0,0,0.85)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 50,
-            }}
-          >
-            <button
-              onClick={closeModal}
-              style={{
-                position: 'absolute',
-                top: 16,
-                right: 16,
-                color: '#F5F1E8',
-                fontSize: 20,
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              <FaTimes />
-            </button>
-            <button
-              onClick={prevImage}
-              style={{
-                position: 'absolute',
-                left: 16,
-                color: '#F5F1E8',
-                background: 'rgba(0,0,0,0.5)',
-                border: 'none',
-                borderRadius: '50%',
-                width: 44,
-                height: 44,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              <FaChevronLeft />
-            </button>
-            <Image
-              src={images[currentIndex]}
-              alt={`Gallery image ${currentIndex + 1}`}
-              width={600}
-              height={400}
-              style={{ borderRadius: 10, objectFit: 'cover', maxWidth: '90vw', maxHeight: '80vh' }}
-            />
-            <button
-              onClick={nextImage}
-              style={{
-                position: 'absolute',
-                right: 16,
-                color: '#F5F1E8',
-                background: 'rgba(0,0,0,0.5)',
-                border: 'none',
-                borderRadius: '50%',
-                width: 44,
-                height: 44,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              <FaChevronRight />
-            </button>
-          </div>
-        )}
-      </div>
+      )}
     </section>
   );
 };

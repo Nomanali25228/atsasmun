@@ -1741,7 +1741,7 @@ export default function Home() {
 
                             </div>
                             <div className="  relative z-10">
-                              <label className="block lg:mt-[-70px] mt-[10px] text-sm font-medium text-gray-700" htmlFor="phone">
+                              <label className="block text-lg font-medium text-gray-700" htmlFor="phone">
                                 Which country do you want to represent?<span className="text-red-500">*</span>
                               </label>
 
@@ -1756,7 +1756,7 @@ export default function Home() {
                                     WhichCountryDoYouWantToRepresent: countryName
                                   }));
                                 }}
-                                className="mt-2 w-full border-2 border-gray-200 rounded-lg shadow-md py-1 px-1 bg-white text-gray-900 focus:outline-none focus:ring-0 focus:border-blue-400 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+                                className="atsas-flags mt-2 w-full rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 block"
                                 searchable
                                 searchPlaceholder="Search for a country..."
                                 customLabels={countryNames}

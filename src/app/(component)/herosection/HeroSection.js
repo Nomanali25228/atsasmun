@@ -104,15 +104,17 @@ const HeroSection = () => {
           </p>
 
           {/* CTAs */}
-          <div style={{ marginTop: 40, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-            <Link href="/payment">
-              <button className="atsas-btn-solid">
-                Early Applicant Pricing — Limited Slots
+          <div className="flex flex-col sm:flex-row gap-4 mt-10">
+            <Link href="/payment" className="w-full sm:w-auto block">
+              <button className="atsas-btn-solid w-full flex flex-col sm:flex-row items-center justify-center text-center" style={{ whiteSpace: 'normal', wordBreak: 'break-word', height: 'auto', minHeight: 48, padding: '12px 16px', lineHeight: 1.4, fontSize: 'clamp(11px, 3.5vw, 14px)' }}>
+                <span>Early Applicant Pricing</span>
+                <span className="sm:inline hidden mx-1">—</span>
+                <span>Limited Slots</span>
               </button>
             </Link>
-            <Link href="/Live-MUN">
-              <button className="atsas-btn-outline">
-                ▶ Watch a Live MUN Experience
+            <Link href="/Live-MUN" className="w-full sm:w-auto block">
+              <button className="atsas-btn-outline w-full flex items-center justify-center text-center" style={{ whiteSpace: 'normal', wordBreak: 'break-word', height: 'auto', minHeight: 48, padding: '12px 16px', lineHeight: 1.4, fontSize: 'clamp(11px, 3.5vw, 14px)' }}>
+                Watch a Live MUN Experience
               </button>
             </Link>
           </div>

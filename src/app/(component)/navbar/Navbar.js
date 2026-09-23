@@ -106,7 +106,7 @@ function Navbar() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '6px 28px',
+          padding: isMobile ? '6px 12px' : '6px 28px',
           maxWidth: 1120,
           margin: '0 auto',
         }}
@@ -295,10 +295,10 @@ function Navbar() {
 
         {/* Mobile Top Bar — only on mobile */}
         <div
-          className="flex lg:hidden" style={{ alignItems: 'center', gap: 12 }}
+          className="flex lg:hidden" style={{ alignItems: 'center', gap: 8 }}
         >
           <Link href="/RegisterNow">
-            <button className="atsas-btn-solid" style={{ fontSize: 11, padding: '8px 16px' }}>
+            <button className="atsas-btn-solid" style={{ fontSize: 10, padding: '6px 10px', whiteSpace: 'nowrap' }}>
               Register Now
             </button>
           </Link>

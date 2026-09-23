@@ -1,8 +1,9 @@
 'use client';
 import React, { useState, useEffect, useRef } from "react";
 import { FaPaperPlane, FaWhatsapp, FaTimes, FaSmile } from "react-icons/fa";
-import logo from '@/app/public/img/whatsapp-logo.jpg'; // Logo
 import Image from "next/image";
+
+const logo = "/img/logo-email-template.jpeg"; // Logo from public folder
 
 const Whatsapp = () => {
   const [isChatVisible, setIsChatVisible] = useState(false);
@@ -62,15 +63,15 @@ const Whatsapp = () => {
   return (
     <div className="relative">
       {/* WhatsApp Floating Button */}
-     <button
-  onClick={() => setIsChatVisible((prev) => !prev)}
-  className="fixed bottom-20 right-5 z-50 flex items-center justify-center bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-105 bounce-animation"
-  aria-label="Chat with us on WhatsApp"
->
-  <FaWhatsapp size={28} />
-</button>
+      <button
+        onClick={() => setIsChatVisible((prev) => !prev)}
+        className="fixed bottom-20 right-5 z-50 flex items-center justify-center bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-105 bounce-animation"
+        aria-label="Chat with us on WhatsApp"
+      >
+        <FaWhatsapp size={32} />
+      </button>
 
-<style jsx>{`
+      <style jsx>{`
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -90,8 +91,8 @@ const Whatsapp = () => {
           {/* Chat Header */}
           <div className="bg-[#075e54] text-white p-3 rounded-t-lg flex justify-between items-center">
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0">
-                <Image src={logo} alt="Logo" className="rounded-full" />
+              <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0 overflow-hidden">
+                <Image src={logo} alt="Logo" width={32} height={32} className="rounded-full object-cover w-full h-full" />
               </div>
               <div className="ml-3">
                 <p className="text-sm font-bold">ATSAS MUN</p>
@@ -107,11 +108,11 @@ const Whatsapp = () => {
           </div>
 
           {/* Chat Body */}
-          <div className="p-3 h-40 overflow-y-auto text-sm text-gray-800 space-y-3">
-            <div className="bg-white text-gray-800 p-2 rounded-lg shadow-sm max-w-[75%]">
+          <div className="p-3 h-40 overflow-y-auto text-sm space-y-3" style={{ background: '#ece5dd' }}>
+            <div className="bg-white text-[#111827] font-medium p-2 rounded-lg shadow-sm max-w-[75%]">
               Hello! How can we assist you today?
             </div>
-            <div className="bg-[#dcf8c6] text-gray-800 p-2 rounded-lg shadow-sm max-w-[75%] ml-auto">
+            <div className="bg-[#dcf8c6] text-[#111827] font-medium p-2 rounded-lg shadow-sm max-w-[75%] ml-auto">
               Hi, I need help with registration.
             </div>
           </div>
@@ -146,9 +147,10 @@ const Whatsapp = () => {
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="flex-grow text-sm px-2 pt-2 pb-8 border-none outline-none resize-none bg-gray-100 rounded-lg"
+              className="flex-grow text-sm px-2 pt-2 pb-2 border-none outline-none resize-none rounded-lg placeholder-gray-400"
+              style={{ backgroundColor: '#ffffff', color: '#111827', fontWeight: '500' }}
               placeholder="Type a message..."
-              rows={1}
+              rows={2}
             />
             <a
               href={getWhatsAppUrl(message)}
