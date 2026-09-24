@@ -353,8 +353,19 @@ export function getFullAcceptanceTemplate(reg) {
                     </tr>
                 </table>
 
-                <!-- Payment Button -->
-                ${isGroup ? '' : `
+                <!-- Payment / WhatsApp Button -->
+                ${isGroup ? `
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 600px; min-width: 600px; max-width: 600px; margin: 0 auto; background-color: #fff; font-family: Arial, sans-serif;">
+                    <tr>
+                        <td align="center" style="padding: 10px 20px 25px 20px;">
+                            <a href="https://wa.me/447498072531?text=${encodeURIComponent(`Hello ATSAS MUN Team, I am the Head of Delegate for our group delegation (${userName}) registered for ${cfg.desname}. We would like to finalize our group packages and payment.`)}" target="_blank"
+                               style="display: inline-block; padding: 14px 40px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; background: linear-gradient(to right, #25D366, #128C7E); border-radius: 6px; box-shadow: 0 4px 8px rgba(37,211,102,0.3);">
+                               💬 Contact Us on WhatsApp for Group Payment
+                            </a>
+                            <p style="margin: 12px 0 0; font-size: 12px; color: #666;">Get custom group delegation invoice, group discount &amp; assistance on WhatsApp (+44 7498 072531)</p>
+                        </td>
+                    </tr>
+                </table>` : `
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 600px; min-width: 600px; max-width: 600px; margin: 0 auto; background-color: #fff; font-family: Arial, sans-serif;">
                     <tr>
                         <td align="center" style="padding: 10px 20px 25px 20px;">
@@ -421,7 +432,8 @@ export async function processEightHourReminders() {
         await client.connect();
         const db = client.db('atsasmun');
         const now = new Date();
-        const eightHoursInMs = 8 * 60 * 60 * 1000;
+        const eightHoursAgo = new Date(now.getTime() - 8 * 60 * 60 * 1000);
+        const eightHoursAgoIso = eightHoursAgo.toISOString();
 
         const registrationCollections = [
             'registrations_istanbul',
@@ -433,24 +445,25 @@ export async function processEightHourReminders() {
         ];
 
         const pendingDelegatesMap = new Map();
+        const BATCH_LIMIT = 5; // Max 5 emails per run to ensure fast finish under Vercel limits
 
+        // 1. Check all destination collections with direct MongoDB date filter
         for (const colName of registrationCollections) {
+            if (pendingDelegatesMap.size >= BATCH_LIMIT) break;
+
             try {
                 const list = await db.collection(colName).find({
-                    acceptanceLetterSent: { $ne: true }
-                }).toArray();
+                    acceptanceLetterSent: { $ne: true },
+                    createdAt: { $lte: eightHoursAgoIso }
+                }).limit(BATCH_LIMIT).toArray();
 
                 for (const item of list) {
                     const email = (item.Email || '').trim().toLowerCase();
                     if (!email || email === 'test@example.com' || !email.includes('@')) continue;
 
-                    const createdDate = new Date(item.createdAt || (item._id && item._id.getTimestamp ? item._id.getTimestamp() : 0));
-                    const diff = now - createdDate;
-
-                    if (diff >= eightHoursInMs) {
-                        if (!pendingDelegatesMap.has(email)) {
-                            pendingDelegatesMap.set(email, { ...item, sourceCollection: colName });
-                        }
+                    if (!pendingDelegatesMap.has(email)) {
+                        pendingDelegatesMap.set(email, { ...item, sourceCollection: colName });
+                        if (pendingDelegatesMap.size >= BATCH_LIMIT) break;
                     }
                 }
             } catch (err) {
@@ -458,50 +471,40 @@ export async function processEightHourReminders() {
             }
         }
 
-        try {
-            const notificationsList = await db.collection('notifications').find({
-                secondEmailSent: { $ne: true }
-            }).toArray();
+        // 2. Check notifications collection only if batch limit not yet reached
+        if (pendingDelegatesMap.size < BATCH_LIMIT) {
+            try {
+                const notificationsList = await db.collection('notifications').find({
+                    secondEmailSent: { $ne: true },
+                    createdAt: { $lte: eightHoursAgoIso }
+                }).limit(BATCH_LIMIT).toArray();
 
-            for (const notif of notificationsList) {
-                const email = (notif.Email || '').trim().toLowerCase();
-                if (!email || email === 'test@example.com' || !email.includes('@')) continue;
+                for (const notif of notificationsList) {
+                    const email = (notif.Email || '').trim().toLowerCase();
+                    if (!email || email === 'test@example.com' || !email.includes('@')) continue;
 
-                const createdDate = new Date(notif.createdAt || (notif._id && notif._id.getTimestamp ? notif._id.getTimestamp() : 0));
-                const diff = now - createdDate;
+                    if (!pendingDelegatesMap.has(email)) {
+                        pendingDelegatesMap.set(email, {
+                            Email: notif.Email,
+                            FirstName: notif.FirstName,
+                            LastName: '',
+                            Destinations: notif.Destinations,
+                            id: notif.Idname || notif.id,
+                            customerId: notif.customerId || '',
+                            RegistrationType: notif.type,
+                            sourceCollection: 'notifications'
+                        });
 
-                if (diff >= eightHoursInMs && !pendingDelegatesMap.has(email)) {
-                    let customerId = notif.customerId || '';
-                    if (!customerId) {
-                        for (const colName of registrationCollections) {
-                            const foundReg = await db.collection(colName).findOne({
-                                Email: { $regex: new RegExp(`^${email}$`, 'i') }
-                            });
-                            if (foundReg && foundReg.customerId) {
-                                customerId = foundReg.customerId;
-                                break;
-                            }
-                        }
+                        if (pendingDelegatesMap.size >= BATCH_LIMIT) break;
                     }
-
-                    pendingDelegatesMap.set(email, {
-                        Email: notif.Email,
-                        FirstName: notif.FirstName,
-                        LastName: '',
-                        Destinations: notif.Destinations,
-                        id: notif.Idname || notif.id,
-                        customerId: customerId,
-                        RegistrationType: notif.type,
-                        sourceCollection: 'notifications'
-                    });
                 }
+            } catch (err) {
+                console.error('[CronService] Error reading notifications collection:', err.message);
             }
-        } catch (err) {
-            console.error('[CronService] Error reading notifications collection:', err.message);
         }
 
         const pendingList = Array.from(pendingDelegatesMap.values());
-        console.log(`[CronService] Found ${pendingList.length} delegates eligible for 8-hour Acceptance Letter.`);
+        console.log(`[CronService] Found ${pendingList.length} delegates eligible for 8-hour Acceptance Letter (Batch max: ${BATCH_LIMIT}).`);
 
         if (pendingList.length === 0) {
             return { message: 'No pending 8-hour reminders', count: 0, sent: 0 };
@@ -527,19 +530,31 @@ export async function processEightHourReminders() {
                 console.log(`[CronService] SENT 8-hour Acceptance Letter to: ${fullName} <${email}> (MsgId: ${info.messageId})`);
                 sentCount++;
 
-                for (const colName of registrationCollections) {
-                    await db.collection(colName).updateMany(
-                        { Email: { $regex: new RegExp(`^${email}$`, 'i') } },
+                const emailRegex = new RegExp(`^${email.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i');
+
+                // Update the source collection
+                if (reg.sourceCollection && reg.sourceCollection !== 'notifications') {
+                    await db.collection(reg.sourceCollection).updateMany(
+                        { Email: { $regex: emailRegex } },
                         { $set: { acceptanceLetterSent: true, acceptanceLetterSentAt: new Date().toISOString() } }
                     );
+                } else {
+                    // Update all collections if source collection wasn't specific
+                    for (const colName of registrationCollections) {
+                        await db.collection(colName).updateMany(
+                            { Email: { $regex: emailRegex } },
+                            { $set: { acceptanceLetterSent: true, acceptanceLetterSentAt: new Date().toISOString() } }
+                        );
+                    }
                 }
 
+                // Always update notifications collection
                 await db.collection('notifications').updateMany(
-                    { Email: { $regex: new RegExp(`^${email}$`, 'i') } },
+                    { Email: { $regex: emailRegex } },
                     { $set: { secondEmailSent: true, secondEmailSentAt: new Date().toISOString() } }
                 );
 
-                await sleep(1500);
+                await sleep(1000);
             } catch (err) {
                 console.error(`[CronService] Failed sending to ${email}:`, err.message);
                 failCount++;

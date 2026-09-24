@@ -10,7 +10,11 @@ import {
   FaGlobeAmericas,
   FaChartLine,
   FaClock,
+  FaPaperPlane,
+  FaHourglassHalf,
+  FaEnvelope,
 } from "react-icons/fa";
+import SendEmailModal from "../components/SendEmailModal";
 
 const destinationInfo = [
   { name: "Istanbul", slug: "istanbul", emoji: "🇹🇷", color: "from-red-500 to-orange-500" },
@@ -24,6 +28,8 @@ const destinationInfo = [
 export default function AdminDashboard() {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedDelegate, setSelectedDelegate] = useState(null);
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -169,6 +175,89 @@ export default function AdminDashboard() {
         </div>
       </div>
 
+      {/* Pending Acceptance Letters Section */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <FaHourglassHalf className="text-amber-400" />
+              Pending Acceptance Letters (Manual Dispatch)
+            </h2>
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              {stats?.pendingAcceptanceRegistrations?.length || 0} Waiting
+            </span>
+          </div>
+          <p className="text-xs text-gray-500 hidden sm:block">
+            Delegates whose 8-hour Acceptance Letter has not been sent yet
+          </p>
+        </div>
+
+        <div className="bg-[#0d1221] border border-[#1a2035] rounded-2xl overflow-hidden shadow-xl">
+          {stats?.pendingAcceptanceRegistrations?.length > 0 ? (
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-[#1a2035] bg-[#090d18]">
+                    <th className="text-left text-gray-400 text-xs font-semibold uppercase tracking-wider px-6 py-4">Delegate</th>
+                    <th className="text-left text-gray-400 text-xs font-semibold uppercase tracking-wider px-6 py-4">Email</th>
+                    <th className="text-left text-gray-400 text-xs font-semibold uppercase tracking-wider px-6 py-4">Destination</th>
+                    <th className="text-left text-gray-400 text-xs font-semibold uppercase tracking-wider px-6 py-4">Registered</th>
+                    <th className="text-center text-gray-400 text-xs font-semibold uppercase tracking-wider px-4 py-4">Status</th>
+                    <th className="text-right text-gray-400 text-xs font-semibold uppercase tracking-wider px-6 py-4">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {stats.pendingAcceptanceRegistrations.map((reg, idx) => (
+                    <tr key={idx} className="border-b border-[#1a2035]/50 hover:bg-[#1a2035]/30 transition-colors">
+                      <td className="px-6 py-4">
+                        <span className="text-white text-sm font-medium">
+                          {reg.RegistrationType === 'group' && reg.GroupName 
+                            ? `${reg.GroupName} (Group)` 
+                            : `${reg.FirstName || reg.firstName || "-"} ${reg.LastName || reg.lastName || ""}`}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-gray-400 text-sm">{reg.Email || reg.email || "-"}</td>
+                      <td className="px-6 py-4">
+                        <span className="inline-flex px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-medium">
+                          {reg.destination || reg.Destinations || "-"}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-gray-500 text-sm">
+                        {reg.createdAt ? new Date(reg.createdAt).toLocaleDateString() : "-"}
+                      </td>
+                      <td className="px-4 py-4 text-center">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                          Pending Letter
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button
+                          onClick={() => {
+                            setSelectedDelegate(reg);
+                            setEmailModalOpen(true);
+                          }}
+                          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 hover:bg-blue-600 hover:text-white transition-all text-xs font-medium shadow-sm group"
+                        >
+                          <FaPaperPlane size={11} className="group-hover:translate-x-0.5 transition-transform" />
+                          Send Email
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="p-8 text-center">
+              <p className="text-emerald-400 text-sm font-medium flex items-center justify-center gap-2">
+                ✓ All delegates have received their Acceptance Letters!
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Recent Registrations */}
       <div>
         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
@@ -192,6 +281,15 @@ export default function AdminDashboard() {
                     </th>
                     <th className="text-left text-gray-500 text-xs font-medium uppercase tracking-wider px-6 py-4">
                       Date
+                    </th>
+                    <th className="text-center text-gray-500 text-xs font-medium uppercase tracking-wider px-4 py-4">
+                      1st Email
+                    </th>
+                    <th className="text-center text-gray-500 text-xs font-medium uppercase tracking-wider px-4 py-4">
+                      Acceptance (8h)
+                    </th>
+                    <th className="text-right text-gray-500 text-xs font-medium uppercase tracking-wider px-6 py-4">
+                      Actions
                     </th>
                   </tr>
                 </thead>
@@ -225,6 +323,45 @@ export default function AdminDashboard() {
                             : "-"}
                         </span>
                       </td>
+                      <td className="px-4 py-4 text-center">
+                        {reg.firstEmailSent !== false ? (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm" title="Confirmation Email Sent">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            True
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gray-500/10 text-gray-400 border border-gray-500/20" title="Not Sent">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                            False
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-4 text-center">
+                        {reg.acceptanceLetterSent === true ? (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm" title={reg.acceptanceLetterSentAt ? `Sent at: ${new Date(reg.acceptanceLetterSentAt).toLocaleString()}` : "Acceptance Letter Sent"}>
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            True
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20" title="Pending 8-hour trigger">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                            False
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button
+                          onClick={() => {
+                            setSelectedDelegate(reg);
+                            setEmailModalOpen(true);
+                          }}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all text-xs font-medium"
+                          title="Send Email with Preview"
+                        >
+                          <FaPaperPlane size={11} />
+                          Send
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -238,6 +375,17 @@ export default function AdminDashboard() {
           )}
         </div>
       </div>
+
+      {/* Send Email Modal */}
+      <SendEmailModal
+        isOpen={emailModalOpen}
+        onClose={() => setEmailModalOpen(false)}
+        delegate={selectedDelegate}
+        onEmailSent={() => {
+          fetchStats();
+        }}
+      />
     </div>
   );
 }
+

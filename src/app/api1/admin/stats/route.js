@@ -45,6 +45,11 @@ export async function GET(request) {
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       .slice(0, 10);
 
+    const pendingAcceptanceRegistrations = allRegistrations
+      .filter((r) => r.acceptanceLetterSent !== true)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, 50);
+
     return NextResponse.json({
       success: true,
       stats: {
@@ -59,6 +64,7 @@ export async function GET(request) {
           uk: uk.length,
         },
         recentRegistrations,
+        pendingAcceptanceRegistrations,
       },
     });
   } catch (error) {

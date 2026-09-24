@@ -41,9 +41,15 @@ export class MongoDBDB {
   // Create a new record
   async create(record) {
     const collection = await this.getCollection();
+    const isRegistration = this.collectionName.startsWith('registrations_');
     const newRecord = {
       ...record,
       id: Date.now(), // Keep numeric ID for backward compatibility if needed
+      ...(isRegistration ? {
+        firstEmailSent: record.firstEmailSent !== undefined ? record.firstEmailSent : true,
+        firstEmailSentAt: record.firstEmailSentAt || new Date().toISOString(),
+        acceptanceLetterSent: record.acceptanceLetterSent !== undefined ? record.acceptanceLetterSent : false,
+      } : {}),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
