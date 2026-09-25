@@ -26,6 +26,14 @@ async function testMail() {
     try {
         await transporter.verify();
         console.log("SMTP Login SUCCESS! ✅");
+        
+        const info = await transporter.sendMail({
+            from: username,
+            to: username,
+            subject: 'ATSAS MUN SMTP Test Email',
+            text: 'Mubarak ho! SMTP connection successfully kaam kar raha hai.',
+        });
+        console.log("Test Email Sent Successfully! 🚀 Message ID:", info.messageId);
     } catch (err) {
         console.error("SMTP Login FAILED! ❌", err.message);
     }
