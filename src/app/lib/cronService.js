@@ -7,9 +7,9 @@ const checkHtml = '<span style="color: #5A6A80; font-weight: bold; font-size: 13
 
 function getTransporter() {
     const username = process.env.NEXT_PUBLIC_SMTP_USERNAME || process.env.SMTP_EMAIL || 'info@atsasmun.com';
-    const password = process.env.NEXT_PUBLIC_SMTP_PASSWORD || process.env.SMTP_PASS || 'Abiman0786@';
-    const smtpHost = process.env.NEXT_PUBLIC_SMPT_HOST || process.env.SMTP_HOST || 'smtp.office365.com';
-    const smtpPort = parseInt(process.env.NEXT_PUBLIC_SMTP_PORT || process.env.SMTP_PORT || '587');
+    const password = process.env.NEXT_PUBLIC_SMTP_PASSWORD || process.env.SMTP_PASS || 'Bascule@1947';
+    const smtpHost = process.env.SMTP_HOST || process.env.NEXT_PUBLIC_SMTP_HOST || process.env.NEXT_PUBLIC_SMPT_HOST || 'smtp.office365.com';
+    const smtpPort = parseInt(process.env.SMTP_PORT || process.env.NEXT_PUBLIC_SMTP_PORT || '587');
 
     return nodemailer.createTransport({
         host: smtpHost,
