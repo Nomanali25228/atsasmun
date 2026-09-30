@@ -10,6 +10,7 @@ export function getEarlyBirdEmailHtml({
   isGroup = false,
   deadline = "2nd October, 2026",
 } = {}) {
+  const isGroupBool = Boolean(isGroup === true || isGroup === 'true' || isGroup === 'group');
   const paymentBase = customerId ? customerId : (id || "1");
   const paymentUrl = `https://www.atsasmun.com/Istanbulpayment/${paymentBase}?userid=${id || "1"}&customerId=${customerId || ""}`;
 
@@ -20,6 +21,11 @@ export function getEarlyBirdEmailHtml({
     `Dear ATSAS MUN Team,\n\nI have registered for ATSASMUN Istanbul and would like to request a flexible installment payment plan for my Early Bird fee.\n\nDelegate Name: ${name}\nCustomer ID / Reg ID: ${customerId || id}\n\nPlease share the available installment schedule.\n\nThank you!`
   );
   const installmentMailto = `mailto:info@atsasmun.com?subject=${installmentSubject}&body=${installmentBody}`;
+
+  const whatsappMessage = encodeURIComponent(
+    `Hello ATSAS MUN Team, I am the Head of Delegate for our group delegation (${name}) registered for ATSASMUN Istanbul. We would like to avail the Early Bird discount and finalize our group payment.`
+  );
+  const whatsappGroupUrl = `https://wa.me/447498072531?text=${whatsappMessage}`;
 
   return `<!DOCTYPE html>
 <html>
@@ -64,7 +70,7 @@ export function getEarlyBirdEmailHtml({
                                 CONGRATULATIONS!
                             </h1>
                             <p style="margin:16px 0 0; font-size:18px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
-                                ${isGroup ? 'Head of Delegate: ' : 'Dear Delegate, '}<strong>${name}</strong>
+                                ${isGroupBool ? 'Head of Delegate: ' : 'Dear Delegate, '}<strong>${name}</strong>
                             </p>
                             <p style="margin:10px 0 0; font-size:14px; color: #e2e8f0 !important; -webkit-text-fill-color: #e2e8f0 !important; line-height: 1.5; max-width: 520px; margin-left: auto; margin-right: auto;">
                                 Your application for <strong>ATSASMUN Istanbul, T&uuml;rkiye</strong> is shortlisted. Avail your exclusive <strong>Early Bird Discount</strong> and save up to <strong>$150</strong> before standard pricing applies.
@@ -79,10 +85,10 @@ export function getEarlyBirdEmailHtml({
                                 <tr>
                                     <td>
                                         <div style="font-size: 15px; font-weight: bold; color: #9A6700; margin-bottom: 4px;">
-                                            &#9200; Early Bird Offer Expires: <span style="color: #D90429; text-decoration: underline;">2nd October 2026</span>
+                                            &#9200; Early Bird Offer Expires: <span style="color: #D90429; text-decoration: underline;">${deadline}</span>
                                         </div>
                                         <div style="font-size: 12px; color: #555; line-height: 1.5;">
-                                            After <strong>2nd October</strong>, registration fees will increase automatically by <strong>$120 to $150</strong> per delegate. Complete your payment now to lock in discounted rates.
+                                            After <strong>${deadline}</strong>, registration fees will increase automatically by <strong>$120 to $150</strong> per delegate. Complete your payment now to lock in discounted rates.
                                         </div>
                                     </td>
                                 </tr>
@@ -171,26 +177,36 @@ export function getEarlyBirdEmailHtml({
                 </table>
 
                 <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); width: 600px; min-width: 600px;">
-                    <!-- PAYMENT BUTTON (Same clean style) -->
+                    <!-- PAYMENT BUTTON / WHATSAPP FOR GROUP -->
                     <tr>
                         <td align="center" style="padding: 10px 20px 20px 20px;">
                             <table role="presentation" style="width: 100%; max-width: 560px; margin: 10px auto; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
                                 <tr>
-                                    <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 8px;">Payment</td>
+                                    <td style="font-weight: bold; font-size: 18px; color: #000; padding-bottom: 8px;">${isGroupBool ? 'Group Payment' : 'Payment'}</td>
                                 </tr>
                                 <tr>
                                     <td style="font-size: 14px; color: #333; padding-bottom: 16px;">
-                                        Lock in your exclusive Early Bird rate by completing your payment below:
+                                        ${isGroupBool 
+                                            ? 'Lock in your exclusive Early Bird rate for your delegation by contacting us on WhatsApp:' 
+                                            : 'Lock in your exclusive Early Bird rate by completing your payment below:'}
                                     </td>
                                 </tr>
-                                 <tr>
-                                     <td>
-                                         <a href="${paymentUrl}" target="_blank"
-                                            style="display: inline-block; padding: 12px 60px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; background: linear-gradient(to right, #00509E, #003A70, #002855); border-radius: 4px; box-shadow: 0 3px 6px rgba(0,0,0,0.15);">
-                                            Pay Now
-                                         </a>
-                                     </td>
-                                 </tr>
+                                <tr>
+                                    <td>
+                                        ${isGroupBool ? `
+                                        <a href="${whatsappGroupUrl}" target="_blank"
+                                           style="display: inline-block; padding: 14px 36px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; background: linear-gradient(to right, #25D366, #128C7E); border-radius: 6px; box-shadow: 0 4px 8px rgba(37,211,102,0.3);">
+                                           💬 Contact Us on WhatsApp for Group Payment
+                                        </a>
+                                        <p style="margin: 12px 0 0; font-size: 12px; color: #666;">Get custom group delegation invoice, group discount &amp; assistance on WhatsApp (+44 7498 072531)</p>
+                                        ` : `
+                                        <a href="${paymentUrl}" target="_blank"
+                                           style="display: inline-block; padding: 12px 60px; font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; background: linear-gradient(to right, #00509E, #003A70, #002855); border-radius: 4px; box-shadow: 0 3px 6px rgba(0,0,0,0.15);">
+                                           Pay Now
+                                        </a>
+                                        `}
+                                    </td>
+                                </tr>
                             </table>
                         </td>
                     </tr>

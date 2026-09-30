@@ -2,12 +2,13 @@ import nodemailer from 'nodemailer';
 import { MongoClient } from 'mongodb';
 import { getFullAcceptanceTemplate, getDestinationConfig } from './cronService.js';
 import { getEarlyBirdEmailHtml } from './earlyBirdTemplate.js';
+import { getDeadlineEmailHtml } from './deadlineTemplate.js';
 
 const uri = process.env.MONGODB_URI || 'mongodb+srv://salmanlsbu_db_user:atsasmun1947@cluster0.b7sexda.mongodb.net/atsasmun?retryWrites=true&w=majority&appName=Cluster0';
 
 function getTransporter() {
-    const username = process.env.NEXT_PUBLIC_SMTP_USERNAME || process.env.SMTP_EMAIL || 'info@atsasmun.com';
-    const password = process.env.NEXT_PUBLIC_SMTP_PASSWORD || process.env.SMTP_PASS || 'Bascule@1947';
+    const username = process.env.SMTP_EMAIL || process.env.NEXT_PUBLIC_SMTP_USERNAME || 'info@atsasmun.com';
+    const password = process.env.SMTP_PASS || process.env.NEXT_PUBLIC_SMTP_PASSWORD;
     const smtpHost = process.env.SMTP_HOST || process.env.NEXT_PUBLIC_SMTP_HOST || process.env.NEXT_PUBLIC_SMPT_HOST || 'smtp.office365.com';
     const smtpPort = parseInt(process.env.SMTP_PORT || process.env.NEXT_PUBLIC_SMTP_PORT || '587');
 
@@ -388,10 +389,25 @@ export function generateEmailContent(templateType, reg) {
                     name: fullName,
                     customerId: reg.customerId || '',
                     id: reg.id || reg.Idname || '1',
-                    isGroup: reg.RegistrationType === 'group' || reg.type === 'group',
+                    isGroup: String(reg.RegistrationType || reg.registrationType || reg.type || '').toLowerCase() === 'group',
                     deadline: 'Limited Time Offer'
                 }),
                 title: '3rd Email — Early Bird Discount Offer'
+            };
+
+        case 'deadline':
+            return {
+                subject: `Payment Deadline Reminder — ATSASMUN Istanbul 2026 (Due: 09/10/2026)`,
+                html: getDeadlineEmailHtml({
+                    name: fullName,
+                    customerId: reg.customerId || '',
+                    id: reg.id || reg.Idname || '1',
+                    isGroup: String(reg.RegistrationType || reg.registrationType || reg.type || '').toLowerCase() === 'group',
+                    deadline: '09/10/2026',
+                    destination: destination,
+                    dates: '5 to 8 November 2026'
+                }),
+                title: '4th Email — Payment Deadline Reminder'
             };
 
         default:
@@ -437,6 +453,9 @@ export async function sendManualEmail({ templateType, reg, targetCollection }) {
         } else if (templateType === 'early_bird') {
             updateFields.earlyBirdSent = true;
             updateFields.earlyBirdSentAt = new Date().toISOString();
+        } else if (templateType === 'deadline') {
+            updateFields.deadlineEmailSent = true;
+            updateFields.deadlineEmailSentAt = new Date().toISOString();
         }
 
         const registrationCollections = [

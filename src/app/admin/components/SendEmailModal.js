@@ -72,7 +72,8 @@ export default function SendEmailModal({ isOpen, onClose, delegate, onEmailSent 
     const templateNames = {
       acceptance: "Letter of Acceptance (Official 8-Hour Letter)",
       confirmation: "1st Email — Registration Confirmation",
-      early_bird: "3rd Email — Early Bird Discount Offer"
+      early_bird: "3rd Email — Early Bird Discount Offer",
+      deadline: "4th Email — Payment Deadline Reminder (09/10/2026)"
     };
 
     const confirmMsg = `Are you sure you want to send "${templateNames[templateType]}" to:\n${delegate.Email || delegate.email}?`;
@@ -189,6 +190,9 @@ export default function SendEmailModal({ isOpen, onClose, delegate, onEmailSent 
                 </option>
                 <option value="early_bird">
                   ✉️ 3rd Email — Early Bird Special Discount Offer
+                </option>
+                <option value="deadline">
+                  ✉️ 4th Email — Payment Deadline Reminder (09/10/2026)
                 </option>
               </select>
             </div>

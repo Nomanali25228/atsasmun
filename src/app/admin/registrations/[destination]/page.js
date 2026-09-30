@@ -13,7 +13,9 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaPaperPlane,
 } from "react-icons/fa";
+import SendEmailModal from "../../components/SendEmailModal";
 
 const destinationNames = {
   istanbul: { name: "Istanbul, Turkey", emoji: "🇹🇷" },
@@ -37,6 +39,8 @@ export default function RegistrationModule() {
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const [deleting, setDeleting] = useState(false);
+  const [selectedDelegate, setSelectedDelegate] = useState(null);
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
 
   useEffect(() => {
     fetchRegistrations();
@@ -199,6 +203,12 @@ export default function RegistrationModule() {
                   <th className="text-left text-gray-500 text-xs font-medium uppercase tracking-wider px-6 py-4">
                     Date
                   </th>
+                  <th className="text-center text-gray-500 text-xs font-medium uppercase tracking-wider px-4 py-4">
+                    1st Email
+                  </th>
+                  <th className="text-center text-gray-500 text-xs font-medium uppercase tracking-wider px-4 py-4">
+                    2nd Email (8h)
+                  </th>
                   <th className="text-left text-gray-500 text-xs font-medium uppercase tracking-wider px-6 py-4">
                     Actions
                   </th>
@@ -244,8 +254,48 @@ export default function RegistrationModule() {
                           : "-"}
                       </span>
                     </td>
+                    <td className="px-4 py-4 text-center">
+                      {reg.firstEmailSent !== false ? (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm" title="Confirmation Email Sent">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                          True
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gray-500/10 text-gray-400 border border-gray-500/20" title="Not Sent">
+                          <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                          False
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-4 py-4 text-center">
+                      {reg.acceptanceLetterSent === true ? (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-sm" title={reg.acceptanceLetterSentAt ? `Sent at: ${new Date(reg.acceptanceLetterSentAt).toLocaleString()}` : "Acceptance Letter Sent"}>
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                          True
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20" title="Pending 8-hour trigger">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                          False
+                        </span>
+                      )}
+                    </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            setSelectedDelegate({
+                              ...reg,
+                              destination: reg.destination || reg.Destinations || destInfo.name,
+                            });
+                            setEmailModalOpen(true);
+                          }}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all text-xs font-medium"
+                          title="Send Email with Preview"
+                        >
+                          <FaPaperPlane size={11} />
+                          Send
+                        </button>
                         <button
                           onClick={() => setSelectedRecord(reg)}
                           className="p-2 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all"
@@ -371,6 +421,16 @@ export default function RegistrationModule() {
           </div>
         </div>
       )}
+
+      {/* Send Email Modal */}
+      <SendEmailModal
+        isOpen={emailModalOpen}
+        onClose={() => setEmailModalOpen(false)}
+        delegate={selectedDelegate}
+        onEmailSent={() => {
+          fetchRegistrations();
+        }}
+      />
     </div>
   );
 }

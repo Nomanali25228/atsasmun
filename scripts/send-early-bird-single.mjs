@@ -42,7 +42,7 @@ async function sendToUser(targetEmail) {
   const fullName = `${user.FirstName || ''} ${user.LastName || ''}`.trim() || user.FirstName || 'Delegate';
   const customerId = user.customerId || '';
   const id = user.id || '1';
-  const isGroup = user.RegistrationType === 'group' || user.type === 'group';
+  const isGroup = String(user.RegistrationType || user.registrationType || user.type || '').toLowerCase() === 'group';
 
   console.log(`Found user: ${fullName}, email: ${user.Email}, customerId: ${customerId}, id: ${id}`);
 

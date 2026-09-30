@@ -67,7 +67,7 @@ async function main() {
             const fullName = `${user.FirstName || user.firstname || ''} ${user.LastName || user.lastname || ''}`.trim() || user.FirstName || 'Delegate';
             const customerId = user.customerId || '';
             const userId = user.id || user.Idname || '1';
-            const isGroup = user.RegistrationType === 'group' || user.type === 'group';
+            const isGroup = String(user.RegistrationType || user.registrationType || user.type || '').toLowerCase() === 'group';
 
             console.log(`[${count}/${totalDelegates}] Processing: ${fullName} <${email}> | CustomerId: ${customerId} | UserId: ${userId}`);
 

@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request) {
-    const username = process.env.NEXT_PUBLIC_SMTP_USERNAME || process.env.SMTP_EMAIL || 'info@atsasmun.com';
-    const password = process.env.NEXT_PUBLIC_SMTP_PASSWORD || process.env.SMTP_PASS || 'Bascule@1947';
+    const username = process.env.SMTP_EMAIL || process.env.NEXT_PUBLIC_SMTP_USERNAME || 'info@atsasmun.com';
+    const password = process.env.SMTP_PASS || process.env.NEXT_PUBLIC_SMTP_PASSWORD;
     const smtpHost = process.env.SMTP_HOST || process.env.NEXT_PUBLIC_SMTP_HOST || process.env.NEXT_PUBLIC_SMPT_HOST || 'smtp.office365.com';
     const smtpPort = parseInt(process.env.SMTP_PORT || process.env.NEXT_PUBLIC_SMTP_PORT || '587');
 
