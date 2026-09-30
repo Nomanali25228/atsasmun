@@ -131,10 +131,6 @@ export function getDeadlineEmailHtml({
                             <p style="margin: 12px 0 0; font-size: 16px; color: #f2b705 !important; -webkit-text-fill-color: #f2b705 !important; font-weight: 700;">
                                 ATSASMUN ${destCity} 2026 &bull; ${conferenceDates}
                             </p>
-
-                            <p style="margin: 14px 0 0; font-size: 15px; color: #e2e8f0 !important; -webkit-text-fill-color: #e2e8f0 !important;">
-                                ${isGroupBool ? 'Head of Delegate: ' : 'Dear Delegate, '}<strong>${name}</strong>
-                            </p>
                         </td>
                     </tr>
 
