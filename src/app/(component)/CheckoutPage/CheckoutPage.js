@@ -24,6 +24,15 @@ const CheckoutPage = ({
   const [loading, setLoading] = useState(false);
   const [initLoading, setInitLoading] = useState(true);
 
+  const [fullName, setFullName] = useState(customerName || "");
+  const [emailAddress, setEmailAddress] = useState(customerEmail || "");
+
+  // Update states if props change
+  useEffect(() => {
+    if (customerName && !fullName) setFullName(customerName);
+    if (customerEmail && !emailAddress) setEmailAddress(customerEmail);
+  }, [customerName, customerEmail]);
+
   useEffect(() => {
     let isMounted = true;
     setInitLoading(true);
@@ -78,6 +87,18 @@ const CheckoutPage = ({
       return;
     }
 
+    if (!fullName.trim()) {
+      setErrorMessage("Please enter your cardholder / delegate full name.");
+      setLoading(false);
+      return;
+    }
+
+    if (!emailAddress.trim() || !emailAddress.includes("@")) {
+      setErrorMessage("Please enter a valid email address for receipt and confirmation.");
+      setLoading(false);
+      return;
+    }
+
     const { error: submitError } = await elements.submit();
 
     if (submitError) {
@@ -94,9 +115,16 @@ const CheckoutPage = ({
 
     const confirmParams = {
       return_url: returnUrl,
+      payment_method_data: {
+        billing_details: {
+          name: fullName.trim(),
+          email: emailAddress.trim().toLowerCase(),
+        },
+      },
     };
-    if (customerEmail && typeof customerEmail === "string" && customerEmail.includes("@")) {
-      confirmParams.receipt_email = customerEmail.trim().toLowerCase();
+
+    if (emailAddress && emailAddress.includes("@")) {
+      confirmParams.receipt_email = emailAddress.trim().toLowerCase();
     }
 
     const { error } = await stripe.confirmPayment({
@@ -131,23 +159,37 @@ const CheckoutPage = ({
 
   return (
     <form onSubmit={handleSubmit} className="bg-transparent">
-      <PaymentElement
-        options={{
-          layout: "tabs",
-          fields: {
-            billingDetails: {
-              name: "always",
-              email: "always",
-            },
-          },
-          defaultValues: {
-            billingDetails: {
-              name: customerName || "",
-              email: customerEmail || "",
-            },
-          },
-        }}
-      />
+      {/* Customer Name & Email inputs */}
+      <div className="mb-4 space-y-3">
+        <div>
+          <label className="block text-xs font-semibold text-white mb-1.5">
+            Full Name (Cardholder / Delegate) <span className="text-[#FF5A5F]">*</span>
+          </label>
+          <input
+            type="text"
+            required
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="e.g. Zain Iqbal"
+            className="w-full bg-[#0c0e1e] border border-gray-600 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#2EC4B6]"
+          />
+        </div>
+        <div>
+          <label className="block text-xs font-semibold text-white mb-1.5">
+            Email Address (for receipt & confirmation) <span className="text-[#FF5A5F]">*</span>
+          </label>
+          <input
+            type="email"
+            required
+            value={emailAddress}
+            onChange={(e) => setEmailAddress(e.target.value)}
+            placeholder="e.g. name@example.com"
+            className="w-full bg-[#0c0e1e] border border-gray-600 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#2EC4B6]"
+          />
+        </div>
+      </div>
+
+      <PaymentElement />
 
       {errorMessage && (
         <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg font-medium">
