@@ -2,9 +2,9 @@
 import CheckoutPage from "@/app/(component)/CheckoutPage/CheckoutPage";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, Suspense } from "react";
 import ContextPage from "../Context/ContextPage";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import ParticleCanvas from "@/app/(component)/ParticleCanvas";
 import bg from "@/app/public/img/HPbg1.jpeg"; // Hero background
 import Link from "next/link";
@@ -20,23 +20,41 @@ if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
 }
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-export default function Home() {
-  const { amounts } = useContext(ContextPage);
+function CheckoutContent() {
+  const { amounts, setAmounts } = useContext(ContextPage);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const paramAmount = searchParams?.get("amount");
+  const paramEmail = searchParams?.get("email") || "";
+  const paramName = searchParams?.get("name") || "";
+  const paramUserId = searchParams?.get("userid") || "";
+  const paramCustomerId = searchParams?.get("customerId") || "";
+  const paramDestination = searchParams?.get("destination") || "Istanbul, Turkey";
 
   const [couponInput, setCouponInput] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [couponLoading, setCouponLoading] = useState(false);
   const [couponError, setCouponError] = useState("");
 
+  // Sync amount from query param if available
+  useEffect(() => {
+    if (paramAmount && !isNaN(Number(paramAmount)) && Number(paramAmount) > 0) {
+      setAmounts(Number(paramAmount));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("amounts", paramAmount);
+      }
+    }
+  }, [paramAmount, setAmounts]);
+
   // Redirect if invalid amount
   useEffect(() => {
-    const storedAmount = localStorage.getItem("amounts");
-    const activeAmount = amounts || (storedAmount ? parseFloat(storedAmount) : 0);
+    const storedAmount = typeof window !== "undefined" ? localStorage.getItem("amounts") : null;
+    const activeAmount = amounts || (storedAmount ? parseFloat(storedAmount) : 0) || (paramAmount ? parseFloat(paramAmount) : 0);
     if (!activeAmount || activeAmount <= 0) {
       router.push("/");
     }
-  }, [amounts, router]);
+  }, [amounts, paramAmount, router]);
 
   // Keep amounts in localStorage synced
   useEffect(() => {
@@ -45,7 +63,10 @@ export default function Home() {
     }
   }, [amounts]);
 
-  const rawAmount = amounts || (typeof window !== "undefined" ? parseFloat(localStorage.getItem("amounts") || 0) : 0);
+  const rawAmount =
+    amounts ||
+    (paramAmount && !isNaN(Number(paramAmount)) ? parseFloat(paramAmount) : 0) ||
+    (typeof window !== "undefined" ? parseFloat(localStorage.getItem("amounts") || 0) : 0);
   const baseAmount = Number(rawAmount) || 0;
 
   const finalAmount = appliedCoupon
@@ -309,6 +330,11 @@ export default function Home() {
                   amount={finalAmount}
                   originalAmount={baseAmount}
                   appliedCoupon={appliedCoupon}
+                  customerName={paramName}
+                  customerEmail={paramEmail}
+                  userId={paramUserId}
+                  customerId={paramCustomerId}
+                  destination={paramDestination}
                 />
               </Elements>
             </div>
@@ -318,5 +344,20 @@ export default function Home() {
 
       <ParticleCanvas />
     </header>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#060713] flex flex-col items-center justify-center text-white">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#2EC4B6] border-e-transparent"></div>
+          <p className="mt-4 text-xs text-gray-400">Loading secure checkout...</p>
+        </div>
+      }
+    >
+      <CheckoutContent />
+    </Suspense>
   );
 }

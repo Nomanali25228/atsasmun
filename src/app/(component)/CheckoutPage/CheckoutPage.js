@@ -7,7 +7,16 @@ import {
   PaymentElement,
 } from "@stripe/react-stripe-js";
 
-const CheckoutPage = ({ amount, originalAmount, appliedCoupon }) => {
+const CheckoutPage = ({
+  amount,
+  originalAmount,
+  appliedCoupon,
+  customerName = "",
+  customerEmail = "",
+  userId = "",
+  customerId = "",
+  destination = "",
+}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState("");
@@ -30,6 +39,11 @@ const CheckoutPage = ({ amount, originalAmount, appliedCoupon }) => {
         couponCode: appliedCoupon?.code || null,
         discount: appliedCoupon?.discount || 0,
         originalAmount: originalAmount || amount,
+        customerName: customerName || null,
+        customerEmail: customerEmail || null,
+        userId: userId || null,
+        customerId: customerId || null,
+        destination: destination || null,
       }),
     })
       .then((res) => res.json())
@@ -52,7 +66,7 @@ const CheckoutPage = ({ amount, originalAmount, appliedCoupon }) => {
     return () => {
       isMounted = false;
     };
-  }, [amount, appliedCoupon, originalAmount]);
+  }, [amount, appliedCoupon, originalAmount, customerName, customerEmail, userId, customerId, destination]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -78,12 +92,17 @@ const CheckoutPage = ({ amount, originalAmount, appliedCoupon }) => {
         : "http://localhost:3000"
     }/payment-success?amount=${amount}`;
 
+    const confirmParams = {
+      return_url: returnUrl,
+    };
+    if (customerEmail && typeof customerEmail === "string" && customerEmail.includes("@")) {
+      confirmParams.receipt_email = customerEmail.trim().toLowerCase();
+    }
+
     const { error } = await stripe.confirmPayment({
       elements,
       clientSecret,
-      confirmParams: {
-        return_url: returnUrl,
-      },
+      confirmParams,
     });
 
     if (error) {
@@ -112,7 +131,23 @@ const CheckoutPage = ({ amount, originalAmount, appliedCoupon }) => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-transparent">
-      <PaymentElement />
+      <PaymentElement
+        options={{
+          layout: "tabs",
+          fields: {
+            billingDetails: {
+              name: "always",
+              email: "always",
+            },
+          },
+          defaultValues: {
+            billingDetails: {
+              name: customerName || "",
+              email: customerEmail || "",
+            },
+          },
+        }}
+      />
 
       {errorMessage && (
         <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg font-medium">

@@ -107,6 +107,7 @@ export default function Home() {
 
     const id = searchParams.get("userid");
     const [userEmail, setUserEmail] = useState("");
+    const [userName, setUserName] = useState("");
 
     useEffect(() => {
         if (!id) return;
@@ -122,16 +123,19 @@ export default function Home() {
 
                 let customerId = "";
                 let email = "";
+                let name = "";
                 if (result.data && result.data.length > 0) {
                     const item = result.data[0];
                     const attrs = item.attributes || item;
                     customerId = attrs.customerId;
                     email = attrs.Email || attrs.email;
+                    name = attrs.FirstName ? `${attrs.FirstName} ${attrs.LastName || ''}`.trim() : (attrs.name || '');
                 }
 
                 const customerIdFromQuery = searchParams.get("customerId");
                 setCustID(customerId || customerIdFromQuery || "");
                 setUserEmail(email || searchParams.get("email") || "");
+                setUserName(name || searchParams.get("name") || "");
             } catch (err) {
                 console.error("Fetch Logic Error:", err.message);
                 toast.error(`Error: ${err.message}`);
@@ -284,7 +288,7 @@ export default function Home() {
                                                 >
                                                     Cancel ✖
                                                 </button>
-                                                <Link href="/checkout">
+                                                <Link href={`/checkout?amount=418${id ? `&userid=${encodeURIComponent(id)}` : ''}${userEmail ? `&email=${encodeURIComponent(userEmail)}` : ''}${userName ? `&name=${encodeURIComponent(userName)}` : ''}${custId ? `&customerId=${encodeURIComponent(custId)}` : ''}&destination=Istanbul,%20Turkey`}>
                                                     <button
                                                         onClick={() => seo(418)}
                                                         className="atsas-btn-solid w-full"
@@ -356,7 +360,7 @@ export default function Home() {
                                                 >
                                                     Cancel ✖
                                                 </button>
-                                                <Link href="/checkout">
+                                                <Link href={`/checkout?amount=549${id ? `&userid=${encodeURIComponent(id)}` : ''}${userEmail ? `&email=${encodeURIComponent(userEmail)}` : ''}${userName ? `&name=${encodeURIComponent(userName)}` : ''}${custId ? `&customerId=${encodeURIComponent(custId)}` : ''}&destination=Istanbul,%20Turkey`}>
                                                     <button
                                                         onClick={() => seo(549)}
                                                         className="atsas-btn-solid w-full"
@@ -426,7 +430,7 @@ export default function Home() {
                                                 >
                                                     Cancel ✖
                                                 </button>
-                                                <Link href="/checkout">
+                                                <Link href={`/checkout?amount=689${id ? `&userid=${encodeURIComponent(id)}` : ''}${userEmail ? `&email=${encodeURIComponent(userEmail)}` : ''}${userName ? `&name=${encodeURIComponent(userName)}` : ''}${custId ? `&customerId=${encodeURIComponent(custId)}` : ''}&destination=Istanbul,%20Turkey`}>
                                                     <button
                                                         onClick={() => seo(689)}
                                                         className="atsas-btn-solid w-full"
